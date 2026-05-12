@@ -10,8 +10,10 @@ bool ApplicationMain::Initialize(HINSTANCE hInstance)
 {
 	if(!base::Initialize(hInstance)) { return false; }
 
+
 	// ƒ‚[ƒh‚Ì“o˜^
-	ModeServer::GetInstance()->Add(new Title(), 1, "title");
+	ModeServer::GetInstance()->Add(new ModeGame(), 1, "modeGame");
+	//ModeServer::GetInstance()->Add(new Title(), 1, "title");
 
 	return true;
 }
