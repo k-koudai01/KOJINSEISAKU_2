@@ -10,6 +10,18 @@
     <Filter Include="Mode">
       <UniqueIdentifier>{62a97a20-9e08-496b-b3aa-4acb70f7f87e}</UniqueIdentifier>
     </Filter>
+    <Filter Include="ヘッダーファイル">
+      <UniqueIdentifier>{253d9f09-e022-4cc3-ba9f-865948a46486}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ヘッダーファイル\アニメーション管理">
+      <UniqueIdentifier>{99ecabe6-3e84-4b1b-8f1a-2d35fd8b7079}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソースファイル">
+      <UniqueIdentifier>{2674fe26-0dba-461e-9a3e-0530d248c128}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソースファイル\アニメーション管理">
+      <UniqueIdentifier>{4c522e1d-ee65-4897-b9f2-a9fc3042f364}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="source\Application\ApplicationBase.cpp">
@@ -26,6 +38,9 @@
     </ClCompile>
     <ClCompile Include="source\Mode\ModeServer.cpp">
       <Filter>Mode</Filter>
+    </ClCompile>
+    <ClCompile Include="source\AnimationManager.cpp">
+      <Filter>ソースファイル\アニメーション管理</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -46,6 +61,12 @@
     </ClInclude>
     <ClInclude Include="source\appframe.h">
       <Filter>Application</Filter>
+    </ClInclude>
+    <ClInclude Include="source\container.h">
+      <Filter>ヘッダーファイル</Filter>
+    </ClInclude>
+    <ClInclude Include="source\AnimationManager.h">
+      <Filter>ヘッダーファイル\アニメーション管理</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

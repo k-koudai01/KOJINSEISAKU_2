@@ -5,3 +5,5 @@
 #include "DxLib.h"
 #include "Application/ApplicationBase.h"
 #include "CFile/CFile.h"
+#include "container.h"
+#include "AnimationManager.h"
