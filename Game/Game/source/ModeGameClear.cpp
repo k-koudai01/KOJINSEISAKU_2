@@ -21,8 +21,10 @@ bool ModeGameClear::Process()
 {
 	base::Process();
 
+	auto modeServer = ModeServer::GetInstance();
+
 	// 下のレイヤーを動かさない
-	ModeServer::GetInstance()->SkipProcessUnderLayer();
+	modeServer->SkipProcessUnderLayer();
 
 	int key = ApplicationMain::GetInstance()->GetKey();
 	int trg = ApplicationMain::GetInstance()->GetTrg();
@@ -30,35 +32,37 @@ bool ModeGameClear::Process()
 	// 決定ボタンでこのモードを閉じる
 	if(trg & PAD_INPUT_1)
 	{
-		ModeBase* game = ModeServer::GetInstance()->Get("game");
+		ModeBase* game = modeServer->Get("game");
 		if(game)
 		{
-			ModeServer::GetInstance()->Del(game); // ゲームモードも削除してタイトルに戻る
+			modeServer->Del(game); // ゲームモードも削除してタイトルに戻る
 		}
 
+		using namespace UI;
+
 		// 新しいゲーム本体を追加予約
-		ModeServer::GetInstance()->Add(new ModeGame(), 1, "game");
+		modeServer->Add(new ModeGame(), 1, "game");
 
 		// ゲームモードを削除
-		ModeServer::GetInstance()->Del(this);
+		modeServer->Del(this);
 	}
 	// PAD_INPUT_2: タイトルへ戻る
 	else if(trg & PAD_INPUT_2)
 	{
-		ModeBase* game = ModeServer::GetInstance()->Get("game");
+		ModeBase* game = modeServer->Get("game");
 		if(game)
 		{
-			ModeServer::GetInstance()->Del(game);
+			modeServer->Del(game);
 		}
 
 		// タイトルが無ければ追加（重複防止）
-		ModeBase* title = ModeServer::GetInstance()->Get("title");
+		ModeBase* title = modeServer->Get("title");
 		if(!title)
 		{
-			ModeServer::GetInstance()->Add(new Title(), 1, "title");
+			modeServer->Add(new Title(), 1, "title");
 		}
 
-		ModeServer::GetInstance()->Del(this);
+		modeServer->Del(this);
 	}
 	return true;
 }

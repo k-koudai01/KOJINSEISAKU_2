@@ -166,6 +166,7 @@
     <ClCompile Include="source\ModeGameOver.cpp" />
     <ClCompile Include="source\ModeMenu.cpp" />
     <ClCompile Include="source\mymath.cpp" />
+    <ClCompile Include="source\ObjectBase.cpp" />
     <ClCompile Include="source\Player.cpp" />
     <ClCompile Include="source\Title.cpp" />
   </ItemGroup>
@@ -189,6 +190,7 @@
     <ClInclude Include="source\ModeGameOver.h" />
     <ClInclude Include="source\ModeMenu.h" />
     <ClInclude Include="source\mymath.h" />
+    <ClInclude Include="source\ObjectBase.h" />
     <ClInclude Include="source\Player.h" />
     <ClInclude Include="source\Title.h" />
   </ItemGroup>

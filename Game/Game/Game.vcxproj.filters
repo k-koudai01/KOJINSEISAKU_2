@@ -13,23 +13,23 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
-    <Filter Include="Character">
-      <UniqueIdentifier>{8c751a9b-7043-4d1b-a630-d249418ab3d9}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Character\Player">
-      <UniqueIdentifier>{6ac52a6c-65aa-4ddb-9a60-f3760f3225a0}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Camera">
+    <Filter Include="ソース ファイル\Camera">
       <UniqueIdentifier>{e31a8b5e-fd84-4ff7-a82b-dbad9ab0e3e5}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Gun">
+    <Filter Include="ソース ファイル\Character">
+      <UniqueIdentifier>{8c751a9b-7043-4d1b-a630-d249418ab3d9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\Character\Player">
+      <UniqueIdentifier>{6ac52a6c-65aa-4ddb-9a60-f3760f3225a0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\Character\Enemy">
+      <UniqueIdentifier>{61a59e53-7dc1-41c1-930b-a3f6fa67d6d4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\Gun">
       <UniqueIdentifier>{54d60bbc-06b5-4727-ae6c-1ab935f4bda2}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Gun\Bullet">
+    <Filter Include="ソース ファイル\Gun\Bullet">
       <UniqueIdentifier>{ef3eb02d-59fc-4da6-beef-4cb2f190acf7}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Character\Enemy">
-      <UniqueIdentifier>{61a59e53-7dc1-41c1-930b-a3f6fa67d6d4}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -49,28 +49,28 @@
       <Filter>ソース ファイル</Filter>
     </ClCompile>
     <ClCompile Include="source\CharaBase.cpp">
-      <Filter>Character</Filter>
+      <Filter>ソース ファイル\Character</Filter>
     </ClCompile>
     <ClCompile Include="source\Player.cpp">
-      <Filter>Character\Player</Filter>
+      <Filter>ソース ファイル\Character\Player</Filter>
     </ClCompile>
     <ClCompile Include="source\mymath.cpp">
       <Filter>ソース ファイル</Filter>
     </ClCompile>
     <ClCompile Include="source\Gun.cpp">
-      <Filter>Gun</Filter>
+      <Filter>ソース ファイル\Gun</Filter>
     </ClCompile>
     <ClCompile Include="source\Camera.cpp">
-      <Filter>Camera</Filter>
+      <Filter>ソース ファイル\Camera</Filter>
     </ClCompile>
     <ClCompile Include="source\fpsCamera.cpp">
-      <Filter>Camera</Filter>
+      <Filter>ソース ファイル\Camera</Filter>
     </ClCompile>
     <ClCompile Include="source\Bullet.cpp">
-      <Filter>Gun\Bullet</Filter>
+      <Filter>ソース ファイル\Gun\Bullet</Filter>
     </ClCompile>
     <ClCompile Include="source\Enemy.cpp">
-      <Filter>Character\Enemy</Filter>
+      <Filter>ソース ファイル\Character\Enemy</Filter>
     </ClCompile>
     <ClCompile Include="source\ModeGameOver.cpp">
       <Filter>ソース ファイル</Filter>
@@ -79,6 +79,9 @@
       <Filter>ソース ファイル</Filter>
     </ClCompile>
     <ClCompile Include="source\ModeGameClear.cpp">
+      <Filter>ソース ファイル</Filter>
+    </ClCompile>
+    <ClCompile Include="source\ObjectBase.cpp">
       <Filter>ソース ファイル</Filter>
     </ClCompile>
   </ItemGroup>
@@ -99,28 +102,28 @@
       <Filter>ヘッダー ファイル</Filter>
     </ClInclude>
     <ClInclude Include="source\CharaBase.h">
-      <Filter>Character</Filter>
+      <Filter>ソース ファイル\Character</Filter>
     </ClInclude>
     <ClInclude Include="source\mymath.h">
       <Filter>ヘッダー ファイル</Filter>
     </ClInclude>
     <ClInclude Include="source\Gun.h">
-      <Filter>Gun</Filter>
+      <Filter>ソース ファイル\Gun</Filter>
     </ClInclude>
     <ClInclude Include="source\Camera.h">
-      <Filter>Camera</Filter>
+      <Filter>ソース ファイル\Camera</Filter>
     </ClInclude>
     <ClInclude Include="source\fpsCamera.h">
-      <Filter>Camera</Filter>
+      <Filter>ソース ファイル\Camera</Filter>
     </ClInclude>
     <ClInclude Include="source\Bullet.h">
-      <Filter>Gun\Bullet</Filter>
+      <Filter>ソース ファイル\Gun\Bullet</Filter>
     </ClInclude>
     <ClInclude Include="source\Enemy.h">
-      <Filter>Character\Enemy</Filter>
+      <Filter>ソース ファイル\Character\Enemy</Filter>
     </ClInclude>
     <ClInclude Include="source\Player.h">
-      <Filter>Character\Player</Filter>
+      <Filter>ソース ファイル\Character\Player</Filter>
     </ClInclude>
     <ClInclude Include="source\ModeGameOver.h">
       <Filter>ヘッダー ファイル</Filter>
@@ -129,6 +132,9 @@
       <Filter>ヘッダー ファイル</Filter>
     </ClInclude>
     <ClInclude Include="source\ModeGameClear.h">
+      <Filter>ヘッダー ファイル</Filter>
+    </ClInclude>
+    <ClInclude Include="source\ObjectBase.h">
       <Filter>ヘッダー ファイル</Filter>
     </ClInclude>
   </ItemGroup>
