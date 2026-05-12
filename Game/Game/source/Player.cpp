@@ -8,337 +8,160 @@
 
 bool Player::Initialize() 
 {
-	if(!Cbase::Initialize()) { return false; }
-	// モデルデータのロード（テクスチャも読み込まれる）
+	// 基底クラスの初期化
+	if(!base::Initialize()) { return false; }
+
+	// モデルデータのロード
 	_handle = MV1LoadModel("res/SDChar/SDChar.mv1");
-	// 3Dモデルの1番目のアニメーションをアタッチする
-	_attach_index = -1;
-	// ステータスを「なし」に設定
+	if (!base::Initialize()) { return false; }
+
+	_animId = -1;
+	// ステータスを「無し」に設定
 	_status = STATUS::NONE;
-	// アタッチしたアニメーションの総再生時間を取得する
-	_total_time = 0.f;
-	// 再生時間の初期化
-	_play_time = 0.0f;
-	// 位置,向きの初期化
-	_vPos = VGet(0, 0, 0);
-	_vDir = VGet(0, 0, -1); //キャラクターはデフォルト-Z方向を向いている
-	// 移動ベクトルの初期化
-	_v = VGet(0, 0, 0);      
-	//腰の位置の設定
-	_colSubY = 40.0f;
-	//アナログスティックの設定
-	analogMin = 0.3f;
-	//弾の生成
-	if(_bullet == nullptr) 
-	{
-		_bullet = new Bullet();
-	}
-	//弾の初期化
-	_bullet->Initialize();
-	//コリジョン初期化
-	_collision_weight = 10.f;
-	_collision_r = 30.f;
+
+	// 位置、向きの初期化
+	_vPos = VGet(0.0f, 0.0f, 0.0f); 
+	_vDir = VGet(0.0f, 0.0f, -1.0f);
+
+	// 腰位置の設定
+	_fColSubY = 40.0f;
+
+	// コリジョン半径の設定
+	_fCollisionR = 30.0f;
+	_fCollisionWeight = 20.0f;
+
+	// カメラの初期化
+	_cam = nullptr;
+
+	// 移動速度設定
+	_mvSpeed = 5.0f;
+
+	// 初期体力設定
+	_hp = 5.0f;
+
 	return true;
 }
 
 bool Player::Terminate()
 {
-	Cbase::Terminate();
-	
-	if(_bullet)
-	{
-		_bullet->Terminate();
-		delete _bullet;
-		_bullet = nullptr;
-	}
+	base::Terminate();
+
 	return true;
 }
 
-bool Player::Process(int key, int trg) 
+bool Player::Process() 
 {
-	Cbase::Process();
-	// ジョイパッドの状態を取得
-	{
-		DINPUT_JOYSTATE di;
-		GetJoypadDirectInputState(DX_INPUT_PAD1, &di);
-		if (GetJoypadDirectInputState(DX_INPUT_PAD1, &di) == 0)
-		{
-			lx = (float)di.X / 1000.f;
-			ly = (float)di.Y / 1000.f;
-			rx = (float)di.Z / 1000.f;
-			ry = (float)di.Rz / 1000.f;
-		}
-	}
+	int key = ApplicationBase::GetInstance()->GetKey();
+	int trg = ApplicationBase::GetInstance()->GetTrg();
 
-	// FPS/TPS切り替えキー
-	// 
-	static bool prevSwitchKey = false;
-	bool switchKey = (CheckHitKey(KEY_INPUT_TAB) != 0);
+	base::Process();
 
-	if(switchKey && !prevSwitchKey)
-	{
-		// 押下の立ち上がりで切替を一度だけ実行
-		if(_cam != nullptr && dynamic_cast<fpsCamera*>(_cam) != nullptr)
-		{
-			// FPS -> TPS
-			Camera* newCam = new Camera();
-			newCam->_player = this;
-			newCam->Initialize();
-			if(_cam) { _cam->Terminate(); delete _cam; }
-			_cam = newCam;
-			OnSwitchToTPS();
-		}
-		else
-		{
-			// TPS -> FPS
-			fpsCamera* newCam = new fpsCamera();
-			newCam->_player = this;
-			newCam->Initialize();
-			if(_cam) { _cam->Terminate(); delete _cam; }
-			_cam = newCam;
-			OnSwitchToFPS();
-		}
-	}
+	// 処理前の位置を保存
+	_vOldPos = _vPos; 
 
-	prevSwitchKey = switchKey;
-	
+	// 処理前のステータスを保存しておく
+	CharaBase::STATUS old_status = _status;
+	// 移動方向を決める
+	_v = { 0,0,0 };
+
 	//　処理前のステータスを保存しておく
 	STATUS oldStatus = _status;
 
-	isFps = false;
-	if(_cam != nullptr)
-	{
-		isFps = (dynamic_cast<fpsCamera*>(_cam) != nullptr);
-	}
-
-	// カメラの種類によって向きの計算方法を変える
-	float camrad = 0.f; // カメラの向いている角度
-	if(_cam != nullptr)
-	{
-		float sx = _cam->_vPos.x - _cam->_vTarget.x;
-		float sz = _cam->_vPos.z - _cam->_vTarget.z;
-		camrad = atan2f(sz, sx);
-	}
-
-	// キーボード入力
-	int input = key;
+	// カメラの向いている角度を取得
+	float sx = _cam->GetPos().x - _cam->GetTarget().x;
+	float sz = _cam->GetPos().z - _cam->GetTarget().z;
+	float camrad = atan2(sz, sx);
+	float rad = 0.0f;
 
 	//左スティック値
-	float lstickX = lx;
-	float lstickY = ly;
+	lStickX = lx;
+	lStickZ = lz;
 
-	// FPSモードでなければ移動処理
-	if(isFps != TRUE)
+	// ローカル入力ベクトル
+	VECTOR inputLocal = VGet(0.0f, 0.0f, 0.0f);
+
+	// 操作（キーボード）
+	if(key & PAD_INPUT_UP)
 	{
-		// 操作
-		if(CheckHitKey(KEY_INPUT_W) || CheckHitKey(KEY_INPUT_UP))
-		{
-			input |= PAD_INPUT_UP;
-			lstickY = -1.0f;
-		}
-		if(CheckHitKey(KEY_INPUT_S) || CheckHitKey(KEY_INPUT_DOWN))
-		{
-			input |= PAD_INPUT_DOWN;
-			lstickY = 1.0f;
-		}
-		if(CheckHitKey(KEY_INPUT_A) || CheckHitKey(KEY_INPUT_LEFT))
-		{
-			input |= PAD_INPUT_LEFT;
-			lstickX = -1.0f;
-		}
-		if(CheckHitKey(KEY_INPUT_D) || CheckHitKey(KEY_INPUT_RIGHT))
-		{
-			input |= PAD_INPUT_RIGHT;
-			lstickX = 1.0f;
-		}
-
-		// 移動方向を決める
-		_v = { 0,0,0 };
-		float mvSpeed = 5.f;
-		float length = sqrt(lstickX * lstickX + lstickY * lstickY);
-		float rad = atan2(lstickX, lstickY);
-
-		if(input & PAD_INPUT_DOWN) { _v.x = 1; }
-		if(input & PAD_INPUT_UP) { _v.x = -1; }
-		if(input & PAD_INPUT_LEFT) { _v.z = -1; }
-		if(input & PAD_INPUT_RIGHT) { _v.z = 1; }
-
-
-		// アナログ左スティック用
-		if(length < analogMin)
-		{
-			// 入力が小さかったら動かなかったことにする
-			length = 0.f;
-		}
-		else
-		{
-			length = mvSpeed;
-		}
-
-		// vをrad分回転させる
-		if(VSize(_v) > 0.f) { length = mvSpeed; }
-		_v.x = cos(rad + camrad) * length;
-		_v.z = sin(rad + camrad) * length;
-
-		// 移動前の位置を保存
-		oldPos = _vPos;
-
-		// vの分移動
-		_vPos = VAdd(_vPos, _v);
-
-		//移動量をそのままキャラの方向にする
-		if(VSize(_v) > 0.f)
-		{
-			_vDir = _v;
-			_status = STATUS::WALK; // 移動中
-		}
-		else
-		{
-			_status = STATUS::WAIT;
-		}
+		inputLocal.x = -1.0f;
+	}
+	if(key & PAD_INPUT_DOWN)
+	{
+		inputLocal.x = 1.0f;
+	}
+	if(key & PAD_INPUT_LEFT)
+	{
+		inputLocal.z = -1.0f;
+	}
+	if(key & PAD_INPUT_RIGHT)
+	{
+		inputLocal.z = 1.0f;
 	}
 
-	// ステータスが変わっていないか？
-	if(oldStatus == _status)
+	// アナログ入力の長さ/角度
+	float length   = sqrt(lStickX * lStickX + lStickZ * lStickZ);
+	float radStick = atan2(lStickX, lStickZ);
+
+	// アナログ左スティック用
+	if(length < _analogDeadZone)
 	{
-		// 再生時間を進める
-		_play_time += 0.5f;
+		length = 0.f;
 	}
 	else
 	{
-		// ステータスが変わっていたらアニメーションを変更する
-		if (_attach_index != -1)
-		{
-			MV1DetachAnim(_handle, _attach_index);
-			_attach_index = -1;
-		}
-		// ステータスに応じたアニメーションをアタッチする
-		switch(_status)
-		{
-			case STATUS::WAIT:
-				_attach_index = MV1AttachAnim(_handle, MV1GetAnimIndex(_handle, "idle"), -1, FALSE);
-				break;
-			case STATUS::WALK:
-				_attach_index = MV1AttachAnim(_handle, MV1GetAnimIndex(_handle, "run"), -1, FALSE);
-				break;
-
-		}
-		// アタッチしたアニメーションの総再生時間を取得する
-		_total_time = MV1GetAttachAnimTotalTime(_handle, _attach_index);
-		// 再生時間を初期化
-		_play_time = 0.0f;
+		length = _mvSpeed;
 	}
 
-	// 再生時間がアニメーションの総再生時間に達したら再生時間を０に戻す
-	if(_play_time >= _total_time)
+	// 移動ベクトル
+	_v.x = cos(radStick + camrad) * length;
+	_v.z = sin(radStick + camrad) * length;
+
+	// 優先順：アナログ > キーボード
+	if (length > 0.0f)
 	{
-		_play_time = 0.0f;
+		_vInput = VGet(lStickZ, 0.0f, lStickX);
+		if (VSize(_vInput) > 0.0f) _vInput = VNorm(_vInput); 
 	}
-
-	if(isFps == TRUE)
+	else
 	{
-		if(trg & PAD_INPUT_1)
-		{
-			// 弾の発射位置
-			VECTOR bulletStartP = VAdd(_vPos, VGet(0.f, _colSubY + 50, 0.f));
-			//弾の発射方向
-			VECTOR bulletDir;
-			if(_cam != nullptr && isFps)
-			{
-				bulletDir = VecNormalize(VSub(_cam->_vTarget, _cam->_vPos)); // カメラの向き
-			}
-			else
-			{
-				// _vDir がゼロの可能性があるのでフォールバック
-				if(VSize(_vDir) == 0.0f) bulletDir = VGet(0.0f, 0.0f, -1.0f);
-				else                     bulletDir = VecNormalize(_vDir); // プレイヤーの向き
-			}
-
-			//確認用に一発出す
-			_bullet->Activate(bulletStartP, bulletDir, _bullet->_speed, _bullet->_life, _bullet->_length, _bullet->_color);
-		}
-
-		
+		_vInput = inputLocal;
+		if (VSize(_vInput) > 0.0f) _vInput = VNorm(_vInput);
 	}
-	// 弾の毎フレーム処理（互換性のため引数なし Process() を使用）
-	_bullet->Process();
 
+	// 地上移動
+	if (VSize(_v) > 0.0f)
+	{
+		_status = STATUS::WALK;
+	}
+	else
+	{
+		_status = STATUS::WAIT;
+	}
+
+	// ステータスが変わっていたらアニメーションを変更
+	if(oldStatus != _status)
+	{
+		auto it = _AnimTable.find(_status);
+		if(it != _AnimTable.end())
+		{
+			PlayAnimation(it->second.name, it->second.loop);
+		}
+	}
 	return true;
 }
 
 bool Player::Render()
 {
-	Cbase::Render();
-	// 再生時間をセットする
-	MV1SetAttachAnimTime(_handle, _attach_index, _play_time);
-	if (isFps != TRUE)
-	{
-		// モデルを描画する
-		{
-			MV1SetPosition(_handle, _vPos);
-			//　向きからY軸回転を算出
-			VECTOR vRot = { 0, 0, 0 };
-			vRot.y = atan2(_vDir.x * -1, _vDir.z * -1); // モデルが標準でどちらを向いているかで式が変わる(これは-zを向いている場合)
-			MV1SetRotationXYZ(_handle, vRot);
-			// 描画
-			MV1DrawModel(_handle);
-		}
+	base::Render();
 
-		//弾の呼び出し
-		if(_bullet && _cam)
-		{
-			_bullet->Render(_cam->GetPos());
-		}
-	}
-	//弾の呼び出し
-	if(_bullet && _cam)
-	{
-		_bullet->Render(_cam->GetPos());
-	}
-	
+	//位置反映
+	MV1SetPosition(_handle, _vPos);
 
+	// スケール
+	MV1SetScale(_handle, VGet(1.0f, 1.0f, 1.0f));
+
+	//描画
+	MV1DrawModel(_handle);
 	return true;
-}
-
-// FPSモードに切り替えたときの処理
-void Player::OnSwitchToFPS()
-{
-	if(!_cam) return;
-	// カメラをプレイヤーの頭上に移動させる
-	_cam->SetTarget(VAdd(_vPos, VGet(0.f, 120.f, 0.f)));
-	// カメラ位置を頭位置にセット（FPS）
-	_cam->SetPos(VAdd(_vPos, VGet(0.f, 120.f, 0.f)));
-
-	// プレイヤーの向きをカメラの向きに合わせる
-	if(auto fcam = dynamic_cast<fpsCamera*> (_cam))
-	{
-		fcam->AlignTargetToPlayerDirection();
-	}
-}
-
-// TPSモードに切り替えたときの処理
-void Player::OnSwitchToTPS()
-{
-	if (!_cam) return;
-	// TPS 用の背後オフセットを設定（例: 上 + 後ろ）
-	VECTOR target = VAdd(_vPos, VGet(0.0f, _colSubY, 0.0f));
-	_cam->SetTarget(target);
-	//プレイヤーの向きから後方方向を計算
-	VECTOR forward = VGet(0.0, 0.0, -1.0f);	
-	if(VSize(_vDir) != 0.0f)
-	{
-		forward = VecNormalize(_vDir); // プレイヤーの後ろの向き
-	}
-
-	//TPSのオフセット
-	const float upOffset = 70.0f;
-	const float backDistance = 300.0f;
-
-	//カメラの位置 = ターゲット + 上方向 - forward * オフセット距離
-	VECTOR posAbove = VAdd(target, VGet(0.0f, upOffset, 0.0f)); // ターゲットの上方向オフセット
-	VECTOR posBack = VGet(forward.x * backDistance, forward.y * backDistance, forward.z * backDistance); // プレイヤーの後方方向オフセット
-	VECTOR camPos = VSub(posAbove, posBack);
-	
-	_cam->SetPos(camPos);
 }
 
