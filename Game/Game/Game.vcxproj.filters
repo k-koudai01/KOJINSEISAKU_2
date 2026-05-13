@@ -19,15 +19,6 @@
     <Filter Include="ソース ファイル\Character\Player">
       <UniqueIdentifier>{6ac52a6c-65aa-4ddb-9a60-f3760f3225a0}</UniqueIdentifier>
     </Filter>
-    <Filter Include="ソース ファイル\Character\Enemy">
-      <UniqueIdentifier>{61a59e53-7dc1-41c1-930b-a3f6fa67d6d4}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="ソース ファイル\Gun">
-      <UniqueIdentifier>{54d60bbc-06b5-4727-ae6c-1ab935f4bda2}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="ソース ファイル\Gun\Bullet">
-      <UniqueIdentifier>{ef3eb02d-59fc-4da6-beef-4cb2f190acf7}</UniqueIdentifier>
-    </Filter>
     <Filter Include="ソース ファイル\カメラ">
       <UniqueIdentifier>{e31a8b5e-fd84-4ff7-a82b-dbad9ab0e3e5}</UniqueIdentifier>
     </Filter>
@@ -52,6 +43,42 @@
     <Filter Include="ヘッダー ファイル\カメラ\ベースカメラ">
       <UniqueIdentifier>{7a56df7a-3358-4883-9617-e327bfff7dca}</UniqueIdentifier>
     </Filter>
+    <Filter Include="ソース ファイル\Character\キャラベース">
+      <UniqueIdentifier>{2a0b1af3-334c-43bc-ac06-7ff6b3e7b249}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ヘッダー ファイル\キャラクター">
+      <UniqueIdentifier>{54f4e2c4-2a0e-4198-8ca7-26bad65a9ea4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ヘッダー ファイル\キャラクター\プレイヤー">
+      <UniqueIdentifier>{abe4a14f-4d9d-4d35-80e6-2f1f7e7d3024}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ヘッダー ファイル\キャラクター\キャラベース">
+      <UniqueIdentifier>{8cff4c68-fd65-4cc1-8b68-02b8210cdd16}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\オブジェクト管理">
+      <UniqueIdentifier>{6a215fbc-c364-4d17-98ee-60f7dee0c9b7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\オブジェクト管理\ベース">
+      <UniqueIdentifier>{53d7306a-d13b-44f1-9126-1100e0d0966b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ヘッダー ファイル\オブジェクト管理">
+      <UniqueIdentifier>{66d08479-2a4f-4eeb-ba76-7c6376ee1ee6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ヘッダー ファイル\オブジェクト管理\ベース">
+      <UniqueIdentifier>{b632aea2-6be6-484c-a6b3-bd47e9f229b4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ヘッダー ファイル\オブジェクト管理\工場">
+      <UniqueIdentifier>{d2034350-1445-4949-b64c-bc3c3911a618}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ヘッダー ファイル\オブジェクト管理\マネージャー">
+      <UniqueIdentifier>{6dbda194-a676-412d-9129-6bcce5c207e0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\オブジェクト管理\工場">
+      <UniqueIdentifier>{87a866be-eaf0-4d1f-bd34-399af60ac9c7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\オブジェクト管理\マネージャー">
+      <UniqueIdentifier>{44fc49d2-a274-44da-be42-cb5a6b498193}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="source\ApplicationGlobal.cpp">
@@ -69,23 +96,11 @@
     <ClCompile Include="source\ModeMenu.cpp">
       <Filter>ソース ファイル</Filter>
     </ClCompile>
-    <ClCompile Include="source\CharaBase.cpp">
-      <Filter>ソース ファイル\Character</Filter>
-    </ClCompile>
     <ClCompile Include="source\Player.cpp">
       <Filter>ソース ファイル\Character\Player</Filter>
     </ClCompile>
     <ClCompile Include="source\mymath.cpp">
       <Filter>ソース ファイル</Filter>
-    </ClCompile>
-    <ClCompile Include="source\Gun.cpp">
-      <Filter>ソース ファイル\Gun</Filter>
-    </ClCompile>
-    <ClCompile Include="source\Bullet.cpp">
-      <Filter>ソース ファイル\Gun\Bullet</Filter>
-    </ClCompile>
-    <ClCompile Include="source\Enemy.cpp">
-      <Filter>ソース ファイル\Character\Enemy</Filter>
     </ClCompile>
     <ClCompile Include="source\ModeGameOver.cpp">
       <Filter>ソース ファイル</Filter>
@@ -94,9 +109,6 @@
       <Filter>ソース ファイル</Filter>
     </ClCompile>
     <ClCompile Include="source\ModeGameClear.cpp">
-      <Filter>ソース ファイル</Filter>
-    </ClCompile>
-    <ClCompile Include="source\ObjectBase.cpp">
       <Filter>ソース ファイル</Filter>
     </ClCompile>
     <ClCompile Include="source\Camera.cpp">
@@ -108,8 +120,17 @@
     <ClCompile Include="source\CameraBase.cpp">
       <Filter>ソース ファイル\カメラ\ベース</Filter>
     </ClCompile>
+    <ClCompile Include="source\CharaBase.cpp">
+      <Filter>ソース ファイル\Character\キャラベース</Filter>
+    </ClCompile>
+    <ClCompile Include="source\ObjectBase.cpp">
+      <Filter>ソース ファイル\オブジェクト管理\ベース</Filter>
+    </ClCompile>
     <ClCompile Include="source\ObjectFactry.cpp">
-      <Filter>ソース ファイル</Filter>
+      <Filter>ソース ファイル\オブジェクト管理\工場</Filter>
+    </ClCompile>
+    <ClCompile Include="source\ObjectManager.cpp">
+      <Filter>ソース ファイル\オブジェクト管理\マネージャー</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -128,23 +149,8 @@
     <ClInclude Include="source\ModeMenu.h">
       <Filter>ヘッダー ファイル</Filter>
     </ClInclude>
-    <ClInclude Include="source\CharaBase.h">
-      <Filter>ソース ファイル\Character</Filter>
-    </ClInclude>
     <ClInclude Include="source\mymath.h">
       <Filter>ヘッダー ファイル</Filter>
-    </ClInclude>
-    <ClInclude Include="source\Gun.h">
-      <Filter>ソース ファイル\Gun</Filter>
-    </ClInclude>
-    <ClInclude Include="source\Bullet.h">
-      <Filter>ソース ファイル\Gun\Bullet</Filter>
-    </ClInclude>
-    <ClInclude Include="source\Enemy.h">
-      <Filter>ソース ファイル\Character\Enemy</Filter>
-    </ClInclude>
-    <ClInclude Include="source\Player.h">
-      <Filter>ソース ファイル\Character\Player</Filter>
     </ClInclude>
     <ClInclude Include="source\ModeGameOver.h">
       <Filter>ヘッダー ファイル</Filter>
@@ -153,9 +159,6 @@
       <Filter>ヘッダー ファイル</Filter>
     </ClInclude>
     <ClInclude Include="source\ModeGameClear.h">
-      <Filter>ヘッダー ファイル</Filter>
-    </ClInclude>
-    <ClInclude Include="source\ObjectBase.h">
       <Filter>ヘッダー ファイル</Filter>
     </ClInclude>
     <ClInclude Include="source\Camera.h">
@@ -167,8 +170,20 @@
     <ClInclude Include="source\CameraBase.h">
       <Filter>ヘッダー ファイル\カメラ\ベースカメラ</Filter>
     </ClInclude>
+    <ClInclude Include="source\Player.h">
+      <Filter>ヘッダー ファイル\キャラクター\プレイヤー</Filter>
+    </ClInclude>
+    <ClInclude Include="source\CharaBase.h">
+      <Filter>ヘッダー ファイル\キャラクター\キャラベース</Filter>
+    </ClInclude>
+    <ClInclude Include="source\ObjectBase.h">
+      <Filter>ヘッダー ファイル\オブジェクト管理\ベース</Filter>
+    </ClInclude>
     <ClInclude Include="source\ObjectFactry.h">
-      <Filter>ヘッダー ファイル</Filter>
+      <Filter>ヘッダー ファイル\オブジェクト管理\工場</Filter>
+    </ClInclude>
+    <ClInclude Include="source\ObjectManager.h">
+      <Filter>ヘッダー ファイル\オブジェクト管理\マネージャー</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

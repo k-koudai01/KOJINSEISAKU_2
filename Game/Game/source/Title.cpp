@@ -33,6 +33,7 @@ bool Title::Process()
 		ModeServer::GetInstance()->Add(new ModeGame(), 1, "game");
 		ModeServer::GetInstance()->Del(this);
 	}
+	return true;
 }
 
 bool Title::Render()
