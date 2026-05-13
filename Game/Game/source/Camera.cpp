@@ -4,37 +4,25 @@
 
 bool Camera::Initialize()
 {
-	_vPos = VGet(0, 90.f, -300.f);
-	_vTarget = VGet(0, 60, 0);
-	_clipNear = 2.0f;
-	_clipFar = 10000.0f;
+	base::Initialize();		
+
+	_vPos      = VGet(0.0f, 1600.0f, -662.0f);
+	_vTarget   = VGet(0.0f,   60.0f,    0.0f);
+	_clipNear  = 2.0f;
+	_clipFar   = 10000.0f;
+	_forvScale = -10.0f;
 	return true;
 }
 
 bool Camera::Terminate()
 {
+	base::Terminate();
 	return true;
 }
 
-bool Camera::Process(int key, int trg)
+bool Camera::Process()
 {
-	// プレイヤー追従更新
-	if(!_player) return true;
-	//アナログスティック対応
-	UseStick();
-
-	// デッドゾーン
-	const float dead = _player->analogMin;
-
-	// カメラがターゲットを貫通しないよう最低高さを保証する
-	if(_vPos.y < _vTarget.y + _minAboveTarget)
-	{
-		_vPos.y = _vTarget.y + _minAboveTarget;
-	}
-	if(_vPos.y > _vTarget.y + _maxAboveTarget)
-	{
-		_vPos.y = _vTarget.y + _maxAboveTarget;
-	}
+	FollowUpdate();
 	return true;
 }
 
@@ -46,3 +34,24 @@ bool Camera::Render()
 
 	return true;
 }	
+
+void Camera::MoveBy(const VECTOR& delta)
+{
+	_vPos    = VAdd(_vPos, delta);
+	_vTarget = VAdd(_vTarget, delta);
+}
+
+void Camera::FollowUpdate()
+{
+	if(_player == nullptr)
+	{
+		return;
+	}
+
+	// Targetをプレイヤーの位置に設定
+	const VECTOR playerPos = _player->GetPos();
+	_vTarget = playerPos;
+
+	// オフセット
+	_vPos = VAdd(playerPos, VGet(0.0f, 0.0f, 0.0f));
+}
