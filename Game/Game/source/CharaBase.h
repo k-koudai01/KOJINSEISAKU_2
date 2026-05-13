@@ -59,7 +59,7 @@ protected:
 	float _fCollisionWeight; // キャラの重さ
 
 	// 体力関係
-	int _hp;       
+	float _hp;       
 	bool _isAlive; // 生死フラグ
 
 	// 移動関係

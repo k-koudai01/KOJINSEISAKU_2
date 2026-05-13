@@ -13,9 +13,6 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
-    <Filter Include="ソース ファイル\Camera">
-      <UniqueIdentifier>{e31a8b5e-fd84-4ff7-a82b-dbad9ab0e3e5}</UniqueIdentifier>
-    </Filter>
     <Filter Include="ソース ファイル\Character">
       <UniqueIdentifier>{8c751a9b-7043-4d1b-a630-d249418ab3d9}</UniqueIdentifier>
     </Filter>
@@ -30,6 +27,30 @@
     </Filter>
     <Filter Include="ソース ファイル\Gun\Bullet">
       <UniqueIdentifier>{ef3eb02d-59fc-4da6-beef-4cb2f190acf7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\カメラ">
+      <UniqueIdentifier>{e31a8b5e-fd84-4ff7-a82b-dbad9ab0e3e5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\カメラ\メインカメラ">
+      <UniqueIdentifier>{ff5000ab-a895-4b26-bcca-4e5180855313}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\カメラ\FPSカメラ">
+      <UniqueIdentifier>{8434e6b5-454c-45a2-b01a-d3808a4ddd8c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\カメラ\ベース">
+      <UniqueIdentifier>{df47fba8-9942-4fdf-85a7-54e8d8d2f365}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ヘッダー ファイル\カメラ">
+      <UniqueIdentifier>{74ab4c23-3158-4c9f-b2f8-9cfe6d4570ca}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ヘッダー ファイル\カメラ\メインカメラ">
+      <UniqueIdentifier>{2da117d5-4d7f-4b09-8b87-0993343f8b83}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ヘッダー ファイル\カメラ\FPSカメラ">
+      <UniqueIdentifier>{1dad78b8-8e03-430e-b547-580d9ea118a1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ヘッダー ファイル\カメラ\ベースカメラ">
+      <UniqueIdentifier>{7a56df7a-3358-4883-9617-e327bfff7dca}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -60,12 +81,6 @@
     <ClCompile Include="source\Gun.cpp">
       <Filter>ソース ファイル\Gun</Filter>
     </ClCompile>
-    <ClCompile Include="source\Camera.cpp">
-      <Filter>ソース ファイル\Camera</Filter>
-    </ClCompile>
-    <ClCompile Include="source\fpsCamera.cpp">
-      <Filter>ソース ファイル\Camera</Filter>
-    </ClCompile>
     <ClCompile Include="source\Bullet.cpp">
       <Filter>ソース ファイル\Gun\Bullet</Filter>
     </ClCompile>
@@ -82,6 +97,18 @@
       <Filter>ソース ファイル</Filter>
     </ClCompile>
     <ClCompile Include="source\ObjectBase.cpp">
+      <Filter>ソース ファイル</Filter>
+    </ClCompile>
+    <ClCompile Include="source\Camera.cpp">
+      <Filter>ソース ファイル\カメラ\メインカメラ</Filter>
+    </ClCompile>
+    <ClCompile Include="source\fpsCamera.cpp">
+      <Filter>ソース ファイル\カメラ\FPSカメラ</Filter>
+    </ClCompile>
+    <ClCompile Include="source\CameraBase.cpp">
+      <Filter>ソース ファイル\カメラ\ベース</Filter>
+    </ClCompile>
+    <ClCompile Include="source\ObjectFactry.cpp">
       <Filter>ソース ファイル</Filter>
     </ClCompile>
   </ItemGroup>
@@ -110,12 +137,6 @@
     <ClInclude Include="source\Gun.h">
       <Filter>ソース ファイル\Gun</Filter>
     </ClInclude>
-    <ClInclude Include="source\Camera.h">
-      <Filter>ソース ファイル\Camera</Filter>
-    </ClInclude>
-    <ClInclude Include="source\fpsCamera.h">
-      <Filter>ソース ファイル\Camera</Filter>
-    </ClInclude>
     <ClInclude Include="source\Bullet.h">
       <Filter>ソース ファイル\Gun\Bullet</Filter>
     </ClInclude>
@@ -135,6 +156,18 @@
       <Filter>ヘッダー ファイル</Filter>
     </ClInclude>
     <ClInclude Include="source\ObjectBase.h">
+      <Filter>ヘッダー ファイル</Filter>
+    </ClInclude>
+    <ClInclude Include="source\Camera.h">
+      <Filter>ヘッダー ファイル\カメラ\メインカメラ</Filter>
+    </ClInclude>
+    <ClInclude Include="source\fpsCamera.h">
+      <Filter>ヘッダー ファイル\カメラ\FPSカメラ</Filter>
+    </ClInclude>
+    <ClInclude Include="source\CameraBase.h">
+      <Filter>ヘッダー ファイル\カメラ\ベースカメラ</Filter>
+    </ClInclude>
+    <ClInclude Include="source\ObjectFactry.h">
       <Filter>ヘッダー ファイル</Filter>
     </ClInclude>
   </ItemGroup>
