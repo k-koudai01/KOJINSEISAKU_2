@@ -13,8 +13,9 @@ bool Player::Initialize()
 
 	// モデルデータのロード
 	_handle = MV1LoadModel("res/SDChar/SDChar.mv1");
-	if (!base::Initialize()) { return false; }
 
+	if(_handle == -1) { return false; }
+	
 	_animId = -1;
 	// ステータスを「無し」に設定
 	_status = STATUS::NONE;
