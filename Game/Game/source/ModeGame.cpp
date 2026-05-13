@@ -6,8 +6,8 @@ bool ModeGame::Initialize()
 	if(!base::Initialize()) { return false; }
 
 	// オブジェクト生成
-	_cam = _object.CreateCamera();
-	_player = _object.CreatePlayer();
+	_cam = _objFtr.CreateCamera();
+	_player = _objFtr.CreatePlayer();
 
 	if(!_cam || !_player)
 	{
@@ -15,7 +15,7 @@ bool ModeGame::Initialize()
 	}
 
 	// カメラ：プレイヤー追従設定
-	_object.SetUpCamera(_cam.get(), _player.get());
+	_objFtr.SetUpCamera(_cam.get(), _player.get());
 
 	// ゲーム開始時刻リセット
 	_gameElapsedSec = 0.0f;
@@ -29,6 +29,8 @@ bool ModeGame::Terminate()
 	//if(_player) {_player->SetCamera(nullptr);    }
 	//if(_cam   ) {_cam->SetFollowTarget(nullptr); }
 
+	_objMgr.TerminateAll();
+
 	if(_player) {_player->Terminate(); _player.reset(); }
 	if(_cam   ) {_cam->Terminate();    _cam.reset();    }
 
@@ -39,12 +41,54 @@ bool ModeGame::Terminate()
 bool ModeGame::Process()
 {
 	base::Process();
+
+	if(_player) {_player->Process(); }
+
+	_objMgr.ProcessAll();
+
+	if(_cam)    { _cam->Process();   }
 	return true;
 }
 
 bool ModeGame::Render()
 {
+	if (!_cam)
+	{
+		return false; // カメラが無効な場合は描画をスキップ
+	}
+
 	base::Render();
+
+	// 3D基本設定
+	SetUseZBuffer3D(TRUE);
+	SetWriteZBuffer3D(TRUE);
+	SetUseBackCulling(TRUE);
+
+	//ライト設定
+	SetUseLighting(TRUE);
+
+	// カメラ設定更新
+	VECTOR pos	  = _cam->GetPos();
+	VECTOR target = _cam->GetTarget();
+
+	SetCameraPositionAndTarget_UpVecY(pos, target);
+	SetCameraNearFar(_cam->GetClipNear(), _cam->GetClipFar());
+
+	
+	// 0,0,0を中心に線を引く
+	{
+		float linelength = 1000.f;
+		VECTOR v = { 0, 0, 0 };
+		DrawLine3D(VAdd(v, VGet(-linelength, 0, 0)), VAdd(v, VGet(linelength, 0, 0)), GetColor(255, 0, 0));
+		DrawLine3D(VAdd(v, VGet(0, -linelength, 0)), VAdd(v, VGet(0, linelength, 0)), GetColor(0, 255, 0));
+		DrawLine3D(VAdd(v, VGet(0, 0, -linelength)), VAdd(v, VGet(0, 0, linelength)), GetColor(0, 0, 255));
+	}
+
+	if(_player) { _player->Render(); }
+
+	_objMgr.RenderAll();
+
+	if (_cam) { _cam->Render(); }
 	return true;
 }
 

@@ -2,6 +2,7 @@
 #include "appframe.h"
 #include "ApplicationMain.h"
 #include "ObjectFactry.h"
+#include "ObjectManager.h"
 #include "Player.h" 
 #include "Camera.h"
 #include "mymath.h"
@@ -25,9 +26,11 @@ public:
 
 protected:
 	// オブジェクト
+	ObjectFactry  _objFtr;           // オブジェクトファクトリー
+	ObjectManager _objMgr;           // オブジェクトマネージャー
+
 	std::unique_ptr<Camera> _cam;    // カメラ
 	std::unique_ptr<Player> _player; // プレイヤー
-	ObjectFactry _object;            // オブジェクトファクトリー
 
 	// ゲーム開始時刻（ms）・クリア表示済みフラグ
 	unsigned long _gameStartMs = 0;
