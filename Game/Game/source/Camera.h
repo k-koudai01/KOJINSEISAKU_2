@@ -3,7 +3,8 @@
 #include "appframe.h"
 #include "applicationmain.h"
 #include "CameraBase.h"
-#include "Player.h"
+
+class Player;
 
 class Camera : public CameraBase
 {
