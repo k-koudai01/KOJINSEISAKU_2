@@ -1,6 +1,7 @@
 #pragma once
 #include "appframe.h"
 #include "Camera.h"
+
 class ObjectBase
 {
 public:

@@ -33,7 +33,7 @@ bool ModeGame::Terminate()
 
 	if(_player) {_player->Terminate(); _player.reset(); }
 	if(_cam   ) {_cam->Terminate();    _cam.reset();    }
-
+	
 	base::Terminate();
 	return true;
 }
@@ -41,6 +41,8 @@ bool ModeGame::Terminate()
 bool ModeGame::Process()
 {
 	base::Process();
+
+	AnimationManager::GetInstance()->Update(1.0f / 60.0f);
 
 	if(_player) {_player->Process(); }
 
@@ -70,6 +72,7 @@ bool ModeGame::Render()
 	// ƒJƒƒ‰Ý’èXV
 	VECTOR pos	  = _cam->GetPos();
 	VECTOR target = _cam->GetTarget();
+
 
 	SetCameraPositionAndTarget_UpVecY(pos, target);
 	SetCameraNearFar(_cam->GetClipNear(), _cam->GetClipFar());
