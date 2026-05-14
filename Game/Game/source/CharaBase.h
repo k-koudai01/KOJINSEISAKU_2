@@ -37,7 +37,7 @@ public:
 	bool Damage(float damage);
 
 	// アニメーション関連
-	int   PlayAnimation(std::string name, bool loop = false); // アニメーション再生。
+	int   PlayAnimation(std::string name, bool loop = false, float speed = 1.0f); // アニメーション再生。
 	void  StopAnimation();									  // アニメーション停止。
 	int   GetAnimId() const { return _animId; }				  // 現在のアニメーションIDを取得
 	bool  IsAnimationPlaying() const;						  // アニメーションが再生中かどうかを確認

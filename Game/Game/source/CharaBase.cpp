@@ -56,7 +56,7 @@ bool CharaBase::Damage(float damage)
 }
 
 // アニメーション再生
-int CharaBase::PlayAnimation(std::string name, bool loop)
+int CharaBase::PlayAnimation(std::string name, bool loop, float speed)
 {
 	if (_animId != -1)
 	{
@@ -69,7 +69,7 @@ int CharaBase::PlayAnimation(std::string name, bool loop)
 		return -1;
 	}
 
-	_animId = AnimationManager::GetInstance()->Play(_handle, name, loop);
+	_animId = AnimationManager::GetInstance()->Play(_handle, name, loop, speed);
 	if (_animId != -1)
 	{
 		AnimationManager::GetInstance()->SetTime(_animId, 0.0f);
