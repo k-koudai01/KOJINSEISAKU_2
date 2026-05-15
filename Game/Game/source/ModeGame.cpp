@@ -42,7 +42,7 @@ bool ModeGame::Process()
 {
 	base::Process();
 
-	AnimationManager::GetInstance()->Update(1.0f / 60.0f);
+	SpriteAnimationManager::GetInstance()->Update(1.0f / 60.0f);
 
 	if(_player) {_player->Process(); }
 
@@ -77,6 +77,7 @@ bool ModeGame::Render()
 	SetCameraPositionAndTarget_UpVecY(pos, target);
 	SetCameraNearFar(_cam->GetClipNear(), _cam->GetClipFar());
 
+	DrawSphere3D(VGet(0.0f, 0.0f, 0.0f), 10.0f, 8, GetColor(255, 255, 0), GetColor(255, 255, 0), TRUE);
 	
 	// 0,0,0‚ð’†S‚Éü‚ðˆø‚­
 	{
@@ -87,11 +88,15 @@ bool ModeGame::Render()
 		DrawLine3D(VAdd(v, VGet(0, 0, -linelength)), VAdd(v, VGet(0, 0, linelength)), GetColor(0, 0, 255));
 	}
 
+	SetUseLighting(FALSE);
+
 	if(_player) { _player->Render(); }
 
 	_objMgr.RenderAll();
 
 	if (_cam) { _cam->Render(); }
+
+	SetUseLighting(TRUE);
 	return true;
 }
 

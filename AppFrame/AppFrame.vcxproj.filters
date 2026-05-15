@@ -42,6 +42,7 @@
     <ClCompile Include="source\AnimationManager.cpp">
       <Filter>ソースファイル\アニメーション管理</Filter>
     </ClCompile>
+    <ClCompile Include="source\SpriteAnimationManager.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="source\Application\ApplicationBase.h">
@@ -68,5 +69,6 @@
     <ClInclude Include="source\AnimationManager.h">
       <Filter>ヘッダーファイル\アニメーション管理</Filter>
     </ClInclude>
+    <ClInclude Include="source\SpriteAnimationManager.h" />
   </ItemGroup>
 </Project>

@@ -1,5 +1,4 @@
 #include "Player.h"
-
 #include "AppFrame.h"
 #include "ApplicationMain.h"
 #include "ModeGame.h"
@@ -11,24 +10,32 @@ bool Player::Initialize()
 	// 基底クラスの初期化
 	if(!base::Initialize()) { return false; }
 
-	// モデルデータのロード
-	_handle = MV1LoadModel("res/Player/Player.mv1");
+	// スプライトシートの読み込み
+	SetSpriteSheet(STATUS::WAIT, "res/Player/Player.png", 3, 4);
+	SetSpriteSheet(STATUS::WALK, "res/Player/Player.png", 3, 4);
 
-	if(_handle == -1) { return false; }
-	
-	_animId = -1;
+	SetSpriteAnimTable
+	({
+		{ STATUS::WAIT, { 1,  1.0f, true  } },
+		{ STATUS::WALK, { 3, 10.0f, true  } },
+	});
+
+	// フレームサイズの取得
+	GetGraphSize(_spriteHandles[0], &_frameW, &_frameH);
+	_spriteScale = 250.0f;
+
 	// ステータスを「無し」に設定
 	_status = STATUS::NONE;
 
 	// 位置、向きの初期化
-	_vPos = VGet(0.0f, 0.0f, 0.0f); 
+	_vPos = VGet(0.0f, 50.0f, 10.0f);
 	_vDir = VGet(0.0f, 0.0f, -1.0f);
 
 	// 腰位置の設定
 	_fColSubY = 40.0f;
 
 	// コリジョン半径の設定
-	_fCollisionR = 30.0f;
+	_fCollisionR = 5.0f;
 	_fCollisionWeight = 20.0f;
 
 	// カメラの初期化
@@ -71,28 +78,22 @@ bool Player::Process()
 	UpdateMovement();
 	UpdateJump();
 	UpdateRotation();
-	UpdateAnimation(oldStatus);
+
+	UpdateFacing(_vInput);
+	UpdateSpriteAnimation(oldStatus);
 
 	return true;
 }
 
 bool Player::Render()
 {
-	base::Render();
+	int x = 0, y = 500, size = 16;
+	SetFontSize(size);
+	DrawFormatString(x, y, GetColor(255, 0, 0), "  pos    = (%5.2f, %5.2f, %5.2f)", _vPos.x, _vPos.y, _vPos.z); y += size;
 
-	//位置反映
-	MV1SetPosition(_handle, _vPos);
-	
-	// 回転反映
-	float yaw = atan2(_vDir.x, _vDir.z) - DEG2RAD(180.0f); 
-	MV1SetRotationXYZ(_handle, VGet(0.0f, yaw, 0.0f));
+	DrawSphere3D(_vPos, 5.0f, 8, GetColor(255, 0, 0), GetColor(0, 255, 0), TRUE);
 
-	// スケール
-	MV1SetScale(_handle, VGet(1.0f, 1.0f, 1.0f));
-
-	//描画
-	MV1DrawModel(_handle);
-	return true;
+	return base::Render();
 }
 
 void Player::UpdateMovement()
@@ -239,15 +240,3 @@ void Player::UpdateRotation()
 	_vDir = VNorm(_v);
 }
 
-void Player::UpdateAnimation(STATUS oldStatus)
-{
-	// ステータスが変わっていたらアニメーションを変更
-	if (oldStatus != _status)
-	{
-		auto it = _AnimTable.find(_status);
-		if (it != _AnimTable.end())
-		{
-			PlayAnimation(it->second.name, it->second.loop, it->second.speed);
-		}
-	}
-}

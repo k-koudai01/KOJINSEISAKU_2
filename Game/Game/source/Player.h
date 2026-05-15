@@ -1,30 +1,12 @@
 #pragma once
 
-#include "CharaBase.h"
+#include "SpriteCharaBase.h"
 #include "Camera.h"
 #include "Bullet.h"
 
-namespace
-{
-	struct AnimDef
-	{
-		std::string name; // アニメーション名
-		bool loop;        // ループするかどうか
-		float speed;      // アニメーションの再生速度
-	};
-
-	const std::unordered_map<CharaBase::STATUS, AnimDef> _AnimTable = {
-		{ CharaBase::STATUS::WAIT,   { "MO_SDChar_idle",         true,  31.0f } },
-		{ CharaBase::STATUS::WALK,   { "MO_SDChar_run",          true,  51.0f } },
-		{ CharaBase::STATUS::JUMP,   { "MO_SDChar_jumpStart",   false,  30.0f } },
-		{ CharaBase::STATUS::FALL,   { "MO_SDChar_jumpLoop",     true,   1.0f } },
-		{ CharaBase::STATUS::ATTACK, { "attack",                false,   1.0f } },
-		
-	};
-}
-class Player: public CharaBase
-{
-	typedef CharaBase base;
+class Player: public SpriteCharaBase
+{	
+	typedef SpriteCharaBase base;
 public:
 	virtual bool Initialize()override;
 	virtual bool Terminate() override;
@@ -35,10 +17,27 @@ public:
 
 protected:
 
+	struct SpriteAnimDef
+	{
+		int frames;       // フレーム数
+		float fps;        // アニメーションの再生速度
+		bool loop;        // ループするかどうか
+	};
+
+	std::unordered_map<STATUS, SpriteAnimDef> _spriteAnimTable =
+	{
+		{ STATUS::WAIT, { 1,  1.0f, true  } },
+		{ STATUS::WALK, { 3, 10.0f, true  } },
+		{ STATUS::JUMP, { 1,  6.0f, false } },
+		{ STATUS::FALL, { 1,  6.0f, true  } },
+	};
+
+	int _spriteAnimId = -1;
+	int _frameIndex = 0;
+
 	void UpdateMovement();
 	void UpdateRotation();
 	void UpdateJump();
-	void UpdateAnimation(STATUS oldStatus);
 
 	// カメラ
 	Camera* _cam;

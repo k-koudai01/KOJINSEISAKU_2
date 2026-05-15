@@ -171,6 +171,7 @@
     <ClCompile Include="source\ObjectFactry.cpp" />
     <ClCompile Include="source\ObjectManager.cpp" />
     <ClCompile Include="source\Player.cpp" />
+    <ClCompile Include="source\SpriteCharaBase.cpp" />
     <ClCompile Include="source\Title.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -198,6 +199,7 @@
     <ClInclude Include="source\ObjectFactry.h" />
     <ClInclude Include="source\ObjectManager.h" />
     <ClInclude Include="source\Player.h" />
+    <ClInclude Include="source\SpriteCharaBase.h" />
     <ClInclude Include="source\Title.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

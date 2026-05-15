@@ -19,7 +19,7 @@ public:
 		DASHING,
 	};
 	STATUS _status;
-
+	
 	virtual bool Initialize();
 	virtual bool Terminate();
 	virtual bool Process();
@@ -47,20 +47,38 @@ public:
 
 
 protected:
-	
+
+	//void UpdateAnimation(STATUS oldStatus);
+
+	// 2Dビルボード用
+	enum class Facing { Down = 0, Left = 1, Right = 2, Up = 3 };
+	Facing _facing = Facing::Down;
+
+	static constexpr int SpriteCols = 4;
+	static constexpr int SpriteRows = 4;
+	std::array<int, SpriteCols* SpriteRows> _spriteHandles{};
+
+	// スプライト
+	int _sprite{ 0 };
+	const char* _spritePath = "";
+
 	// アニメーション管理
-	float _attachIndex;
-	float _totalTime;
-	float _playTime;
+	int _frameW { 0 };
+	int _frameH { 0 };
+	int _frameIndex { 0 };
+	float _spriteScale { 1.0f };
+	float _attachIndex { 0.0f };
+	float _totalTime   { 0.0f };
+	float _playTime    { 0.0f };
 
 	//コリジョン判定
-	float _fColSubY; // コリジョン判定用のYオフセット
-	float _fCollisionR; // 円の半径
-	float _fCollisionWeight; // キャラの重さ
+	float _fColSubY { 0.0f };         // コリジョン判定用のYオフセット
+	float _fCollisionR { 0.0f };      // 円の半径
+	float _fCollisionWeight { 0.0f }; // キャラの重さ
 
 	// 体力関係
-	float _hp;       
-	bool _isAlive; // 生死フラグ
+	float _hp { 0.0f };       
+	bool _isAlive { true }; // 生死フラグ
 
 	// 移動関係
 	float _mvSpeed; // 移動速度

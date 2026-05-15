@@ -110,3 +110,23 @@ void CharaBase::ClearAnimIdIfStopped()
 		_animId = -1;
 	}
 }
+
+//void CharaBase::UpdateAnimation(STATUS oldStatus)
+//{
+//	if (oldStatus != _status)
+//	{
+//		auto it = _spriteAnimTable.find(_status);
+//		if (it != _spriteAnimTable.end())
+//		{
+//			_spriteAnimId = SpriteAnimationManager::GetInstance()->Play(
+//				it->second.frames, it->second.fps, it->second.loop
+//			);
+//		}
+//	}
+//
+//	if (_spriteAnimId != -1)
+//	{
+//		_frameIndex = SpriteAnimationManager::GetInstance()->GetFrame(_spriteAnimId);
+//	}
+//}
+//

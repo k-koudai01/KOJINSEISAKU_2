@@ -159,6 +159,7 @@
     <ClCompile Include="source\CFile\CFile.cpp" />
     <ClCompile Include="source\Mode\ModeBase.cpp" />
     <ClCompile Include="source\Mode\ModeServer.cpp" />
+    <ClCompile Include="source\SpriteAnimationManager.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="source\AnimationManager.h" />
@@ -169,6 +170,7 @@
     <ClInclude Include="source\container.h" />
     <ClInclude Include="source\Mode\ModeBase.h" />
     <ClInclude Include="source\Mode\ModeServer.h" />
+    <ClInclude Include="source\SpriteAnimationManager.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

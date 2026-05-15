@@ -79,6 +79,12 @@
     <Filter Include="ソース ファイル\オブジェクト管理\マネージャー">
       <UniqueIdentifier>{44fc49d2-a274-44da-be42-cb5a6b498193}</UniqueIdentifier>
     </Filter>
+    <Filter Include="ソース ファイル\Character\スプライトキャラベース">
+      <UniqueIdentifier>{67428fb2-1789-4984-8d17-49211c10371f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ヘッダー ファイル\キャラクター\スプライトキャラクターベース">
+      <UniqueIdentifier>{9c494b00-d62a-4426-85d6-dac2080bb2c3}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="source\ApplicationGlobal.cpp">
@@ -132,6 +138,9 @@
     <ClCompile Include="source\ObjectManager.cpp">
       <Filter>ソース ファイル\オブジェクト管理\マネージャー</Filter>
     </ClCompile>
+    <ClCompile Include="source\SpriteCharaBase.cpp">
+      <Filter>ソース ファイル\Character\スプライトキャラベース</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="source\ApplicationGlobal.h">
@@ -184,6 +193,9 @@
     </ClInclude>
     <ClInclude Include="source\ObjectManager.h">
       <Filter>ヘッダー ファイル\オブジェクト管理\マネージャー</Filter>
+    </ClInclude>
+    <ClInclude Include="source\SpriteCharaBase.h">
+      <Filter>ヘッダー ファイル\キャラクター\スプライトキャラクターベース</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

@@ -7,3 +7,4 @@
 #include "CFile/CFile.h"
 #include "container.h"
 #include "AnimationManager.h"
+#include "SpriteAnimationManager.h"
