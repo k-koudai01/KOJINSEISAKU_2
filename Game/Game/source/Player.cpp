@@ -20,15 +20,13 @@ bool Player::Initialize()
 		{ STATUS::WALK, { 3, 10.0f, true  } },
 	});
 
-	// フレームサイズの取得
-	GetGraphSize(_spriteHandles[0], &_frameW, &_frameH);
-	_spriteScale = 250.0f;
+	_spriteScale = 30.0f;
 
 	// ステータスを「無し」に設定
-	_status = STATUS::NONE;
+	_status = STATUS::WAIT;
 
 	// 位置、向きの初期化
-	_vPos = VGet(0.0f, 50.0f, 10.0f);
+	_vPos = VGet(0.0f, 0.0f, 10.0f);
 	_vDir = VGet(0.0f, 0.0f, -1.0f);
 
 	// 腰位置の設定

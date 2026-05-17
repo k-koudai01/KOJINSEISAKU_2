@@ -60,5 +60,5 @@ void Camera::FollowUpdate()
 	_vTarget = VAdd(playerPos, VGet(0.0f, 60.0f, 0.0f));
 
 	// カメラ位置（後ろ＆上）
-	_vPos = VAdd(_vTarget, VGet(0.0f, 120.0f, 300.0f));
+	_vPos = VAdd(_vTarget, VGet(0.0f, 0.0f, 300.0f));
 }

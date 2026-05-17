@@ -26,10 +26,19 @@ bool SpriteCharaBase::Render()
 	if (handle == -1) return true;
 
 	float cx = sheet.frameW * 0.5f;
-	float cy = sheet.frameH;
-	float size = _spriteScale; 
+	float cy = sheet.frameH * 0.5f;
 
-	DrawBillboard3D(_vPos, cx, cy, size, 0.0f, handle, TRUE);
+	float size = _spriteScale;
+
+	DrawGraph(0, 0, handle, TRUE);
+
+	float halfH = (sheet.frameH * size) * 0.5f;
+
+	float offsetX = -945.0f; //　オフセット
+	VECTOR drawPos = VAdd(_vPos, VGet(offsetX, halfH, 0.0f));
+
+
+	DrawBillboard3D(drawPos, cx, cy, size, 0.0f, handle, TRUE);
 
 	return true;
 }

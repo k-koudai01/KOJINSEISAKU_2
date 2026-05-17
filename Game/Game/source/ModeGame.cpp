@@ -56,8 +56,12 @@ bool ModeGame::Render()
 {
 	if (!_cam)
 	{
-		return false; // カメラが無効な場合は描画をスキップ
+		return false;
 	}
+
+	// 画面を明るい色でクリア
+	SetBackgroundColor(64, 64, 64);
+	ClearDrawScreen();
 
 	base::Render();
 
@@ -90,7 +94,14 @@ bool ModeGame::Render()
 
 	SetUseLighting(FALSE);
 
-	if(_player) { _player->Render(); }
+	SetUseZBuffer3D(FALSE);
+	SetWriteZBuffer3D(FALSE);
+
+	if (_player) { _player->Render(); }
+
+	// 復帰
+	SetWriteZBuffer3D(TRUE);
+	SetUseBackCulling(TRUE);
 
 	_objMgr.RenderAll();
 
