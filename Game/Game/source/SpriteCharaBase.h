@@ -21,8 +21,8 @@ protected:
 
 	struct SpriteSheet
 	{
-		int cols = 0;
-		int rows = 0;
+		int cols = 0;   // 列数
+		int rows = 0;   // 行数
 		int frameW = 0;
 		int frameH = 0;
 		std::vector<int> handles;

@@ -40,7 +40,7 @@ void SpriteCharaBase::SetSpriteSheet(STATUS status, const char* path, int cols, 
 	SpriteSheet sheet;
 	sheet.cols = cols;
 	sheet.rows = rows;
-	sheet.handles.assign(cols * rows, -1);
+	sheet.handles.assign(cols * rows, -1); // ハンドルを初期化
 
 	int temp = LoadGraph(path);
 	if (temp == -1) { return; }
