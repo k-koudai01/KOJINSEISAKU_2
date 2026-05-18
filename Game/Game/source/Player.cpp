@@ -77,7 +77,7 @@ bool Player::Process()
 	UpdateJump();
 	UpdateRotation();
 
-	UpdateFacing(_vInput);
+	UpdateFacing(_v);
 	UpdateSpriteAnimation(oldStatus);
 
 	return true;

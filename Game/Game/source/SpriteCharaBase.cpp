@@ -25,20 +25,12 @@ bool SpriteCharaBase::Render()
 	int handle = sheet.handles[index];
 	if (handle == -1) return true;
 
-	float cx = sheet.frameW * 0.5f;
-	float cy = sheet.frameH * 0.5f;
+	float cx = 0.5f;
+	float cy = 0.5f;
 
-	float size = _spriteScale;
+	float halfH = sheet.frameH * 0.5f;
 
-	DrawGraph(0, 0, handle, TRUE);
-
-	float halfH = (sheet.frameH * size) * 0.5f;
-
-	float offsetX = -945.0f; //　オフセット
-	VECTOR drawPos = VAdd(_vPos, VGet(offsetX, halfH, 0.0f));
-
-
-	DrawBillboard3D(drawPos, cx, cy, size, 0.0f, handle, TRUE);
+	DrawBillboard3D(_vPos, cx, 0.0f, _spriteScale, 0.0f, handle, TRUE);
 
 	return true;
 }
@@ -57,7 +49,8 @@ void SpriteCharaBase::SetSpriteSheet(STATUS status, const char* path, int cols, 
 	GetGraphSize(temp, &w, &h);
 	DeleteGraph(temp);
 
-	if (w % cols != 0 || h % rows != 0) { return; }
+	// 画像サイズがフレーム数で割り切れない場合はエラー
+	if (w % cols != 0 || h % rows != 0) { return; }	
 
 	sheet.frameW = w / cols;
 	sheet.frameH = h / rows;
@@ -77,15 +70,15 @@ void SpriteCharaBase::SetSpriteAnimTable(const std::unordered_map<STATUS, Sprite
 
 void SpriteCharaBase::UpdateFacing(const VECTOR& input)
 {
-	if(VSize(_vInput) == 0.0f) return;
+	if (VSize(input) == 0.0f) return;
 
-	if(fabs(_vInput.x) > fabs(_vInput.z))
+	if (fabs(input.x) > fabs(input.z))
 	{
-		_facing = (_vInput.x > 0.0f) ? Facing::Right : Facing::Left;
+		_facing = (input.x > 0.0f) ? Facing::Left : Facing::Right;
 	}
 	else
 	{
-		_facing = (_vInput.z > 0.0f) ? Facing::Down : Facing::Up;
+		_facing = (input.z > 0.0f) ? Facing::Down : Facing::Up;
 	}
 }
 
