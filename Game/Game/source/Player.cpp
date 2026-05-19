@@ -18,7 +18,7 @@ bool Player::Initialize()
 
 	SetSpriteAnimTable
 	({
-		{ STATUS::IDLE, {  4, 10.0f, true  } },
+		{ STATUS::IDLE, {  4,  5.0f, true  } },
 		{ STATUS::WALK, {  8, 10.0f, true  } },
 		{ STATUS::JUMP, {  8, 10.0f, true  } },
 		{ STATUS::FALL, {  8, 10.0f, true  } },
