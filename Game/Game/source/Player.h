@@ -26,7 +26,7 @@ protected:
 
 	std::unordered_map<STATUS, SpriteAnimDef> _spriteAnimTable =
 	{
-		{ STATUS::WAIT, { 1,  1.0f, true  } },
+		{ STATUS::IDLE, { 1,  1.0f, true  } },
 		{ STATUS::WALK, { 3, 10.0f, true  } },
 		{ STATUS::JUMP, { 1,  6.0f, false } },
 		{ STATUS::FALL, { 1,  6.0f, true  } },

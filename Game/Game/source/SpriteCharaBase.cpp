@@ -30,7 +30,7 @@ bool SpriteCharaBase::Render()
 
 	float halfH = sheet.frameH * 0.5f;
 
-	DrawBillboard3D(_vPos, cx, 0.0f, _spriteScale, 0.0f, handle, TRUE);
+	DrawBillboard3D(_vPos, cx, 0.5f, _spriteScale, 0.0f, handle, TRUE);
 
 	return true;
 }

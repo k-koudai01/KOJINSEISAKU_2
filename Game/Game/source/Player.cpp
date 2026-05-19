@@ -11,19 +11,23 @@ bool Player::Initialize()
 	if(!base::Initialize()) { return false; }
 
 	// スプライトシートの読み込み
-	SetSpriteSheet(STATUS::WAIT, "res/Player/Player.png", 3, 4);
-	SetSpriteSheet(STATUS::WALK, "res/Player/Player.png", 3, 4);
+	SetSpriteSheet(STATUS::IDLE, "res/Player/Player_Idle.png", 12, 4);
+	SetSpriteSheet(STATUS::WALK, "res/Player/Player_Run.png", 8, 4);
+	SetSpriteSheet(STATUS::JUMP, "res/Player/Player_Run.png", 8, 4);
+	SetSpriteSheet(STATUS::FALL, "res/Player/Player_Run.png", 8, 4);
 
 	SetSpriteAnimTable
 	({
-		{ STATUS::WAIT, { 1,  1.0f, true  } },
-		{ STATUS::WALK, { 3, 10.0f, true  } },
+		{ STATUS::IDLE, {  4, 10.0f, true  } },
+		{ STATUS::WALK, {  8, 10.0f, true  } },
+		{ STATUS::JUMP, {  8, 10.0f, true  } },
+		{ STATUS::FALL, {  8, 10.0f, true  } },
 	});
 
-	_spriteScale = 30.0f;
+	_spriteScale = 80.0f;
 
 	// ステータスを「無し」に設定
-	_status = STATUS::WAIT;
+	_status = STATUS::IDLE;
 
 	// 位置、向きの初期化
 	_vPos = VGet(0.0f, 0.0f, 10.0f);
@@ -185,7 +189,7 @@ void Player::UpdateMovement()
 		}
 		else
 		{
-			_status = STATUS::WAIT;
+			_status = STATUS::IDLE;
 		}
 	}
 

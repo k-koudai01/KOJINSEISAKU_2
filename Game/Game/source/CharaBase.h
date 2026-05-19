@@ -10,7 +10,7 @@ public:
 	enum class STATUS
 	{
 		NONE,
-		WAIT,
+		IDLE,
 		WALK,
 		JUMP,
 		SECOND_JUMP,
