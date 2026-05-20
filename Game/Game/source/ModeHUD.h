@@ -4,10 +4,6 @@
 class ModeGame;
 class Player;
 
-constexpr int HP_X = 80; 
-constexpr int HP_Y = 60;
-constexpr int HP_SPACING = 10;
-
 class ModeHUD : public UIBase
 {
 	typedef UIBase base;
