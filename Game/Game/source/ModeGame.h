@@ -8,7 +8,7 @@
 #include "mymath.h"
 #include "ModeGameClear.h"
 #include "ModeGameOver.h"
-
+#include "ModeHUD.h"
 
 constexpr float GAMECLEAR_TIMESEC = 30.0f;  // クリアまでの秒数
 
@@ -24,6 +24,7 @@ public:
 	// プレイヤーとマップの当たり判定
 	void PlayerCollision();
 
+	Player* GetPlayer() const { return _player.get(); }
 protected:
 	// オブジェクト
 	ObjectFactry  _objFtr;           // オブジェクトファクトリー
@@ -42,4 +43,6 @@ protected:
 	// クリア判定
 	float _gameElapsedSec = 0.0f;     // 開始からの経過秒
 	
+private:
+	void AddHUD();
 };

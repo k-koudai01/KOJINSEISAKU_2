@@ -231,16 +231,19 @@ int ModeServer::Process() {
 }
 
 // プロセスを回した後の後始末
-int ModeServer::ProcessFinish() {
+int ModeServer::ProcessFinish()
+{
 	return 0;
 }
 
 // 描画を回すための初期化
-int ModeServer::RenderInit() {
+int ModeServer::RenderInit()
+{
 	return 0;
 }
 
-int ModeServer::Render() {
+int ModeServer::Render()
+{
 	// レイヤーの下の方から処理
 	lstModeBase::iterator ite = _vMode.begin();
 	for (; ite != _vMode.end(); ++ite) {

@@ -20,14 +20,15 @@ int WINAPI WinMain(
 	int nCmdShow
 ) {
 	ApplicationBase *appBase = ApplicationBase::GetInstance();
-	if (!appBase) { return 0; }
+	if(!appBase) { return 0; }
 
-	if (!appBase->Initialize(hInstance)) {
+	if(!appBase->Initialize(hInstance))
+	{
 		return 0;
 	}
 
 	// 1フレームループを組む ----------------------------------------------------------
-	while (ProcessMessage() == 0)		// プログラムが終了するまでループ
+	while(ProcessMessage() == 0)		// プログラムが終了するまでループ
 	{
 		appBase->Input();
 		appBase->Process();

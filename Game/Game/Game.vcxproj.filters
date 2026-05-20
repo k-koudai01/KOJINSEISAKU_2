@@ -85,6 +85,30 @@
     <Filter Include="ヘッダー ファイル\キャラクター\スプライトキャラクターベース">
       <UniqueIdentifier>{9c494b00-d62a-4426-85d6-dac2080bb2c3}</UniqueIdentifier>
     </Filter>
+    <Filter Include="ソース ファイル\UI">
+      <UniqueIdentifier>{b3d269cc-aeb8-48a0-8da4-48e0f802d24c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ヘッダー ファイル\UI">
+      <UniqueIdentifier>{4ec0c785-0234-400b-ab32-6ab82ee1f38c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ヘッダー ファイル\UI\ベース">
+      <UniqueIdentifier>{44c2c6e4-1eee-4ffb-aa7d-3df95ac8bbcb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\UI\ベース">
+      <UniqueIdentifier>{0199324e-54f4-45b7-84ad-211b55e1a7c3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ヘッダー ファイル\UI\描画ヘルパー">
+      <UniqueIdentifier>{21812350-49e4-49eb-b788-79ef1b48c033}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\UI\描画ヘルパー">
+      <UniqueIdentifier>{98542e0c-0891-49ae-b86f-520d2523e802}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ヘッダー ファイル\UI\HUD">
+      <UniqueIdentifier>{aa3dc3c0-b5bc-4e88-bfcb-d2f2d4fdf2af}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\UI\HUD">
+      <UniqueIdentifier>{9f02a50e-7665-4508-8c85-28d427d6e9fc}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="source\ApplicationGlobal.cpp">
@@ -141,6 +165,15 @@
     <ClCompile Include="source\SpriteCharaBase.cpp">
       <Filter>ソース ファイル\Character\スプライトキャラベース</Filter>
     </ClCompile>
+    <ClCompile Include="source\UIBase.cpp">
+      <Filter>ソース ファイル\UI\ベース</Filter>
+    </ClCompile>
+    <ClCompile Include="source\UIRender.cpp">
+      <Filter>ソース ファイル\UI\描画ヘルパー</Filter>
+    </ClCompile>
+    <ClCompile Include="source\ModeHUD.cpp">
+      <Filter>ソース ファイル\UI\HUD</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="source\ApplicationGlobal.h">
@@ -196,6 +229,15 @@
     </ClInclude>
     <ClInclude Include="source\SpriteCharaBase.h">
       <Filter>ヘッダー ファイル\キャラクター\スプライトキャラクターベース</Filter>
+    </ClInclude>
+    <ClInclude Include="source\UIBase.h">
+      <Filter>ヘッダー ファイル\UI\ベース</Filter>
+    </ClInclude>
+    <ClInclude Include="source\UIRender.h">
+      <Filter>ヘッダー ファイル\UI\描画ヘルパー</Filter>
+    </ClInclude>
+    <ClInclude Include="source\ModeHUD.h">
+      <Filter>ヘッダー ファイル\UI\HUD</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

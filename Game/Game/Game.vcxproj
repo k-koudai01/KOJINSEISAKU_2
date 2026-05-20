@@ -165,6 +165,7 @@
     <ClCompile Include="source\ModeGame.cpp" />
     <ClCompile Include="source\ModeGameClear.cpp" />
     <ClCompile Include="source\ModeGameOver.cpp" />
+    <ClCompile Include="source\ModeHUD.cpp" />
     <ClCompile Include="source\ModeMenu.cpp" />
     <ClCompile Include="source\mymath.cpp" />
     <ClCompile Include="source\ObjectBase.cpp" />
@@ -173,6 +174,8 @@
     <ClCompile Include="source\Player.cpp" />
     <ClCompile Include="source\SpriteCharaBase.cpp" />
     <ClCompile Include="source\Title.cpp" />
+    <ClCompile Include="source\UIBase.cpp" />
+    <ClCompile Include="source\UIRender.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="source\ApplicationGlobal.h" />
@@ -193,6 +196,7 @@
     <ClInclude Include="source\ModeGame.h" />
     <ClInclude Include="source\ModeGameClear.h" />
     <ClInclude Include="source\ModeGameOver.h" />
+    <ClInclude Include="source\ModeHUD.h" />
     <ClInclude Include="source\ModeMenu.h" />
     <ClInclude Include="source\mymath.h" />
     <ClInclude Include="source\ObjectBase.h" />
@@ -201,6 +205,8 @@
     <ClInclude Include="source\Player.h" />
     <ClInclude Include="source\SpriteCharaBase.h" />
     <ClInclude Include="source\Title.h" />
+    <ClInclude Include="source\UIBase.h" />
+    <ClInclude Include="source\UIRender.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
