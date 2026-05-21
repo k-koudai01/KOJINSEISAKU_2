@@ -5,9 +5,11 @@
 
 namespace
 {
+	// HP関連
 	constexpr int HP_X = 80;
 	constexpr int HP_Y = 60;
 	constexpr int HP_SPACING = 10;
+	constexpr int HP_MAX = 5;
 }
 
 bool ModeHUD::Initialize()
@@ -54,16 +56,17 @@ bool ModeHUD::Process()
 		if(!_player){ return true; }
 	}
 
+	UpdateHpCache();
 	return true;
 }
 
 bool ModeHUD::Render()
 {
 	base::Render();
+
 	if(!_player) { return true; }
 
-	int hp = static_cast<int>(_player->GetHP());
-	DrawHp(HP_X, HP_Y, static_cast<int>(_hpMax), hp, HP_SPACING);
+	DrawHp(HP_X, HP_Y, static_cast<int>(HP_MAX), _hpCur, HP_SPACING);
 	return true;
 }
 
@@ -85,4 +88,10 @@ void ModeHUD::DrawHp(int x, int y, int maxHp, int curHp, int spacing)
 
 		DrawGraph(x + i * (32 + spacing), y, handle, TRUE);
 	}
+}
+
+void ModeHUD::UpdateHpCache()
+{
+	if(!_player) return;
+	_hpCur = static_cast<int>(_player->GetHP());
 }
