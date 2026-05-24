@@ -109,6 +109,24 @@
     <Filter Include="ソース ファイル\UI\HUD">
       <UniqueIdentifier>{9f02a50e-7665-4508-8c85-28d427d6e9fc}</UniqueIdentifier>
     </Filter>
+    <Filter Include="ヘッダー ファイル\UI\メニュー">
+      <UniqueIdentifier>{10e7fd1e-b194-4305-8390-2d107f8efef7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\UI\メニュー">
+      <UniqueIdentifier>{8cb02a1b-6b9b-4f2a-9c05-3930cd21aee7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\UI\メニューコントロール">
+      <UniqueIdentifier>{ecefca39-a868-4d9d-b242-41daa810eba4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ヘッダー ファイル\UI\メニューコントロール">
+      <UniqueIdentifier>{f3e7d3cb-e3ad-4f98-9cff-8f2e62bad556}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\UI\メニューコントロール\メニュー内容">
+      <UniqueIdentifier>{373e19a0-924e-4598-b591-5b410fa8f3fe}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ヘッダー ファイル\UI\メニューコントロール\メニュー内容">
+      <UniqueIdentifier>{83eeb3ef-0bdc-48c0-8fa5-b40442d4c787}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="source\ApplicationGlobal.cpp">
@@ -121,9 +139,6 @@
       <Filter>ソース ファイル</Filter>
     </ClCompile>
     <ClCompile Include="source\ModeGame.cpp">
-      <Filter>ソース ファイル</Filter>
-    </ClCompile>
-    <ClCompile Include="source\ModeMenu.cpp">
       <Filter>ソース ファイル</Filter>
     </ClCompile>
     <ClCompile Include="source\Player.cpp">
@@ -174,6 +189,15 @@
     <ClCompile Include="source\ModeHUD.cpp">
       <Filter>ソース ファイル\UI\HUD</Filter>
     </ClCompile>
+    <ClCompile Include="source\ModeMenu.cpp">
+      <Filter>ソース ファイル\UI\メニュー</Filter>
+    </ClCompile>
+    <ClCompile Include="source\MenuController.cpp">
+      <Filter>ソース ファイル\UI\メニューコントロール</Filter>
+    </ClCompile>
+    <ClCompile Include="source\MenuItems.cpp">
+      <Filter>ソース ファイル\UI\メニューコントロール\メニュー内容</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="source\ApplicationGlobal.h">
@@ -186,9 +210,6 @@
       <Filter>ヘッダー ファイル</Filter>
     </ClInclude>
     <ClInclude Include="source\ModeGame.h">
-      <Filter>ヘッダー ファイル</Filter>
-    </ClInclude>
-    <ClInclude Include="source\ModeMenu.h">
       <Filter>ヘッダー ファイル</Filter>
     </ClInclude>
     <ClInclude Include="source\mymath.h">
@@ -238,6 +259,15 @@
     </ClInclude>
     <ClInclude Include="source\ModeHUD.h">
       <Filter>ヘッダー ファイル\UI\HUD</Filter>
+    </ClInclude>
+    <ClInclude Include="source\ModeMenu.h">
+      <Filter>ヘッダー ファイル\UI\メニュー</Filter>
+    </ClInclude>
+    <ClInclude Include="source\MenuController.h">
+      <Filter>ヘッダー ファイル\UI\メニューコントロール</Filter>
+    </ClInclude>
+    <ClInclude Include="source\MenuItems.h">
+      <Filter>ヘッダー ファイル\UI\メニューコントロール\メニュー内容</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

@@ -1,9 +1,6 @@
 #pragma once
 #include "appframe.h"
 
-#include <string>
-#include <vector>
-
 // メニュー項目用ベースクラス
 class MenuItemBase
 {
@@ -15,6 +12,7 @@ public:
 	}
 	virtual ~MenuItemBase() 
 	{
+
 	}
 
 	// 項目を決定したらこの関数が呼ばれる
@@ -45,7 +43,21 @@ public:
 protected:
 	std::vector<MenuItemBase*>	_vItems;
 
-	int		_curPos;
-	int		_curAnimCnt;
+	int _curPos     { 0 };
+	int	_curAnimCnt { 0 };
 
+private:
+	void UpdateInput();
+	void UpdateCursor(int trg);
+	bool UpdateSelect(int trg);
+	bool UpdateClose(int trg);
+	void UpdateCursorAnim();
+
+	void DrawMenuBackground(int w, int h)const;
+	void DrawMenuItems(int startY)const;
+	void DrawCursor(int startY)const;
+
+	void MeasureMenuSize(int& outW, int& outH) const;
+	bool HasItems() const;
+	int GetItemCount() const;
 };

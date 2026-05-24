@@ -1,5 +1,6 @@
 #include "ModeGame.h"
-
+#include "ModeMenu.h"
+#include "Title.h"
 
 bool ModeGame::Initialize()
 {
@@ -20,6 +21,9 @@ bool ModeGame::Initialize()
 	// HUD追加
 	AddHUD();
 
+	// メニュー初期化
+	_menuCtrl.Initialize();
+
 	// ゲーム開始時刻リセット
 	_gameElapsedSec = 0.0f;
 	_gameClearShown = false;
@@ -29,6 +33,8 @@ bool ModeGame::Initialize()
 
 bool ModeGame::Terminate()
 {
+	_menuCtrl.Terminate();
+
 	_objMgr.TerminateAll();
 
 	if(_player) {_player->Terminate(); _player.reset(); }
@@ -41,6 +47,8 @@ bool ModeGame::Terminate()
 bool ModeGame::Process()
 {
 	base::Process();
+
+	_menuCtrl.Process();
 
 	SpriteAnimationManager::GetInstance()->Update(1.0f / 60.0f);
 
@@ -95,6 +103,7 @@ bool ModeGame::Render()
 	SetWriteZBuffer3D(FALSE);
 
 	if (_player) { _player->Render(); }
+
 
 	// 復帰
 	SetWriteZBuffer3D(TRUE);

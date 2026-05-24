@@ -9,6 +9,7 @@
 #include "ModeGameClear.h"
 #include "ModeGameOver.h"
 #include "ModeHUD.h"
+#include "MenuController.h"
 
 constexpr float GAMECLEAR_TIMESEC = 30.0f;  // ÉNÉäÉAÇ‹Ç≈ÇÃïbêî
 
@@ -45,4 +46,6 @@ protected:
 	
 private:
 	void AddHUD();
+
+	MenuController _menuCtrl;
 };
