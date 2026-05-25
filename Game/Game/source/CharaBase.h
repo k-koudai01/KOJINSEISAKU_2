@@ -25,12 +25,21 @@ public:
 	virtual bool Process();
 	virtual bool Render();
 
-	//　Getter
+	// Getter
 	int  GetHP()   const        { return _hp;      }
 	bool IsAlive() const        { return _isAlive; }
 	const VECTOR& GetInputVector() const { return _vInput; }
 	float GetMoveSpeed() const  { return _mvSpeed; }
-	//　Setter
+	// 当たり判定
+	float GetCollisionRadius() const { return _fCollisionR; }
+	VECTOR GetCollisionCenter() const 
+	{
+		VECTOR c = _vPos;
+		c.y += _fColSubY;
+		return c;
+	}
+
+	// Setter
 	void SetAlive(bool alive) { _isAlive = alive; }
 
 	// ダメージ

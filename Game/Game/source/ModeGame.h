@@ -5,6 +5,7 @@
 #include "ObjectManager.h"
 #include "Player.h" 
 #include "Enemy.h"
+#include "CollisionManager.h"
 #include "Camera.h"
 #include "mymath.h"
 #include "ModeGameClear.h"
@@ -36,6 +37,7 @@ protected:
 	std::unique_ptr<Player> _player;
 	std::unique_ptr<Enemy> _enemy;
 
+	CollisionManager _collision;
 
 	// ゲーム開始時刻（ms）・クリア表示済みフラグ
 	unsigned long _gameStartMs = 0;

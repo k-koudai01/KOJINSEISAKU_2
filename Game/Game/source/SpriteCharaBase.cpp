@@ -84,7 +84,7 @@ void SpriteCharaBase::UpdateFacing(const VECTOR& input)
 
 void SpriteCharaBase::UpdateSpriteAnimation(STATUS oldStatus)
 {
-	if(oldStatus != _status || _spriteAnimId == -1)
+	if(oldStatus != _status || _spriteAnimId == -1) 
 	{
 		auto it = _spriteAnimTable.find(_status);
 		if (it != _spriteAnimTable.end())

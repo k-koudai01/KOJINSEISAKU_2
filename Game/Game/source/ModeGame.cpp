@@ -57,6 +57,8 @@ bool ModeGame::Process()
 	if(_player) {_player->Process(); }
 	if(_enemy ) { _enemy->Process(); }
 
+	_collision.CheckPlayerEnemy(_player.get(), _enemy.get());
+
 	_objMgr.ProcessAll();
 
 	if(_cam)    { _cam->Process();   }
