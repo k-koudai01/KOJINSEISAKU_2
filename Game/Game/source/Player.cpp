@@ -30,7 +30,7 @@ bool Player::Initialize()
 	_status = STATUS::IDLE;
 
 	// ˆÊ’uAŒü‚«‚Ì‰Šú‰»
-	_vPos = VGet(0.0f, 0.0f, 10.0f);
+	_vPos = VGet(85.0f, 0.0f, 10.0f);
 	_vDir = VGet(0.0f, 0.0f, -1.0f);
 
 	// ˜ˆÊ’u‚Ìİ’è
@@ -93,7 +93,7 @@ bool Player::Render()
 	SetFontSize(size);
 	DrawFormatString(x, y, GetColor(255, 0, 0), "  pos    = (%5.2f, %5.2f, %5.2f)", _vPos.x, _vPos.y, _vPos.z); y += size;
 
-	DrawSphere3D(_vPos, 5.0f, 8, GetColor(255, 0, 0), GetColor(0, 255, 0), TRUE);
+	// DrawSphere3D(_vPos, 5.0f, 8, GetColor(255, 0, 0), GetColor(0, 255, 0), TRUE);
 
 	return base::Render();
 }

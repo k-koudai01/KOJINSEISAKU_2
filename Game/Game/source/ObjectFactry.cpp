@@ -3,13 +3,21 @@
 std::unique_ptr<Player> ObjectFactry::CreatePlayer() const
 {
 	auto p = std::make_unique<Player>();	
-
 	if(!p->Initialize())
 	{
 		return nullptr;
 	}
-
 	return p;
+}
+
+std::unique_ptr<Enemy> ObjectFactry::CreateEnemy() const
+{
+	auto e = std::make_unique<Enemy>();
+	if(!e->Initialize())
+	{
+		return nullptr;
+	}
+	return e;
 }
 
 std::unique_ptr<Camera> ObjectFactry::CreateCamera() const
