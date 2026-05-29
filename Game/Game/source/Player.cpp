@@ -33,11 +33,9 @@ bool Player::Initialize()
 	_vPos = VGet(85.0f, 0.0f, 10.0f);
 	_vDir = VGet(0.0f, 0.0f, -1.0f);
 
-	// 腰位置の設定
-	_fColSubY = 40.0f;
-
-	// コリジョン半径の設定
-	_fCollisionR = 5.0f;
+	// 当たり判定の初期化
+	_fColSubY = 10.0f;
+	_fCollisionR = 11.0f;
 	_fCollisionWeight = 20.0f;
 
 	// カメラの初期化

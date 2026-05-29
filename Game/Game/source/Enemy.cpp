@@ -22,8 +22,8 @@ bool Enemy::Initialize()
 	_vPos = VGet(0.0f, 0.0f, 0.0f);
 	_vDir = VGet(0.0f, 0.0f, -1.0f);
 
-	_fColSubY = 40.0f;
-	_fCollisionR = 5.0f;
+	_fColSubY = 17.0f;
+	_fCollisionR = 11.0f;
 	_fCollisionWeight = 20.0f;
 
 	_mvSpeed = 0.0f;

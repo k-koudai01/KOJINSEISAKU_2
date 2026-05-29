@@ -39,6 +39,15 @@ public:
 		return c;
 	}
 
+	// カプセル端点
+	VECTOR GetCapsuleBottom() const { return _vPos; }
+	VECTOR GetCapsuleTop() const
+	{
+		VECTOR t = _vPos;
+		t.y += _fColSubY;
+		return t;
+	}
+
 	// Setter
 	void SetAlive(bool alive) { _isAlive = alive; }
 
@@ -53,7 +62,6 @@ public:
 	void  ClearAnimIdIfStopped();							  // アニメーションが停止している場合、アニメーションIDをクリアする
 	float GetAnimPlayTime() const { return _playTime; }       // 現在のアニメーションの再生時間を取得するゲッター
 	float GetAnimTotalTime() const { return _totalTime; }     // 現在のアニメーションの総時間を取得するゲッター
-
 
 protected:
 
