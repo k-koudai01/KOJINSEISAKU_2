@@ -3,6 +3,11 @@
 #include "objectbase.h"
 #include "camera.h"
 
+namespace
+{
+	static constexpr float INVINCIBLE_TIME_SEC = 0.7f;  // 無敵時間の最大時間
+}
+
 class CharaBase : public ObjectBase
 {
 	typedef ObjectBase base;
@@ -17,6 +22,7 @@ public:
 		FALL,
 		ATTACK,
 		DASHING,
+		DAMAGE,
 	};
 	STATUS _status;
 	
@@ -52,7 +58,8 @@ public:
 	void SetAlive(bool alive) { _isAlive = alive; }
 
 	// ダメージ
-	bool Damage(float damage);
+	virtual bool Damage(float damage);
+	bool IsInvincible() const { return _invincibleTimer > 0.0f; } // 無敵状態か
 
 	// アニメーション関連
 	int   PlayAnimation(std::string name, bool loop = false, float speed = 1.0f); // アニメーション再生。
@@ -64,8 +71,6 @@ public:
 	float GetAnimTotalTime() const { return _totalTime; }     // 現在のアニメーションの総時間を取得するゲッター
 
 protected:
-
-	//void UpdateAnimation(STATUS oldStatus);
 
 	// 2Dビルボード用
 	enum class Facing { Down = 0, Left = 1, Right = 2, Up = 3 };
@@ -101,5 +106,8 @@ protected:
 	float _mvSpeed; // 移動速度
 	VECTOR _vInput; // 移動ベクトル
 
+	// 無敵時間関係
+	float _invincibleTimer { 0.0f }; // 無敵時間の残り時間
+	void UpdateInvincibleTimer();    // タイマー更新用関数
 };
 

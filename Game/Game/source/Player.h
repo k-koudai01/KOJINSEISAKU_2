@@ -4,6 +4,8 @@
 #include "Camera.h"
 #include "Bullet.h"
 
+
+
 class Player: public SpriteCharaBase
 {	
 	typedef SpriteCharaBase base;
@@ -15,6 +17,7 @@ public:
 
 	void SetCamera(Camera* cam) { _cam = cam; }
 
+	virtual bool Damage(float damage) override;
 protected:
 
 	struct SpriteAnimDef
@@ -26,10 +29,11 @@ protected:
 
 	std::unordered_map<STATUS, SpriteAnimDef> _spriteAnimTable =
 	{
-		{ STATUS::IDLE, { 1,  1.0f, true  } },
-		{ STATUS::WALK, { 3, 10.0f, true  } },
-		{ STATUS::JUMP, { 1,  6.0f, false } },
-		{ STATUS::FALL, { 1,  6.0f, true  } },
+		{ STATUS::IDLE,   { 1,   1.0f, true  } }, 
+		{ STATUS::WALK,   { 3,  10.0f, true  } },
+		{ STATUS::JUMP,   { 1,   6.0f, false } },
+		{ STATUS::FALL,   { 1,   6.0f, true  } },
+		{ STATUS::DAMAGE, { 1,   6.0f, false } },
 	};
 
 	int _spriteAnimId = -1;
@@ -38,6 +42,10 @@ protected:
 	void UpdateMovement();
 	void UpdateRotation();
 	void UpdateJump();
+	
+
+	//　ダメージ点滅
+	bool ShouldDraw() const;
 
 	// カメラ
 	Camera* _cam;

@@ -3,6 +3,13 @@
 #include "ApplicationMain.h"
 #include "ModeGame.h"
 #include "mymath.h"
+#include "CameraManager.h"
+
+namespace
+{
+	static constexpr auto DAMAGE_SHAKE_STRENGTH = 50.0f;
+	static constexpr auto DAMAGE_SHAKE_DURATION = 0.3f;
+}
 
 
 bool Player::Initialize() 
@@ -11,17 +18,20 @@ bool Player::Initialize()
 	if(!base::Initialize()) { return false; }
 
 	// スプライトシートの読み込み
-	SetSpriteSheet(STATUS::IDLE, "res/Player/Player_Idle.png", 12, 4);
-	SetSpriteSheet(STATUS::WALK, "res/Player/Player_Run.png", 8, 4);
-	SetSpriteSheet(STATUS::JUMP, "res/Player/Player_Run.png", 8, 4);
-	SetSpriteSheet(STATUS::FALL, "res/Player/Player_Run.png", 8, 4);
+	SetSpriteSheet(STATUS::IDLE,   "res/Player/Player_Idle.png",    12, 4);
+	SetSpriteSheet(STATUS::WALK,   "res/Player/Player_Run.png" ,     8, 4);
+	SetSpriteSheet(STATUS::JUMP,   "res/Player/Player_Run.png" ,     8, 4);
+	SetSpriteSheet(STATUS::FALL,   "res/Player/Player_Run.png" ,     8, 4);
+	SetSpriteSheet(STATUS::DAMAGE, "res/Player/Player_Damage.png" ,  5, 4);
 
 	SetSpriteAnimTable
 	({
-		{ STATUS::IDLE, {  4,  5.0f, true  } },
-		{ STATUS::WALK, {  8, 10.0f, true  } },
-		{ STATUS::JUMP, {  8, 10.0f, true  } },
-		{ STATUS::FALL, {  8, 10.0f, true  } },
+		{ STATUS::IDLE,   {  4,  5.0f,  true  } },
+		{ STATUS::WALK,   {  8, 10.0f,  true  } },
+		{ STATUS::JUMP,   {  8, 10.0f,  true  } },
+		{ STATUS::FALL,   {  8, 10.0f,  true  } },
+		{ STATUS::DAMAGE, {  5, 10.0f, false  } },
+		
 	});
 
 	_spriteScale = 80.0f;
@@ -73,11 +83,15 @@ bool Player::Terminate()
 bool Player::Process() 
 {
 	base::Process();
+	UpdateInvincibleTimer(); // 無敵時間の更新	
 	STATUS oldStatus = _status;
 
-	UpdateMovement();
-	UpdateJump();
-	UpdateRotation();
+	if(_status != STATUS::DAMAGE)
+	{
+		UpdateMovement();
+		UpdateJump();
+		UpdateRotation();
+	}
 
 	UpdateFacing(_v);
 	UpdateSpriteAnimation(oldStatus);
@@ -93,7 +107,25 @@ bool Player::Render()
 
 	// DrawSphere3D(_vPos, 5.0f, 8, GetColor(255, 0, 0), GetColor(0, 255, 0), TRUE);
 
-	return base::Render();
+	if(ShouldDraw())
+	{
+		return base::Render();
+	}
+
+	return true;
+}
+
+bool Player::ShouldDraw() const 
+{
+	if(IsInvincible())
+	{
+		int blinkInterval = 100; // 点滅の間隔
+		if(GetNowCount() / blinkInterval % 2 == 0)
+		{
+			return false; 
+		}
+	}
+	return true;
 }
 
 void Player::UpdateMovement()
@@ -240,3 +272,20 @@ void Player::UpdateRotation()
 	_vDir = VNorm(_v);
 }
 
+bool Player::Damage(float damage)
+{
+	if (!base::Damage(damage))
+	{
+		return false; 
+	}
+
+	// カメラがセットされていればシェイクさせる
+	if (_cam)
+	{
+		_cam->Shake(DAMAGE_SHAKE_STRENGTH, DAMAGE_SHAKE_DURATION);
+	}
+
+	_status = STATUS::DAMAGE;
+
+	return true;
+}
