@@ -29,7 +29,18 @@ public:
 	// プレイヤー追従更新
     void FollowUpdate();
 
+	// カメラシェイク(揺れの強さ, 持続時間)
+	void Shake(float strength, float duration);
+
 protected:
 	Player* _player = nullptr; 
+
+	// カメラシェイク用
+	float _shakeTimer    { 0.0f };
+	float _shakeStrength { 0.0f }; 
+	float _shakeDuration { 0.0f };
+
+private:
+	void UpdateShake();
 };
 
