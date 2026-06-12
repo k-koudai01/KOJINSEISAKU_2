@@ -22,6 +22,27 @@ void CollisionManager::CheckPlayerEnemy(Player* player, Enemy* enemy)
 	}
 }
 
+void CollisionManager::CheckPlayerAttack(Player* player, Enemy* enemy)
+{
+	if(!player            || !enemy           ) return;
+	if(!player->IsAlive() || !enemy->IsAlive()) return;
+
+	if(!player->IsAttacking()) return;
+
+	const VECTOR p0 = player->GetAttackCapsuleBottom();
+	const VECTOR p1 = player->GetAttackCapsuleTop();
+	const VECTOR e0 = enemy->GetCapsuleBottom();
+	const VECTOR e1 = enemy->GetCapsuleTop();
+
+	const float r = player->GetAttackRadius() + enemy->GetCollisionRadius();
+	const float distSq = CollisionMath::SegmentSegmentDistSq(p0, p1, e0, e1);
+
+	if(distSq <= r * r)
+	{
+		enemy->Damage(1.0f);
+	}
+}
+
 void CollisionManager::DebugRenderCapsule(const Player* player, const Enemy* enemy) const
 {
 	if (!player || !enemy) return;
@@ -39,6 +60,20 @@ void CollisionManager::DebugRenderCapsule(const Player* player, const Enemy* ene
 		TRUE
 	);
 
+	if(player->IsAttacking())
+	{
+		DrawCapsule3D
+		(
+			player->GetAttackCapsuleBottom(),
+			player->GetAttackCapsuleTop(),
+			player->GetAttackRadius(),
+			divNum,
+			GetColor(255, 255, 0),
+			spcCol,
+			TRUE
+		);
+	}
+
 	DrawCapsule3D
 	(
 		enemy->GetCapsuleBottom(),
@@ -50,3 +85,4 @@ void CollisionManager::DebugRenderCapsule(const Player* player, const Enemy* ene
 		TRUE
 	);
 }
+

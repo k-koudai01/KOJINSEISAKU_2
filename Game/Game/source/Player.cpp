@@ -12,6 +12,7 @@ namespace
 }
 
 
+
 bool Player::Initialize()
 {
 	// 基底クラスの初期化
@@ -331,7 +332,7 @@ bool Player::Damage(float damage)
 	}
 
 	// ダメージカウンター
-	_damageCounter = 0.5f; 
+	_damageCounter = 0.4f; 
 	
 	// カメラがセットされていればシェイクさせる
 	if(_cam)

@@ -10,6 +10,7 @@ class Player: public SpriteCharaBase
 {	
 	typedef SpriteCharaBase base;
 public:
+
 	virtual bool Initialize()override;
 	virtual bool Terminate() override;
 	virtual bool Process()   override;
@@ -17,7 +18,10 @@ public:
 
 	void SetCamera(Camera* cam) { _cam = cam; }
 
+	bool IsAttacking() const { return _isAttacking; }
+	
 	virtual bool Damage(float damage) override;
+
 protected:
 
 	struct SpriteAnimDef
@@ -73,10 +77,8 @@ protected:
 	float _jumpSpeed;
 	bool  _isGrounded;
 
-	// UŒ‚ŠÖ˜A
-	bool _isAttacking{ false };
-
 	// –³“Gó‘Ôƒtƒ‰ƒO
 	bool _isInvincible { false };
+
 };
 
