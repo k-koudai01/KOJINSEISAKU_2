@@ -34,18 +34,24 @@ protected:
 		{ STATUS::JUMP,   { 1,   6.0f, false } },
 		{ STATUS::FALL,   { 1,   6.0f, true  } },
 		{ STATUS::DAMAGE, { 1,   6.0f, false } },
+		{ STATUS::ATTACK, { 1,   6.0f, false } },
 	};
 
 	int _spriteAnimId = -1;
 	int _frameIndex = 0;
 
+protected:
 	void UpdateMovement();
 	void UpdateRotation();
 	void UpdateJump();
-	
+	void UpdateAttack();
+
 
 	//　ダメージ点滅
 	bool ShouldDraw() const;
+
+	// ダメージカウンター
+	float _damageCounter = 0;
 
 	// カメラ
 	Camera* _cam;
@@ -66,5 +72,11 @@ protected:
 	float _gravity;
 	float _jumpSpeed;
 	bool  _isGrounded;
+
+	// 攻撃関連
+	bool _isAttacking{ false };
+
+	// 無敵状態フラグ
+	bool _isInvincible { false };
 };
 

@@ -5,7 +5,7 @@
 
 namespace
 {
-	static constexpr float INVINCIBLE_TIME_SEC = 0.7f;  // –³“GŠÔ‚ÌÅ‘åŠÔ
+	static constexpr float INVINCIBLE_TIME_SEC = 1.5f;  // –³“GŠÔ‚ÌÅ‘åŠÔ
 }
 
 class CharaBase : public ObjectBase
@@ -21,6 +21,7 @@ public:
 		SECOND_JUMP,
 		FALL,
 		ATTACK,
+		RUNATTACK,
 		DASHING,
 		DAMAGE,
 	};

@@ -39,21 +39,22 @@ bool CharaBase::Render()
 
 bool CharaBase::Damage(float damage)
 {
-	if (IsInvincible() || !_isAlive) return false;
+	if(IsInvincible() || !_isAlive) return false;
 
 	// ダメージを受ける
 	_hp -= damage;
 
 	// 0以下になっていないか確認
 	if(_hp <= 0.0f)
-	{ 
-		_hp = 0.0f; 
+	{
+		_hp = 0.0f;
 		_isAlive = false; // HPが0になったら生存フラグをfalseにする
 	}
 	else
 	{
 		_invincibleTimer = INVINCIBLE_TIME_SEC; // ダメージを受けたらリセット
 	}
+
 	return true;
 }
 

@@ -100,3 +100,14 @@ void SpriteCharaBase::UpdateSpriteAnimation(STATUS oldStatus)
 		_frameIndex = SpriteAnimationManager::GetInstance()->GetFrame(_spriteAnimId);
 	}
 }
+
+bool SpriteCharaBase::IsSpriteAnimationFinished()const
+{
+	// アニメーションが設定されていない場合は終了とみなす
+	if(_spriteAnimId == -1)
+	{
+		return true;
+	}
+
+	return !SpriteAnimationManager::GetInstance()->IsPlaying(_spriteAnimId);
+}
