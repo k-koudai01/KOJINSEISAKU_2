@@ -43,6 +43,7 @@
       <Filter>ソースファイル\アニメーション管理</Filter>
     </ClCompile>
     <ClCompile Include="source\SpriteAnimationManager.cpp" />
+    <ClCompile Include="source\CollisionMath.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="source\Application\ApplicationBase.h">
@@ -70,5 +71,6 @@
       <Filter>ヘッダーファイル\アニメーション管理</Filter>
     </ClInclude>
     <ClInclude Include="source\SpriteAnimationManager.h" />
+    <ClInclude Include="source\CollisionMath.h" />
   </ItemGroup>
 </Project>

@@ -84,7 +84,7 @@ void SpriteCharaBase::UpdateFacing(const VECTOR& input)
 
 void SpriteCharaBase::UpdateSpriteAnimation(STATUS oldStatus)
 {
-	if (oldStatus != _status)
+	if(oldStatus != _status || _spriteAnimId == -1) 
 	{
 		auto it = _spriteAnimTable.find(_status);
 		if (it != _spriteAnimTable.end())
@@ -99,4 +99,15 @@ void SpriteCharaBase::UpdateSpriteAnimation(STATUS oldStatus)
 	{
 		_frameIndex = SpriteAnimationManager::GetInstance()->GetFrame(_spriteAnimId);
 	}
+}
+
+bool SpriteCharaBase::IsSpriteAnimationFinished()const
+{
+	// アニメーションが設定されていない場合は終了とみなす
+	if(_spriteAnimId == -1)
+	{
+		return true;
+	}
+
+	return !SpriteAnimationManager::GetInstance()->IsPlaying(_spriteAnimId);
 }

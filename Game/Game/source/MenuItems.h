@@ -8,3 +8,4 @@ public:
 	MenuItemToTitle();
 	int Selected() override;
 };
+

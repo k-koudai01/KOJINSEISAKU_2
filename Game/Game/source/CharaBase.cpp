@@ -17,9 +17,6 @@ bool CharaBase::Initialize()
 	_status = STATUS::NONE;
 	_isAlive = true; // 生存フラグを初期化
 
-	//TextUtil::GetInstance()->GetConfig(_config, "HP", _fHp);// 初期体力設定
-	//TextUtil::GetInstance()->GetConfig(_config, "speed", _fMvSpeed);// 移動速度設定
-
 	return true;
 }
 
@@ -42,14 +39,20 @@ bool CharaBase::Render()
 
 bool CharaBase::Damage(float damage)
 {
+	if(IsInvincible() || !_isAlive) return false;
+
 	// ダメージを受ける
 	_hp -= damage;
 
 	// 0以下になっていないか確認
 	if(_hp <= 0.0f)
-	{ 
-		_hp = 0.0f; 
+	{
+		_hp = 0.0f;
 		_isAlive = false; // HPが0になったら生存フラグをfalseにする
+	}
+	else
+	{
+		_invincibleTimer = INVINCIBLE_TIME_SEC; // ダメージを受けたらリセット
 	}
 
 	return true;
@@ -110,6 +113,17 @@ void CharaBase::ClearAnimIdIfStopped()
 		_animId = -1;
 	}
 }
+
+void CharaBase::UpdateInvincibleTimer()
+{
+	if(_invincibleTimer > 0.0f)
+	{
+		_invincibleTimer -= 1.0f / 60.0f;
+	}
+}
+
+
+
 
 //void CharaBase::UpdateAnimation(STATUS oldStatus)
 //{

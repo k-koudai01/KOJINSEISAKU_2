@@ -127,6 +127,12 @@
     <Filter Include="ヘッダー ファイル\UI\メニュー\メニューコントロール\メニュー内容">
       <UniqueIdentifier>{83eeb3ef-0bdc-48c0-8fa5-b40442d4c787}</UniqueIdentifier>
     </Filter>
+    <Filter Include="ソース ファイル\コリジョン管理">
+      <UniqueIdentifier>{17085fe9-1883-41e9-a1c6-f1c0429ac94e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ヘッダー ファイル\コリジョン管理">
+      <UniqueIdentifier>{f417c2dd-d7c3-4178-94fb-e8347ed94b00}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="source\ApplicationGlobal.cpp">
@@ -198,6 +204,15 @@
     <ClCompile Include="source\MenuItems.cpp">
       <Filter>ソース ファイル\UI\メニュー\メニューコントロール\メニュー内容</Filter>
     </ClCompile>
+    <ClCompile Include="source\Enemy.cpp">
+      <Filter>ソース ファイル</Filter>
+    </ClCompile>
+    <ClCompile Include="source\CollisionManager.cpp">
+      <Filter>ソース ファイル\コリジョン管理</Filter>
+    </ClCompile>
+    <ClCompile Include="source\CameraManager.cpp">
+      <Filter>ソース ファイル</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="source\ApplicationGlobal.h">
@@ -268,6 +283,15 @@
     </ClInclude>
     <ClInclude Include="source\MenuItems.h">
       <Filter>ヘッダー ファイル\UI\メニュー\メニューコントロール\メニュー内容</Filter>
+    </ClInclude>
+    <ClInclude Include="source\Enemy.h">
+      <Filter>ヘッダー ファイル</Filter>
+    </ClInclude>
+    <ClInclude Include="source\CollisionManager.h">
+      <Filter>ヘッダー ファイル</Filter>
+    </ClInclude>
+    <ClInclude Include="source\CameraManager.h">
+      <Filter>ヘッダー ファイル</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

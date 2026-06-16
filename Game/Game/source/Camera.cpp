@@ -25,6 +25,8 @@ bool Camera::Process()
 {
 	base::Process();
 	FollowUpdate();
+	UpdateShake();
+
 	return true;
 }
 
@@ -61,4 +63,32 @@ void Camera::FollowUpdate()
 
 	// カメラ位置（後ろ＆上）
 	_vPos = VAdd(_vTarget, VGet(0.0f, 0.0f, 300.0f));
+}
+
+void Camera::Shake(float strength, float duration)
+{
+	_shakeStrength = strength;
+	_shakeTimer    = duration;
+	_shakeDuration = duration;
+}
+
+void Camera::UpdateShake()
+{
+	if(_shakeTimer > 0.0f)
+	{
+		float decay = (_shakeDuration > 0.0f) ? (_shakeTimer / _shakeDuration) : 0.0f; 
+		float currentStrength = _shakeStrength * decay; 
+
+		float frequency = 50.0f; 
+		float elapsedTime = _shakeDuration - _shakeTimer;
+		float offsetY = sin(elapsedTime * frequency) * currentStrength;
+
+		_vPos.y += offsetY;
+
+		_shakeTimer -= 1.0f / 60.0f;
+	}
+	else
+	{
+		_shakeTimer = 0.0f;
+	}
 }

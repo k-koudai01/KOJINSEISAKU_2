@@ -7,10 +7,11 @@ bool ModeGame::Initialize()
 	if(!base::Initialize()) { return false; }
 
 	// オブジェクト生成
-	_cam = _objFtr.CreateCamera();
+	_cam    = _objFtr.CreateCamera();
 	_player = _objFtr.CreatePlayer();
+	_enemy  = _objFtr.CreateEnemy();
 
-	if(!_cam || !_player)
+	if(!_cam || !_player || !_enemy)
 	{
 		return false;
 	}
@@ -38,6 +39,7 @@ bool ModeGame::Terminate()
 	_objMgr.TerminateAll();
 
 	if(_player) {_player->Terminate(); _player.reset(); }
+	if(_enemy ) { _enemy->Terminate();  _enemy.reset(); }
 	if(_cam   ) {_cam->Terminate();    _cam.reset();    }
 	
 	base::Terminate();
@@ -53,6 +55,10 @@ bool ModeGame::Process()
 	SpriteAnimationManager::GetInstance()->Update(1.0f / 60.0f);
 
 	if(_player) {_player->Process(); }
+	if(_enemy ) { _enemy->Process(); }
+
+	_collision.CheckPlayerEnemy(_player.get(), _enemy.get());
+	_collision.CheckPlayerAttack(_player.get(), _enemy.get());
 
 	_objMgr.ProcessAll();
 
@@ -98,16 +104,11 @@ bool ModeGame::Render()
 		DrawLine3D(VAdd(v, VGet(0, 0, -linelength)), VAdd(v, VGet(0, 0, linelength)), GetColor(0, 0, 255));
 	}
 
-	SetUseLighting(FALSE);
-	SetUseZBuffer3D(FALSE);
-	SetWriteZBuffer3D(FALSE);
+	if(_player) { _player->Render(); }
+	if(_enemy ) { _enemy->Render(); }
 
-	if (_player) { _player->Render(); }
-
-
-	// 復帰
-	SetWriteZBuffer3D(TRUE);
-	SetUseBackCulling(TRUE);
+	// デバッグ
+	_collision.DebugRenderCapsule(_player.get(), _enemy.get());
 
 	_objMgr.RenderAll();
 

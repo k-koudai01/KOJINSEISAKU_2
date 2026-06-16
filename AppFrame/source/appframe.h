@@ -8,3 +8,4 @@
 #include "container.h"
 #include "AnimationManager.h"
 #include "SpriteAnimationManager.h"
+#include "CollisionMath.h"

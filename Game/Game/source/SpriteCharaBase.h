@@ -36,9 +36,12 @@ protected:
 	void SetSpriteSheet(STATUS status, const char* path, int cols, int rows);
 	void SetSpriteAnimTable(const std::unordered_map<STATUS, SpriteAnimDef>& animTable);
 
+	// アニメーションが終了したか
+	bool IsSpriteAnimationFinished() const;
+
 	// 2Dビルボード用
 	void UpdateFacing(const VECTOR& input);
-	void UpdateSpriteAnimation(STATUS oldStatus);
+	virtual void UpdateSpriteAnimation(STATUS oldStatus);
 
 	int _frameIndex{ 0 };
 	int _spriteAnimId{ -1 };

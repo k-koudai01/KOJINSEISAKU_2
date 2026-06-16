@@ -3,6 +3,16 @@
 #include "objectbase.h"
 #include "camera.h"
 
+namespace
+{
+	static constexpr float INVINCIBLE_TIME_SEC = 1.5f;  // 無敵時間の最大時間
+}
+
+namespace
+{
+	static constexpr float ATTACK_OFFSET = 20.0f;
+}
+
 class CharaBase : public ObjectBase
 {
 	typedef ObjectBase base;
@@ -16,7 +26,9 @@ public:
 		SECOND_JUMP,
 		FALL,
 		ATTACK,
+		RUNATTACK,
 		DASHING,
+		DAMAGE,
 	};
 	STATUS _status;
 	
@@ -25,16 +37,53 @@ public:
 	virtual bool Process();
 	virtual bool Render();
 
-	//　Getter
+	//Hp
 	int  GetHP()   const        { return _hp;      }
 	bool IsAlive() const        { return _isAlive; }
+	void SetAlive(bool alive)   { _isAlive = alive; }
+
+	// 移動関連
 	const VECTOR& GetInputVector() const { return _vInput; }
+
+	// 移動速度
 	float GetMoveSpeed() const  { return _mvSpeed; }
-	//　Setter
-	void SetAlive(bool alive) { _isAlive = alive; }
+
+	// 当たり判定
+	float GetCollisionRadius() const { return _fCollisionR; }
+	VECTOR GetCollisionCenter() const 
+	{
+		VECTOR c = _vPos;
+		c.y += _fColSubY;
+		return c;
+	}
+
+	// カプセル端点
+	VECTOR GetCapsuleBottom() const { return _vPos; }
+	VECTOR GetCapsuleTop() const
+	{
+		VECTOR t = _vPos;
+		t.y += _fColSubY;
+		return t;
+	}
+
+	// 攻撃判定
+	bool IsAttacking() const { return _isAttacking; } 
+	float GetAttackRadius() const { return _attackCollisionR; }
+
+	// 攻撃カプセルの端点
+	VECTOR GetAttackCapsuleBottom() const
+	{
+		return VAdd(GetCapsuleBottom(), VScale(_vDir, ATTACK_OFFSET));
+	}
+
+	VECTOR GetAttackCapsuleTop() const
+	{
+		return VAdd(GetCapsuleTop(), VScale(_vDir, ATTACK_OFFSET));
+	}
 
 	// ダメージ
-	bool Damage(float damage);
+	virtual bool Damage(float damage);
+	bool IsInvincible() const { return _invincibleTimer > 0.0f; } // 無敵状態か
 
 	// アニメーション関連
 	int   PlayAnimation(std::string name, bool loop = false, float speed = 1.0f); // アニメーション再生。
@@ -45,10 +94,8 @@ public:
 	float GetAnimPlayTime() const { return _playTime; }       // 現在のアニメーションの再生時間を取得するゲッター
 	float GetAnimTotalTime() const { return _totalTime; }     // 現在のアニメーションの総時間を取得するゲッター
 
-
+	
 protected:
-
-	//void UpdateAnimation(STATUS oldStatus);
 
 	// 2Dビルボード用
 	enum class Facing { Down = 0, Left = 1, Right = 2, Up = 3 };
@@ -84,5 +131,12 @@ protected:
 	float _mvSpeed; // 移動速度
 	VECTOR _vInput; // 移動ベクトル
 
+	// 無敵時間関係
+	float _invincibleTimer { 0.0f }; // 無敵時間の残り時間
+	void UpdateInvincibleTimer();    // タイマー更新用関数
+
+	// 攻撃関連
+	bool  _isAttacking{ false };
+	float _attackCollisionR{ 10.0f };
 };
 

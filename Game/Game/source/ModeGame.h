@@ -4,6 +4,8 @@
 #include "ObjectFactry.h"
 #include "ObjectManager.h"
 #include "Player.h" 
+#include "Enemy.h"
+#include "CollisionManager.h"
 #include "Camera.h"
 #include "mymath.h"
 #include "ModeGameClear.h"
@@ -31,8 +33,11 @@ protected:
 	ObjectFactry  _objFtr;           // オブジェクトファクトリー
 	ObjectManager _objMgr;           // オブジェクトマネージャー
 
-	std::unique_ptr<Camera> _cam;    // カメラ
-	std::unique_ptr<Player> _player; // プレイヤー
+	std::unique_ptr<Camera> _cam;    
+	std::unique_ptr<Player> _player;
+	std::unique_ptr<Enemy> _enemy;
+
+	CollisionManager _collision;
 
 	// ゲーム開始時刻（ms）・クリア表示済みフラグ
 	unsigned long _gameStartMs = 0;

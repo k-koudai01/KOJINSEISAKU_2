@@ -151,7 +151,10 @@
     <ClCompile Include="source\ApplicationMain.cpp" />
     <ClCompile Include="source\Camera.cpp" />
     <ClCompile Include="source\CameraBase.cpp" />
+    <ClCompile Include="source\CameraManager.cpp" />
     <ClCompile Include="source\CharaBase.cpp" />
+    <ClCompile Include="source\CollisionManager.cpp" />
+    <ClCompile Include="source\Enemy.cpp" />
     <ClCompile Include="source\fpsCamera.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
@@ -184,7 +187,10 @@
     <ClInclude Include="source\ApplicationMain.h" />
     <ClInclude Include="source\Camera.h" />
     <ClInclude Include="source\CameraBase.h" />
+    <ClInclude Include="source\CameraManager.h" />
     <ClInclude Include="source\CharaBase.h" />
+    <ClInclude Include="source\CollisionManager.h" />
+    <ClInclude Include="source\Enemy.h" />
     <ClInclude Include="source\fpsCamera.h">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
