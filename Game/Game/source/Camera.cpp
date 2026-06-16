@@ -79,7 +79,7 @@ void Camera::UpdateShake()
 		float decay = (_shakeDuration > 0.0f) ? (_shakeTimer / _shakeDuration) : 0.0f; 
 		float currentStrength = _shakeStrength * decay; 
 
-		float frequency = 50.0f;
+		float frequency = 50.0f; 
 		float elapsedTime = _shakeDuration - _shakeTimer;
 		float offsetY = sin(elapsedTime * frequency) * currentStrength;
 

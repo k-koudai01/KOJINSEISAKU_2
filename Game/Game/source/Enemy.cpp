@@ -15,15 +15,15 @@ bool Enemy::Initialize()
 		{ STATUS::IDLE, {  4,  5.0f, true  } },
 	});
 
-	_spriteScale = 80.0f;
+	_spriteScale = 400.0f;
 
 	_status = STATUS::IDLE;
 
-	_vPos = VGet(0.0f, 0.0f, 0.0f);
+	_vPos = VGet(0.0f, 50.0f, 0.0f);
 	_vDir = VGet(0.0f, 0.0f, -1.0f);
 
 	_fColSubY = 17.0f;
-	_fCollisionR = 11.0f;
+	_fCollisionR = 70.0f;
 	_fCollisionWeight = 20.0f;
 
 	_mvSpeed = 0.0f;
