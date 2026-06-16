@@ -4,14 +4,24 @@
 #include "DxLib.h"
 #include <cstdio>
 
+namespace
+{
+	static constexpr auto DAMAGE_SHAKE_STRENGTH = 50.0f;
+	static constexpr auto DAMAGE_SHAKE_DURATION = 0.3f;
+}
+
+
 bool Enemy::Initialize()
 {
 	if(!base::Initialize()) { return false; }
 
 	SetSpriteSheet(STATUS::IDLE, "res/Enemy/Enemy_Idle.png", 4, 4);
+	SetSpriteSheet(STATUS::IDLE, "res/Enemy/Enemy_Idle.png", 4, 4);
+
 	
 	SetSpriteAnimTable(
 	{
+		{ STATUS::IDLE, {  4,  5.0f, true  } },
 		{ STATUS::IDLE, {  4,  5.0f, true  } },
 	});
 
@@ -53,4 +63,21 @@ bool Enemy::Process()
 bool Enemy::Render()
 {
 	return base::Render();
+}
+
+bool Enemy::Damage(float damage)
+{
+	if(IsInvincible())
+	{
+		return false;
+	}
+
+	if(!base::Damage(damage))
+	{
+		return false;
+	}
+
+	_status = STATUS::DAMAGE;
+
+	return true;
 }
