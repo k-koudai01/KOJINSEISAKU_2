@@ -12,5 +12,7 @@ public:
 	std::unique_ptr<Enemy> CreateEnemy() const;
 	std::unique_ptr<Camera> CreateCamera() const;
 	void SetUpCamera(Camera* camera, Player* target) const;
+
+	void SetUpEnemy(Enemy* enemy, Player* target) const;
 };
 

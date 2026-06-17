@@ -19,6 +19,9 @@ bool ModeGame::Initialize()
 	// カメラ：プレイヤー追従設定
 	_objFtr.SetUpCamera(_cam.get(), _player.get());
 
+	// 敵：プレイヤー追従設定
+	_objFtr.SetUpEnemy(_enemy.get(), _player.get());
+
 	// HUD追加
 	AddHUD();
 
@@ -108,7 +111,7 @@ bool ModeGame::Render()
 	if(_enemy ) { _enemy->Render(); }
 
 	// デバッグ
-	_collision.DebugRenderCapsule(_player.get(), _enemy.get());
+	// _collision.DebugRenderCapsule(_player.get(), _enemy.get());
 
 	_objMgr.RenderAll();
 

@@ -55,6 +55,7 @@ bool Enemy::Process()
 	STATUS oldStatus = _status;
 	_status = STATUS::IDLE;
 
+	UpdateRotation();
 	UpdateSpriteAnimation(oldStatus);
 
 	return true;
@@ -81,3 +82,21 @@ bool Enemy::Damage(float damage)
 
 	return true;
 }
+
+void Enemy::UpdateRotation()
+{
+	if(!_player) return;
+	
+	VECTOR vToPlayer = VSub(_player->GetPos(), _vPos);
+
+	// Y軸の差を無視する
+	vToPlayer.y = 0.0f;
+
+	if(VSize(vToPlayer) > 0.0f)
+	{
+		_vDir = VNorm(vToPlayer);
+
+		UpdateFacing(vToPlayer);
+	}
+}
+

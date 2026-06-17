@@ -43,3 +43,10 @@ void ObjectFactry::SetUpCamera(Camera* camera, Player* target) const
 	}
 	
 }
+
+void ObjectFactry::SetUpEnemy(Enemy* enemy, Player* target) const
+{
+	if(enemy == nullptr) return;
+
+	enemy->SetPlayer(target);
+}
