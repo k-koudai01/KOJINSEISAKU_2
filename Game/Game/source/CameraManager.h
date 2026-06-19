@@ -19,10 +19,17 @@ public:
 	void SetActiveCamera(Camera* camera) { _activeCamera = camera; }
 	Camera* GetActiveCamera() const { return _activeCamera; }
 
-	// 更新処理
+	void SetFixedMode(bool enable)
+	{
+		if(_activeCamera != nullptr)
+		{
+			_activeCamera->SetFixedMode(enable);
+		}
+	}
+
 	void Process()
 	{
-		if (_activeCamera)
+		if(_activeCamera)
 		{
 			_activeCamera->Process();
 		}

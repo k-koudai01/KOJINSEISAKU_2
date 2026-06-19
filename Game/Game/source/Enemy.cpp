@@ -31,7 +31,7 @@ bool Enemy::Initialize()
 
 	_status = STATUS::IDLE;
 
-	_vPos = VGet(0.0f, 50.0f, 0.0f);
+	_vPos = VGet(-100.0f, 50.0f, 0.0f);
 	_vDir = VGet(0.0f, 0.0f, -1.0f);
 
 	_fColSubY = 17.0f;

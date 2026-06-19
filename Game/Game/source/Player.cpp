@@ -44,7 +44,7 @@ bool Player::Initialize()
 	_status = STATUS::IDLE;
 
 	// ˆÊ’uAŒü‚«‚Ì‰Šú‰»
-	_vPos = VGet(85.0f, 0.0f, 10.0f);
+	_vPos = VGet(215.0f, 0.0f, 0.0f);
 	_vDir = VGet(0.0f, 0.0f, -1.0f);
 
 	// “–‚½‚è”»’è‚Ì‰Šú‰»

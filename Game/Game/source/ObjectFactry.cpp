@@ -42,6 +42,7 @@ void ObjectFactry::SetUpCamera(Camera* camera, Player* target) const
 		camera->FollowUpdate();
 	}
 	
+	camera->SetFixedMode(true);
 }
 
 void ObjectFactry::SetUpEnemy(Enemy* enemy, Player* target) const

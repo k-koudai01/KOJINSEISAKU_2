@@ -5,6 +5,7 @@
 #include "CameraBase.h"
 
 class Player;
+class Enemy;
 
 class Camera : public CameraBase
 {
@@ -29,17 +30,24 @@ public:
 	// プレイヤー追従更新
     void FollowUpdate();
 
-	// カメラシェイク(揺れの強さ, 持続時間)
-	void Shake(float strength, float duration);
+	// カメラ演出
+	void Shake(float strength, float duration); // カメラシェイク
 
+	// ボス戦用の固定カメラモード
+	void SetFixedMode(bool enable) { _isFixedMode = enable; }
 protected:
 	Player* _player = nullptr; 
+	Enemy* _boss    = nullptr;
+
+	bool _isFixedMode = false;
 
 	// カメラシェイク用
 	float _shakeTimer    { 0.0f };
 	float _shakeStrength { 0.0f }; 
 	float _shakeDuration { 0.0f };
 
+	// ボス戦用のカメラ更新
+	void BossBattleUpdate();
 private:
 	void UpdateShake();
 };

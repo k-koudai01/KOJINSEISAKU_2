@@ -2,13 +2,14 @@
 #include "mymath.h"
 #include "ApplicationMain.h"
 #include "Player.h"
+#include "Enemy.h"
 
 bool Camera::Initialize()
 {
 	base::Initialize();		
 
-	_vPos      = VGet(0.0f,   0.0f, 0.0f);
-	_vTarget   = VGet(0.0f,   60.0f,    0.0f);
+	_vPos      = VGet(0.0f,  0.0f, 0.0f);
+	_vTarget   = VGet(0.0f, 60.0f, 0.0f);
 	_clipNear  = 2.0f;
 	_clipFar   = 10000.0f;
 	_forvScale = -10.0f;
@@ -24,7 +25,7 @@ bool Camera::Terminate()
 bool Camera::Process()
 {
 	base::Process();
-	FollowUpdate();
+	BossBattleUpdate();
 	UpdateShake();
 
 	return true;
@@ -72,6 +73,22 @@ void Camera::Shake(float strength, float duration)
 	_shakeDuration = duration;
 }
 
+void Camera::BossBattleUpdate()
+{
+	if(_isFixedMode)
+	{
+		_vTarget = VGet(0.0f, 60.0f, 0.0f);
+
+		_vPos = VAdd(_vTarget, VGet(0.0f, 0.0f, 300.0f));
+	}
+	else
+	{
+		// いつものプレイヤー追従
+		FollowUpdate();
+	}
+}
+
+// 演出
 void Camera::UpdateShake()
 {
 	if(_shakeTimer > 0.0f)

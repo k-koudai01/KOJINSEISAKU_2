@@ -7,6 +7,7 @@
 #include "Enemy.h"
 #include "CollisionManager.h"
 #include "Camera.h"
+#include "CameraManager.h"
 #include "mymath.h"
 #include "ModeGameClear.h"
 #include "ModeGameOver.h"
