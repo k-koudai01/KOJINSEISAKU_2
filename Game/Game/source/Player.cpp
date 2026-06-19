@@ -50,7 +50,7 @@ bool Player::Initialize()
 	// “–‚½‚è”»’è‚Ì‰Šú‰»
 	_fColSubY = 10.0f;
 	_fCollisionR = 11.0f;
-	_fCollisionWeight = 20.0f;
+	_fCollisionWeight = 50.0f;
 
 	// ƒJƒƒ‰‚Ì‰Šú‰»
 	_cam = nullptr;

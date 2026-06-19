@@ -26,8 +26,8 @@ void CollisionManager::CheckPlayerAttack(Player* player, Enemy* enemy)
 {
 	if(!player            || !enemy           ) return;
 	if(!player->IsAlive() || !enemy->IsAlive()) return;
-
-	if(!player->IsAttacking()) return;
+	if(!enemy->IsStunned()					  ) return;
+	if(!player->IsAttacking()				  ) return;
 
 	const VECTOR p0 = player->GetAttackCapsuleBottom();
 	const VECTOR p1 = player->GetAttackCapsuleTop();

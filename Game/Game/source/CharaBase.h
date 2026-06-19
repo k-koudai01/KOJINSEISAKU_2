@@ -22,6 +22,7 @@ public:
 		NONE,
 		IDLE,
 		WALK,
+		RUN,
 		JUMP,
 		SECOND_JUMP,
 		FALL,
@@ -29,6 +30,7 @@ public:
 		RUNATTACK,
 		DASHING,
 		DAMAGE,
+		STUN,
 	};
 	STATUS _status;
 	

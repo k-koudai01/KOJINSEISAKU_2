@@ -15,6 +15,7 @@ public:
 		IDLE,
 		RUSH_PREP,
 		RUSH_ATTACK,
+		STUN,
 	};
 
 	virtual bool Initialize() override;
@@ -22,19 +23,23 @@ public:
 	virtual bool Process() override;
 	virtual bool Render() override;
 
+	virtual void UpdateSpriteAnimation(STATUS oldStatus) override;
 	virtual void UpdateRotation();
+
 	virtual bool Damage(float damage) override;
 	void SetPlayer(Player* player) { _player = player; }
+	
 
+	// スタン状態フラグ
+	bool IsStunned() const { return _bossState == BossState::STUN; }
 protected:
 
 	// ボスの突進処理
-	void UpdateRushAttackAI();
+	void UpdateAI();
 	void UpdateIdle(const VECTOR& playerPos);     // 待機状態
 	void UpdateRushPrep(const VECTOR& playerPos); // 突進予兆
 	void UpdateRushAttack();                      // 突進攻撃
-	      
-
+	void UpdateStun();                            // スタン状態      
 
 	Player* _player = nullptr;
 
