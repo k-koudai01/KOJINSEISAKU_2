@@ -27,9 +27,12 @@ public:
 	void SetPlayer(Player* player) { _player = player; }
 
 protected:
-	//void UpdateIdle(const VECTOR& playerPos);
-	void UpdateRushPrep(const VECTOR& playerPos);
-	void UpdateRushAttack();                        
+
+	// ボスの突進処理
+	void UpdateRushAttackAI();
+	void UpdateIdle(const VECTOR& playerPos);     // 待機状態
+	void UpdateRushPrep(const VECTOR& playerPos); // 突進予兆
+	void UpdateRushAttack();                      // 突進攻撃
 	      
 
 

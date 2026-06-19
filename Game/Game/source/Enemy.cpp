@@ -55,7 +55,7 @@ bool Enemy::Process()
 	STATUS oldStatus = _status;
 	_status = STATUS::IDLE;
 
-	UpdateRotation();
+	UpdateRushAttackAI();
 	UpdateSpriteAnimation(oldStatus);
 
 	return true;
@@ -100,3 +100,69 @@ void Enemy::UpdateRotation()
 	}
 }
 
+void Enemy::UpdateIdle(const VECTOR& PlayerPos)
+{
+	_mvSpeed = 0.0f;
+	UpdateRotation();
+
+	// 指定の時間たったら突進の予兆状態へ
+	if(_stateTimer >= 2.0f)
+	{
+		_stateTimer = 0.0f;
+		_bossState = BossState::RUSH_PREP;
+	}
+}
+
+void Enemy::UpdateRushPrep(const VECTOR& playerPos)
+{
+	_mvSpeed = 0.0f;
+	UpdateRotation();
+
+	if(_stateTimer >= 1.0f)
+	{
+		_stateTimer = 0.0f;
+		_targetDir = _vDir;
+		_bossState = BossState::RUSH_ATTACK;
+	}
+
+
+}
+
+void Enemy::UpdateRushAttack()
+{
+	_mvSpeed = 30.0f;
+
+	_vPos = VAdd(_vPos, VScale(_targetDir, _mvSpeed));
+
+	UpdateFacing(_targetDir);
+
+	if(_stateTimer >= 1.5f)
+	{
+		_stateTimer = 0.0f; 
+		_bossState = BossState::IDLE;
+	}
+}
+
+void Enemy::UpdateRushAttackAI()
+{
+	_stateTimer += 1.0f / 60.0f; 
+
+	VECTOR playerPos = VGet(0.0f, 0.0f, 0.0f);
+	if(_player)
+	{
+		playerPos = _player->GetPos();
+	}
+
+	switch(_bossState)
+	{
+	case BossState::IDLE:
+		UpdateIdle(playerPos);
+		break;
+	case BossState::RUSH_PREP:
+		UpdateRushPrep(playerPos);
+		break;
+	case BossState::RUSH_ATTACK:
+		UpdateRushAttack();
+		break;
+	}
+}
