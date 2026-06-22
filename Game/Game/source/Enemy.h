@@ -26,12 +26,16 @@ public:
 	virtual void UpdateSpriteAnimation(STATUS oldStatus) override;
 	virtual void UpdateRotation();
 
-	virtual bool Damage(float damage) override;
 	void SetPlayer(Player* player) { _player = player; }
-	
 
-	// スタン状態フラグ
-	bool IsStunned() const { return _bossState == BossState::STUN; }
+	// 行動関連
+	virtual bool Damage(float damage) override;
+	void SetParried(bool parried) { _isParried = parried; }
+
+	//　状態関連
+	bool IsStunned() const { return _bossState == BossState::STUN;        }
+	bool IsRushing() const { return _bossState == BossState::RUSH_ATTACK; }
+
 protected:
 
 	// ボスの突進処理
@@ -43,8 +47,10 @@ protected:
 
 	Player* _player = nullptr;
 
-	BossState _bossState = BossState::IDLE;
+	// ボスの状態
+	BossState _bossState  = BossState::IDLE;
 	float     _stateTimer = 0.0f;
-	VECTOR    _targetDir = VGet(0, 0, 0);
+	VECTOR    _targetDir  = VGet(0, 0, 0);
+	bool      _isParried  = false;
 };
 

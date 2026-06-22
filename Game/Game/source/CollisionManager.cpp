@@ -18,7 +18,21 @@ void CollisionManager::CheckPlayerEnemy(Player* player, Enemy* enemy)
 	// 当たった
 	if (distSq <= r * r)
 	{
+		if(enemy->IsRushing() && player->IsParryWindow())
+		{
+			// プレイヤーにダメージが起こらない
+
+			enemy->SetParried(true);
+
+			return;
+		}
+
+		// ボスがスタン中（STUN）ならダメージは喰らわない
+		if(enemy->IsStunned()) return;
+
+		// パリィ失敗でダメージを受ける
 		player->Damage(1.0f);
+		
 	}
 }
 
@@ -40,6 +54,8 @@ void CollisionManager::CheckPlayerAttack(Player* player, Enemy* enemy)
 	if(distSq <= r * r)
 	{
 		enemy->Damage(1.0f);
+
+		player->OnHitEnemy();
 	}
 }
 
@@ -74,6 +90,7 @@ void CollisionManager::DebugRenderCapsule(const Player* player, const Enemy* ene
 		);
 	}
 
+	if(enemy->IsStunned())
 	DrawCapsule3D
 	(
 		enemy->GetCapsuleBottom(),

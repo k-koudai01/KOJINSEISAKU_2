@@ -8,6 +8,8 @@ namespace
 {
 	static constexpr auto DAMAGE_SHAKE_STRENGTH = 50.0f;
 	static constexpr auto DAMAGE_SHAKE_DURATION = 0.3f;
+
+	static constexpr auto RUN_SPEED = 8.0f; 
 }
 
 
@@ -27,11 +29,11 @@ bool Enemy::Initialize()
 		{ STATUS::RUN,  {  8,  17.0f, true  } },
 	});
 
-	_spriteScale = 400.0f;
+	_spriteScale = 300.0f;
 
 	_status = STATUS::IDLE;
 
-	_vPos = VGet(-100.0f, 50.0f, 0.0f);
+	_vPos = VGet(-100.0f, 50.0f, 50.0f);
 	_vDir = VGet(0.0f, 0.0f, -1.0f);
 
 	_fColSubY = 17.0f;
@@ -190,6 +192,8 @@ void Enemy::UpdateRushPrep(const VECTOR& playerPos)
 	{ 
 		_mvSpeed = 3.0f;
 		VECTOR backDir = VScale(_vDir, -1.0f);
+
+		backDir.z = 0.0f;
 		_vPos = VAdd(_vPos, VScale(backDir, _mvSpeed));
 	}
 	else
@@ -199,23 +203,42 @@ void Enemy::UpdateRushPrep(const VECTOR& playerPos)
 
 	if(_stateTimer >= 1.0f)
 	{
-		_stateTimer = 0.0f;
-		_targetDir = _vDir;
+		_stateTimer  = 0.0f;
+		_targetDir   = _vDir;
+		_targetDir.z = 0.0f;
+
+		// 突進が始まる瞬間に、パリィフラグを false にリセットしておく
+		_isParried = false;
+
 		_bossState = BossState::RUSH_ATTACK;
 	}
 }
 
 void Enemy::UpdateRushAttack()
 {
-	_mvSpeed = 8.0f;
+
+	_mvSpeed = RUN_SPEED;
+
+	// 突進方向の分だけ位置を移動させる
+	_targetDir.z = 0.0f;
 	_vPos = VAdd(_vPos, VScale(_targetDir, _mvSpeed));
 
+    // プレイヤーのいる方向に向く
 	UpdateFacing(_targetDir);
 
-	if(_stateTimer >= 1.0f)
+	if (_stateTimer >= 1.0f)
 	{
-		_stateTimer = 0.0f; 
-		_bossState = BossState::STUN;
+		_stateTimer = 0.0f;
+
+		if(_isParried)
+		{
+			_bossState = BossState::STUN;
+		}
+		else
+		{
+			_bossState = BossState::IDLE;
+		}
+		
 	}
 }
 

@@ -60,12 +60,14 @@ bool ModeGame::Process()
 	if(_player) {_player->Process(); }
 	if(_enemy ) { _enemy->Process(); }
 
+	if(_cam) { _cam->Process(); }
+
 	_collision.CheckPlayerEnemy(_player.get(), _enemy.get());
 	_collision.CheckPlayerAttack(_player.get(), _enemy.get());
 
 	_objMgr.ProcessAll();
 
-	if(_cam)    { _cam->Process();   }
+	
 	return true;
 }
 
@@ -111,7 +113,7 @@ bool ModeGame::Render()
 	if(_enemy ) { _enemy->Render(); }
 
 	// デバッグ
-	//_collision.DebugRenderCapsule(_player.get(), _enemy.get());
+	_collision.DebugRenderCapsule(_player.get(), _enemy.get());
 
 	_objMgr.RenderAll();
 

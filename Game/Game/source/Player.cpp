@@ -344,3 +344,11 @@ bool Player::Damage(float damage)
 
 	return true;
 }
+
+void Player::OnHitEnemy()
+{
+	if(_cam)
+	{
+		_cam->Shake(50.0f, 0.3f);
+	}
+}

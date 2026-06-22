@@ -2,6 +2,8 @@
 #include "appframe.h"
 #include "Player.h"
 #include "Enemy.h"
+#include "Camera.h"
+#include "CameraManager.h"
 
 class CollisionManager
 {
@@ -13,5 +15,8 @@ public:
 	// 描画処理
 	void DebugRenderCapsule(const Player* player, const Enemy* enemy) const;
 	
+protected:
+	// カメラ
+	Camera* _cam;
 };
 

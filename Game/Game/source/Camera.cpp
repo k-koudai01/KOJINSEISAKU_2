@@ -96,11 +96,11 @@ void Camera::UpdateShake()
 		float decay = (_shakeDuration > 0.0f) ? (_shakeTimer / _shakeDuration) : 0.0f; 
 		float currentStrength = _shakeStrength * decay; 
 
-		float frequency = 50.0f; 
-		float elapsedTime = _shakeDuration - _shakeTimer;
-		float offsetY = sin(elapsedTime * frequency) * currentStrength;
+		float frequency = 50.0f;									    // シェイクの振動数
+		float elapsedTime = _shakeDuration - _shakeTimer;			    // サイン波で上下に揺らす
+		float offsetY = sin(elapsedTime * frequency) * currentStrength; // カメラのY位置にオフセットを加える
 
-		_vPos.y += offsetY;
+		_vPos.y = _vTarget.y + offsetY;
 
 		_shakeTimer -= 1.0f / 60.0f;
 	}

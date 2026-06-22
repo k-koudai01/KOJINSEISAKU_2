@@ -16,12 +16,15 @@ public:
 	virtual bool Process()   override;
 	virtual bool Render()    override;
 
+	// カメラ設定
+	Camera* GetCamera() const   { return _cam; }
 	void SetCamera(Camera* cam) { _cam = cam; }
 
-	bool IsAttacking() const { return _isAttacking; }
-	
+	//　アクション関連
+	bool IsAttacking() const { return _isAttacking; } 
 	virtual bool Damage(float damage) override;
-
+	bool IsParryWindow() const { return (_status == STATUS::ATTACK || _status == STATUS::RUNATTACK); }
+	void OnHitEnemy(); 
 protected:
 
 	struct SpriteAnimDef
