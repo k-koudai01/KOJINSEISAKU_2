@@ -24,6 +24,10 @@ void CollisionManager::CheckPlayerEnemy(Player* player, Enemy* enemy)
 
 			enemy->SetParried(true);
 
+			CameraManager::GetInstance()->Shake(80.0f, 1.0f);
+
+			WaitTimer(100);
+
 			return;
 		}
 
@@ -55,7 +59,7 @@ void CollisionManager::CheckPlayerAttack(Player* player, Enemy* enemy)
 	{
 		enemy->Damage(1.0f);
 
-		player->OnHitEnemy();
+		CameraManager::GetInstance()->Shake(100.0f, 0.5f);
 	}
 }
 

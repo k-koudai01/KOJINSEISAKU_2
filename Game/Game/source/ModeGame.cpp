@@ -16,6 +16,8 @@ bool ModeGame::Initialize()
 		return false;
 	}
 
+	CameraManager::GetInstance()->SetActiveCamera(_cam.get());
+
 	// カメラ：プレイヤー追従設定
 	_objFtr.SetUpCamera(_cam.get(), _player.get());
 
@@ -113,7 +115,7 @@ bool ModeGame::Render()
 	if(_enemy ) { _enemy->Render(); }
 
 	// デバッグ
-	_collision.DebugRenderCapsule(_player.get(), _enemy.get());
+	// _collision.DebugRenderCapsule(_player.get(), _enemy.get());
 
 	_objMgr.RenderAll();
 
