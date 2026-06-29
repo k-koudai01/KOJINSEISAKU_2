@@ -38,7 +38,7 @@ bool Player::Initialize()
 		{ STATUS::RUNATTACK, {  8, 20.0f, false  } },
 	});
 
-	_spriteScale = 80.0f;
+	_spriteScale = 100.0f;
 
 	// ステータスを「無し」に設定
 	_status = STATUS::IDLE;

@@ -13,6 +13,7 @@ public:
 	enum class BossState
 	{
 		IDLE,
+		SHOOT_ATTACK,
 		RUSH_PREP,
 		RUSH_ATTACK,
 		STUN,
@@ -38,19 +39,22 @@ public:
 
 protected:
 
-	// ボスの突進処理
+	// AI関連
 	void UpdateAI();
-	void UpdateIdle(const VECTOR& playerPos);     // 待機状態
-	void UpdateRushPrep(const VECTOR& playerPos); // 突進予兆
-	void UpdateRushAttack();                      // 突進攻撃
-	void UpdateStun();                            // スタン状態      
+	void UpdateIdle(const VECTOR& playerPos);        // 待機状態
+	void UpdateShootAttack(const VECTOR& playerPos); // 遠距離攻撃
+	void UpdateRushPrep(const VECTOR& playerPos);    // 突進予兆
+	void UpdateRushAttack();                         // 突進攻撃
+	void UpdateStun();                               // スタン状態      
 
 	Player* _player = nullptr;
 
 	// ボスの状態
 	BossState _bossState  = BossState::IDLE;
 	float     _stateTimer = 0.0f;
+	bool      _hasFired   = false;
 	VECTOR    _targetDir  = VGet(0, 0, 0);
 	bool      _isParried  = false;
+
 };
 

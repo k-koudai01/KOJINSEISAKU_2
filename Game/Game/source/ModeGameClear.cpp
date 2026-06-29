@@ -3,6 +3,7 @@
 #include "ModeGameClear.h"
 #include "ModeGame.h"
 #include "Title.h"
+#include "BulletManager.h"
 
 bool ModeGameClear::Initialize()
 {

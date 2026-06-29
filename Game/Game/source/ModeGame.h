@@ -38,6 +38,7 @@ protected:
 	std::unique_ptr<Player> _player;
 	std::unique_ptr<Enemy> _enemy;
 
+	// 当たり判定
 	CollisionManager _collision;
 
 	// ゲーム開始時刻（ms）・クリア表示済みフラグ

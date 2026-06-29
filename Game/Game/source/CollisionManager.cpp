@@ -26,6 +26,7 @@ void CollisionManager::CheckPlayerEnemy(Player* player, Enemy* enemy)
 
 			CameraManager::GetInstance()->Shake(80.0f, 1.0f);
 
+			// ヒットストップ(検討中)
 			WaitTimer(100);
 
 			return;
@@ -95,15 +96,18 @@ void CollisionManager::DebugRenderCapsule(const Player* player, const Enemy* ene
 	}
 
 	if(enemy->IsStunned())
-	DrawCapsule3D
-	(
-		enemy->GetCapsuleBottom(),
-		enemy->GetCapsuleTop(),
-		enemy->GetCollisionRadius(),
-		divNum,
-		GetColor(0, 0, 255),
-		spcCol,
-		TRUE
-	);
+	{
+		DrawCapsule3D
+		(
+			enemy->GetCapsuleBottom(),
+			enemy->GetCapsuleTop(),
+			enemy->GetCollisionRadius(),
+			divNum,
+			GetColor(0, 0, 255),
+			spcCol,
+			TRUE
+		);
+	}
+	
 }
 

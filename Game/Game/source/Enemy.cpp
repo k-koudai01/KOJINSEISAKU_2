@@ -3,6 +3,7 @@
 #include "Player.h"
 #include "DxLib.h"
 #include <cstdio>
+#include "BulletManager.h"
 
 namespace
 {
@@ -152,6 +153,11 @@ void Enemy::UpdateAI()
 		UpdateIdle(playerPos);
 		break;
 	}
+	case BossState::SHOOT_ATTACK: 
+	{
+		UpdateShootAttack(playerPos);
+		break;
+	}
 	case BossState::RUSH_PREP:
 	{
 		UpdateRushPrep(playerPos);
@@ -179,8 +185,32 @@ void Enemy::UpdateIdle(const VECTOR& PlayerPos)
 	if(_stateTimer >= 2.0f)
 	{
 		_stateTimer = 0.0f;
+		_bossState = BossState::SHOOT_ATTACK;
+		_hasFired = false;
+	}
+}
+
+void Enemy::UpdateShootAttack(const VECTOR& playerPos)
+{
+	_mvSpeed = 0.0f;
+	UpdateRotation();
+	
+	if(_stateTimer >= 0.2f && !_hasFired)
+	{
+		_hasFired = true;
+
+		// 弾を飛ばす方向
+		VECTOR bulletDir = _vDir;
+		bulletDir.z = 0.0f;
+		BulletManager::GetInstance()->Spawn(_vPos, bulletDir, 10.0f, 3.0f);
+	}
+
+	if(_stateTimer >= 0.8f)
+	{
+		_stateTimer = 0.0f; 
 		_bossState = BossState::RUSH_PREP;
 	}
+
 }
 
 void Enemy::UpdateRushPrep(const VECTOR& playerPos)

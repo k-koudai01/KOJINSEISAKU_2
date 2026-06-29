@@ -1,6 +1,7 @@
 #include "ModeGame.h"
 #include "ModeMenu.h"
 #include "Title.h"
+#include "BulletManager.h"
 
 bool ModeGame::Initialize()
 {
@@ -10,6 +11,7 @@ bool ModeGame::Initialize()
 	_cam    = _objFtr.CreateCamera();
 	_player = _objFtr.CreatePlayer();
 	_enemy  = _objFtr.CreateEnemy();
+	BulletManager::GetInstance()->Initialize();
 
 	if(!_cam || !_player || !_enemy)
 	{
@@ -46,7 +48,8 @@ bool ModeGame::Terminate()
 	if(_player) {_player->Terminate(); _player.reset(); }
 	if(_enemy ) { _enemy->Terminate();  _enemy.reset(); }
 	if(_cam   ) {_cam->Terminate();    _cam.reset();    }
-	
+	BulletManager::GetInstance()->Terminate();
+
 	base::Terminate();
 	return true;
 }
@@ -61,8 +64,9 @@ bool ModeGame::Process()
 
 	if(_player) {_player->Process(); }
 	if(_enemy ) { _enemy->Process(); }
-
 	if(_cam) { _cam->Process(); }
+
+	BulletManager::GetInstance()->Process();
 
 	_collision.CheckPlayerEnemy(_player.get(), _enemy.get());
 	_collision.CheckPlayerAttack(_player.get(), _enemy.get());
@@ -113,12 +117,11 @@ bool ModeGame::Render()
 
 	if(_player) { _player->Render(); }
 	if(_enemy ) { _enemy->Render(); }
-
+	BulletManager::GetInstance()->Render();
 	// デバッグ
-	// _collision.DebugRenderCapsule(_player.get(), _enemy.get());
+	_collision.DebugRenderCapsule(_player.get(), _enemy.get());
 
 	_objMgr.RenderAll();
-
 	if (_cam) { _cam->Render(); }
 
 	SetUseLighting(TRUE);
