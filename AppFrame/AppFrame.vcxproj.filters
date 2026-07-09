@@ -44,6 +44,7 @@
     </ClCompile>
     <ClCompile Include="source\SpriteAnimationManager.cpp" />
     <ClCompile Include="source\CollisionMath.cpp" />
+    <ClCompile Include="source\StageDateReader.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="source\Application\ApplicationBase.h">
@@ -72,5 +73,6 @@
     </ClInclude>
     <ClInclude Include="source\SpriteAnimationManager.h" />
     <ClInclude Include="source\CollisionMath.h" />
+    <ClInclude Include="source\StageDateReader.h" />
   </ItemGroup>
 </Project>

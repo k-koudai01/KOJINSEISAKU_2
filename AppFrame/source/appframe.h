@@ -9,3 +9,4 @@
 #include "AnimationManager.h"
 #include "SpriteAnimationManager.h"
 #include "CollisionMath.h"
+#include "StageDateReader.h"
