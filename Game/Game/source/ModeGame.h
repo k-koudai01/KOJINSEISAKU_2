@@ -13,6 +13,8 @@
 #include "ModeGameOver.h"
 #include "ModeHUD.h"
 #include "MenuController.h"
+#include "StageLoader.h"
+
 
 constexpr float GAMECLEAR_TIMESEC = 30.0f;  // ƒNƒŠƒA‚Ü‚Å‚Ì•b”
 

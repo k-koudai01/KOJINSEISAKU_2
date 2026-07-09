@@ -29,6 +29,8 @@ bool ModeGame::Initialize()
 	// HUD追加
 	AddHUD();
 
+	StageLoader::LoadStage("res/Map/Map.json");
+
 	// メニュー初期化
 	_menuCtrl.Initialize();
 
@@ -61,6 +63,8 @@ bool ModeGame::Process()
 	_menuCtrl.Process();
 
 	SpriteAnimationManager::GetInstance()->Update(1.0f / 60.0f);
+
+	StageLoader::Update();
 
 	if(_player) {_player->Process(); }
 	if(_enemy ) { _enemy->Process(); }
@@ -118,6 +122,9 @@ bool ModeGame::Render()
 	if(_player) { _player->Render(); }
 	if(_enemy ) { _enemy->Render(); }
 	BulletManager::GetInstance()->Render();
+
+	StageLoader::Draw();
+
 	// デバッグ
 	_collision.DebugRenderCapsule(_player.get(), _enemy.get());
 

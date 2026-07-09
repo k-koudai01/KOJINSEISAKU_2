@@ -125,6 +125,7 @@
       <PreprocessorDefinitions>_DEBUG;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
+      <AdditionalIncludeDirectories>$(ProjectDir);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -156,6 +157,7 @@
     <ClCompile Include="source\CameraManager.cpp" />
     <ClCompile Include="source\CharaBase.cpp" />
     <ClCompile Include="source\CollisionManager.cpp" />
+    <ClCompile Include="source\Cube.cpp" />
     <ClCompile Include="source\Enemy.cpp" />
     <ClCompile Include="source\fpsCamera.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
@@ -180,6 +182,7 @@
     <ClCompile Include="source\ObjectManager.cpp" />
     <ClCompile Include="source\Player.cpp" />
     <ClCompile Include="source\SpriteCharaBase.cpp" />
+    <ClCompile Include="source\StageLoader.cpp" />
     <ClCompile Include="source\Title.cpp" />
     <ClCompile Include="source\UIBase.cpp" />
     <ClCompile Include="source\UIRender.cpp" />
@@ -194,6 +197,7 @@
     <ClInclude Include="source\CameraManager.h" />
     <ClInclude Include="source\CharaBase.h" />
     <ClInclude Include="source\CollisionManager.h" />
+    <ClInclude Include="source\Cube.h" />
     <ClInclude Include="source\Enemy.h" />
     <ClInclude Include="source\fpsCamera.h">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
@@ -218,6 +222,7 @@
     <ClInclude Include="source\ObjectManager.h" />
     <ClInclude Include="source\Player.h" />
     <ClInclude Include="source\SpriteCharaBase.h" />
+    <ClInclude Include="source\StageLoader.h" />
     <ClInclude Include="source\Title.h" />
     <ClInclude Include="source\UIBase.h" />
     <ClInclude Include="source\UIRender.h" />

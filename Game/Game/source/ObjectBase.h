@@ -28,6 +28,7 @@ protected:
 	VECTOR _vOldPos; //1フレーム前の位置
 	float _speed;
 	float _radius;
+	VECTOR _vScale;	// スケール
 
 	int _handle;				// モデルハンドル
 	int _animId;				// アニメーションID
