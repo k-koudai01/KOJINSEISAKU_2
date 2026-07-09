@@ -6,7 +6,7 @@ struct RawStageObj_Data
 	std::string name;
 	std::string type;
 	VECTOR       pos;
-	VECTOR      dir;
+	VECTOR      rot;
 	VECTOR     scale;
 };
 

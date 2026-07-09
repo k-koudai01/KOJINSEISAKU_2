@@ -1,0 +1,42 @@
+{
+  "stage_objects": [
+    {
+      "name": "Floor_Main",
+      "type": "Cube",
+      "location": {
+        "x": 0.0,
+        "y": -15.0,
+        "z": 0.0
+      },
+      "rotation": {
+        "roll": 0.0,
+        "pitch": 0.0,
+        "yaw": 0.0
+      },
+      "scale": {
+        "x": 100.0,
+        "y": 2.0,
+        "z": 100.0
+      }
+    },
+    {
+      "name": "Wall_Front",
+      "type": "Cube",
+      "location": {
+        "x": 0.0,
+        "y": -15.0,
+        "z": 25.0
+      },
+      "rotation": {
+        "roll": 0.0,
+        "pitch": 0.0,
+        "yaw": 0.0
+      },
+      "scale": {
+        "x": 100.0,
+        "y": 20.0,
+        "z": 2.0
+      }
+    }
+  ]
+}

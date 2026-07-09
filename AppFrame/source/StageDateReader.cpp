@@ -31,14 +31,14 @@ std::vector <RawStageObj_Data> StageDateReader::ReadJson(const std::string& file
 
 		// VECTORデータの取得
 		// 座標
-		rawObj.pos.x = static_cast<float>(objData["location"]["x"].get<double>());
-		rawObj.pos.y = static_cast<float>(objData["location"]["y"].get<double>());
-		rawObj.pos.z = static_cast<float>(objData["location"]["z"].get<double>());
+		rawObj.pos.x = static_cast<float>(objData["pos"]["x"].get<double>());
+		rawObj.pos.y = static_cast<float>(objData["pos"]["y"].get<double>());
+		rawObj.pos.z = static_cast<float>(objData["pos"]["z"].get<double>());
 
 		// 回転
-		rawObj.dir.x = static_cast<float>(objData["rotation"]["roll"].get<double>());
-		rawObj.dir.y = static_cast<float>(objData["rotation"]["pitch"].get<double>());
-		rawObj.dir.z = static_cast<float>(objData["rotation"]["yaw"].get<double>());
+		rawObj.rot.x = static_cast<float>(objData["rot"]["roll"].get<double>());
+		rawObj.rot.y = static_cast<float>(objData["rot"]["pitch"].get<double>());
+		rawObj.rot.z = static_cast<float>(objData["rot"]["yaw"].get<double>());
 
 		// 大きさ
 		rawObj.scale.x = static_cast<float>(objData["scale"]["x"].get<double>());
