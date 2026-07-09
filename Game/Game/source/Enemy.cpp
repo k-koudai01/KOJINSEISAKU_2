@@ -218,9 +218,9 @@ void Enemy::UpdateRushPrep(const VECTOR& playerPos)
 	_mvSpeed = 0.0f;
 	UpdateRotation();
 
-	if(_stateTimer >= 0.5f)
+	if(_stateTimer >= 0.2f)
 	{ 
-		_mvSpeed = 3.0f;
+		_mvSpeed = 2.0f;
 		VECTOR backDir = VScale(_vDir, -1.0f);
 
 		backDir.z = 0.0f;
@@ -231,7 +231,7 @@ void Enemy::UpdateRushPrep(const VECTOR& playerPos)
 		_mvSpeed = 0.0f;
 	}
 
-	if(_stateTimer >= 1.0f)
+	if(_stateTimer >= 0.9f)
 	{
 		_stateTimer  = 0.0f;
 		_targetDir   = _vDir;

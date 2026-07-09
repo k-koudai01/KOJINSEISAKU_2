@@ -32,7 +32,7 @@ bool BulletManager::Process()
 		std::remove_if(_bullets.begin(), _bullets.end(),
 					   [](const std::unique_ptr<Bullet>& b)
 					   {
-						return !b->IsActive();
+						return !b->IsActive(); 
 					   }),
 		_bullets.end()
 	);
