@@ -3,25 +3,29 @@
 
 std::vector<std::shared_ptr<Cube>> StageLoader::_cubes;
 
-namespace {
-	// UEの座標（FVector）をDxLibの座標（VECTOR）に変換する汎用関数
+namespace
+{
+	
+	// UE座標系からDx座標系に変換する
 	VECTOR ConvertUEToDxPos(const VECTOR& uePos)
 	{
-		return VGet(uePos.x, uePos.z, uePos.y); // Xはそのままで、YとZを入れ替える
+		return VGet(uePos.x, uePos.z, uePos.y);
 	}
 
-	// UEのスケールをDxLibのスケールに変換し、かつ最小の厚みを保証する汎用関数
 	VECTOR ConvertUEToDxScale(const VECTOR& ueScale, float baseMultiplier = 10.0f, float minHeight = 10.0f)
 	{
 		VECTOR dxScale;
 		dxScale.x = ueScale.x * baseMultiplier;
-		dxScale.y = ueScale.z * baseMultiplier; // UEのZ（高さ厚み）がDxLibのY
-		dxScale.z = ueScale.y * baseMultiplier; // UEのY（奥行き）がDxLibのZ
+		dxScale.y = ueScale.z * baseMultiplier; 
+		dxScale.z = ueScale.y * baseMultiplier; 
 
-		// 最小の厚み（高さ）を安全に保証する
-		if(dxScale.y < minHeight) {
+		
+		// 最小高さを設定
+		if(dxScale.y < minHeight)
+		{
 			dxScale.y = minHeight;
 		}
+
 		return dxScale;
 	}
 }
