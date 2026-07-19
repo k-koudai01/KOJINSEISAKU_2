@@ -44,7 +44,7 @@ void Cube::CubeRender()
     v[7] = VGet( hx, -hy,  hz); // 後・下・右
 
     // 回転行列
-    MATRIX matRotX = MGetRotX(_vPos.x * DX_PI_F / 180.0f);
+    MATRIX matRotX = MGetRotX(_vDir.x * DX_PI_F / 180.0f);
     MATRIX matRotY = MGetRotY(_vDir.y * DX_PI_F / 180.0f); 
     MATRIX matRotZ = MGetRotZ(_vDir.z * DX_PI_F / 180.0f); 
 
