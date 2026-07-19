@@ -33,14 +33,29 @@ void Cube::CubeRender()
     float hz = _vScale.z * 0.5f;
 
     // 箱の8つの頂点座標を計算
-    VECTOR v0 = VGet(_vPos.x - hx, _vPos.y + hy, _vPos.z - hz); // 前・上・左
-    VECTOR v1 = VGet(_vPos.x + hx, _vPos.y + hy, _vPos.z - hz); // 前・上・右
-    VECTOR v2 = VGet(_vPos.x - hx, _vPos.y - hy, _vPos.z - hz); // 前 = 下・左
-    VECTOR v3 = VGet(_vPos.x + hx, _vPos.y - hy, _vPos.z - hz); // 前・下・右
-    VECTOR v4 = VGet(_vPos.x - hx, _vPos.y + hy, _vPos.z + hz); // 後・上・左
-    VECTOR v5 = VGet(_vPos.x + hx, _vPos.y + hy, _vPos.z + hz); // 後・上・右
-    VECTOR v6 = VGet(_vPos.x - hx, _vPos.y - hy, _vPos.z + hz); // 後・下・左
-    VECTOR v7 = VGet(_vPos.x + hx, _vPos.y - hy, _vPos.z + hz); // 後・下・右
+    VECTOR v[8];
+    v[0] = VGet(-hx,  hy, -hz); // 前・上・左
+    v[1] = VGet( hx,  hy, -hz); // 前・上・右
+    v[2] = VGet(-hx, -hy, -hz); // 前・下・左
+    v[3] = VGet( hx, -hy, -hz); // 前・下・右
+    v[4] = VGet(-hx,  hy,  hz); // 後・上・左
+    v[5] = VGet( hx,  hy,  hz); // 後・上・右
+    v[6] = VGet(-hx, -hy,  hz); // 後・下・左
+    v[7] = VGet( hx, -hy,  hz); // 後・下・右
+
+    // 回転行列
+    MATRIX matRotX = MGetRotX(_vPos.x * DX_PI_F / 180.0f);
+    MATRIX matRotY = MGetRotY(_vDir.y * DX_PI_F / 180.0f); 
+    MATRIX matRotZ = MGetRotZ(_vDir.z * DX_PI_F / 180.0f); 
+
+    MATRIX matRot = MMult(MMult(matRotZ, matRotX), matRotY);
+
+	// 頂点を回転させる
+    for(int i = 0; i < 8; i++)
+    {
+        v[i] = VTransform(v[i], matRot); // 回転を適用
+		v[i] = VAdd(v[i], _vPos);        // 位置
+    }
 
     // 白色の色データを作成
     COLOR_U8 color = { 255, 255, 255, 255 };
@@ -54,24 +69,24 @@ void Cube::CubeRender()
     }
 
     int idx = 0;
-    // 前面 (v0, v1, v2, v3)
-    vertices[idx++].pos = v0; vertices[idx++].pos = v1; vertices[idx++].pos = v2;
-    vertices[idx++].pos = v2; vertices[idx++].pos = v1; vertices[idx++].pos = v3;
-    // 背面 (v5, v4, v7, v6)
-    vertices[idx++].pos = v5; vertices[idx++].pos = v4; vertices[idx++].pos = v7;
-    vertices[idx++].pos = v7; vertices[idx++].pos = v4; vertices[idx++].pos = v6;
-    // 上面 (v4, v5, v0, v1)
-    vertices[idx++].pos = v4; vertices[idx++].pos = v5; vertices[idx++].pos = v0;
-    vertices[idx++].pos = v0; vertices[idx++].pos = v5; vertices[idx++].pos = v1;
-    // 下面 (v2, v3, v6, v7)
-    vertices[idx++].pos = v2; vertices[idx++].pos = v3; vertices[idx++].pos = v6;
-    vertices[idx++].pos = v6; vertices[idx++].pos = v3; vertices[idx++].pos = v7;
-    // 左面 (v4, v0, v6, v2)
-    vertices[idx++].pos = v4; vertices[idx++].pos = v0; vertices[idx++].pos = v6;
-    vertices[idx++].pos = v6; vertices[idx++].pos = v0; vertices[idx++].pos = v2;
-    // 右面 (v1, v5, v3, v7)
-    vertices[idx++].pos = v1; vertices[idx++].pos = v5; vertices[idx++].pos = v3;
-    vertices[idx++].pos = v3; vertices[idx++].pos = v5; vertices[idx++].pos = v7;
+    // 前面
+    vertices[idx++].pos = v[0]; vertices[idx++].pos = v[1]; vertices[idx++].pos = v[2];
+    vertices[idx++].pos = v[2]; vertices[idx++].pos = v[1]; vertices[idx++].pos = v[3];
+    // 背面
+    vertices[idx++].pos = v[5]; vertices[idx++].pos = v[4]; vertices[idx++].pos = v[7];
+    vertices[idx++].pos = v[7]; vertices[idx++].pos = v[4]; vertices[idx++].pos = v[6];
+    // 上面
+    vertices[idx++].pos = v[4]; vertices[idx++].pos = v[5]; vertices[idx++].pos = v[0];
+    vertices[idx++].pos = v[0]; vertices[idx++].pos = v[5]; vertices[idx++].pos = v[1];
+    // 下面
+    vertices[idx++].pos = v[2]; vertices[idx++].pos = v[3]; vertices[idx++].pos = v[6];
+    vertices[idx++].pos = v[6]; vertices[idx++].pos = v[3]; vertices[idx++].pos = v[7];
+    // 左面
+    vertices[idx++].pos = v[4]; vertices[idx++].pos = v[0]; vertices[idx++].pos = v[6];
+    vertices[idx++].pos = v[6]; vertices[idx++].pos = v[0]; vertices[idx++].pos = v[2];
+    // 右面
+    vertices[idx++].pos = v[1]; vertices[idx++].pos = v[5]; vertices[idx++].pos = v[3];
+    vertices[idx++].pos = v[3]; vertices[idx++].pos = v[5]; vertices[idx++].pos = v[7];
 
 	// 36個の頂点を描画    
     DrawPolygon3D(vertices, 12, DX_NONE_GRAPH, TRUE);

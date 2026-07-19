@@ -210,9 +210,6 @@
     <ClCompile Include="source\CollisionManager.cpp">
       <Filter>ソース ファイル\コリジョン管理</Filter>
     </ClCompile>
-    <ClCompile Include="source\CameraManager.cpp">
-      <Filter>ソース ファイル</Filter>
-    </ClCompile>
     <ClCompile Include="source\Bullet.cpp">
       <Filter>ソース ファイル</Filter>
     </ClCompile>
