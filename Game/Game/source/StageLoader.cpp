@@ -1,7 +1,7 @@
 #include "StageLoader.h"
+#include "ObjectFactry.h"
+#include "ObjectManager.h"
 #include "Cube.h"
-
-std::vector<std::shared_ptr<Cube>> StageLoader::_cubes;
 
 namespace
 {
@@ -30,51 +30,29 @@ namespace
 	}
 }
 
-void StageLoader::LoadStage(const std::string& filename)
+void StageLoader::LoadStage(const std::string& filename, const ObjectFactry& factory, ObjectManager& objMgr)
 {
-	
-	Clear();
-
-	
+	// JSONファイルを読み込む
 	std::vector<RawStageObj_Data> stageData = StageDateReader::ReadJson(filename);
 
-	
 	for(const auto& data : stageData)
 	{
-		if(data.type == "Cube")
+		// ファクトリーによるオブジェクト生成
+		auto newObj = factory.CreateStageObject(data.type);
+
+		if(newObj)
 		{
-			
-			auto newCube = std::make_shared<Cube>();
+			if(data.type == "Cube")
+			{
+				Cube* cube = static_cast<Cube*>(newObj.get());
+				cube->SetPosition(ConvertUEToDxPos(data.pos));
+				cube->SetScale(ConvertUEToDxScale(data.scale, 10.0f, 10.0f));
+				cube->SetDirection(data.rot);
+			}
 
-		
-			newCube->Initialize();
-			newCube->SetPosition(ConvertUEToDxPos(data.pos));
-			newCube->SetScale(ConvertUEToDxScale(data.scale, 10.0f, 10.0f));
-			newCube->SetDirection(data.rot);
-
-			
-			_cubes.push_back(newCube);
+			// 生成したオブジェクトをオブジェクトマネージャーに追加
+			objMgr.Add(std::move(newObj));
 		}
 	}
-}
 
-void StageLoader::Update()
-{
-	for(auto& cube : _cubes)
-	{
-		cube->Process();
-	}
-}
-
-void StageLoader::Draw()
-{
-	for(auto& cube : _cubes)
-	{
-		cube->Render();
-	}
-}
-
-void StageLoader::Clear()
-{
-	_cubes.clear();
 }

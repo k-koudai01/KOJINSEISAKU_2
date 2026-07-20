@@ -1,4 +1,5 @@
 #include "ObjectFactry.h"
+#include "Cube.h"
 
 std::unique_ptr<Player> ObjectFactry::CreatePlayer() const
 {
@@ -50,4 +51,18 @@ void ObjectFactry::SetUpEnemy(Enemy* enemy, Player* target) const
 	if(enemy == nullptr) return;
 
 	enemy->SetPlayer(target);
+}
+
+std::unique_ptr<ObjectBase> ObjectFactry::CreateStageObject(const std::string& type) const
+{
+	if(type == "Cube")
+	{
+		auto cube = std::make_unique<Cube>();
+		if(cube->Initialize())
+		{
+			return cube;
+		}
+	}
+
+	return nullptr;
 }

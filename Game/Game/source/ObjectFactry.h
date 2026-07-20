@@ -4,6 +4,7 @@
 #include "Player.h"
 #include "Enemy.h"
 #include "Camera.h"
+#include "ObjectBase.h"
 
 class ObjectFactry
 {
@@ -12,7 +13,7 @@ public:
 	std::unique_ptr<Enemy> CreateEnemy() const;
 	std::unique_ptr<Camera> CreateCamera() const;
 	void SetUpCamera(Camera* camera, Player* target) const;
-
-	void SetUpEnemy(Enemy* enemy, Player* target) const;
+	void SetUpEnemy(Enemy* enemy, Player* target) const; 
+	std::unique_ptr<ObjectBase> CreateStageObject(const std::string& type) const;
 };
 
