@@ -27,8 +27,8 @@ public:
 	virtual bool Process();
 	virtual bool Render();
 
-	// プレイヤーとマップの当たり判定
-	void PlayerCollision();
+	// キャラクターとマップの当たり判定
+	void CheckCharaMapCollision();
 
 	Player* GetPlayer() const { return _player.get(); }
 protected:

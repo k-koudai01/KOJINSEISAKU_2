@@ -14,6 +14,7 @@ public:
 	const VECTOR GetPos() const { return _vPos; }
 	const VECTOR GetDir() const { return _vDir; }
 	float GetRadius() const { return _radius; }
+	
 
 	//　Setter
 	const VECTOR SetPos(const VECTOR& vPos) { return _vPos = vPos; }

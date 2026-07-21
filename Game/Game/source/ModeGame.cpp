@@ -73,9 +73,9 @@ bool ModeGame::Process()
 	_collision.CheckPlayerEnemy(_player.get(), _enemy.get());
 	_collision.CheckPlayerAttack(_player.get(), _enemy.get());
 
+	CheckCharaMapCollision();
 	_objMgr.ProcessAll();
 
-	
 	return true;
 }
 
@@ -129,6 +129,23 @@ bool ModeGame::Render()
 
 	SetUseLighting(TRUE);
 	return true;
+}
+
+void ModeGame::CheckCharaMapCollision()
+{
+	// マネージャー内のすべてのオブジェクトをループ
+	for(auto& obj : _objMgr.GetObjects())
+	{
+		Cube* cube = dynamic_cast<Cube*>(obj.get());
+		if(cube)
+		{
+			// プレイヤー
+			if(_player) { _collision.CheckCharacterCube(_player.get(), cube); }
+
+			// 敵
+			// if(_enemy) { _collision.CheckCharacterCube(_enemy.get(), cube); }
+		}
+	}
 }
 
 void ModeGame::AddHUD()

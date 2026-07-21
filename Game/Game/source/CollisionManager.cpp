@@ -64,6 +64,50 @@ void CollisionManager::CheckPlayerAttack(Player* player, Enemy* enemy)
 	}
 }
 
+void CollisionManager::CheckCharacterCube(CharaBase* character, Cube* cube)
+{
+	if(!character || !cube  ) return;
+	if(!character->IsAlive()) return;
+
+	VECTOR p0 = character->GetCapsuleBottom();
+	VECTOR p1 = character->GetCapsuleTop();
+	float r = character->GetCollisionRadius();
+
+	VECTOR boxMin = cube->GetBBMin();
+	VECTOR boxMax = cube->GetBBMax();
+
+	// CollisionMathを使って、カプセルと壁の最短距離を調べる
+	VECTOR segPos, boxPos;
+	float distSq = CollisionMath::SegmentAABBDistSq(p0, p1, boxMin, boxMax, &segPos, &boxPos);
+
+	// 最短距離がキャラクターの半径より小さければ「当たっている」
+	if(distSq < r * r)
+	{
+		float dist = sqrtf(distSq);
+		float overlap = r - dist;   // めり込んでいる距離
+
+		// 押し戻す方向
+		VECTOR pushDir = VSub(segPos, boxPos);
+
+		// 正規化と安全対策
+		if(VSize(pushDir) < 0.0001f)
+		{
+			pushDir = VGet(0.0f, 0.0f, 1.0f); // とりあえず手前に押し出す
+		}
+		else
+		{
+			pushDir = VNorm(pushDir); 
+		}
+
+	    // キャラクターをめり込んだ分だけ押し戻す
+		VECTOR currentPos = character->GetPos(); 
+		VECTOR newPos = VAdd(currentPos, VScale(pushDir, overlap));
+
+		// 新しい位置を更新
+		character->SetPos(newPos); 
+	}
+}
+
 void CollisionManager::DebugRenderCapsule(const Player* player, const Enemy* enemy) const
 {
 	if (!player || !enemy) return;

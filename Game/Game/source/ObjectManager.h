@@ -32,6 +32,8 @@ public:
 	    );			   
 	}
 
+	// 登録されている全オブジェクトのリストを返すゲッター
+	const std::vector<std::unique_ptr<ObjectBase>>& GetObjects() const { return _objects; }
 private:
 	std::vector<std::unique_ptr<ObjectBase>> _objects;
 };
