@@ -86,4 +86,43 @@ namespace CollisionMath
 		const VECTOR diff = VSub(c1, c2);
 		return VDot(diff, diff);
 	}
+
+	float SegmentAABBDistSq(const VECTOR& p0, const VECTOR& p1, const VECTOR& boxMin, const VECTOR& boxMax, VECTOR* outSegPos, VECTOR* outBoxPos)
+	{
+		VECTOR segDir = VSub(p1, p0);
+		float minDistSq = INF_DIST_SQ;
+
+		// カプセルの高さを8等分して調べる
+		for(int i = 0; i <= AABB_SAMPLING_COUNT; ++i)
+		{
+			// 進捗率
+			float t = (float)i / (float)AABB_SAMPLING_COUNT;
+
+			// カプセル側の調査点
+			VECTOR currSegPos = VAdd(p0, VScale(segDir, t));
+
+			// 壁側の最短点
+			VECTOR currBoxPos;
+			currBoxPos.x = Clamp(currSegPos.x, boxMin.x, boxMax.x);
+			currBoxPos.y = Clamp(currSegPos.y, boxMin.y, boxMax.y);
+			currBoxPos.z = Clamp(currSegPos.z, boxMin.z, boxMax.z);
+
+			// 2点間の距離を計算
+			VECTOR diff = VSub(currSegPos, currBoxPos);
+			float distSq = VDot(diff, diff);
+
+			// 最短記録の更新と座標の保存
+			if (distSq < minDistSq)
+			{
+				minDistSq = distSq;
+				if (outSegPos) *outSegPos = currSegPos;
+				if (outBoxPos) *outBoxPos = currBoxPos;
+			}
+		}
+
+		return minDistSq;
+	}
+
 }
+
+	
