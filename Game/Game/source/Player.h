@@ -74,11 +74,17 @@ protected:
 	// 移動方向を決める
 	VECTOR _v;
 
+	// 自動移動
+	bool _isAutoMove{ false };
+
 	// ジャンプ用
 	float _vY;
 	float _gravity;
 	float _jumpSpeed;
 	bool  _isGrounded;
+
+	// 攻撃
+	bool _canAttack { true };
 
 	// 無敵状態フラグ
 	bool _isInvincible { false };

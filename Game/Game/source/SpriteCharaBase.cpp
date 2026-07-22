@@ -68,17 +68,17 @@ void SpriteCharaBase::SetSpriteAnimTable(const std::unordered_map<STATUS, Sprite
 	_spriteAnimTable = table;
 }
 
-void SpriteCharaBase::UpdateFacing(const VECTOR& input)
+void SpriteCharaBase::UpdateFacing(const VECTOR& dir)
 {
-	if (VSize(input) == 0.0f) return;
+	if (VSize(dir) == 0.0f) return;
 
-	if (fabs(input.x) > fabs(input.z))
+	if (fabs(dir.x) > fabs(dir.z))
 	{
-		_facing = (input.x > 0.0f) ? Facing::Left : Facing::Right;
+		_facing = (dir.x > 0.0f) ? Facing::Right : Facing::Left;
 	}
 	else
 	{
-		_facing = (input.z > 0.0f) ? Facing::Down : Facing::Up;
+		_facing = (dir.z > 0.0f) ? Facing::Up : Facing::Down;
 	}
 }
 

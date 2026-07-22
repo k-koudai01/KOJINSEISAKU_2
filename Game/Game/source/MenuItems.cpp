@@ -1,5 +1,5 @@
 #include "MenuItems.h"
-#include "Title.h"
+#include "ModeTitle.h"
 
 MenuItemToTitle::MenuItemToTitle(): MenuItemBase(nullptr, "Title")
 {
@@ -10,7 +10,7 @@ int MenuItemToTitle::Selected()
 {
 	if(!ModeServer::GetInstance()->Get("title"))
 	{
-		ModeServer::GetInstance()->Add(new Title(), 1, "title");
+		ModeServer::GetInstance()->Add(new ModeTitle(), 1, "title");
 	}
 
 	ModeBase* game = ModeServer::GetInstance()->Get("modeGame");

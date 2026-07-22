@@ -40,7 +40,7 @@ protected:
 	bool IsSpriteAnimationFinished() const;
 
 	// 2Dビルボード用
-	void UpdateFacing(const VECTOR& input);
+	void UpdateFacing(const VECTOR& dir);
 	virtual void UpdateSpriteAnimation(STATUS oldStatus);
 
 	int _frameIndex{ 0 };

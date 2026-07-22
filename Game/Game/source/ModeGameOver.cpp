@@ -3,7 +3,7 @@
 #include "ApplicationMain.h"
 #include "ModeGameOver.h"
 #include "ModeGame.h"
-#include "Title.h"	
+#include "ModeTitle.h"	
 
 bool ModeGameOver::Initialize()
 {
@@ -54,7 +54,7 @@ bool ModeGameOver::Process()
 		ModeBase* title = ModeServer::GetInstance()->Get("title");
 		if(!title)
 		{
-			ModeServer::GetInstance()->Add(new Title(), 1, "title");
+			ModeServer::GetInstance()->Add(new ModeTitle(), 1, "title");
 		}
 		// ゲームオーバーモードを削除
 		ModeServer::GetInstance()->Del(this);

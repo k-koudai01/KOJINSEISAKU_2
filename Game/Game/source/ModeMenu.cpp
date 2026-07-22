@@ -1,4 +1,3 @@
-
 #include "AppFrame.h"
 #include "ApplicationMain.h"
 #include "ApplicationGlobal.h"

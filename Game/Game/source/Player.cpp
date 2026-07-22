@@ -44,8 +44,8 @@ bool Player::Initialize()
 	_status = STATUS::IDLE;
 
 	// ˆÊ’uAŒü‚«‚Ì‰Šú‰»
-	_vPos = VGet(215.0f, 0.0f, 0.0f);
-	_vDir = VGet(0.0f, 0.0f, -1.0f);
+	_vPos = VGet(-215.0f, 0.0f, 0.0f);
+	_vDir = VGet(1.0f, 0.0f, 0.0f);
 
 	// “–‚½‚è”»’è‚Ì‰Šú‰»
 	_fColSubY = 10.0f;
@@ -110,7 +110,7 @@ bool Player::Process()
 	UpdateRotation();
 	UpdateAttack();
 
-	UpdateFacing(_v);
+	UpdateFacing(_vDir);
 	UpdateSpriteAnimation(oldStatus);
 
 	return true;
@@ -294,6 +294,9 @@ void Player::UpdateAttack()
 		}
 		return; 
 	}
+
+	// UŒ‚‹–‰Â‚ª‚È‚¢‚È‚ç”»’è‚µ‚È‚¢
+	if(!_canAttack) return;
 
 	int trg = ApplicationBase::GetInstance()->GetTrg();
 

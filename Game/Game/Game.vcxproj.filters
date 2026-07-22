@@ -5,314 +5,285 @@
       <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
       <Extensions>cpp;c;cc;cxx;c++;cppm;ixx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
     </Filter>
-    <Filter Include="ヘッダー ファイル">
-      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
-      <Extensions>h;hh;hpp;hxx;h++;hm;inl;inc;ipp;xsd</Extensions>
-    </Filter>
-    <Filter Include="リソース ファイル">
-      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
-      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
-    </Filter>
-    <Filter Include="ソース ファイル\Character">
-      <UniqueIdentifier>{8c751a9b-7043-4d1b-a630-d249418ab3d9}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="ソース ファイル\Character\Player">
-      <UniqueIdentifier>{6ac52a6c-65aa-4ddb-9a60-f3760f3225a0}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="ソース ファイル\カメラ">
-      <UniqueIdentifier>{e31a8b5e-fd84-4ff7-a82b-dbad9ab0e3e5}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="ソース ファイル\カメラ\メインカメラ">
-      <UniqueIdentifier>{ff5000ab-a895-4b26-bcca-4e5180855313}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="ソース ファイル\カメラ\FPSカメラ">
-      <UniqueIdentifier>{8434e6b5-454c-45a2-b01a-d3808a4ddd8c}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="ソース ファイル\カメラ\ベース">
-      <UniqueIdentifier>{df47fba8-9942-4fdf-85a7-54e8d8d2f365}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="ヘッダー ファイル\カメラ">
-      <UniqueIdentifier>{74ab4c23-3158-4c9f-b2f8-9cfe6d4570ca}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="ヘッダー ファイル\カメラ\メインカメラ">
-      <UniqueIdentifier>{2da117d5-4d7f-4b09-8b87-0993343f8b83}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="ヘッダー ファイル\カメラ\FPSカメラ">
-      <UniqueIdentifier>{1dad78b8-8e03-430e-b547-580d9ea118a1}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="ヘッダー ファイル\カメラ\ベースカメラ">
-      <UniqueIdentifier>{7a56df7a-3358-4883-9617-e327bfff7dca}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="ソース ファイル\Character\キャラベース">
-      <UniqueIdentifier>{2a0b1af3-334c-43bc-ac06-7ff6b3e7b249}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="ヘッダー ファイル\キャラクター">
-      <UniqueIdentifier>{54f4e2c4-2a0e-4198-8ca7-26bad65a9ea4}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="ヘッダー ファイル\キャラクター\プレイヤー">
-      <UniqueIdentifier>{abe4a14f-4d9d-4d35-80e6-2f1f7e7d3024}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="ヘッダー ファイル\キャラクター\キャラベース">
-      <UniqueIdentifier>{8cff4c68-fd65-4cc1-8b68-02b8210cdd16}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="ソース ファイル\オブジェクト管理">
-      <UniqueIdentifier>{6a215fbc-c364-4d17-98ee-60f7dee0c9b7}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="ソース ファイル\オブジェクト管理\ベース">
-      <UniqueIdentifier>{53d7306a-d13b-44f1-9126-1100e0d0966b}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="ヘッダー ファイル\オブジェクト管理">
-      <UniqueIdentifier>{66d08479-2a4f-4eeb-ba76-7c6376ee1ee6}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="ヘッダー ファイル\オブジェクト管理\ベース">
-      <UniqueIdentifier>{b632aea2-6be6-484c-a6b3-bd47e9f229b4}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="ヘッダー ファイル\オブジェクト管理\工場">
-      <UniqueIdentifier>{d2034350-1445-4949-b64c-bc3c3911a618}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="ヘッダー ファイル\オブジェクト管理\マネージャー">
-      <UniqueIdentifier>{6dbda194-a676-412d-9129-6bcce5c207e0}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="ソース ファイル\オブジェクト管理\工場">
-      <UniqueIdentifier>{87a866be-eaf0-4d1f-bd34-399af60ac9c7}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="ソース ファイル\オブジェクト管理\マネージャー">
-      <UniqueIdentifier>{44fc49d2-a274-44da-be42-cb5a6b498193}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="ソース ファイル\Character\スプライトキャラベース">
-      <UniqueIdentifier>{67428fb2-1789-4984-8d17-49211c10371f}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="ヘッダー ファイル\キャラクター\スプライトキャラクターベース">
-      <UniqueIdentifier>{9c494b00-d62a-4426-85d6-dac2080bb2c3}</UniqueIdentifier>
-    </Filter>
     <Filter Include="ソース ファイル\UI">
       <UniqueIdentifier>{b3d269cc-aeb8-48a0-8da4-48e0f802d24c}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="ヘッダー ファイル\UI">
-      <UniqueIdentifier>{4ec0c785-0234-400b-ab32-6ab82ee1f38c}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="ヘッダー ファイル\UI\ベース">
-      <UniqueIdentifier>{44c2c6e4-1eee-4ffb-aa7d-3df95ac8bbcb}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="ソース ファイル\UI\ベース">
-      <UniqueIdentifier>{0199324e-54f4-45b7-84ad-211b55e1a7c3}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="ヘッダー ファイル\UI\描画ヘルパー">
-      <UniqueIdentifier>{21812350-49e4-49eb-b788-79ef1b48c033}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="ソース ファイル\UI\描画ヘルパー">
-      <UniqueIdentifier>{98542e0c-0891-49ae-b86f-520d2523e802}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="ヘッダー ファイル\UI\HUD">
-      <UniqueIdentifier>{aa3dc3c0-b5bc-4e88-bfcb-d2f2d4fdf2af}</UniqueIdentifier>
     </Filter>
     <Filter Include="ソース ファイル\UI\HUD">
       <UniqueIdentifier>{9f02a50e-7665-4508-8c85-28d427d6e9fc}</UniqueIdentifier>
     </Filter>
-    <Filter Include="ヘッダー ファイル\UI\メニュー">
-      <UniqueIdentifier>{10e7fd1e-b194-4305-8390-2d107f8efef7}</UniqueIdentifier>
+    <Filter Include="ソース ファイル\Mode">
+      <UniqueIdentifier>{5daf788b-ee48-4094-a36d-250432d2a8ad}</UniqueIdentifier>
     </Filter>
-    <Filter Include="ソース ファイル\UI\メニュー">
-      <UniqueIdentifier>{8cb02a1b-6b9b-4f2a-9c05-3930cd21aee7}</UniqueIdentifier>
+    <Filter Include="ソース ファイル\Mode\ModeGame">
+      <UniqueIdentifier>{309b8b72-2d85-46e1-8002-0e396448dde9}</UniqueIdentifier>
     </Filter>
-    <Filter Include="ソース ファイル\UI\メニュー\メニューコントロール">
-      <UniqueIdentifier>{ecefca39-a868-4d9d-b242-41daa810eba4}</UniqueIdentifier>
+    <Filter Include="ソース ファイル\Mode\ModeGameOver">
+      <UniqueIdentifier>{eafbf6f2-b686-4c80-b44b-a04558c20029}</UniqueIdentifier>
     </Filter>
-    <Filter Include="ソース ファイル\UI\メニュー\メニューコントロール\メニュー内容">
+    <Filter Include="ソース ファイル\UI\MenuItems">
       <UniqueIdentifier>{373e19a0-924e-4598-b591-5b410fa8f3fe}</UniqueIdentifier>
     </Filter>
-    <Filter Include="ヘッダー ファイル\UI\メニュー\メニューコントロール">
-      <UniqueIdentifier>{f3e7d3cb-e3ad-4f98-9cff-8f2e62bad556}</UniqueIdentifier>
+    <Filter Include="ソース ファイル\UI\MenuController">
+      <UniqueIdentifier>{bf792730-c8aa-438b-be89-7a1dc26523c0}</UniqueIdentifier>
     </Filter>
-    <Filter Include="ヘッダー ファイル\UI\メニュー\メニューコントロール\メニュー内容">
-      <UniqueIdentifier>{83eeb3ef-0bdc-48c0-8fa5-b40442d4c787}</UniqueIdentifier>
+    <Filter Include="ソース ファイル\UI\UIBase">
+      <UniqueIdentifier>{0199324e-54f4-45b7-84ad-211b55e1a7c3}</UniqueIdentifier>
     </Filter>
-    <Filter Include="ソース ファイル\コリジョン管理">
+    <Filter Include="ソース ファイル\UI\ModeMenu">
+      <UniqueIdentifier>{8cb02a1b-6b9b-4f2a-9c05-3930cd21aee7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\ApplicationGlobal">
+      <UniqueIdentifier>{64576f00-8d29-4eb0-b9f9-2573a8eba021}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\ApplicationMain">
+      <UniqueIdentifier>{3d0b400b-dae8-490e-b45c-c658ee9abf98}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\UI\UIRender">
+      <UniqueIdentifier>{98542e0c-0891-49ae-b86f-520d2523e802}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\System">
+      <UniqueIdentifier>{62815c63-ad09-4328-b2c9-8b48499edb5f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\System\CollisionManager">
       <UniqueIdentifier>{17085fe9-1883-41e9-a1c6-f1c0429ac94e}</UniqueIdentifier>
     </Filter>
-    <Filter Include="ヘッダー ファイル\コリジョン管理">
-      <UniqueIdentifier>{f417c2dd-d7c3-4178-94fb-e8347ed94b00}</UniqueIdentifier>
+    <Filter Include="ソース ファイル\Object">
+      <UniqueIdentifier>{acde414e-ab60-4d72-be93-b64d027673f4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\Object\Character">
+      <UniqueIdentifier>{8c751a9b-7043-4d1b-a630-d249418ab3d9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\Object\Character\Player">
+      <UniqueIdentifier>{6ac52a6c-65aa-4ddb-9a60-f3760f3225a0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\Object\Character\CharaBase">
+      <UniqueIdentifier>{2a0b1af3-334c-43bc-ac06-7ff6b3e7b249}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\Object\Character\SpriteCharaBase">
+      <UniqueIdentifier>{67428fb2-1789-4984-8d17-49211c10371f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\Object\ObjectBase">
+      <UniqueIdentifier>{53d7306a-d13b-44f1-9126-1100e0d0966b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\System\ObjectManager">
+      <UniqueIdentifier>{44fc49d2-a274-44da-be42-cb5a6b498193}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\System\ObjectFactry">
+      <UniqueIdentifier>{87a866be-eaf0-4d1f-bd34-399af60ac9c7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\Object\Bullet">
+      <UniqueIdentifier>{e5e3973e-c60b-4ee2-828b-e61ec797ee49}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\System\BulletManager">
+      <UniqueIdentifier>{23880984-e00c-4955-b72b-89003e0c17fb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\Object\Cube">
+      <UniqueIdentifier>{6696e530-6dac-4413-9e18-83c3db2cc40a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\Camera">
+      <UniqueIdentifier>{e31a8b5e-fd84-4ff7-a82b-dbad9ab0e3e5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\Camera\Camera">
+      <UniqueIdentifier>{ff5000ab-a895-4b26-bcca-4e5180855313}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\Camera\fpsCamera">
+      <UniqueIdentifier>{8434e6b5-454c-45a2-b01a-d3808a4ddd8c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\Camera\CameraBase">
+      <UniqueIdentifier>{df47fba8-9942-4fdf-85a7-54e8d8d2f365}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\Object\Character\Enemy">
+      <UniqueIdentifier>{9d190310-33cf-47d2-8951-edcf7ebbee92}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\Stage//Map">
+      <UniqueIdentifier>{f588c41c-d1cc-49fd-9a39-4f26e10a0f1e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\Effekt">
+      <UniqueIdentifier>{b8d2bb2d-e363-4b0f-90e6-3877f372070a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\Effekt\ModeEffekseer">
+      <UniqueIdentifier>{383f87d8-7b27-49b6-92c0-05d6432b76a1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\Mode\ModeTitle">
+      <UniqueIdentifier>{a122c136-bb08-4e58-9676-f2f7b330d1dd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\Mode\ModeGameClear">
+      <UniqueIdentifier>{3f6acb3f-a803-407b-8177-727ada22a437}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="source\ApplicationGlobal.cpp">
-      <Filter>ソース ファイル</Filter>
-    </ClCompile>
-    <ClCompile Include="source\ApplicationMain.cpp">
-      <Filter>ソース ファイル</Filter>
-    </ClCompile>
-    <ClCompile Include="source\ModeEffekseer.cpp">
-      <Filter>ソース ファイル</Filter>
-    </ClCompile>
-    <ClCompile Include="source\ModeGame.cpp">
-      <Filter>ソース ファイル</Filter>
-    </ClCompile>
     <ClCompile Include="source\Player.cpp">
-      <Filter>ソース ファイル\Character\Player</Filter>
-    </ClCompile>
-    <ClCompile Include="source\mymath.cpp">
-      <Filter>ソース ファイル</Filter>
-    </ClCompile>
-    <ClCompile Include="source\ModeGameOver.cpp">
-      <Filter>ソース ファイル</Filter>
-    </ClCompile>
-    <ClCompile Include="source\Title.cpp">
-      <Filter>ソース ファイル</Filter>
-    </ClCompile>
-    <ClCompile Include="source\ModeGameClear.cpp">
-      <Filter>ソース ファイル</Filter>
+      <Filter>ソース ファイル\Object\Character\Player</Filter>
     </ClCompile>
     <ClCompile Include="source\Camera.cpp">
-      <Filter>ソース ファイル\カメラ\メインカメラ</Filter>
+      <Filter>ソース ファイル\Camera\Camera</Filter>
     </ClCompile>
     <ClCompile Include="source\fpsCamera.cpp">
-      <Filter>ソース ファイル\カメラ\FPSカメラ</Filter>
+      <Filter>ソース ファイル\Camera\fpsCamera</Filter>
     </ClCompile>
     <ClCompile Include="source\CameraBase.cpp">
-      <Filter>ソース ファイル\カメラ\ベース</Filter>
+      <Filter>ソース ファイル\Camera\CameraBase</Filter>
     </ClCompile>
     <ClCompile Include="source\CharaBase.cpp">
-      <Filter>ソース ファイル\Character\キャラベース</Filter>
+      <Filter>ソース ファイル\Object\Character\CharaBase</Filter>
     </ClCompile>
     <ClCompile Include="source\ObjectBase.cpp">
-      <Filter>ソース ファイル\オブジェクト管理\ベース</Filter>
+      <Filter>ソース ファイル\Object\ObjectBase</Filter>
     </ClCompile>
     <ClCompile Include="source\ObjectFactry.cpp">
-      <Filter>ソース ファイル\オブジェクト管理\工場</Filter>
+      <Filter>ソース ファイル\System\ObjectFactry</Filter>
     </ClCompile>
     <ClCompile Include="source\ObjectManager.cpp">
-      <Filter>ソース ファイル\オブジェクト管理\マネージャー</Filter>
+      <Filter>ソース ファイル\System\ObjectManager</Filter>
     </ClCompile>
     <ClCompile Include="source\SpriteCharaBase.cpp">
-      <Filter>ソース ファイル\Character\スプライトキャラベース</Filter>
+      <Filter>ソース ファイル\Object\Character\SpriteCharaBase</Filter>
     </ClCompile>
     <ClCompile Include="source\UIBase.cpp">
-      <Filter>ソース ファイル\UI\ベース</Filter>
+      <Filter>ソース ファイル\UI\UIBase</Filter>
     </ClCompile>
     <ClCompile Include="source\UIRender.cpp">
-      <Filter>ソース ファイル\UI\描画ヘルパー</Filter>
+      <Filter>ソース ファイル\UI\UIRender</Filter>
     </ClCompile>
     <ClCompile Include="source\ModeHUD.cpp">
       <Filter>ソース ファイル\UI\HUD</Filter>
     </ClCompile>
     <ClCompile Include="source\ModeMenu.cpp">
-      <Filter>ソース ファイル\UI\メニュー</Filter>
-    </ClCompile>
-    <ClCompile Include="source\MenuController.cpp">
-      <Filter>ソース ファイル\UI\メニュー\メニューコントロール</Filter>
+      <Filter>ソース ファイル\UI\ModeMenu</Filter>
     </ClCompile>
     <ClCompile Include="source\MenuItems.cpp">
-      <Filter>ソース ファイル\UI\メニュー\メニューコントロール\メニュー内容</Filter>
-    </ClCompile>
-    <ClCompile Include="source\Enemy.cpp">
-      <Filter>ソース ファイル</Filter>
+      <Filter>ソース ファイル\UI\MenuItems</Filter>
     </ClCompile>
     <ClCompile Include="source\CollisionManager.cpp">
-      <Filter>ソース ファイル\コリジョン管理</Filter>
+      <Filter>ソース ファイル\System\CollisionManager</Filter>
+    </ClCompile>
+    <ClCompile Include="source\ModeGame.cpp">
+      <Filter>ソース ファイル\Mode\ModeGame</Filter>
+    </ClCompile>
+    <ClCompile Include="source\ModeGameClear.cpp">
+      <Filter>ソース ファイル\Mode\ModeGameClear</Filter>
+    </ClCompile>
+    <ClCompile Include="source\ModeGameOver.cpp">
+      <Filter>ソース ファイル\Mode\ModeGameOver</Filter>
+    </ClCompile>
+    <ClCompile Include="source\MenuController.cpp">
+      <Filter>ソース ファイル\UI\MenuController</Filter>
+    </ClCompile>
+    <ClCompile Include="source\ApplicationGlobal.cpp">
+      <Filter>ソース ファイル\ApplicationGlobal</Filter>
+    </ClCompile>
+    <ClCompile Include="source\ApplicationMain.cpp">
+      <Filter>ソース ファイル\ApplicationMain</Filter>
     </ClCompile>
     <ClCompile Include="source\Bullet.cpp">
-      <Filter>ソース ファイル</Filter>
+      <Filter>ソース ファイル\Object\Bullet</Filter>
     </ClCompile>
     <ClCompile Include="source\BulletManager.cpp">
-      <Filter>ソース ファイル</Filter>
-    </ClCompile>
-    <ClCompile Include="source\StageLoader.cpp">
-      <Filter>ソース ファイル</Filter>
+      <Filter>ソース ファイル\System\BulletManager</Filter>
     </ClCompile>
     <ClCompile Include="source\Cube.cpp">
-      <Filter>ソース ファイル</Filter>
+      <Filter>ソース ファイル\Object\Cube</Filter>
+    </ClCompile>
+    <ClCompile Include="source\Enemy.cpp">
+      <Filter>ソース ファイル\Object\Character\Enemy</Filter>
+    </ClCompile>
+    <ClCompile Include="source\StageLoader.cpp">
+      <Filter>ソース ファイル\Stage//Map</Filter>
+    </ClCompile>
+    <ClCompile Include="source\ModeEffekseer.cpp">
+      <Filter>ソース ファイル\Effekt\ModeEffekseer</Filter>
+    </ClCompile>
+    <ClCompile Include="source\ModeTitle.cpp">
+      <Filter>ソース ファイル\Mode\ModeTitle</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="source\ApplicationGlobal.h">
-      <Filter>ヘッダー ファイル</Filter>
-    </ClInclude>
-    <ClInclude Include="source\ApplicationMain.h">
-      <Filter>ヘッダー ファイル</Filter>
-    </ClInclude>
-    <ClInclude Include="source\ModeEffekseer.h">
-      <Filter>ヘッダー ファイル</Filter>
-    </ClInclude>
     <ClInclude Include="source\ModeGame.h">
-      <Filter>ヘッダー ファイル</Filter>
-    </ClInclude>
-    <ClInclude Include="source\mymath.h">
-      <Filter>ヘッダー ファイル</Filter>
-    </ClInclude>
-    <ClInclude Include="source\ModeGameOver.h">
-      <Filter>ヘッダー ファイル</Filter>
-    </ClInclude>
-    <ClInclude Include="source\Title.h">
-      <Filter>ヘッダー ファイル</Filter>
+      <Filter>ソース ファイル\Mode\ModeGame</Filter>
     </ClInclude>
     <ClInclude Include="source\ModeGameClear.h">
-      <Filter>ヘッダー ファイル</Filter>
+      <Filter>ソース ファイル\Mode\ModeGameClear</Filter>
     </ClInclude>
-    <ClInclude Include="source\Camera.h">
-      <Filter>ヘッダー ファイル\カメラ\メインカメラ</Filter>
-    </ClInclude>
-    <ClInclude Include="source\fpsCamera.h">
-      <Filter>ヘッダー ファイル\カメラ\FPSカメラ</Filter>
-    </ClInclude>
-    <ClInclude Include="source\CameraBase.h">
-      <Filter>ヘッダー ファイル\カメラ\ベースカメラ</Filter>
-    </ClInclude>
-    <ClInclude Include="source\Player.h">
-      <Filter>ヘッダー ファイル\キャラクター\プレイヤー</Filter>
+    <ClInclude Include="source\ModeGameOver.h">
+      <Filter>ソース ファイル\Mode\ModeGameOver</Filter>
     </ClInclude>
     <ClInclude Include="source\CharaBase.h">
-      <Filter>ヘッダー ファイル\キャラクター\キャラベース</Filter>
-    </ClInclude>
-    <ClInclude Include="source\ObjectBase.h">
-      <Filter>ヘッダー ファイル\オブジェクト管理\ベース</Filter>
-    </ClInclude>
-    <ClInclude Include="source\ObjectFactry.h">
-      <Filter>ヘッダー ファイル\オブジェクト管理\工場</Filter>
-    </ClInclude>
-    <ClInclude Include="source\ObjectManager.h">
-      <Filter>ヘッダー ファイル\オブジェクト管理\マネージャー</Filter>
+      <Filter>ソース ファイル\Object\Character\CharaBase</Filter>
     </ClInclude>
     <ClInclude Include="source\SpriteCharaBase.h">
-      <Filter>ヘッダー ファイル\キャラクター\スプライトキャラクターベース</Filter>
+      <Filter>ソース ファイル\Object\Character\SpriteCharaBase</Filter>
     </ClInclude>
-    <ClInclude Include="source\UIBase.h">
-      <Filter>ヘッダー ファイル\UI\ベース</Filter>
-    </ClInclude>
-    <ClInclude Include="source\UIRender.h">
-      <Filter>ヘッダー ファイル\UI\描画ヘルパー</Filter>
+    <ClInclude Include="source\Player.h">
+      <Filter>ソース ファイル\Object\Character\Player</Filter>
     </ClInclude>
     <ClInclude Include="source\ModeHUD.h">
-      <Filter>ヘッダー ファイル\UI\HUD</Filter>
+      <Filter>ソース ファイル\UI\HUD</Filter>
     </ClInclude>
-    <ClInclude Include="source\ModeMenu.h">
-      <Filter>ヘッダー ファイル\UI\メニュー</Filter>
-    </ClInclude>
-    <ClInclude Include="source\MenuController.h">
-      <Filter>ヘッダー ファイル\UI\メニュー\メニューコントロール</Filter>
+    <ClInclude Include="source\UIBase.h">
+      <Filter>ソース ファイル\UI\UIBase</Filter>
     </ClInclude>
     <ClInclude Include="source\MenuItems.h">
-      <Filter>ヘッダー ファイル\UI\メニュー\メニューコントロール\メニュー内容</Filter>
+      <Filter>ソース ファイル\UI\MenuItems</Filter>
     </ClInclude>
-    <ClInclude Include="source\Enemy.h">
-      <Filter>ヘッダー ファイル</Filter>
+    <ClInclude Include="source\MenuController.h">
+      <Filter>ソース ファイル\UI\MenuController</Filter>
     </ClInclude>
-    <ClInclude Include="source\CollisionManager.h">
-      <Filter>ヘッダー ファイル</Filter>
+    <ClInclude Include="source\ModeMenu.h">
+      <Filter>ソース ファイル\UI\ModeMenu</Filter>
+    </ClInclude>
+    <ClInclude Include="source\UIRender.h">
+      <Filter>ソース ファイル\UI\UIRender</Filter>
+    </ClInclude>
+    <ClInclude Include="source\ObjectBase.h">
+      <Filter>ソース ファイル\Object\ObjectBase</Filter>
+    </ClInclude>
+    <ClInclude Include="source\ObjectManager.h">
+      <Filter>ソース ファイル\System\ObjectManager</Filter>
+    </ClInclude>
+    <ClInclude Include="source\ObjectFactry.h">
+      <Filter>ソース ファイル\System\ObjectFactry</Filter>
+    </ClInclude>
+    <ClInclude Include="source\fpsCamera.h">
+      <Filter>ソース ファイル\Camera\fpsCamera</Filter>
+    </ClInclude>
+    <ClInclude Include="source\CameraBase.h">
+      <Filter>ソース ファイル\Camera\CameraBase</Filter>
+    </ClInclude>
+    <ClInclude Include="source\Camera.h">
+      <Filter>ソース ファイル\Camera\Camera</Filter>
     </ClInclude>
     <ClInclude Include="source\CameraManager.h">
-      <Filter>ヘッダー ファイル</Filter>
+      <Filter>ソース ファイル\Camera</Filter>
+    </ClInclude>
+    <ClInclude Include="source\CollisionManager.h">
+      <Filter>ソース ファイル\System\CollisionManager</Filter>
+    </ClInclude>
+    <ClInclude Include="source\ApplicationGlobal.h">
+      <Filter>ソース ファイル\ApplicationGlobal</Filter>
+    </ClInclude>
+    <ClInclude Include="source\ApplicationMain.h">
+      <Filter>ソース ファイル\ApplicationMain</Filter>
     </ClInclude>
     <ClInclude Include="source\Bullet.h">
-      <Filter>ヘッダー ファイル</Filter>
+      <Filter>ソース ファイル\Object\Bullet</Filter>
     </ClInclude>
     <ClInclude Include="source\BulletManager.h">
-      <Filter>ヘッダー ファイル</Filter>
-    </ClInclude>
-    <ClInclude Include="source\StageLoader.h">
-      <Filter>ヘッダー ファイル</Filter>
+      <Filter>ソース ファイル\System\BulletManager</Filter>
     </ClInclude>
     <ClInclude Include="source\Cube.h">
-      <Filter>ヘッダー ファイル</Filter>
+      <Filter>ソース ファイル\Object\Cube</Filter>
+    </ClInclude>
+    <ClInclude Include="source\Enemy.h">
+      <Filter>ソース ファイル\Object\Character\Enemy</Filter>
+    </ClInclude>
+    <ClInclude Include="source\StageLoader.h">
+      <Filter>ソース ファイル\Stage//Map</Filter>
+    </ClInclude>
+    <ClInclude Include="source\ModeEffekseer.h">
+      <Filter>ソース ファイル\Effekt\ModeEffekseer</Filter>
+    </ClInclude>
+    <ClInclude Include="source\ModeTitle.h">
+      <Filter>ソース ファイル\Mode\ModeTitle</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

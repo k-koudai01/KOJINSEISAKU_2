@@ -2,7 +2,7 @@
 #include "ApplicationMain.h"
 #include "ModeGameClear.h"
 #include "ModeGame.h"
-#include "Title.h"
+#include "ModeTitle.h"
 #include "BulletManager.h"
 
 bool ModeGameClear::Initialize()
@@ -60,7 +60,7 @@ bool ModeGameClear::Process()
 		ModeBase* title = modeServer->Get("title");
 		if(!title)
 		{
-			modeServer->Add(new Title(), 1, "title");
+			modeServer->Add(new ModeTitle(), 1, "title");
 		}
 
 		modeServer->Del(this);
