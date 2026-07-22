@@ -1,0 +1,28 @@
+#pragma once
+#include "appframe.h"
+#include "ObjectFactry.h"
+#include "Player.h"
+#include "camera.h"
+namespace UI
+{
+}
+
+class ModeTitle : public ModeBase
+{
+	typedef ModeBase base;        
+public:
+	bool Initialize() override;
+	bool Terminate() override;
+	bool Process() override;
+	bool Render() override;
+
+protected:
+	void UpdateTitlePlayer();
+
+	// オブジェクト
+	ObjectFactry _objFtr;
+	std::unique_ptr<Player> _player;
+	std::unique_ptr<Camera> _cam;
+	
+};
+
