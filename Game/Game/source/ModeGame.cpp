@@ -143,7 +143,7 @@ void ModeGame::CheckCharaMapCollision()
 			if(_player) { _collision.CheckCharacterCube(_player.get(), cube); }
 
 			// “G
-			// if(_enemy) { _collision.CheckCharacterCube(_enemy.get(), cube); }
+			if(_enemy) { _collision.CheckCharacterCube(_enemy.get(), cube); }
 		}
 	}
 }
