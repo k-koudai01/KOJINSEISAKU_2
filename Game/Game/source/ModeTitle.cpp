@@ -18,15 +18,12 @@ bool ModeTitle::Initialize()
 		_player->SetAutoMove(true);
 
 		// カメラの追従設定
-		_objFtr.SetUpCamera(_cam.get(), _player.get());
+		_objFtr.SetUpCamera(_cam.get(), _player.get(), false);
 		CameraManager::GetInstance()->SetActiveCamera(_cam.get());
 
-		// ターゲットのオフセットを設定
+		// タイトル用にカメラの位置
 		_cam->SetTargetOffset(VGet(200.0f, 0.0f, -30.0f));
 	}
-
-	_objFtr.SetUpCamera(_cam.get(), _player.get(), false);
-	
 	return true;
 }
 
