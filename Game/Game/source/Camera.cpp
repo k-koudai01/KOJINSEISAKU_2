@@ -60,9 +60,9 @@ void Camera::FollowUpdate()
 	const VECTOR playerPos = _player->GetPos();
 
 	// 注視点
-	_vTarget = VAdd(playerPos, VGet(0.0f, 60.0f, 0.0f));
+	_vTarget = VAdd(playerPos, _targetOffset);
 
-	// カメラ位置（後ろ＆上）
+	// カメラ位置
 	_vPos = VAdd(_vTarget, VGet(0.0f, 0.0f, -300.0f));
 }
 

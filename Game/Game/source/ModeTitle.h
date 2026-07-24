@@ -2,7 +2,7 @@
 #include "appframe.h"
 #include "ObjectFactry.h"
 #include "Player.h"
-#include "camera.h"
+#include "Camera.h"
 namespace UI
 {
 }

@@ -25,6 +25,10 @@ public:
 	virtual bool Damage(float damage) override;
 	bool IsParryWindow() const { return (_status == STATUS::ATTACK || _status == STATUS::RUNATTACK); }
 	void OnHitEnemy(); 
+
+	// Ž©“®ˆÚ“®ƒtƒ‰ƒO
+	void SetAutoMove(bool enable) { _isAutoMove = enable; }
+
 protected:
 
 	struct SpriteAnimDef

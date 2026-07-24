@@ -147,100 +147,88 @@ bool Player::ShouldDraw() const
 
 void Player::UpdateMovement()
 {
-	int key = ApplicationBase::GetInstance()->GetKey();
-	int trg = ApplicationBase::GetInstance()->GetTrg();
-
 	// 処理前の位置を保存
 	_vOldPos = _vPos;
-
-	// 移動方向を決める
-	_v = { 0,0,0 };
-
-	//　処理前のステータスを保存しておく
+	_v = { 0, 0, 0 };
 	STATUS oldStatus = _status;
 
-	// カメラ前方向から角度を出す
-	float fx = _cam->GetTarget().x - _cam->GetPos().x;
-	float fz = _cam->GetTarget().z - _cam->GetPos().z;
-	float camrad = atan2(fx, fz) - DEG2RAD(90.0f);
-
-	//左スティック値
-	lStickX = lx;
-	lStickZ = lz;
-
-	// ローカル入力ベクトル
-	VECTOR inputLocal = VGet(0.0f, 0.0f, 0.0f);
-
-	// 操作（キーボード）
-	if(key & PAD_INPUT_UP)
+	// 自動移動出ないなら入力を受け付ける
+	if(!_isAutoMove)
 	{
-		inputLocal.z = -1.0f;
-	}
-	if(key & PAD_INPUT_DOWN)
-	{
-		inputLocal.z = 1.0f;
-	}
-	if(key & PAD_INPUT_LEFT)
-	{
-		inputLocal.x = -1.0f;
-	}
-	if(key & PAD_INPUT_RIGHT)
-	{
-		inputLocal.x = 1.0f;
-	}
+		int key = ApplicationBase::GetInstance()->GetKey();
+		int trg = ApplicationBase::GetInstance()->GetTrg();
 
-	// アナログ入力の長さ/角度
-	float length = sqrt(lStickX * lStickX + lStickZ * lStickZ);
-	float radStick = atan2(lStickX, lStickZ);
+		// カメラ前方向から角度を出す
+		float fx = _cam->GetTarget().x - _cam->GetPos().x;
+		float fz = _cam->GetTarget().z - _cam->GetPos().z;
+		float camrad = atan2(fx, fz) - DEG2RAD(90.0f);
 
-	// アナログ左スティック用
-	if(length < _analogDeadZone)
-	{
-		length = 0.f;
-	}
-	else
-	{
-		length = _mvSpeed;
-	}
+		// 左スティック値
+		lStickX = lx;
+		lStickZ = lz;
 
-	// アナログ入力がない場合はキーボードで移動
-	if(length == 0.0f && VSize(inputLocal) > 0.0f)
-	{
-		length = _mvSpeed;
-		radStick = atan2(inputLocal.x, inputLocal.z);
-	}
+		// ローカル入力ベクトル
+		VECTOR inputLocal = VGet(0.0f, 0.0f, 0.0f);
 
+		// 操作（キーボード）
+		if(key & PAD_INPUT_UP) { inputLocal.z = -1.0f; }
+		if(key & PAD_INPUT_DOWN) { inputLocal.z = 1.0f; }
+		if(key & PAD_INPUT_LEFT) { inputLocal.x = -1.0f; }
+		if(key & PAD_INPUT_RIGHT) { inputLocal.x = 1.0f; }
 
-	// 移動ベクトル
-	_v.x = cos(radStick + camrad) * length;
-	_v.z = sin(radStick + camrad) * length;
+		// アナログ入力の長さ/角度
+		float length = sqrt(lStickX * lStickX + lStickZ * lStickZ);
+		float radStick = atan2(lStickX, lStickZ);
 
-	// 優先順：アナログ > キーボード
-	if(length > 0.0f)
-	{
-		_vInput = VGet(lStickZ, 0.0f, lStickX);
-		if(VSize(_vInput) > 0.0f) _vInput = VNorm(_vInput);
-	}
-	else
-	{
-		_vInput = inputLocal;
-		if(VSize(_vInput) > 0.0f) _vInput = VNorm(_vInput);
-	}
-
-	// 地上移動
-	if(_isGrounded && _status != STATUS::DAMAGE && _status != STATUS::ATTACK && _status != STATUS::RUNATTACK)
-	{
-		if(VSize(_v) > 0.0f)
+		// アナログ左スティック用
+		if(length < _analogDeadZone)
 		{
-			_status = STATUS::WALK;
+			length = 0.f;
 		}
 		else
 		{
-			_status = STATUS::IDLE;
+			length = _mvSpeed;
 		}
-	}
 
-	_vPos = VAdd(_vPos, _v);
+		// アナログ入力がない場合はキーボードで移動
+		if(length == 0.0f && VSize(inputLocal) > 0.0f)
+		{
+			length = _mvSpeed;
+			radStick = atan2(inputLocal.x, inputLocal.z);
+		}
+
+		// 移動ベクトル
+		_v.x = cos(radStick + camrad) * length;
+		_v.z = sin(radStick + camrad) * length;
+
+		// 優先順：アナログ > キーボード
+		if(length > 0.0f)
+		{
+			_vInput = VGet(lStickZ, 0.0f, lStickX);
+			if(VSize(_vInput) > 0.0f) _vInput = VNorm(_vInput);
+		}
+		else
+		{
+			_vInput = inputLocal;
+			if(VSize(_vInput) > 0.0f) _vInput = VNorm(_vInput);
+		}
+
+		// 地上移動
+		if(_isGrounded && _status != STATUS::DAMAGE && _status != STATUS::ATTACK && _status != STATUS::RUNATTACK)
+		{
+			if(VSize(_v) > 0.0f) { _status = STATUS::WALK; }
+			else { _status = STATUS::IDLE; }
+		}
+
+		// プレイヤーの位置を更新
+		_vPos = VAdd(_vPos, _v);
+	}
+	else
+	{
+		
+		_status = STATUS::WALK;         
+		_vDir = VGet(1.0f, 0.0f, 0.0f);
+	}
 }
 
 void Player::UpdateJump()

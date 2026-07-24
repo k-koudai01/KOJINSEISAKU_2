@@ -14,11 +14,19 @@ bool ModeTitle::Initialize()
 
 	if(_cam && _player)
 	{
+		// プレイヤーの自動移動を有効化
+		_player->SetAutoMove(true);
+
 		// カメラの追従設定
 		_objFtr.SetUpCamera(_cam.get(), _player.get());
 		CameraManager::GetInstance()->SetActiveCamera(_cam.get());
+
+		// ターゲットのオフセットを設定
+		_cam->SetTargetOffset(VGet(200.0f, 0.0f, -30.0f));
 	}
 
+	_objFtr.SetUpCamera(_cam.get(), _player.get(), false);
+	
 	return true;
 }
 

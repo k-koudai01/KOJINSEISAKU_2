@@ -31,7 +31,7 @@ std::unique_ptr<Camera> ObjectFactry::CreateCamera() const
 	return c;
 }
 
-void ObjectFactry::SetUpCamera(Camera* camera, Player* target) const
+void ObjectFactry::SetUpCamera(Camera* camera, Player* target, bool isFixed) const 
 {
 	if(camera == nullptr) return;
 
@@ -43,7 +43,7 @@ void ObjectFactry::SetUpCamera(Camera* camera, Player* target) const
 		camera->FollowUpdate();
 	}
 	
-	camera->SetFixedMode(true);
+	camera->SetFixedMode(isFixed);
 }
 
 void ObjectFactry::SetUpEnemy(Enemy* enemy, Player* target) const

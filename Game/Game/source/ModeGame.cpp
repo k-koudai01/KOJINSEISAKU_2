@@ -21,7 +21,7 @@ bool ModeGame::Initialize()
 	CameraManager::GetInstance()->SetActiveCamera(_cam.get());
 
 	// カメラ：プレイヤー追従設定
-	_objFtr.SetUpCamera(_cam.get(), _player.get());
+	_objFtr.SetUpCamera(_cam.get(), _player.get(), true);
 
 	// 敵：プレイヤー追従設定
 	_objFtr.SetUpEnemy(_enemy.get(), _player.get());

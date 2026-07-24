@@ -19,9 +19,6 @@ public:
 	virtual bool Render() override;
 
 	void MoveBy(const VECTOR& delta);            // カメラ位置とターゲットを同量だけ移動（パン）
-	void ZoomTowardsTarget(float amount);        // ターゲット方向にカメラ位置を移動（プラスで近づく、マイナスで遠ざかる）
-	void RotateAroundTarget(float deltaRad);     // ターゲットを中心にY軸回転（ラジアン）
-	bool UseStick();							 // スティック入力を使用する
 
 	// プレイヤー追従
 	void SetFollowTarget(Player* player) { _player = player; }
@@ -35,6 +32,9 @@ public:
 
 	// ボス戦用の固定カメラモード
 	void SetFixedMode(bool enable) { _isFixedMode = enable; }
+
+	// ターゲットオフセットの設定
+	void SetTargetOffset(const VECTOR& offset) { _targetOffset = offset; }
 protected:
 	Player* _player = nullptr; 
 	Enemy* _boss    = nullptr;
@@ -49,6 +49,9 @@ protected:
 	// ボス戦用のカメラ更新
 	void BossBattleUpdate();
 private:
+	// カメラ演出
 	void UpdateShake();
+
+	VECTOR _targetOffset{ 0.0f, 0.0f, 0.0f };
 };
 
