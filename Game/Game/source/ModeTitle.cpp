@@ -37,6 +37,9 @@ bool ModeTitle::Process()
 {
 	base::Process();
 
+	// アニメーション更新
+	SpriteAnimationManager::GetInstance()->Update(1.0f / 60.0f);
+
 	// タイトル画面のプレイヤー更新
 	UpdateTitlePlayer();
 

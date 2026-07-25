@@ -93,7 +93,6 @@ bool Player::Process()
 {
 	base::Process();
 	UpdateInvincibleTimer(); // 無敵時間の更新	
-	STATUS oldStatus = _status;
 
 	if(_damageCounter > 0)
 	{
@@ -104,7 +103,9 @@ bool Player::Process()
 			_status = STATUS::NONE;
 		}
 	}
-	
+
+	STATUS oldStatus = _status;
+
 	UpdateMovement();
 	UpdateJump();
 	UpdateRotation();
@@ -217,7 +218,7 @@ void Player::UpdateMovement()
 		if(_isGrounded && _status != STATUS::DAMAGE && _status != STATUS::ATTACK && _status != STATUS::RUNATTACK)
 		{
 			if(VSize(_v) > 0.0f) { _status = STATUS::WALK; }
-			else { _status = STATUS::IDLE; }
+			else				 { _status = STATUS::IDLE; }
 		}
 
 		// プレイヤーの位置を更新
@@ -225,9 +226,9 @@ void Player::UpdateMovement()
 	}
 	else
 	{
-		
 		_status = STATUS::WALK;         
-		_vDir = VGet(1.0f, 0.0f, 0.0f);
+		_vDir   = VGet(1.0f, 0.0f, 0.0f);
+		_v      = VGet(1.0f, 0.0f, 0.0f);
 	}
 }
 
