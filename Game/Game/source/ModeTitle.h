@@ -18,7 +18,10 @@ public:
 	bool Render() override;
 
 protected:
+	void InitTitleCamera();
 	void UpdateTitlePlayer();
+	void RenderBackground3D();
+	void ProcessMenuSelection();
 
 	// オブジェクト
 	ObjectFactry _objFtr;

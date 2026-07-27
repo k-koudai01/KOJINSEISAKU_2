@@ -102,33 +102,10 @@ bool UITitleMenu::Render()
 	// 縦横の歪みを防ぐため、小さい方のスケールを使う
 	float scale = (scaleX < scaleY) ? scaleX : scaleY;
 
-	// タイトルロゴ
-	int titleFontSize = static_cast<int>(TITLE_FONT_SIZE * scale);
-	SetFontSize(titleFontSize);
-
-	const char* title = "MY ACTION GAME";
-	int titleW = GetDrawStringWidth(title,static_cast<int>(strlen(title)));
-	int titleX = static_cast<int>(sw / 2 - titleW / 2.0);
-	int titleY = static_cast<int>(sh / 4);
-	DrawString(titleX, titleY, title, COLOR_TITLE);
-
-	// メニュー枠パネル
-	int panelW = static_cast<int>(PANEL_WIDTH  * scale);
-	int panelH = static_cast<int>(PANEL_HEIGHT * scale);
-	int panelX = static_cast<int>(sw / 2.0f - panelW / 2.0f);
-	int panelY = static_cast<int>(sh / 2.0f + PANEL_Y_OFFSET * scaleY);
-	UIRender::DrawPanel(panelX, panelY, panelW, panelH, COLOR_PANEL_BG, COLOR_TITLE);
-
-	// メニュー項目の描画
-	int centerX = static_cast<int>(sw / 2.0f);
-	int startY = panelY + static_cast<int>(20.0f * scaleY);
-	int spacing = static_cast<int>(ITEM_SPACING * scaleY);
-
-	for(int i = 0; i < static_cast<int>(Item::Max); ++i)
-	{
-		int itemY = startY + (i * spacing);
-		DrawMenuItem(MENU_ITEMS[i].item, MENU_ITEMS[i].label, centerX, itemY, scale);
-	}
+	// 描画処理
+	DrawTitleLogo(sw, sh, scale);
+	int panelY = DrawMenuPanel(sw, sh, scale, scaleY);
+	DrawMenuItems(sw, panelY, scale, scaleY);
 
 	return true;
 }
@@ -147,6 +124,30 @@ void UITitleMenu::SelectPrev()
 	_selectedItem = static_cast<Item>(current);
 }
 
+void UITitleMenu::DrawTitleLogo(float sw, float sh, float scale)
+{
+	// タイトルロゴ
+	int titleFontSize = static_cast<int>(TITLE_FONT_SIZE * scale);
+	SetFontSize(titleFontSize);
+
+	const char* title = "MY ACTION GAME";
+	int titleW = GetDrawStringWidth(title, static_cast<int>(strlen(title)));
+	int titleX = static_cast<int>(sw / 2 - titleW / 2.0);
+	int titleY = static_cast<int>(sh / 4);
+	DrawString(titleX, titleY, title, COLOR_TITLE);
+}
+
+int UITitleMenu::DrawMenuPanel(float sw, float sh, float scale, float scaleY)
+{
+	// メニュー枠パネル
+	int panelW = static_cast<int>(PANEL_WIDTH * scale);
+	int panelH = static_cast<int>(PANEL_HEIGHT * scale);
+	int panelX = static_cast<int>(sw / 2.0f - panelW / 2.0f);
+	int panelY = static_cast<int>(sh / 2.0f + PANEL_Y_OFFSET * scaleY);
+
+	UIRender::DrawPanel(panelX, panelY, panelW, panelH, COLOR_PANEL_BG, COLOR_TITLE);
+	return panelY;
+}
 
 void UITitleMenu::DrawMenuItem(Item item, const char* label, int centerX, int yPos, float scale) 
 {
@@ -168,4 +169,17 @@ void UITitleMenu::DrawMenuItem(Item item, const char* label, int centerX, int yP
 	}
 	int textX = centerX - static_cast<int>(TEXT_X_OFFSET * scale);
 	DrawString(textX, yPos, label, color);
+}
+
+void UITitleMenu::DrawMenuItems(float sw, int panelY, float scale, float scaleY)
+{
+	int centerX = static_cast<int>(sw / 2.0f);
+	int startY  = panelY + static_cast<int>(20.0f * scaleY);
+	int spacing = static_cast<int>(ITEM_SPACING * scaleY);
+
+	for(int i = 0; i < static_cast<int>(Item::Max); ++i)
+	{
+		int itemY = startY + (i * spacing);
+		DrawMenuItem(MENU_ITEMS[i].item, MENU_ITEMS[i].label, centerX, itemY, scale);
+	}
 }

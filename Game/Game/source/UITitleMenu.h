@@ -20,9 +20,12 @@ private:
 	void SelectNext();
 	void SelectPrev();
 
+	// 描画の細分化
+	void DrawTitleLogo(float sw, float sh, float scale);
+	int  DrawMenuPanel(float sw, float sh, float scale, float scaleY);
 	// メニュー項目の描画
+	void DrawMenuItems(float sw, int panelY, float scale, float scaleY);
 	void DrawMenuItem(Item item, const char* label, int centerX, int yPos, float scale);
-
 private:
 	Item  _selectedItem = Item::Start;
 	bool  _isDecided    = false;
