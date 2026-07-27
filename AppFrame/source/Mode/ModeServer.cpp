@@ -63,7 +63,8 @@ int ModeServer::Release(ModeBase *mode) {
 }
 
 // 全部削除
-void ModeServer::Clear() {
+void ModeServer::Clear()
+{
 	lstModeBase::reverse_iterator ite = _vMode.rbegin();
 	for (; ite != _vMode.rend(); ++ite ) {
 		(*ite)->Terminate();
@@ -82,7 +83,8 @@ void ModeServer::Clear() {
 
 
 // 削除予約されているか？
-bool ModeServer::IsDelRegist(ModeBase *mode) {
+bool ModeServer::IsDelRegist(ModeBase *mode)
+{
 	if (_vModeDel.size() > 0) {
 		lstModeBase::iterator iteDel = _vModeDel.begin();
 		for (; iteDel != _vModeDel.end(); ++iteDel) {

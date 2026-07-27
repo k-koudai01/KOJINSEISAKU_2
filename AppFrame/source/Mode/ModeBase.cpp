@@ -26,15 +26,14 @@ ModeBase::~ModeBase()
 
 
 // ModeServerに接続時、Process()の前に一度だけ呼ばれる
-bool	ModeBase::Initialize() {
-
-
+bool	ModeBase::Initialize() 
+{
 	return true;
 }
 
 // ModeServerから削除される際、一度だけ呼ばれる
-bool	ModeBase::Terminate() {
-
+bool	ModeBase::Terminate() 
+{
 	return true;
 }
 
