@@ -14,10 +14,16 @@ public:
 	bool Render() override;
 	
 	Item GetSelectedItem() const { return _selectedItem; }
-	bool IsDecided() const { return _isDecided; }
+	bool IsDecided() const       { return _isDecided;    }
 private:
-	void DrawMenuItem(Item item, const char* label, int yPos);
+	// メニュー操作の内部関数
+	void SelectNext();
+	void SelectPrev();
 
+	// メニュー項目の描画
+	void DrawMenuItem(Item item, const char* label, int centerX, int yPos, float scale);
+
+private:
 	Item  _selectedItem = Item::Start;
 	bool  _isDecided    = false;
 	float _decideTimer  = 0.0f;

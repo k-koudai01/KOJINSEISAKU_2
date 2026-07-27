@@ -110,6 +110,9 @@
     <Filter Include="ソース ファイル\Mode\ModeGameClear">
       <UniqueIdentifier>{3f6acb3f-a803-407b-8177-727ada22a437}</UniqueIdentifier>
     </Filter>
+    <Filter Include="ソース ファイル\UI\UITitleMenu">
+      <UniqueIdentifier>{ddabf5e8-43fb-4c30-8f2b-9157dbac7d96}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="source\Player.cpp">
@@ -197,7 +200,7 @@
       <Filter>ソース ファイル\Mode\ModeTitle</Filter>
     </ClCompile>
     <ClCompile Include="source\UITitleMenu.cpp">
-      <Filter>ソース ファイル</Filter>
+      <Filter>ソース ファイル\UI\UITitleMenu</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -289,7 +292,7 @@
       <Filter>ソース ファイル\Mode\ModeTitle</Filter>
     </ClInclude>
     <ClInclude Include="source\UITitleMenu.h">
-      <Filter>ソース ファイル</Filter>
+      <Filter>ソース ファイル\UI\UITitleMenu</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

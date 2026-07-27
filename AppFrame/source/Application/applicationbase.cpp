@@ -4,14 +4,17 @@
 ApplicationBase	*ApplicationBase::_lpInstance = NULL;
 
 
-ApplicationBase::ApplicationBase() {
+ApplicationBase::ApplicationBase() 
+{
 	_lpInstance = this;
 }
 
-ApplicationBase::~ApplicationBase() {
+ApplicationBase::~ApplicationBase()
+{
 }
 
-bool ApplicationBase::Initialize(HINSTANCE hInstance) {
+bool ApplicationBase::Initialize(HINSTANCE hInstance)
+{
 
 	// DXƒ‰ƒCƒuƒ‰ƒŠ‚Ì‰Šú‰»
 	if(AppWindowed()){
