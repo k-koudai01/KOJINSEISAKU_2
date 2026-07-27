@@ -1,9 +1,7 @@
 #pragma once
-
-#include	<string>
+#include <string>
 
 class ModeServer;
-
 
 class		ModeBase
 {
@@ -39,9 +37,9 @@ private:
 	void StepCount();
 
 	// モード内処理用
-	int		_cntMode;	// 本モードに入ってからのカウンタ, 0スタート
-	unsigned long	_tmMode;	// 本モードに入ってからの時間。ms
-	unsigned long	_tmStep;	// 前フレームからの経過時間。ms
+	int		_cntMode;			    // 本モードに入ってからのカウンタ, 0スタート
+	unsigned long	_tmMode;	    // 本モードに入ってからの時間。ms
+	unsigned long	_tmStep;	    // 前フレームからの経過時間。ms
 	unsigned long	_tmModeBase;	// このモードが始まった時間。ms
 	unsigned long	_tmPauseBase;	// ポーズ中のベース時間。ms
 	unsigned long	_tmPauseStep;	// ポーズ中の積算時間。ms 動作中、この値を _tmMode に用いる

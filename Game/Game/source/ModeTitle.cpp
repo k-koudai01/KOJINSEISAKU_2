@@ -8,6 +8,7 @@ bool ModeTitle::Initialize()
 {
 	if (!base::Initialize()) return false;
 
+	_bgHandle = LoadGraph("res/Title/origbig.png");
 	// 生成
 	_player = _objFtr.CreatePlayer();
 	_cam	= _objFtr.CreateCamera();
@@ -24,6 +25,9 @@ bool ModeTitle::Initialize()
 		// タイトル用にカメラの位置
 		_cam->SetTargetOffset(VGet(200.0f, 0.0f, -30.0f));
 	}
+
+	_titleUI = std::make_unique<UITitleMenu>();
+	_titleUI->Initialize();
 	return true;
 }
 
@@ -46,16 +50,52 @@ bool ModeTitle::Process()
 	// オブジェクトの更新
 	if(_player) { _player->Process(); }
 	if(_cam   ) { _cam->Process();	  }
+
+	// UIの更新
+	if(_titleUI)
+	{
+		_titleUI->Process();
+
+		// 決定されたらモード遷移などの判定をするだけ！
+		if(_titleUI->IsDecided())
+		{
+			switch(_titleUI->GetSelectedItem())
+			{
+			case UITitleMenu::Item::Start:
+				ModeServer::GetInstance()->Add(new ModeGame(), 1, "modegame");
+				ModeServer::GetInstance()->Del(this);
+				
+				break;
+			case UITitleMenu::Item::Exit:
+				PostQuitMessage(0);
+				break;
+			}
+		}
+	}
 	return true;
 }
 
 bool ModeTitle::Render()
 {
+	if(!_cam)
+	{
+		return false;
+	}
+
 	base::Render();
 
 	// 3D背景のクリア・カメラ設定
 	SetBackgroundColor(10, 15, 30);
 	ClearDrawScreen();
+
+	int sw = ApplicationBase::GetInstance()->DispSizeW();
+	int sh = ApplicationBase::GetInstance()->DispSizeH();
+
+	if(_bgHandle != -1)
+	{
+		SetUseZBuffer3D(FALSE);
+		DrawExtendGraph(0, 0, sw, sh, _bgHandle, TRUE);
+	}
 
 	// 3D基本設定
 	SetUseZBuffer3D(TRUE);
@@ -75,12 +115,17 @@ bool ModeTitle::Render()
 	// オブジェクト描画
 	if(_player) { _player->Render(); }
 
-	// ロゴ
+	if(_titleUI)
+	{
+		SetUseZBuffer3D(FALSE);
+		_titleUI->Render();
+	}
 	return true;
 }
 
 void ModeTitle::UpdateTitlePlayer()
 {
+
 	if(!_player) return;
 
 	//　位置の更新

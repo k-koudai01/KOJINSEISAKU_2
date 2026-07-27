@@ -196,6 +196,9 @@
     <ClCompile Include="source\ModeTitle.cpp">
       <Filter>ソース ファイル\Mode\ModeTitle</Filter>
     </ClCompile>
+    <ClCompile Include="source\UITitleMenu.cpp">
+      <Filter>ソース ファイル</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="source\ModeGame.h">
@@ -284,6 +287,9 @@
     </ClInclude>
     <ClInclude Include="source\ModeTitle.h">
       <Filter>ソース ファイル\Mode\ModeTitle</Filter>
+    </ClInclude>
+    <ClInclude Include="source\UITitleMenu.h">
+      <Filter>ソース ファイル</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

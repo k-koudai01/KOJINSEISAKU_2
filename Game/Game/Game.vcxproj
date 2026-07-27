@@ -184,6 +184,7 @@
     <ClCompile Include="source\StageLoader.cpp" />
     <ClCompile Include="source\UIBase.cpp" />
     <ClCompile Include="source\UIRender.cpp" />
+    <ClCompile Include="source\UITitleMenu.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="source\ApplicationGlobal.h" />
@@ -223,6 +224,7 @@
     <ClInclude Include="source\StageLoader.h" />
     <ClInclude Include="source\UIBase.h" />
     <ClInclude Include="source\UIRender.h" />
+    <ClInclude Include="source\UITitleMenu.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
