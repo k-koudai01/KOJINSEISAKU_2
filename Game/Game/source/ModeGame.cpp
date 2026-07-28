@@ -64,7 +64,7 @@ bool ModeGame::Process()
 
 	SpriteAnimationManager::GetInstance()->Update(1.0f / 60.0f);
 
-	if(_player) {_player->Process(); }
+	if(_player) { _player->Process();}
 	if(_enemy ) { _enemy->Process(); }
 	if(_cam) { _cam->Process(); }
 
@@ -150,8 +150,17 @@ void ModeGame::CheckCharaMapCollision()
 
 void ModeGame::AddHUD()
 {
-	if (!ModeServer::GetInstance()->Get("ModeHUD"))
+	// ModeServer‚©‚çModeHUD‚ğæ“¾
+	ModeHUD* hud = dynamic_cast<ModeHUD*>(ModeServer::GetInstance()->Get("ModeHUD"));
+
+	if(!hud)
 	{
-		ModeServer::GetInstance()->Add(new ModeHUD(), 200, "ModeHUD");
+		hud = new ModeHUD();
+		ModeServer::GetInstance()->Add(hud, 200, "ModeHUD");
+	}
+
+	if(hud && _player)
+	{
+		hud->SetPlayer(_player.get());
 	}
 }

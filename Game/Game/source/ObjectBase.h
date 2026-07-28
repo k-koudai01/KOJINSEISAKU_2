@@ -27,12 +27,13 @@ protected:
 	VECTOR _vPos{};
 	VECTOR _vDir{};    
 	VECTOR _vOldPos{}; //1フレーム前の位置
+	VECTOR _vScale{ 1.0f, 1.0f, 1.0f };
 	float _speed  { 0.0f };
 	float _radius { 0.0f };
-	VECTOR _vScale{ 1.0f, 1.0f, 1.0f };	// スケール
+	
 
-	int _handle{ -1 };				    // モデルハンドル
-	int _animId{ -1 };				    // アニメーションID
+	int _handle{ -1 }; // モデルハンドル
+	int _animId{ -1 }; // アニメーションID
 
 	std::map<std::string, int> _mModelHandle;             // マップ画像
 	std::unordered_map<std::string, std::string> _config; // コンフィグマップ

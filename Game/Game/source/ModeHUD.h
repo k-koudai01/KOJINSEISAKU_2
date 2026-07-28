@@ -14,14 +14,15 @@ public:
 	virtual bool Process() override;
 	virtual bool Render() override;
 
+	void SetPlayer(Player* player) { _player = player; }
 private:
 	// HP関連
 	void DrawHp(int x, int y, int maxHp, int curHp, int spacing);
 	void UpdateHpCache();
 
-	int _hpFullHandle { -1 };
-	int _hpEmptyHandle{ -1 };
-	int _hpCur        { -1 };
+	int _hpFullHandle ;
+	int _hpEmptyHandle;
+	int _hpCur        ;
 
 	// ポインター
 	ModeGame* _modeGame = nullptr;

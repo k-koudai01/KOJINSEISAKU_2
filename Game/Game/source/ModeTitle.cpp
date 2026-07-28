@@ -84,7 +84,7 @@ void ModeTitle::ProcessMenuSelection()
 	switch(_titleUI->GetSelectedItem())
 	{
 	case UITitleMenu::Item::Start:
-		ModeServer::GetInstance()->Add(new ModeGame(), 1, "modegame");
+		ModeServer::GetInstance()->Add(new ModeGame(), 1, "modeGame");
 		ModeServer::GetInstance()->Del(this);
 		break;
 	case UITitleMenu::Item::Exit:
