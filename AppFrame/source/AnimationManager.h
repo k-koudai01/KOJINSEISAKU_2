@@ -6,15 +6,15 @@ class AnimationManager
 public:
 	struct Instance
 	{
-		int id;					// 管理用ID
-		int handle;				// アニメーションハンドル
-		int attachIndex;		// アタッチインデックス
-		std::string name;		// アニメーション名
-		float totalTime;		// 総再生時間
-		float playTime;			// 再生時間
-		float speed;			// 再生速度
-		bool loop;				// ループ再生するかどうか
-		bool playing;			// 再生中フラグ
+		int id = -1;            // 管理用ID
+		int handle = -1;        // アニメーションハンドル
+		int attachIndex = -1;   // アタッチインデックス
+		std::string name;       // アニメーション名
+		float totalTime = 0.0f; // 総再生時間
+		float playTime = 0.0f;  // 再生時間
+		float speed = 1.0f;     // 再生速度
+		bool loop = false;      // ループ再生するかどうか
+		bool playing = false;   // 再生中フラグ
 	};
 	static AnimationManager* GetInstance();
 

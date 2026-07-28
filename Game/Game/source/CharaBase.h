@@ -40,7 +40,7 @@ public:
 	virtual bool Render();
 
 	//Hp
-	int  GetHP()   const        { return _hp;      }
+	float GetHP()   const       { return _hp;      }
 	bool IsAlive() const        { return _isAlive; }
 	void SetAlive(bool alive)   { _isAlive = alive; }
 

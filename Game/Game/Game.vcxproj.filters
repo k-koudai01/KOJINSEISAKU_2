@@ -193,9 +193,6 @@
     <ClCompile Include="source\StageLoader.cpp">
       <Filter>ソース ファイル\Stage//Map</Filter>
     </ClCompile>
-    <ClCompile Include="source\ModeEffekseer.cpp">
-      <Filter>ソース ファイル\Effekt\ModeEffekseer</Filter>
-    </ClCompile>
     <ClCompile Include="source\ModeTitle.cpp">
       <Filter>ソース ファイル\Mode\ModeTitle</Filter>
     </ClCompile>
@@ -284,9 +281,6 @@
     </ClInclude>
     <ClInclude Include="source\StageLoader.h">
       <Filter>ソース ファイル\Stage//Map</Filter>
-    </ClInclude>
-    <ClInclude Include="source\ModeEffekseer.h">
-      <Filter>ソース ファイル\Effekt\ModeEffekseer</Filter>
     </ClInclude>
     <ClInclude Include="source\ModeTitle.h">
       <Filter>ソース ファイル\Mode\ModeTitle</Filter>
