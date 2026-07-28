@@ -40,9 +40,10 @@ public:
 	virtual bool Render();
 
 	//Hp
-	float GetHP()   const       { return _hp;      }
-	bool IsAlive() const        { return _isAlive; }
-	void SetAlive(bool alive)   { _isAlive = alive; }
+	float GetHP()  const      { return _hp;                    }
+	bool IsAlive() const      { return _hp > 0.0f && _isAlive; }
+	bool IsDead()  const	  { return !_isAlive;              }
+	void SetAlive(bool alive) { _isAlive = alive;              }
 
 	// ˆÚ“®ŠÖ˜A
 	const VECTOR& GetInputVector() const { return _vInput; }

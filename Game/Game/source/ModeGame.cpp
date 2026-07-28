@@ -76,6 +76,11 @@ bool ModeGame::Process()
 	CheckCharaMapCollision();
 	_objMgr.ProcessAll();
 
+	if(_player && _player->IsDead() && _gameOverShown)
+	{
+		_gameOverShown = true;
+		ModeServer::GetInstance()->Add(new ModeGameOver(), 300, "ModeGameOver");
+	}
 	return true;
 }
 
