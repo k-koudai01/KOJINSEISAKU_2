@@ -3,9 +3,6 @@
 
 namespace
 {
-	// 開発時の基準解像度
-	constexpr int SCREEN_WIDTH = 1280;
-	constexpr int SCREEN_HEIGHT = 720;
 
 	// UI設定用の定数群
 	constexpr float TITLE_FONT_SIZE = 48.0f;
@@ -14,7 +11,8 @@ namespace
 	constexpr float PANEL_WIDTH     = 300.0f;
 	constexpr float PANEL_HEIGHT    = 120.0f;
 	constexpr float PANEL_Y_OFFSET  = 20.0f;   // 画面中央からのYオフセット
-										  
+	constexpr float PANEL_PADDING_Y = 20.0f;   // パネル内の上下余白
+
 	constexpr float CURSOR_X_OFFSET = 100.0;  // 画面中央からのカーソル位置
 	constexpr float TEXT_X_OFFSET   = 70.0;   // 画面中央からのテキスト位置
 	constexpr float ITEM_SPACING    = 45.0;   // 項目同士の間隔
@@ -93,19 +91,9 @@ bool UITitleMenu::Render()
 {
 	base::Render();
 
-	float sw = static_cast<float>(ApplicationBase::GetInstance()->DispSizeW());
-	float sh = static_cast<float>(ApplicationBase::GetInstance()->DispSizeH());
-
-	// 解像度に応じたスケーリングを計算
-	float scaleX = sw / SCREEN_WIDTH;
-	float scaleY = sh / SCREEN_HEIGHT;
-	// 縦横の歪みを防ぐため、小さい方のスケールを使う
-	float scale = (scaleX < scaleY) ? scaleX : scaleY;
-
-	// 描画処理
-	DrawTitleLogo(sw, sh, scale);
-	int panelY = DrawMenuPanel(sw, sh, scale, scaleY);
-	DrawMenuItems(sw, panelY, scale, scaleY);
+	DrawTitleLogo();
+	int panelY = DrawMenuPanel();
+	DrawMenuItems(panelY);
 
 	return true;
 }
@@ -124,21 +112,29 @@ void UITitleMenu::SelectPrev()
 	_selectedItem = static_cast<Item>(current);
 }
 
-void UITitleMenu::DrawTitleLogo(float sw, float sh, float scale)
+void UITitleMenu::DrawTitleLogo()
 {
-	// タイトルロゴ
-	int titleFontSize = static_cast<int>(TITLE_FONT_SIZE * scale);
-	SetFontSize(titleFontSize);
+	float scale = GetScale();
+	int sw = ScreenW();
+	int sh = ScreenH();
+
+	// タイトル文字列の描画
+	SetFontSize(static_cast<int>(TITLE_FONT_SIZE * scale));
 
 	const char* title = "MY ACTION GAME";
 	int titleW = GetDrawStringWidth(title, static_cast<int>(strlen(title)));
-	int titleX = static_cast<int>(sw / 2 - titleW / 2.0);
-	int titleY = static_cast<int>(sh / 4);
+	int titleX = static_cast<int>(sw / 2.0f - titleW / 2.0f);
+	int titleY = static_cast<int>(sh / 4.0f);
 	DrawString(titleX, titleY, title, COLOR_TITLE);
 }
 
-int UITitleMenu::DrawMenuPanel(float sw, float sh, float scale, float scaleY)
+int UITitleMenu::DrawMenuPanel()
 {
+	float scale = GetScale();
+	float scaleY = GetScaleY();
+	int sw = ScreenW();
+	int sh = ScreenH();
+
 	// メニュー枠パネル
 	int panelW = static_cast<int>(PANEL_WIDTH * scale);
 	int panelH = static_cast<int>(PANEL_HEIGHT * scale);
@@ -149,9 +145,10 @@ int UITitleMenu::DrawMenuPanel(float sw, float sh, float scale, float scaleY)
 	return panelY;
 }
 
-void UITitleMenu::DrawMenuItem(Item item, const char* label, int centerX, int yPos, float scale) 
+void UITitleMenu::DrawMenuItem(Item item, const char* label, int centerX, int yPos)
 {
 	bool isCurrent = (_selectedItem == item);
+	float scale = GetScale();
 
 	int itemFontSize = static_cast<int>(ITEM_FONT_SIZE * scale);
 	SetFontSize(itemFontSize);
@@ -160,6 +157,7 @@ void UITitleMenu::DrawMenuItem(Item item, const char* label, int centerX, int yP
 
 	if(isCurrent)
 	{
+		// 決定時は点滅、選択中はハイライト表示
 		bool isBlink = _isDecided && (GetNowCount() / BLINK_INTERVAL_MS % 2 == 0);
 		color = isBlink ? COLOR_DECIDED : COLOR_SELECTED;
 
@@ -171,15 +169,17 @@ void UITitleMenu::DrawMenuItem(Item item, const char* label, int centerX, int yP
 	DrawString(textX, yPos, label, color);
 }
 
-void UITitleMenu::DrawMenuItems(float sw, int panelY, float scale, float scaleY)
+void UITitleMenu::DrawMenuItems(int panelY)
 {
-	int centerX = static_cast<int>(sw / 2.0f);
-	int startY  = panelY + static_cast<int>(20.0f * scaleY);
+	int centerX  = ScreenW() / 2;
+	float scaleY = GetScaleY();
+
+	int startY = panelY + static_cast<int>(PANEL_PADDING_Y * scaleY);
 	int spacing = static_cast<int>(ITEM_SPACING * scaleY);
 
 	for(int i = 0; i < static_cast<int>(Item::Max); ++i)
 	{
 		int itemY = startY + (i * spacing);
-		DrawMenuItem(MENU_ITEMS[i].item, MENU_ITEMS[i].label, centerX, itemY, scale);
+		DrawMenuItem(MENU_ITEMS[i].item, MENU_ITEMS[i].label, centerX, itemY);
 	}
 }
