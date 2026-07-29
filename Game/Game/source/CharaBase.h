@@ -31,6 +31,7 @@ public:
 		DASHING,
 		DAMAGE,
 		STUN,
+		DIE,
 	};
 	STATUS _status;
 	
@@ -38,6 +39,10 @@ public:
 	virtual bool Terminate();
 	virtual bool Process();
 	virtual bool Render();
+
+	// ステータス
+	STATUS GetStatus() const      { return _status;   }
+	void SetStatus(STATUS status) { _status = status; }
 
 	//Hp
 	float GetHP()  const      { return _hp;                    }

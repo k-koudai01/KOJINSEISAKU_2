@@ -26,6 +26,7 @@ bool Player::Initialize()
 	SetSpriteSheet(STATUS::DAMAGE,    "res/Player/Player_Damage.png"   ,  5, 4);
 	SetSpriteSheet(STATUS::ATTACK,    "res/Player/Player_Attack.png"   ,  8, 4);
 	SetSpriteSheet(STATUS::RUNATTACK, "res/Player/Player_RunAttack.png",  8, 4);
+	SetSpriteSheet(STATUS::DIE,       "res/Player/Player_Die.png"      ,  4, 4);
 
 	SetSpriteAnimTable
 	({
@@ -36,6 +37,7 @@ bool Player::Initialize()
 		{ STATUS::DAMAGE,    {  5, 10.0f, false  } },
 		{ STATUS::ATTACK,    {  8, 20.0f, false  } },
 		{ STATUS::RUNATTACK, {  8, 20.0f, false  } },
+		{ STATUS::DIE,       {  4, 10.0f, false  } },
 	});
 
 	_spriteScale = 100.0f;
@@ -93,6 +95,14 @@ bool Player::Process()
 {
 	base::Process();
 	UpdateInvincibleTimer(); // –³“GŽžŠÔ‚ÌXV	
+
+	if(_status == STATUS::DIE)
+	{
+		STATUS oldStatus = _status;
+		UpdateFacing(_vDir);
+		UpdateSpriteAnimation(oldStatus);	
+		return true;
+	}
 
 	if(_damageCounter > 0)
 	{

@@ -46,6 +46,7 @@ protected:
 		{ STATUS::FALL,   { 1,   6.0f, true  } },
 		{ STATUS::DAMAGE, { 1,   6.0f, false } },
 		{ STATUS::ATTACK, { 1,   6.0f, false } },
+		{ STATUS::DIE,    { 1,   6.0f, false } },
 	};
 
 	int _spriteAnimId = -1;

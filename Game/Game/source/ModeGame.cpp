@@ -34,10 +34,8 @@ bool ModeGame::Initialize()
 	// メニュー初期化
 	_menuCtrl.Initialize();
 
-	// ゲーム開始時刻リセット
-	_gameElapsedSec = 0.0f;
-	_gameClearShown = false;
-	_gameOverShown = false; // 初期化
+	// ゲームオーバー関連
+	_gameOverShown = false;
 	return true;
 }
 
@@ -64,25 +62,11 @@ bool ModeGame::Process()
 
 	_menuCtrl.Process();
 
+	// アニメーション更新
 	SpriteAnimationManager::GetInstance()->Update(1.0f / 60.0f);
 
-	if(_player) { _player->Process();}
-	if(_enemy ) { _enemy->Process(); }
-	if(_cam) { _cam->Process(); }
-
-	BulletManager::GetInstance()->Process();
-
-	_collision.CheckPlayerEnemy(_player.get(), _enemy.get());
-	_collision.CheckPlayerAttack(_player.get(), _enemy.get());
-
-	CheckCharaMapCollision();
-	_objMgr.ProcessAll();
-
-	if(_player && _player->IsDead() && !_gameOverShown)
-	{
-		_gameOverShown = true;
-		ModeServer::GetInstance()->Add(new ModeGameOver(), 300, "ModeGameOver");
-	}
+	// ゲーム進行状態更新
+	UpdatePhase();
 	return true;
 }
 
@@ -129,7 +113,7 @@ bool ModeGame::Render()
 	BulletManager::GetInstance()->Render();
 
 	// デバッグ
-	_collision.DebugRenderCapsule(_player.get(), _enemy.get());
+	// _collision.DebugRenderCapsule(_player.get(), _enemy.get());
 
 	_objMgr.RenderAll();
 	if (_cam) { _cam->Render(); }
@@ -179,4 +163,70 @@ void ModeGame::DelHUD()
 	{
 		ModeServer::GetInstance()->Del(hud);
 	}
+}
+
+void ModeGame::UpdatePhase()
+{
+	switch(_phase)
+	{
+	case GamePhase::Playing:
+		UpdatePlaying();
+		break;
+
+	case GamePhase::GameOverAnim:
+		UpdateGameOverAnim();
+		break;
+
+	case GamePhase::GameOverUI:
+		// UI表示中は何もしない
+		break;
+	}
+}
+
+void ModeGame::UpdatePlaying()
+{
+	UpdataGameLogic();
+
+	// 死亡検知
+	if(_player && _player->IsDead())
+	{
+		_phase = GamePhase::GameOverAnim;
+		_gameOverTimer = 0.0f;
+
+		// プレイヤーを死亡状態に変更
+		_player->SetStatus(CharaBase::STATUS::DIE);
+	}
+}
+
+void ModeGame::UpdateGameOverAnim()
+{
+	// プレイヤーとカメラの更新だけ行う
+	if(_player) { _player->Process(); }
+	if(_cam) { _cam->Process(); }
+
+	// 演出タイマー
+	_gameOverTimer += 1.0f / 60.0f;
+	if(_gameOverTimer >= 2.0f)
+	{
+		_phase = GamePhase::GameOverUI;
+
+		// UI表示
+		ModeServer::GetInstance()->Add(new ModeGameOver(), 300, "ModeGameOver");
+	}
+}
+
+void ModeGame::UpdataGameLogic()
+{
+	if(_player) { _player->Process(); }
+	if(_enemy ) { _enemy->Process();  }
+	if(_cam	  ) { _cam->Process();    }
+	BulletManager::GetInstance()->Process();
+
+	// 当たり判定
+	_collision.CheckPlayerEnemy(_player.get(), _enemy.get());
+	_collision.CheckPlayerAttack(_player.get(), _enemy.get());
+	CheckCharaMapCollision();
+
+	// オブジェクトマネージャーの全オブジェクトを処理
+	_objMgr.ProcessAll();
 }

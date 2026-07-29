@@ -22,6 +22,15 @@ class ModeGame : public ModeBase
 {
 	typedef ModeBase base;
 public:
+
+	// ゲームの進行状態
+	enum class GamePhase
+	{
+		Playing,      // プレイ中
+		GameOverAnim, // ゲームオーバー演出
+		GameOverUI,   // ゲームオーバーUI表示中
+	};
+
 	virtual bool Initialize();
 	virtual bool Terminate();
 	virtual bool Process();
@@ -43,19 +52,22 @@ protected:
 	// 当たり判定
 	CollisionManager _collision;
 
-	// ゲーム開始時刻（ms）・クリア表示済みフラグ
-	unsigned long _gameStartMs = 0;
-	bool _gameClearShown = false; 
-
 	// ゲームオーバー表示済みフラグ
 	bool _gameOverShown = false;
-
-	// クリア判定
-	float _gameElapsedSec = 0.0f;     // 開始からの経過秒
 	
 private:
 	void AddHUD();
 	void DelHUD();
 
+	void UpdatePhase();
+	void UpdatePlaying();      // 通常プレイ中の処理
+	void UpdateGameOverAnim(); // 死亡演出中の処理
+	void UpdataGameLogic();    // ゲーム自体の更新処理(通常ゲーム処理の時だけ呼ばれる)
+
+private:
 	MenuController _menuCtrl;
+
+	GamePhase _phase     = GamePhase::Playing;
+	float _gameOverTimer = 0.0f; 
+
 };

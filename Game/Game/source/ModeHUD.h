@@ -20,9 +20,11 @@ private:
 	void DrawHp(int x, int y, int maxHp, int curHp, int spacing);
 	void UpdateHpCache();
 
-	int _hpFullHandle ;
-	int _hpEmptyHandle;
-	int _hpCur        ;
+	// ハンドル
+	int _hpFullHandle  {-1};
+	int _hpEmptyHandle {-1};
+
+	int _hpCur		   {-1};
 
 	// ポインター
 	ModeGame* _modeGame = nullptr;
