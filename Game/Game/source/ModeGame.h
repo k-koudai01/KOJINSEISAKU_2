@@ -55,6 +55,7 @@ protected:
 	
 private:
 	void AddHUD();
+	void DelHUD();
 
 	MenuController _menuCtrl;
 };

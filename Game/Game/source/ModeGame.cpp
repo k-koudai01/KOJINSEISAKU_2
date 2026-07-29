@@ -52,6 +52,8 @@ bool ModeGame::Terminate()
 	if(_cam   ) {_cam->Terminate();    _cam.reset();    }
 	BulletManager::GetInstance()->Terminate();
 
+	DelHUD();
+
 	base::Terminate();
 	return true;
 }
@@ -76,7 +78,7 @@ bool ModeGame::Process()
 	CheckCharaMapCollision();
 	_objMgr.ProcessAll();
 
-	if(_player && _player->IsDead() && _gameOverShown)
+	if(_player && _player->IsDead() && !_gameOverShown)
 	{
 		_gameOverShown = true;
 		ModeServer::GetInstance()->Add(new ModeGameOver(), 300, "ModeGameOver");
@@ -167,5 +169,14 @@ void ModeGame::AddHUD()
 	if(hud && _player)
 	{
 		hud->SetPlayer(_player.get());
+	}
+}
+
+void ModeGame::DelHUD()
+{
+	ModeHUD* hud = dynamic_cast<ModeHUD*>(ModeServer::GetInstance()->Get("ModeHUD"));
+	if(hud)
+	{
+		ModeServer::GetInstance()->Del(hud);
 	}
 }

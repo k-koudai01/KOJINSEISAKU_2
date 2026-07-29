@@ -3,9 +3,9 @@
 #include "ApplicationMain.h"
 #include "UIBase.h"
 
-class ModeGameOver : public ModeBase
+class ModeGameOver : public UIBase
 {
-	typedef ModeBase base;
+	typedef UIBase base;
 public:
 	enum class Item
 	{
@@ -15,14 +15,17 @@ public:
 	};
 
 	virtual bool Initialize() override;
-	virtual bool Terminate() override;
-	virtual bool Process() override;
-	virtual bool Render() override;
+	virtual bool Terminate()  override;
+	virtual bool Process()    override;
+	virtual bool Render()	  override;
 
 private:
+
+	//　メニュー項目
 	void SelectNext();
 	void SelectPrev();
 
+	// 描画
 	void DrawGameOverLogo();
 	void DrawMenuItems();
 
