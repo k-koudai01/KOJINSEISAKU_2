@@ -67,8 +67,6 @@ bool Player::Initialize()
 	_analogDeadZone = 0.2f;
 	lx = 0.0f;
 	lz = 0.0f;
-	lStickX = 0.0f;
-	lStickZ = 0.0f;
 
 	// ジャンプ関連の初期化
 	_vY = 0.0f;
@@ -104,23 +102,16 @@ bool Player::Process()
 		return true;
 	}
 
-	if(_damageCounter > 0)
-	{
-		_damageCounter -= 1.0f / 60.0f; 
-
-		if(_damageCounter < 0.0f)
-		{
-			_status = STATUS::NONE;
-		}
-	}
-
 	STATUS oldStatus = _status;
 
+	// 各更新処理
+	UpdateDamage();
 	UpdateMovement();
 	UpdateJump();
 	UpdateRotation();
 	UpdateAttack();
 
+	// 向きとアニメションの更新
 	UpdateFacing(_vDir);
 	UpdateSpriteAnimation(oldStatus);
 
@@ -156,90 +147,111 @@ bool Player::ShouldDraw() const
 	return true;
 }
 
+void Player::UpdateDamage()
+{
+	if(_damageCounter > 0.0f)
+	{
+		_damageCounter -= 1.0f / 60.0f;
+
+		if(_damageCounter <= 0.0f)
+		{
+			_status = STATUS::NONE;
+		}
+	}
+}
+
+VECTOR Player::CalculateInputVector()
+{
+	int key = ApplicationBase::GetInstance()->GetKey();
+
+	// カメラ前方方向から角度算出
+	float fx = _cam->GetTarget().x - _cam->GetPos().x;
+	float fz = _cam->GetTarget().z - _cam->GetPos().z;
+	float camrad = atan2(fx, fz) - DEG2RAD(90.0f);
+
+	// キーボード入力
+	VECTOR inputLocal = VGet(0.0f, 0.0f, 0.0f);
+	if(key & PAD_INPUT_UP   ) { inputLocal.z = -1.0f; }
+	if(key & PAD_INPUT_DOWN ) { inputLocal.z =  1.0f; }
+	if(key & PAD_INPUT_LEFT ) { inputLocal.x = -1.0f; }
+	if(key & PAD_INPUT_RIGHT) { inputLocal.x =  1.0f; }
+
+	// アナログスティック
+	float length   = sqrt(lx * lx + lz * lz);
+	float radStick = atan2(lx, lz);
+
+	if(length < _analogDeadZone)
+	{
+		length = 0.0f;
+
+	}
+	else
+	{
+		length = _mvSpeed;
+	}
+
+	// アナログ入力がない場合はキーボードで補完
+	if(length == 0.0f && VSize(inputLocal) > 0.0f)
+	{
+		length   = _mvSpeed;
+		radStick = atan2(inputLocal.x, inputLocal.z);
+	}
+
+	// 向きの入力情報を更新
+	if(length > 0.0f)
+	{
+		_vInput = VGet(lz, 0.0f, lx);
+		if(VSize(_vInput) > 0.0f) _vInput = VNorm(_vInput);
+
+	}
+	else
+	{
+		_vInput = inputLocal;
+		if(VSize(_vInput) > 0.0f) _vInput = VNorm(_vInput);
+	}
+
+	// カメラの向きを加味した最終移動ベクトル
+	VECTOR moveVec = VGet(0.0f, 0.0f, 0.0f);
+	moveVec.x = cos(radStick + camrad) * length;
+	moveVec.z = sin(radStick + camrad) * length;
+
+	return moveVec;
+}
 void Player::UpdateMovement()
 {
 	// 処理前の位置を保存
 	_vOldPos = _vPos;
 	_v = { 0, 0, 0 };
-	STATUS oldStatus = _status;
 
-	// 自動移動出ないなら入力を受け付ける
-	if(!_isAutoMove)
+	// 自動移動時
+	if(_isAutoMove)
 	{
-		int key = ApplicationBase::GetInstance()->GetKey();
-		int trg = ApplicationBase::GetInstance()->GetTrg();
-
-		// カメラ前方向から角度を出す
-		float fx = _cam->GetTarget().x - _cam->GetPos().x;
-		float fz = _cam->GetTarget().z - _cam->GetPos().z;
-		float camrad = atan2(fx, fz) - DEG2RAD(90.0f);
-
-		// 左スティック値
-		lStickX = lx;
-		lStickZ = lz;
-
-		// ローカル入力ベクトル
-		VECTOR inputLocal = VGet(0.0f, 0.0f, 0.0f);
-
-		// 操作（キーボード）
-		if(key & PAD_INPUT_UP) { inputLocal.z = -1.0f; }
-		if(key & PAD_INPUT_DOWN) { inputLocal.z = 1.0f; }
-		if(key & PAD_INPUT_LEFT) { inputLocal.x = -1.0f; }
-		if(key & PAD_INPUT_RIGHT) { inputLocal.x = 1.0f; }
-
-		// アナログ入力の長さ/角度
-		float length = sqrt(lStickX * lStickX + lStickZ * lStickZ);
-		float radStick = atan2(lStickX, lStickZ);
-
-		// アナログ左スティック用
-		if(length < _analogDeadZone)
-		{
-			length = 0.f;
-		}
-		else
-		{
-			length = _mvSpeed;
-		}
-
-		// アナログ入力がない場合はキーボードで移動
-		if(length == 0.0f && VSize(inputLocal) > 0.0f)
-		{
-			length = _mvSpeed;
-			radStick = atan2(inputLocal.x, inputLocal.z);
-		}
-
-		// 移動ベクトル
-		_v.x = cos(radStick + camrad) * length;
-		_v.z = sin(radStick + camrad) * length;
-
-		// 優先順：アナログ > キーボード
-		if(length > 0.0f)
-		{
-			_vInput = VGet(lStickZ, 0.0f, lStickX);
-			if(VSize(_vInput) > 0.0f) _vInput = VNorm(_vInput);
-		}
-		else
-		{
-			_vInput = inputLocal;
-			if(VSize(_vInput) > 0.0f) _vInput = VNorm(_vInput);
-		}
-
-		// 地上移動
-		if(_isGrounded && _status != STATUS::DAMAGE && _status != STATUS::ATTACK && _status != STATUS::RUNATTACK)
-		{
-			if(VSize(_v) > 0.0f) { _status = STATUS::WALK; }
-			else				 { _status = STATUS::IDLE; }
-		}
-
-		// プレイヤーの位置を更新
+		_status = STATUS::WALK;
+		_vDir = VGet(1.0f, 0.0f, 0.0f);
+		_v = VGet(1.0f, 0.0f, 0.0f);
 		_vPos = VAdd(_vPos, _v);
+		return;
 	}
-	else
+
+	// 入力ベクトルの計算
+	_v = CalculateInputVector();
+
+	// 地上での歩き・待機ステータス切り替え
+	bool canChangeGroundStatus =
+		(
+			_isGrounded &&
+			_status != STATUS::DAMAGE &&
+			_status != STATUS::ATTACK &&
+			_status != STATUS::RUNATTACK
+		);
+
+	if(canChangeGroundStatus)
 	{
-		_status = STATUS::WALK;         
-		_vDir   = VGet(1.0f, 0.0f, 0.0f);
-		_v      = VGet(1.0f, 0.0f, 0.0f);
+		_status = (VSize(_v) > 0.0f) ? STATUS::WALK : STATUS::IDLE;
 	}
+
+	// 座標の更新
+	_vPos = VAdd(_vPos, _v);
 }
 
 void Player::UpdateJump()
@@ -252,11 +264,6 @@ void Player::UpdateJump()
 		_vY = _jumpSpeed;
 		_isGrounded = false;
 		_status = STATUS::JUMP;
-
-		if(_status == STATUS::JUMP && !IsAnimationPlaying())
-		{
-			_status = STATUS::FALL;
-		}
 	}
 
 	if(!_isGrounded)
@@ -264,7 +271,7 @@ void Player::UpdateJump()
 		_vY += _gravity;
 		_vPos.y += _vY;
 
-		// 上昇が終わったら落下へ
+		// 上昇が切れたら落下アニメーション
 		if(_status == STATUS::JUMP && _vY <= 0.0f)
 		{
 			_status = STATUS::FALL;
@@ -274,8 +281,13 @@ void Player::UpdateJump()
 		if(_vPos.y <= 0.0f)
 		{
 			_vPos.y = 0.0f;
-			_vY = 0.0f;
+			_vY     = 0.0f;
 			_isGrounded = true;
+
+			if(_status == STATUS::FALL || _status == STATUS::JUMP)
+			{
+				_status = STATUS::IDLE;
+			}
 		}
 	}
 }

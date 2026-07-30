@@ -29,6 +29,7 @@ bool ModeGame::Initialize()
 	// HUD追加
 	AddHUD();
 
+	// ステージ読み込み
 	StageLoader::LoadStage("res/Map/Map.json", _objFtr, _objMgr);
 
 	// メニュー初期化
@@ -72,53 +73,12 @@ bool ModeGame::Process()
 
 bool ModeGame::Render()
 {
-	if (!_cam)
-	{
-		return false;
-	}
+	if(!_cam) { return false; }
 
-	// 画面を明るい色でクリア
-	SetBackgroundColor(64, 64, 64);
-	ClearDrawScreen();
+	SetupRenderState();
+	SetupCamera();
+	Render3DObjects();
 
-	base::Render();
-
-	// 3D基本設定
-	SetUseZBuffer3D(TRUE);
-	SetWriteZBuffer3D(TRUE);
-	SetUseBackCulling(TRUE);
-
-	//ライト設定
-	SetUseLighting(TRUE);
-
-	// カメラ設定更新
-	VECTOR pos	  = _cam->GetPos();
-	VECTOR target = _cam->GetTarget();
-
-
-	SetCameraPositionAndTarget_UpVecY(pos, target);
-	SetCameraNearFar(_cam->GetClipNear(), _cam->GetClipFar());
-
-	// 0,0,0を中心に線を引く
-	{
-		float linelength = 1000.f;
-		VECTOR v = { 0, 0, 0 };
-		DrawLine3D(VAdd(v, VGet(-linelength, 0, 0)), VAdd(v, VGet(linelength, 0, 0)), GetColor(255, 0, 0));
-		DrawLine3D(VAdd(v, VGet(0, -linelength, 0)), VAdd(v, VGet(0, linelength, 0)), GetColor(0, 255, 0));
-		DrawLine3D(VAdd(v, VGet(0, 0, -linelength)), VAdd(v, VGet(0, 0, linelength)), GetColor(0, 0, 255));
-	}
-
-	if(_player) { _player->Render(); }
-	if(_enemy ) { _enemy->Render(); }
-	BulletManager::GetInstance()->Render();
-
-	// デバッグ
-	// _collision.DebugRenderCapsule(_player.get(), _enemy.get());
-
-	_objMgr.RenderAll();
-	if (_cam) { _cam->Render(); }
-
-	SetUseLighting(TRUE);
 	return true;
 }
 
@@ -185,7 +145,7 @@ void ModeGame::UpdatePhase()
 
 void ModeGame::UpdatePlaying()
 {
-	UpdataGameLogic();
+	UpdateGameLogic();
 
 	// 死亡検知
 	if(_player && _player->IsDead())
@@ -215,7 +175,7 @@ void ModeGame::UpdateGameOverAnim()
 	}
 }
 
-void ModeGame::UpdataGameLogic()
+void ModeGame::UpdateGameLogic()
 {
 	if(_player) { _player->Process(); }
 	if(_enemy ) { _enemy->Process();  }
@@ -229,4 +189,52 @@ void ModeGame::UpdataGameLogic()
 
 	// オブジェクトマネージャーの全オブジェクトを処理
 	_objMgr.ProcessAll();
+}
+
+void ModeGame::SetupRenderState()
+{
+	// 画面クリア
+	SetBackgroundColor(64, 64, 64);
+	ClearDrawScreen();
+
+	base::Render();
+
+	// 3D基本設定
+	SetUseZBuffer3D(TRUE);
+	SetWriteZBuffer3D(TRUE);
+	SetUseBackCulling(TRUE);
+
+	// ライト設定
+	SetUseLighting(TRUE);
+}
+
+void ModeGame::SetupCamera()
+{
+	VECTOR pos    = _cam->GetPos();
+	VECTOR target = _cam->GetTarget();
+
+	SetCameraPositionAndTarget_UpVecY(pos, target);
+	SetCameraNearFar(_cam->GetClipNear(), _cam->GetClipFar());
+
+	// 0,0,0 を中心にしたデバッグ用軸線
+	float linelength = 1000.f;
+	VECTOR v = { 0, 0, 0 };
+	DrawLine3D(VAdd(v, VGet(-linelength, 0, 0)), VAdd(v, VGet(linelength, 0, 0)), GetColor(255, 0, 0));
+	DrawLine3D(VAdd(v, VGet(0, -linelength, 0)), VAdd(v, VGet(0, linelength, 0)), GetColor(0, 255, 0));
+	DrawLine3D(VAdd(v, VGet(0, 0, -linelength)), VAdd(v, VGet(0, 0, linelength)), GetColor(0, 0, 255));
+}
+
+void ModeGame::Render3DObjects()
+{
+	if(_player) { _player->Render(); }
+	if(_enemy ) { _enemy->Render();  }
+
+	BulletManager::GetInstance()->Render();
+
+	_objMgr.RenderAll();
+
+	if(_cam) { _cam->Render(); }
+
+	// デバッグ
+	// _collision.DebugRenderCapsule(_player.get(), _enemy.get());
 }

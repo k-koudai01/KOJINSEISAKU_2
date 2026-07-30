@@ -62,7 +62,12 @@ private:
 	void UpdatePhase();
 	void UpdatePlaying();      // 通常プレイ中の処理
 	void UpdateGameOverAnim(); // 死亡演出中の処理
-	void UpdataGameLogic();    // ゲーム自体の更新処理(通常ゲーム処理の時だけ呼ばれる)
+	void UpdateGameLogic();    // ゲーム自体の更新処理(通常ゲーム処理の時だけ呼ばれる)
+
+	// 描画用ヘルパー関数
+	void SetupRenderState(); // 3D/ライト等の基本設定
+	void SetupCamera();		 // カメラ適用&デバック軸線描画
+	void Render3DObjects();	 // 各オブジェクトの描画
 
 private:
 	MenuController _menuCtrl;

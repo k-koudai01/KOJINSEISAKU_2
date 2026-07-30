@@ -50,9 +50,11 @@ protected:
 	};
 
 	int _spriteAnimId = -1;
-	int _frameIndex = 0;
+	int _frameIndex   = 0;
 
 protected:
+	void UpdateDamage();
+	VECTOR CalculateInputVector();
 	void UpdateMovement();
 	void UpdateRotation();
 	void UpdateJump();
@@ -62,37 +64,31 @@ protected:
 	//　ダメージ点滅
 	bool ShouldDraw() const;
 
-	// ダメージカウンター
-	float _damageCounter = 0;
+	// ダメージカウンタ
+	float _damageCounter = 0.0f;
 
-	// カメラ
-	Camera* _cam;
+	// カメラ参照
+	Camera* _cam = nullptr;
 
-	//アナログスティック関係
-	float _analogDeadZone;
-	float lx, lz, rx, ry;
-	DINPUT_JOYSTATE di;
+	// アナログスティック関係
+	float _analogDeadZone = 0.2f;
+	float lx = 0.0f;
+	float lz = 0.0f;
 
-	//左スティックの値
-	float lStickX, lStickZ;
-
-	// 移動方向を決める
-	VECTOR _v;
+	// 移動方向ベクトル
+	VECTOR _v = VGet(0.0f, 0.0f, 0.0f);
 
 	// 自動移動
 	bool _isAutoMove{ false };
 
-	// ジャンプ用
-	float _vY;
-	float _gravity;
-	float _jumpSpeed;
-	bool  _isGrounded;
+	// ジャンプ関連
+	float _vY = 0.0f;
+	float _gravity = -0.8f;
+	float _jumpSpeed = 15.0f;
+	bool  _isGrounded{ true };
 
-	// 攻撃
-	bool _canAttack { true };
-
-	// 無敵状態フラグ
-	bool _isInvincible { false };
-
+	// 攻撃・無敵関連
+	bool _canAttack   { true  };
+	bool _isInvincible{ false };
 };
 
