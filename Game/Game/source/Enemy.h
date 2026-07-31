@@ -56,5 +56,6 @@ protected:
 	VECTOR    _targetDir  = VGet(0, 0, 0);
 	bool      _isParried  = false;
 
+	float _damageTimer = 0.0f;
 };
 

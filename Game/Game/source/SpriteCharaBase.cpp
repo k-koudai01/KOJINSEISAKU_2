@@ -6,6 +6,24 @@ bool SpriteCharaBase::Initialize()
 	return true;
 }
 
+bool SpriteCharaBase::Terminate()
+{
+	for(auto& pair : _spriteSheets)
+	{
+		for(int handle : pair.second.handles)
+		{
+			if(handle != -1)
+			{
+				DeleteGraph(handle);
+			}
+		}
+	}
+	_spriteSheets.clear();
+
+	base::Terminate();
+	return true;
+}
+
 bool SpriteCharaBase::Render()
 {
 	base::Render();
@@ -84,6 +102,7 @@ void SpriteCharaBase::UpdateFacing(const VECTOR& dir)
 
 void SpriteCharaBase::UpdateSpriteAnimation(STATUS oldStatus)
 {
+	// ステータスが変わった場合、またはアニメーションIDが無効な場合に新しいアニメーションを再生
 	if(oldStatus != _status || _spriteAnimId == -1) 
 	{
 		auto it = _spriteAnimTable.find(_status);

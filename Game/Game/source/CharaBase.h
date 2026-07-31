@@ -91,7 +91,8 @@ public:
 
 	// ダメージ
 	virtual bool Damage(float damage);
-	bool IsInvincible() const { return _invincibleTimer > 0.0f; } // 無敵状態か
+	bool IsInvincible() const      { return _invincibleTimer > 0.0f; }  // 無敵状態か
+	void SetInvincible(float time) { _invincibleTimer = time;        }  // 無敵状態にする
 
 	// アニメーション関連
 	int   PlayAnimation(std::string name, bool loop = false, float speed = 1.0f); // アニメーション再生。

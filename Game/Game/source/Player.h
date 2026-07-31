@@ -26,6 +26,10 @@ public:
 	bool IsParryWindow() const { return (_status == STATUS::ATTACK || _status == STATUS::RUNATTACK); }
 	void OnHitEnemy(); 
 
+	// ヒットフラグの判定と設定
+	bool HasHitEnemy() const { return _hasHitEnemy; }
+	void SetHasHitEnemy(bool hit) { _hasHitEnemy = hit; }
+
 	// 自動移動フラグ
 	void SetAutoMove(bool enable) { _isAutoMove = enable; }
 
@@ -90,5 +94,7 @@ protected:
 	// 攻撃・無敵関連
 	bool _canAttack   { true  };
 	bool _isInvincible{ false };
+
+	bool _hasHitEnemy{ false };
 };
 

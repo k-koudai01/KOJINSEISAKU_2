@@ -79,6 +79,8 @@ bool Player::Initialize()
 
 	_damageCounter = 0;
 
+	_hasHitEnemy = false;
+
 	return true;
 }
 
@@ -322,6 +324,8 @@ void Player::UpdateAttack()
 		{
 			_status = STATUS::ATTACK;
 		}
+
+		_hasHitEnemy = false;
 	}
 }
 

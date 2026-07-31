@@ -7,6 +7,7 @@ class SpriteCharaBase :public CharaBase
 	typedef CharaBase base;
 public:
 	virtual bool Initialize() override;
+	virtual bool Terminate() override;
 	virtual bool Render() override;
 
 protected:

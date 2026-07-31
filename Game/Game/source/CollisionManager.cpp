@@ -47,6 +47,7 @@ void CollisionManager::CheckPlayerAttack(Player* player, Enemy* enemy)
 	if(!player->IsAlive() || !enemy->IsAlive()) return;
 	if(!enemy->IsStunned()					  ) return;
 	if(!player->IsAttacking()				  ) return;
+	if(player->HasHitEnemy()				  ) return;
 
 	const VECTOR p0 = player->GetAttackCapsuleBottom();
 	const VECTOR p1 = player->GetAttackCapsuleTop();
@@ -60,7 +61,9 @@ void CollisionManager::CheckPlayerAttack(Player* player, Enemy* enemy)
 	{
 		enemy->Damage(1.0f);
 
-		CameraManager::GetInstance()->Shake(100.0f, 0.5f);
+		player->SetHasHitEnemy(true);
+
+		CameraManager::GetInstance()->Shake(20.0f, 0.5f);
 	}
 }
 

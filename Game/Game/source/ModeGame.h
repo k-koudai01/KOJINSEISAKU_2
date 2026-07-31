@@ -29,6 +29,8 @@ public:
 		Playing,      // プレイ中
 		GameOverAnim, // ゲームオーバー演出
 		GameOverUI,   // ゲームオーバーUI表示中
+		GameClearAnim,// ゲームクリア演出
+		GameClearUI,  // ゲームクリアUI表示中
 	};
 
 	virtual bool Initialize();
@@ -60,9 +62,10 @@ private:
 	void DelHUD();
 
 	void UpdatePhase();
-	void UpdatePlaying();      // 通常プレイ中の処理
-	void UpdateGameOverAnim(); // 死亡演出中の処理
-	void UpdateGameLogic();    // ゲーム自体の更新処理(通常ゲーム処理の時だけ呼ばれる)
+	void UpdatePlaying();       // 通常プレイ中の処理
+	void UpdateGameOverAnim();  // 死亡演出中の処理
+	void UpdateGameClearAnim(); // クリア演出中の処理
+	void UpdateGameLogic();     // ゲーム自体の更新処理(通常ゲーム処理の時だけ呼ばれる)
 
 	// 描画用ヘルパー関数
 	void SetupRenderState(); // 3D/ライト等の基本設定
@@ -73,6 +76,7 @@ private:
 	MenuController _menuCtrl;
 
 	GamePhase _phase     = GamePhase::Playing;
-	float _gameOverTimer = 0.0f; 
 
+	float _gameOverTimer  = 0.0f; 
+	float _gameClearTimer = 0.0f;
 };

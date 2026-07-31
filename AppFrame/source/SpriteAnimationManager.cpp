@@ -22,10 +22,17 @@ void SpriteAnimationManager::Stop(int id)
 
 void SpriteAnimationManager::Update(float dt)
 {
-	for(auto& kv : _instance)
+	for(auto it = _instance.begin(); it != _instance.end();)
 	{
-		auto& inst = kv.second;
-		if(!inst.playing) { continue; }
+		auto& inst = it->second;
+		if(!inst.playing)
+		{
+			if(!inst.loop)
+			{
+				it = _instance.erase(it);
+				continue;
+			}
+		}
 
 		inst.time += dt;
 		float frameTime = 1.0f / inst.fps;
@@ -35,7 +42,6 @@ void SpriteAnimationManager::Update(float dt)
 			inst.time -= frameTime;
 			inst.frame++;
 
-			// フレームが最後に達したらループか停止
 			if(inst.frame >= inst.frameCount)
 			{
 				if(inst.loop)
@@ -49,6 +55,7 @@ void SpriteAnimationManager::Update(float dt)
 				}
 			}
 		}
+		++it;
 	}
 }
 

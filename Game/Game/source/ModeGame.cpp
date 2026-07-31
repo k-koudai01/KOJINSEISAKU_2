@@ -140,7 +140,15 @@ void ModeGame::UpdatePhase()
 	case GamePhase::GameOverUI:
 		// UI表示中は何もしない
 		break;
+	case GamePhase::GameClearAnim:
+		UpdateGameClearAnim();
+		break;
+
+	case GamePhase::GameClearUI:
+		// UI表示中は何もしない
+		break;
 	}
+
 }
 
 void ModeGame::UpdatePlaying()
@@ -155,6 +163,13 @@ void ModeGame::UpdatePlaying()
 
 		// プレイヤーを死亡状態に変更
 		_player->SetStatus(CharaBase::STATUS::DIE);
+	}
+
+	if(_enemy && _enemy->IsDead())
+	{
+		_phase = GamePhase::GameClearAnim;
+		_gameClearTimer = 0.0f;
+		return;
 	}
 }
 
@@ -172,6 +187,22 @@ void ModeGame::UpdateGameOverAnim()
 
 		// UI表示
 		ModeServer::GetInstance()->Add(new ModeGameOver(), 300, "ModeGameOver");
+	}
+}
+
+void ModeGame::UpdateGameClearAnim()
+{
+	// プレイヤーとカメラの更新だけ行う
+	if(_player) { _player->Process(); }
+	if(_cam   ) { _cam->Process();    }
+
+	// 演出タイマー
+	_gameClearTimer += 1.0f / 60.0f;
+	if(_gameClearTimer >= 2.0f)
+	{
+		_phase = GamePhase::GameClearUI;
+		// UI表示
+		ModeServer::GetInstance()->Add(new ModeGameClear(), 300, "ModeGameClear");
 	}
 }
 

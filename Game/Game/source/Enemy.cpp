@@ -18,31 +18,35 @@ bool Enemy::Initialize()
 {
 	if(!base::Initialize()) { return false; }
 
-	SetSpriteSheet(STATUS::IDLE, "res/Enemy/Enemy_Idle.png", 4, 4);
-	SetSpriteSheet(STATUS::WALK, "res/Enemy/Enemy_Run.png" , 8, 4);
-	SetSpriteSheet(STATUS::RUN,  "res/Enemy/Enemy_Run.png" , 8, 4);
+	SetSpriteSheet(STATUS::IDLE,    "res/Enemy/Enemy_Idle.png"   , 4, 4);
+	SetSpriteSheet(STATUS::WALK,    "res/Enemy/Enemy_Run.png"    , 8, 4);
+	SetSpriteSheet(STATUS::RUN,     "res/Enemy/Enemy_Run.png"    , 8, 4);
+	SetSpriteSheet(STATUS::DAMAGE,  "res/Enemy/Enemy_Damage.png" , 6, 4);
+	SetSpriteSheet(STATUS::DIE,     "res/Enemy/Enemy_Die.png"    , 8, 4);
 
 	
 	SetSpriteAnimTable(
 	{
-		{ STATUS::IDLE, {  4,  10.0f, true  } },
-		{ STATUS::WALK, {  8,  10.0f, true  } },
-		{ STATUS::RUN,  {  8,  17.0f, true  } },
+		{ STATUS::IDLE,    {  4,  10.0f, true  } },
+		{ STATUS::WALK,    {  8,  10.0f, true  } },
+		{ STATUS::RUN,     {  8,  17.0f, true  } },
+		{ STATUS::DAMAGE,  {  6,   8.0f, false } },
+		{ STATUS::DIE,     {  8,  10.0f, false } },
 	});
 
 	_spriteScale = 300.0f;
-
 	_status = STATUS::IDLE;
 
-	_vPos = VGet(100.0f, 50.0f, -50.0f);
+	_vPos = VGet(100.0f, 0.0f, 0.0f);
 	_vDir = VGet(-1.0f, 0.0f, 0.0f);
 
-	_fColSubY = 17.0f;
-	_fCollisionR = 70.0f;
+	_fColSubY		  = 17.0f;
+	_fCollisionR      = 70.0f;
 	_fCollisionWeight = 20.0f;
 
 	_mvSpeed = 0.0f;
-	_hp = 5.0f;
+
+	_hp = 50.0f;
 
 	return true;
 }
@@ -55,14 +59,31 @@ bool Enemy::Terminate()
 
 bool Enemy::Process()
 {
+	STATUS oldStatus = _status;
+
 	base::Process();
 
-	STATUS oldStatus = _status;
-	
+	UpdateInvincibleTimer();
 
-	UpdateAI();
+	if(IsDead())
+	{
+		_status = STATUS::DIE; 
+		UpdateSpriteAnimation(oldStatus);
+		return true;
+	}
+
+	if(_damageTimer > 0.0f)
+	{
+		_damageTimer -= 1.0f / 60.0f;
+		_status = STATUS::DAMAGE; // タイマー中は強制的にDAMAGE状態をキープ
+	}
+
+	if(_status != STATUS::DAMAGE)
+	{
+		UpdateAI();
+	}
+
 	UpdateSpriteAnimation(oldStatus);
-
 	return true;
 }
 
@@ -73,40 +94,48 @@ bool Enemy::Render()
 
 void Enemy::UpdateSpriteAnimation(STATUS oldStatus)
 {
-	// スタンを優先
-	if(_bossState == BossState::STUN)
+	// 死亡時の処理
+	if(_status == STATUS::DIE)
 	{
-		_status = STATUS::STUN;
+		base::UpdateSpriteAnimation(oldStatus);
+		return;
+	}
+
+	// ダメージ中の処理
+	if(_status == STATUS::DAMAGE)
+	{
+		base::UpdateSpriteAnimation(oldStatus);
+		
+		// ダメージアニメーションが終了したら、ステータスをIDLEに戻す
+		if(_damageTimer <= 0.0f)
+		{
+			_status = STATUS::IDLE;
+		}
+		return;
 	}
 
 	if(_status != STATUS::RUN)
 	{
 		if(_mvSpeed > 0.0f)
 		{
-			if(_bossState == BossState::RUSH_ATTACK)
-			{
-				_status = STATUS::RUN;
-			}
-			else
-			{
-				_status = STATUS::WALK;
-			}
+			_status = (_bossState == BossState::RUSH_ATTACK) ? STATUS::RUN : STATUS::WALK;
 		}
 		else
 		{
 			_status = STATUS::IDLE;
 		}
 	}
-
 	base::UpdateSpriteAnimation(oldStatus);
 }
 
 bool Enemy::Damage(float damage)
 {
-	if(IsInvincible())
+	if(!IsStunned() && IsInvincible())
 	{
 		return false;
 	}
+
+	if(!_isAlive) return false;
 
 	if(!base::Damage(damage))
 	{
@@ -114,7 +143,9 @@ bool Enemy::Damage(float damage)
 	}
 
 	_status = STATUS::DAMAGE;
+	_damageTimer = 0.5f;
 
+	SetInvincible(0.1f);
 	return true;
 }
 
@@ -276,8 +307,6 @@ void Enemy::UpdateStun()
 {
 	_mvSpeed = 0.0f;
 	
-	// 画像
-
 	if(_stateTimer >= 2.0f)
 	{
 		_stateTimer = 0.0f; // タイマーリセット
