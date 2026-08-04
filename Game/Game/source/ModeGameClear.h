@@ -1,26 +1,34 @@
 #pragma once
 #include "appframe.h"
 #include "ApplicationMain.h"
+#include "UIBase.h"
 
-// ゲームクリア画面（モード）
-// 表示中は下位レイヤーの Process を停止させます。
-// 決定ボタン（PAD_INPUT_1）で閉じます。
-namespace UI
+class ModeGameClear : public UIBase
 {
-	constexpr const char* GAMECLEAR_LOGO   = "ゲームクリア！！";
-	constexpr const char* GAMECLEAR_RESUME = "もう一度！";
-	constexpr const char* GAMECLEAR_TITLE  = "おわり！";
-	constexpr       int   GAMECLEAR_SPCE   = 300;
-}
-
-class ModeGameClear : public ModeBase
-{
-	typedef ModeBase base;
+	typedef UIBase base;
 public:
+	enum class Item
+	{
+		Title = 0,
+		Retry,
+		Max
+	};
+
 	virtual bool Initialize() override;
 	virtual bool Terminate() override;
 	virtual bool Process() override;
 	virtual bool Render() override;
 
 private:
+	// メニュー項目操作
+	void SelectNext();
+	void SelectPrev();
+
+	// 描画処理
+	void DrawGameClearLogo();
+	void DrawMenuItems();
+
+private:
+	Item _selectedItem = Item::Title;
+	float _inputCooldown = 0.5f;
 };

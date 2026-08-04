@@ -46,7 +46,7 @@ bool Enemy::Initialize()
 
 	_mvSpeed = 0.0f;
 
-	_hp = 50.0f;
+	_hp = 5.0f;
 
 	return true;
 }
@@ -62,24 +62,20 @@ bool Enemy::Process()
 	STATUS oldStatus = _status;
 
 	base::Process();
-
 	UpdateInvincibleTimer();
 
 	if(IsDead())
 	{
-		_status = STATUS::DIE; 
-		UpdateSpriteAnimation(oldStatus);
-		return true;
+		_status = STATUS::DIE;
 	}
-
-	if(_damageTimer > 0.0f)
+	else if(_damageTimer > 0.0f)
 	{
 		_damageTimer -= 1.0f / 60.0f;
-		_status = STATUS::DAMAGE; // タイマー中は強制的にDAMAGE状態をキープ
+		_status = STATUS::DAMAGE;
 	}
-
-	if(_status != STATUS::DAMAGE)
+	else
 	{
+		// 生きていてダメージ中でなければ AI を動かす
 		UpdateAI();
 	}
 
@@ -89,6 +85,15 @@ bool Enemy::Process()
 
 bool Enemy::Render()
 {
+	bool result = base::Render(); // まず通常のキャラ描画を行う
+
+	DrawFormatString(1300, 10, GetColor(255, 255, 255),
+					 "[Enemy Debug] Status:%d | AnimID:%d | Frame:%d",
+					 static_cast<int>(_status),
+					 _spriteAnimId,
+					 _frameIndex
+	);
+
 	return base::Render();
 }
 

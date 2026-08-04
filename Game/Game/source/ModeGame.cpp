@@ -169,6 +169,9 @@ void ModeGame::UpdatePlaying()
 	{
 		_phase = GamePhase::GameClearAnim;
 		_gameClearTimer = 0.0f;
+
+		// 敵を死亡状態に変更
+		_enemy->SetStatus(CharaBase::STATUS::DIE);
 		return;
 	}
 }
@@ -192,9 +195,8 @@ void ModeGame::UpdateGameOverAnim()
 
 void ModeGame::UpdateGameClearAnim()
 {
-	// プレイヤーとカメラの更新だけ行う
-	if(_player) { _player->Process(); }
-	if(_cam   ) { _cam->Process();    }
+	// カメラの更新だけ行う
+	if(_cam) { _cam->Process(); }
 
 	// 演出タイマー
 	_gameClearTimer += 1.0f / 60.0f;
@@ -262,10 +264,10 @@ void ModeGame::Render3DObjects()
 
 	BulletManager::GetInstance()->Render();
 
-	_objMgr.RenderAll();
+	// _objMgr.RenderAll();
 
 	if(_cam) { _cam->Render(); }
 
 	// デバッグ
-	// _collision.DebugRenderCapsule(_player.get(), _enemy.get());
+	_collision.DebugRenderCapsule(_player.get(), _enemy.get());
 }

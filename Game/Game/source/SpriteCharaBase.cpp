@@ -102,19 +102,32 @@ void SpriteCharaBase::UpdateFacing(const VECTOR& dir)
 
 void SpriteCharaBase::UpdateSpriteAnimation(STATUS oldStatus)
 {
-	// ステータスが変わった場合、またはアニメーションIDが無効な場合に新しいアニメーションを再生
-	if(oldStatus != _status || _spriteAnimId == -1) 
+
+	if(oldStatus != _status)
 	{
 		auto it = _spriteAnimTable.find(_status);
-		if (it != _spriteAnimTable.end())
+		if(it != _spriteAnimTable.end())
 		{
 			_spriteAnimId = SpriteAnimationManager::GetInstance()->Play(
 				it->second.frames, it->second.fps, it->second.loop
 			);
+			_playCount++;
+		}
+	}
+	else if(_spriteAnimId == -1)
+	{
+		auto it = _spriteAnimTable.find(_status);
+		if(it != _spriteAnimTable.end())
+		{
+			_spriteAnimId = SpriteAnimationManager::GetInstance()->Play(
+				it->second.frames, it->second.fps, it->second.loop
+			);
+			_playCount++;
 		}
 	}
 
-	if (_spriteAnimId != -1)
+	// 通常のフレーム取得
+	if(_spriteAnimId != -1)
 	{
 		_frameIndex = SpriteAnimationManager::GetInstance()->GetFrame(_spriteAnimId);
 	}

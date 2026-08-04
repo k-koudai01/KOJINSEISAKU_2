@@ -46,5 +46,6 @@ protected:
 
 	int _frameIndex{ 0 };
 	int _spriteAnimId{ -1 };
+	int _playCount{ 0 };
 };
 
