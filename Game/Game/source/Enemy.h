@@ -41,11 +41,15 @@ protected:
 
 	// AI関連
 	void UpdateAI();
+	void UpdateStatusAndAI();                        // ステータスとAIの更新
 	void UpdateIdle(const VECTOR& playerPos);        // 待機状態
 	void UpdateShootAttack(const VECTOR& playerPos); // 遠距離攻撃
 	void UpdateRushPrep(const VECTOR& playerPos);    // 突進予兆
 	void UpdateRushAttack();                         // 突進攻撃
 	void UpdateStun();                               // スタン状態      
+
+	// 状態変更
+	void ChangeBossState(BossState newState);
 
 	Player* _player = nullptr;
 
@@ -57,5 +61,7 @@ protected:
 	bool      _isParried  = false;
 
 	float _damageTimer = 0.0f;
+private:
+	void DebugRender();
 };
 

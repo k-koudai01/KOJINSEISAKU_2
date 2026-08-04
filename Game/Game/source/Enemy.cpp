@@ -7,10 +7,21 @@
 
 namespace
 {
-	static constexpr auto DAMAGE_SHAKE_STRENGTH = 50.0f;
-	static constexpr auto DAMAGE_SHAKE_DURATION = 0.3f;
+	constexpr auto DAMAGE_SHAKE_STRENGTH = 50.0f;
+	constexpr auto DAMAGE_SHAKE_DURATION = 0.3f;
 
-	static constexpr auto RUN_SPEED = 8.0f; 
+	constexpr float RUN_SPEED		= 8.0f; 
+	constexpr float BACK_SPEED		= 2.0f;
+	constexpr float BULLET_SPEED	= 2.0f;
+	constexpr float BULLET_LIFETIME = 3.0f;
+
+	constexpr float IDLE_DURATION   = 2.0f;
+	constexpr float SHOOT_FIRE_TIME = 0.2f;
+	constexpr float SHOOT_END_TIME  = 0.8f;
+	constexpr float RUSH_PREP_BACK  = 0.2f;
+	constexpr float RUSH_PREP_END   = 0.9f;
+	constexpr float RUSH_DURATION   = 1.0f;
+	constexpr float STUN_DURATION   = 2.0f;
 }
 
 
@@ -64,20 +75,7 @@ bool Enemy::Process()
 	base::Process();
 	UpdateInvincibleTimer();
 
-	if(IsDead())
-	{
-		_status = STATUS::DIE;
-	}
-	else if(_damageTimer > 0.0f)
-	{
-		_damageTimer -= 1.0f / 60.0f;
-		_status = STATUS::DAMAGE;
-	}
-	else
-	{
-		// 生きていてダメージ中でなければ AI を動かす
-		UpdateAI();
-	}
+	UpdateStatusAndAI();
 
 	UpdateSpriteAnimation(oldStatus);
 	return true;
@@ -85,18 +83,22 @@ bool Enemy::Process()
 
 bool Enemy::Render()
 {
-	bool result = base::Render(); // まず通常のキャラ描画を行う
+	if(!base::Render()) { return false; }
 
+	DebugRender();
+
+	return true;
+}
+
+void Enemy::DebugRender()
+{
 	DrawFormatString(1300, 10, GetColor(255, 255, 255),
 					 "[Enemy Debug] Status:%d | AnimID:%d | Frame:%d",
 					 static_cast<int>(_status),
 					 _spriteAnimId,
 					 _frameIndex
 	);
-
-	return base::Render();
 }
-
 void Enemy::UpdateSpriteAnimation(STATUS oldStatus)
 {
 	// 死亡時の処理
@@ -171,6 +173,31 @@ void Enemy::UpdateRotation()
 	}
 }
 
+void Enemy::ChangeBossState(BossState newState)
+{
+	_bossState = newState;
+	_stateTimer = 0.0f;
+}
+
+void Enemy::UpdateStatusAndAI()
+{
+	if(IsDead())
+	{
+		_status = STATUS::DIE;
+		return;
+	}
+
+	if(_damageTimer > 0.0f)
+	{
+		_damageTimer -= 1.0f / 60.0f;
+		_status = STATUS::DAMAGE;
+		return;
+	}
+
+	// 生きていて被弾中でなければ AI を更新
+	UpdateAI();
+}
+
 // 敵AI
 void Enemy::UpdateAI()
 {
@@ -218,11 +245,10 @@ void Enemy::UpdateIdle(const VECTOR& PlayerPos)
 	UpdateRotation();
 
 	// 指定の時間たったら突進の予兆状態へ
-	if(_stateTimer >= 2.0f)
+	if(_stateTimer >= IDLE_DURATION)
 	{
 		_stateTimer = 0.0f;
-		_bossState = BossState::SHOOT_ATTACK;
-		_hasFired = false;
+		ChangeBossState(BossState::SHOOT_ATTACK);
 	}
 }
 
@@ -231,7 +257,7 @@ void Enemy::UpdateShootAttack(const VECTOR& playerPos)
 	_mvSpeed = 0.0f;
 	UpdateRotation();
 	
-	if(_stateTimer >= 0.2f && !_hasFired)
+	if(_stateTimer >= SHOOT_FIRE_TIME && !_hasFired)
 	{
 		_hasFired = true;
 
@@ -241,10 +267,10 @@ void Enemy::UpdateShootAttack(const VECTOR& playerPos)
 		BulletManager::GetInstance()->Spawn(_vPos, bulletDir, 10.0f, 3.0f);
 	}
 
-	if(_stateTimer >= 0.8f)
+	if(_stateTimer >= SHOOT_END_TIME)
 	{
-		_stateTimer = 0.0f; 
-		_bossState = BossState::RUSH_PREP;
+		_hasFired = false;
+		ChangeBossState(BossState::RUSH_PREP);
 	}
 
 }
@@ -254,9 +280,9 @@ void Enemy::UpdateRushPrep(const VECTOR& playerPos)
 	_mvSpeed = 0.0f;
 	UpdateRotation();
 
-	if(_stateTimer >= 0.2f)
+	if(_stateTimer >= RUSH_PREP_BACK)
 	{ 
-		_mvSpeed = 2.0f;
+		_mvSpeed = BACK_SPEED;
 		VECTOR backDir = VScale(_vDir, -1.0f);
 
 		backDir.z = 0.0f;
@@ -267,16 +293,15 @@ void Enemy::UpdateRushPrep(const VECTOR& playerPos)
 		_mvSpeed = 0.0f;
 	}
 
-	if(_stateTimer >= 0.9f)
+	if(_stateTimer >= RUSH_PREP_END)
 	{
-		_stateTimer  = 0.0f;
 		_targetDir   = _vDir;
 		_targetDir.z = 0.0f;
 
 		// 突進が始まる瞬間に、パリィフラグを false にリセットしておく
 		_isParried = false;
 
-		_bossState = BossState::RUSH_ATTACK;
+		ChangeBossState(BossState::RUSH_ATTACK);
 	}
 }
 
@@ -292,19 +317,9 @@ void Enemy::UpdateRushAttack()
     // プレイヤーのいる方向に向く
 	UpdateFacing(_targetDir);
 
-	if (_stateTimer >= 1.0f)
+	if(_stateTimer >= RUSH_DURATION)
 	{
-		_stateTimer = 0.0f;
-
-		if(_isParried)
-		{
-			_bossState = BossState::STUN;
-		}
-		else
-		{
-			_bossState = BossState::IDLE;
-		}
-		
+		ChangeBossState(_isParried ? BossState::STUN : BossState::IDLE);
 	}
 }
 
@@ -312,9 +327,8 @@ void Enemy::UpdateStun()
 {
 	_mvSpeed = 0.0f;
 	
-	if(_stateTimer >= 2.0f)
+	if(_stateTimer >= STUN_DURATION)
 	{
-		_stateTimer = 0.0f; // タイマーリセット
-		_bossState = BossState::IDLE;
+		ChangeBossState(BossState::IDLE);
 	}
 }
