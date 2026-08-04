@@ -22,6 +22,7 @@ public:
 
 	//　アクション関連
 	bool IsAttacking() const { return _isAttacking; } 
+	bool IsAttackActive() const;
 	virtual bool Damage(float damage) override;
 	bool IsParryWindow() const { return (_status == STATUS::ATTACK || _status == STATUS::RUNATTACK); }
 	void OnHitEnemy(); 
@@ -34,29 +35,6 @@ public:
 	void SetAutoMove(bool enable) { _isAutoMove = enable; }
 
 protected:
-
-	struct SpriteAnimDef
-	{
-		int frames;       // フレーム数
-		float fps;        // アニメーションの再生速度
-		bool loop;        // ループするかどうか
-	};
-
-	std::unordered_map<STATUS, SpriteAnimDef> _spriteAnimTable =
-	{
-		{ STATUS::IDLE,   { 1,   1.0f, true  } }, 
-		{ STATUS::WALK,   { 3,  10.0f, true  } },
-		{ STATUS::JUMP,   { 1,   6.0f, false } },
-		{ STATUS::FALL,   { 1,   6.0f, true  } },
-		{ STATUS::DAMAGE, { 1,   6.0f, false } },
-		{ STATUS::ATTACK, { 1,   6.0f, false } },
-		{ STATUS::DIE,    { 1,   6.0f, false } },
-	};
-
-	int _spriteAnimId = -1;
-	int _frameIndex   = 0;
-
-protected:
 	void UpdateDamage();
 	VECTOR CalculateInputVector();
 	void UpdateMovement();
@@ -64,10 +42,10 @@ protected:
 	void UpdateJump();
 	void UpdateAttack();
 
-
 	//　ダメージ点滅
 	bool ShouldDraw() const;
 
+protected:
 	// ダメージカウンタ
 	float _damageCounter = 0.0f;
 
@@ -96,5 +74,8 @@ protected:
 	bool _isInvincible{ false };
 
 	bool _hasHitEnemy{ false };
+
+	STATUS _debugOldStatus = STATUS::NONE;
+protected:
 };
 

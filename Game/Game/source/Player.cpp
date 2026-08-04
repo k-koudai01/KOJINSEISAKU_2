@@ -93,18 +93,18 @@ bool Player::Terminate()
 
 bool Player::Process()
 {
+	STATUS oldStatus = _status;
+	_debugOldStatus = oldStatus;
+
 	base::Process();
 	UpdateInvincibleTimer(); // 無敵時間の更新	
 
 	if(_status == STATUS::DIE)
 	{
-		STATUS oldStatus = _status;
 		UpdateFacing(_vDir);
-		UpdateSpriteAnimation(oldStatus);	
+		UpdateSpriteAnimation(oldStatus);
 		return true;
 	}
-
-	STATUS oldStatus = _status;
 
 	// 各更新処理
 	UpdateDamage();
@@ -128,6 +128,11 @@ bool Player::Render()
 
 	// DrawSphere3D(_vPos, 5.0f, 8, GetColor(255, 0, 0), GetColor(0, 255, 0), TRUE);
 
+	SetFontSize(20);
+
+	DrawFormatString(10, 1000, GetColor(255, 255, 255),
+					 "PlayCount: %d | AnimID: %d | Frame: %d",
+					 _playCount, _spriteAnimId, _frameIndex);
 	if(ShouldDraw())
 	{
 		return base::Render();
@@ -157,7 +162,10 @@ void Player::UpdateDamage()
 
 		if(_damageCounter <= 0.0f)
 		{
-			_status = STATUS::NONE;
+			if(_status != STATUS::DIE)
+			{
+				_status = STATUS::IDLE;
+			}
 		}
 	}
 }
@@ -329,6 +337,12 @@ void Player::UpdateAttack()
 	}
 }
 
+bool Player::IsAttackActive() const
+{
+	if(!_isAttacking) return false;
+	return (_frameIndex >= 3 && _frameIndex <= 5);
+}
+
 void Player::UpdateRotation()
 {
 	if(VSize(_v) == 0.0f) return;
@@ -339,6 +353,10 @@ void Player::UpdateRotation()
 
 bool Player::Damage(float damage)
 {
+	if(_status == STATUS::DIE)
+	{
+		return false;
+	}
 	if(IsInvincible())
 	{
 		return false;

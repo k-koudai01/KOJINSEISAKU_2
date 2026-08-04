@@ -46,7 +46,7 @@ void CollisionManager::CheckPlayerAttack(Player* player, Enemy* enemy)
 	if(!player            || !enemy           ) return;
 	if(!player->IsAlive() || !enemy->IsAlive()) return;
 	if(!enemy->IsStunned()					  ) return;
-	if(!player->IsAttacking()				  ) return;
+	if(!player->IsAttackActive()			  ) return;
 	if(player->HasHitEnemy()				  ) return;
 
 	const VECTOR p0 = player->GetAttackCapsuleBottom();
@@ -128,7 +128,7 @@ void CollisionManager::DebugRenderCapsule(const Player* player, const Enemy* ene
 		TRUE
 	);
 
-	if(player->IsAttacking())
+	if(player->IsAttackActive())
 	{
 		DrawCapsule3D
 		(
