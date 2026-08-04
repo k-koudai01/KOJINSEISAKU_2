@@ -45,6 +45,7 @@
     <ClCompile Include="source\SpriteAnimationManager.cpp" />
     <ClCompile Include="source\CollisionMath.cpp" />
     <ClCompile Include="source\StageDateReader.cpp" />
+    <ClCompile Include="..\..\Koudai_Home\AppFrame\source\FrameRateController.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="source\Application\ApplicationBase.h">
@@ -74,5 +75,6 @@
     <ClInclude Include="source\SpriteAnimationManager.h" />
     <ClInclude Include="source\CollisionMath.h" />
     <ClInclude Include="source\StageDateReader.h" />
+    <ClInclude Include="..\..\Koudai_Home\AppFrame\source\FrameRateController.h" />
   </ItemGroup>
 </Project>

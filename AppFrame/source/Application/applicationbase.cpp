@@ -7,6 +7,7 @@ ApplicationBase	*ApplicationBase::_lpInstance = NULL;
 ApplicationBase::ApplicationBase() 
 {
 	_lpInstance = this;
+	_frameRateController = std::make_unique<FrameRateController>(60.0);
 }
 
 ApplicationBase::~ApplicationBase()
@@ -17,7 +18,8 @@ bool ApplicationBase::Initialize(HINSTANCE hInstance)
 {
 
 	// DXライブラリの初期化
-	if(AppWindowed()){
+	if(AppWindowed())
+	{
 		ChangeWindowMode(true);							// ウィンドウモードに指定する
 	}
 	SetGraphMode(DispSizeW(), DispSizeH(), 32);
@@ -79,14 +81,16 @@ bool ApplicationBase::Input() {
 	return true;
 }
 
-bool ApplicationBase::Process() {
+bool ApplicationBase::Process() 
+{
 	_serverMode->ProcessInit();
 	_serverMode->Process();
 	_serverMode->ProcessFinish();
 	return true;
 }
 
-bool ApplicationBase::Render() {
+bool ApplicationBase::Render() 
+{
 	_serverMode->RenderInit();
 	_serverMode->Render();
 	_serverMode->RenderFinish();

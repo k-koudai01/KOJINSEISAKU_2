@@ -22,16 +22,13 @@ void SpriteAnimationManager::Stop(int id)
 
 void SpriteAnimationManager::Update(float dt)
 {
-	for(auto it = _instance.begin(); it != _instance.end();)
+	for(auto it = _instance.begin(); it != _instance.end(); ++it)
 	{
 		auto& inst = it->second;
+
 		if(!inst.playing)
 		{
-			if(!inst.loop)
-			{
-				it = _instance.erase(it);
-				continue;
-			}
+			continue;
 		}
 
 		inst.time += dt;
@@ -46,16 +43,16 @@ void SpriteAnimationManager::Update(float dt)
 			{
 				if(inst.loop)
 				{
-					inst.frame = 0;
+					inst.frame = 0; // ループ時は最初に戻る
 				}
 				else
 				{
-					inst.frame = inst.frameCount - 1;
-					inst.playing = false;
+					inst.frame = inst.frameCount - 1; 
+					inst.playing = false;             
+					break;                            
 				}
 			}
 		}
-		++it;
 	}
 }
 

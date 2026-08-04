@@ -4,6 +4,7 @@
 #include <stdlib.h>
 #include <time.h>
 #include "../Mode//ModeServer.h"
+#include "../FrameRateController.h"
 
 // EffekseerForDXLib.hをインクルードします。
 //#include "EffekseerForDXLib.h"
@@ -29,11 +30,13 @@ public:
 	virtual int GetKey() { return _gKey; }
 	virtual int GetTrg() { return _gTrg; }
 
+	FrameRateController* GetFrameRateController() { return _frameRateController.get(); }
 protected:
 	static	ApplicationBase	*_lpInstance;
 
 	int		_gKey, _gTrg;
 
 	ModeServer* _serverMode;
+	std::unique_ptr<FrameRateController> _frameRateController;
 
 };
