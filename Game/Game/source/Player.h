@@ -71,11 +71,7 @@ protected:
 	// 自動移動
 	bool _isAutoMove{ false };
 
-	// ジャンプ関連
-	float _vY = 0.0f;
-	float _gravity = -0.8f;
-	float _jumpSpeed = 15.0f;
-	bool  _isGrounded{ true };
+	
 
 	// 攻撃・無敵関連
 	bool _canAttack   { true  };

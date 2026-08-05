@@ -151,6 +151,7 @@
   <ItemGroup>
     <ClCompile Include="source\ApplicationGlobal.cpp" />
     <ClCompile Include="source\ApplicationMain.cpp" />
+    <ClCompile Include="source\Background2D.cpp" />
     <ClCompile Include="source\Bullet.cpp" />
     <ClCompile Include="source\BulletManager.cpp" />
     <ClCompile Include="source\Camera.cpp" />
@@ -184,6 +185,7 @@
   <ItemGroup>
     <ClInclude Include="source\ApplicationGlobal.h" />
     <ClInclude Include="source\ApplicationMain.h" />
+    <ClInclude Include="source\Background2D.h" />
     <ClInclude Include="source\Bullet.h" />
     <ClInclude Include="source\BulletManager.h" />
     <ClInclude Include="source\Camera.h" />

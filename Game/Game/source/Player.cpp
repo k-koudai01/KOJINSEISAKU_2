@@ -46,7 +46,7 @@ bool Player::Initialize()
 	_status = STATUS::IDLE;
 
 	// ˆÊ’uAŒü‚«‚Ì‰Šú‰»
-	_vPos = VGet(-215.0f, 0.0f, 0.0f);
+	_vPos = VGet(-215.0f, -30.0f, 0.0f);
 	_vDir = VGet(1.0f, 0.0f, 0.0f);
 
 	// “–‚½‚è”»’è‚Ì‰Šú‰»
@@ -122,17 +122,14 @@ bool Player::Process()
 
 bool Player::Render()
 {
-	int x = 0, y = 500, size = 16;
+	/*int x = 0, y = 500, size = 16;
 	SetFontSize(size);
 	DrawFormatString(x, y, GetColor(255, 0, 0), "  pos    = (%5.2f, %5.2f, %5.2f)", _vPos.x, _vPos.y, _vPos.z); y += size;
 
-	// DrawSphere3D(_vPos, 5.0f, 8, GetColor(255, 0, 0), GetColor(0, 255, 0), TRUE);
-
-	SetFontSize(20);
-
 	DrawFormatString(10, 1000, GetColor(255, 255, 255),
 					 "PlayCount: %d | AnimID: %d | Frame: %d",
-					 _playCount, _spriteAnimId, _frameIndex);
+					 _playCount, _spriteAnimId, _frameIndex);*/
+
 	if(ShouldDraw())
 	{
 		return base::Render();
@@ -299,9 +296,9 @@ void Player::UpdateJump()
 		}
 
 		// ’…’n”»’è
-		if(_vPos.y <= 0.0f)
+		if(_vPos.y <= -30.0f)
 		{
-			_vPos.y = 0.0f;
+			_vPos.y = -30.0f;
 			_vY     = 0.0f;
 			_isGrounded = true;
 

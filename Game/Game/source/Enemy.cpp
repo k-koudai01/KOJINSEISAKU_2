@@ -48,7 +48,7 @@ bool Enemy::Initialize()
 	_spriteScale = 300.0f;
 	_status = STATUS::IDLE;
 
-	_vPos = VGet(100.0f, 0.0f, 0.0f);
+	_vPos = VGet(100.0f, -0.0f, 0.0f);
 	_vDir = VGet(-1.0f, 0.0f, 0.0f);
 
 	_fColSubY		  = 17.0f;
@@ -85,7 +85,7 @@ bool Enemy::Render()
 {
 	if(!base::Render()) { return false; }
 
-	DebugRender();
+	// DebugRender();
 
 	return true;
 }

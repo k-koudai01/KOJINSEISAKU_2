@@ -14,7 +14,7 @@
 #include "ModeHUD.h"
 #include "MenuController.h"
 #include "StageLoader.h"
-
+#include "Background2D.h"
 
 constexpr float GAMECLEAR_TIMESEC = 30.0f;  // ƒNƒŠƒA‚Ü‚Å‚Ì•b”
 
@@ -50,6 +50,7 @@ protected:
 	std::unique_ptr<Camera> _cam;    
 	std::unique_ptr<Player> _player;
 	std::unique_ptr<Enemy> _enemy;
+	std::unique_ptr<Background2D> _bg;
 
 	// “–‚½‚è”»’è
 	CollisionManager _collision;

@@ -18,6 +18,9 @@ bool ModeGame::Initialize()
 		return false;
 	}
 
+	_bg = std::make_unique<Background2D>();
+	_bg->Initialize("res/Title/origbig.png");
+
 	CameraManager::GetInstance()->SetActiveCamera(_cam.get());
 
 	// カメラ：プレイヤー追従設定
@@ -49,6 +52,8 @@ bool ModeGame::Terminate()
 	if(_player) {_player->Terminate(); _player.reset(); }
 	if(_enemy ) { _enemy->Terminate();  _enemy.reset(); }
 	if(_cam   ) {_cam->Terminate();    _cam.reset();    }
+	if(_bg    ) {_bg->Terminate();     _bg.reset();     }
+
 	BulletManager::GetInstance()->Terminate();
 
 	DelHUD();
@@ -232,6 +237,11 @@ void ModeGame::SetupRenderState()
 
 	base::Render();
 
+	if(_bg)
+	{
+		_bg->Render();
+	}
+
 	// 3D基本設定
 	SetUseZBuffer3D(TRUE);
 	SetWriteZBuffer3D(TRUE);
@@ -250,11 +260,11 @@ void ModeGame::SetupCamera()
 	SetCameraNearFar(_cam->GetClipNear(), _cam->GetClipFar());
 
 	// 0,0,0 を中心にしたデバッグ用軸線
-	float linelength = 1000.f;
+	/*float linelength = 1000.f;
 	VECTOR v = { 0, 0, 0 };
 	DrawLine3D(VAdd(v, VGet(-linelength, 0, 0)), VAdd(v, VGet(linelength, 0, 0)), GetColor(255, 0, 0));
 	DrawLine3D(VAdd(v, VGet(0, -linelength, 0)), VAdd(v, VGet(0, linelength, 0)), GetColor(0, 255, 0));
-	DrawLine3D(VAdd(v, VGet(0, 0, -linelength)), VAdd(v, VGet(0, 0, linelength)), GetColor(0, 0, 255));
+	DrawLine3D(VAdd(v, VGet(0, 0, -linelength)), VAdd(v, VGet(0, 0, linelength)), GetColor(0, 0, 255));*/
 }
 
 void ModeGame::Render3DObjects()
@@ -269,5 +279,5 @@ void ModeGame::Render3DObjects()
 	if(_cam) { _cam->Render(); }
 
 	// デバッグ
-	_collision.DebugRenderCapsule(_player.get(), _enemy.get());
+	//_collision.DebugRenderCapsule(_player.get(), _enemy.get());
 }

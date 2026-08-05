@@ -103,7 +103,13 @@ public:
 	float GetAnimPlayTime() const { return _playTime; }       // 現在のアニメーションの再生時間を取得するゲッター
 	float GetAnimTotalTime() const { return _totalTime; }     // 現在のアニメーションの総時間を取得するゲッター
 
-	
+	// ジャンプ関連
+	void SetVY(float vy) { _vY = vy;   }
+	float GetVY() const  { return _vY; }
+
+	void SetGrounded(bool grounded) { _isGrounded = grounded; }
+	bool IsGrounded() const         { return _isGrounded; }
+
 protected:
 
 	// 2Dビルボード用
@@ -147,5 +153,11 @@ protected:
 	// 攻撃関連
 	bool  _isAttacking{ false };
 	float _attackCollisionR{ 10.0f };
+
+	// ジャンプ関連
+	float _vY = 0.0f;
+	float _gravity = -0.8f;
+	float _jumpSpeed = 15.0f;
+	bool  _isGrounded{ true };
 };
 
