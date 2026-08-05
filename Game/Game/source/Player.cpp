@@ -225,6 +225,17 @@ VECTOR Player::CalculateInputVector()
 	moveVec.x = cos(radStick + camrad) * length;
 	moveVec.z = sin(radStick + camrad) * length;
 
+	// à⁄ìÆêßå¿
+	if(!CanMoveVertical())
+	{
+		moveVec.z = 0.0f;
+	}
+
+	if(!CanMoveHorizontal())
+	{
+		moveVec.x = 0.0f;
+	}
+
 	return moveVec;
 }
 void Player::UpdateMovement()

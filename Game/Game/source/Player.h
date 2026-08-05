@@ -34,6 +34,14 @@ public:
 	// 自動移動フラグ
 	void SetAutoMove(bool enable) { _isAutoMove = enable; }
 
+	// 外部やステートから移動軸の制限を切り替える設定関数
+	void SetAllowMoveVertical(bool allow)   { _allowMoveVertical = allow; } 
+	void SetAllowMoveHorizontal(bool allow) { _allowMoveHorizontal = allow; }
+
+	// 移動可能かどうかの判定関数
+	bool CanMoveVertical() const   { return _allowMoveVertical; }
+	bool CanMoveHorizontal() const { return _allowMoveHorizontal; }
+
 protected:
 	void UpdateDamage();
 	VECTOR CalculateInputVector();
@@ -76,6 +84,11 @@ protected:
 	bool _hasHitEnemy{ false };
 
 	STATUS _debugOldStatus = STATUS::NONE;
-protected:
+
+private:
+	
+	// 移動制限フラグ
+	bool _allowMoveVertical  { false };
+	bool _allowMoveHorizontal{ true };
 };
 
