@@ -7,9 +7,6 @@
     <Filter Include="ソースファイル">
       <UniqueIdentifier>{2674fe26-0dba-461e-9a3e-0530d248c128}</UniqueIdentifier>
     </Filter>
-    <Filter Include="ソースファイル\AnimationManager">
-      <UniqueIdentifier>{4c522e1d-ee65-4897-b9f2-a9fc3042f364}</UniqueIdentifier>
-    </Filter>
     <Filter Include="ソースファイル\Mode">
       <UniqueIdentifier>{62a97a20-9e08-496b-b3aa-4acb70f7f87e}</UniqueIdentifier>
     </Filter>
@@ -19,11 +16,38 @@
     <Filter Include="ソースファイル\CFile">
       <UniqueIdentifier>{38ea02a2-5289-41f0-a836-0919d8079840}</UniqueIdentifier>
     </Filter>
+    <Filter Include="ソースファイル\Math">
+      <UniqueIdentifier>{5370c608-e792-42fb-9d9f-69051f3d28de}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソースファイル\Math\CollisionMath">
+      <UniqueIdentifier>{a0505aa0-1746-4754-883e-6aa7173ff4cb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソースファイル\Application\ApplicationBase">
+      <UniqueIdentifier>{18b25aea-7dd8-435a-b71d-a275339b0c6d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソースファイル\Animation">
+      <UniqueIdentifier>{a10993c0-5da8-458b-8433-7085f255c64d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソースファイル\Animation\AnimationManager">
+      <UniqueIdentifier>{4c522e1d-ee65-4897-b9f2-a9fc3042f364}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソースファイル\Animation\SpriteAnimationManager">
+      <UniqueIdentifier>{d6dbdf08-0f22-4b09-85f3-db46d1ce689f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソースファイル\FrameRateController">
+      <UniqueIdentifier>{ca2eeb9d-19d4-48b6-9728-8910703616cd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソースファイル\StageDateReader">
+      <UniqueIdentifier>{cdfaf525-763d-4cc7-b499-96cfedd242f8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソースファイル\Particle">
+      <UniqueIdentifier>{75cf5e8f-0c12-44ac-a99a-5e2e10b5886a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソースファイル\Particle\ParticleEmitter">
+      <UniqueIdentifier>{4ffdb547-2034-4a56-b867-cfa869a7ae85}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="source\Application\ApplicationBase.cpp">
-      <Filter>ソースファイル\Application</Filter>
-    </ClCompile>
     <ClCompile Include="source\Application\WinMain.cpp">
       <Filter>ソースファイル\Application</Filter>
     </ClCompile>
@@ -37,18 +61,28 @@
       <Filter>ソースファイル\Mode</Filter>
     </ClCompile>
     <ClCompile Include="source\AnimationManager.cpp">
-      <Filter>ソースファイル\AnimationManager</Filter>
+      <Filter>ソースファイル\Animation\AnimationManager</Filter>
     </ClCompile>
-    <ClCompile Include="source\SpriteAnimationManager.cpp" />
-    <ClCompile Include="source\CollisionMath.cpp" />
-    <ClCompile Include="source\StageDateReader.cpp" />
-    <ClCompile Include="source\FrameRateController.cpp" />
-    <ClCompile Include="..\Game\Game\source\ParticleEmitter.cpp" />
+    <ClCompile Include="source\CollisionMath.cpp">
+      <Filter>ソースファイル\Math\CollisionMath</Filter>
+    </ClCompile>
+    <ClCompile Include="source\Application\ApplicationBase.cpp">
+      <Filter>ソースファイル\Application\ApplicationBase</Filter>
+    </ClCompile>
+    <ClCompile Include="source\SpriteAnimationManager.cpp">
+      <Filter>ソースファイル\Animation\SpriteAnimationManager</Filter>
+    </ClCompile>
+    <ClCompile Include="source\FrameRateController.cpp">
+      <Filter>ソースファイル\FrameRateController</Filter>
+    </ClCompile>
+    <ClCompile Include="source\StageDateReader.cpp">
+      <Filter>ソースファイル\StageDateReader</Filter>
+    </ClCompile>
+    <ClCompile Include="source\ParticleEmitter.cpp">
+      <Filter>ソースファイル\Particle\ParticleEmitter</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="source\Application\ApplicationBase.h">
-      <Filter>ソースファイル\Application</Filter>
-    </ClInclude>
     <ClInclude Include="source\Application\UtilMacro.h">
       <Filter>ソースファイル\Application</Filter>
     </ClInclude>
@@ -67,13 +101,29 @@
     <ClInclude Include="source\container.h">
       <Filter>ヘッダーファイル</Filter>
     </ClInclude>
-    <ClInclude Include="source\SpriteAnimationManager.h" />
-    <ClInclude Include="source\CollisionMath.h" />
-    <ClInclude Include="source\StageDateReader.h" />
-    <ClInclude Include="source\FrameRateController.h" />
-    <ClInclude Include="..\Game\Game\source\ParticleEmitter.h" />
     <ClInclude Include="source\AnimationManager.h">
-      <Filter>ソースファイル\AnimationManager</Filter>
+      <Filter>ソースファイル\Animation\AnimationManager</Filter>
+    </ClInclude>
+    <ClInclude Include="source\CollisionMath.h">
+      <Filter>ソースファイル\Math\CollisionMath</Filter>
+    </ClInclude>
+    <ClInclude Include="source\Application\ApplicationBase.h">
+      <Filter>ソースファイル\Application\ApplicationBase</Filter>
+    </ClInclude>
+    <ClInclude Include="source\SpriteAnimationManager.h">
+      <Filter>ソースファイル\Animation\SpriteAnimationManager</Filter>
+    </ClInclude>
+    <ClInclude Include="source\FrameRateController.h">
+      <Filter>ソースファイル\FrameRateController</Filter>
+    </ClInclude>
+    <ClInclude Include="source\StageDateReader.h">
+      <Filter>ソースファイル\StageDateReader</Filter>
+    </ClInclude>
+    <ClInclude Include="source\Particle.h">
+      <Filter>ソースファイル\Particle</Filter>
+    </ClInclude>
+    <ClInclude Include="source\ParticleEmitter.h">
+      <Filter>ソースファイル\Particle\ParticleEmitter</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

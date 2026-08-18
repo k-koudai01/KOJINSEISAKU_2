@@ -10,3 +10,4 @@
 #include "SpriteAnimationManager.h"
 #include "CollisionMath.h"
 #include "StageDateReader.h"
+#include "ParticleEmitter.h"
