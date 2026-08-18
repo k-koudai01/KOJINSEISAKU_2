@@ -154,19 +154,20 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="..\..\Koudai_Home\AppFrame\source\FrameRateController.cpp" />
+    <ClCompile Include="..\Game\Game\source\ParticleEmitter.cpp" />
     <ClCompile Include="source\AnimationManager.cpp" />
     <ClCompile Include="source\Application\ApplicationBase.cpp" />
     <ClCompile Include="source\Application\WinMain.cpp" />
     <ClCompile Include="source\CFile\CFile.cpp" />
     <ClCompile Include="source\CollisionMath.cpp" />
+    <ClCompile Include="source\FrameRateController.cpp" />
     <ClCompile Include="source\Mode\ModeBase.cpp" />
     <ClCompile Include="source\Mode\ModeServer.cpp" />
     <ClCompile Include="source\SpriteAnimationManager.cpp" />
     <ClCompile Include="source\StageDateReader.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\Koudai_Home\AppFrame\source\FrameRateController.h" />
+    <ClInclude Include="..\Game\Game\source\ParticleEmitter.h" />
     <ClInclude Include="source\AnimationManager.h" />
     <ClInclude Include="source\appframe.h" />
     <ClInclude Include="source\Application\ApplicationBase.h" />
@@ -174,6 +175,7 @@
     <ClInclude Include="source\CFile\CFile.h" />
     <ClInclude Include="source\CollisionMath.h" />
     <ClInclude Include="source\container.h" />
+    <ClInclude Include="source\FrameRateController.h" />
     <ClInclude Include="source\Mode\ModeBase.h" />
     <ClInclude Include="source\Mode\ModeServer.h" />
     <ClInclude Include="source\SpriteAnimationManager.h" />

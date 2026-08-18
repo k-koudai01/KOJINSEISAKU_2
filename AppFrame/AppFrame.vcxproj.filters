@@ -1,80 +1,79 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <Filter Include="Application">
-      <UniqueIdentifier>{45a79270-b5fe-4d25-8b7f-ee6e0374af54}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="CFile">
-      <UniqueIdentifier>{38ea02a2-5289-41f0-a836-0919d8079840}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Mode">
-      <UniqueIdentifier>{62a97a20-9e08-496b-b3aa-4acb70f7f87e}</UniqueIdentifier>
-    </Filter>
     <Filter Include="ヘッダーファイル">
       <UniqueIdentifier>{253d9f09-e022-4cc3-ba9f-865948a46486}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="ヘッダーファイル\アニメーション管理">
-      <UniqueIdentifier>{99ecabe6-3e84-4b1b-8f1a-2d35fd8b7079}</UniqueIdentifier>
     </Filter>
     <Filter Include="ソースファイル">
       <UniqueIdentifier>{2674fe26-0dba-461e-9a3e-0530d248c128}</UniqueIdentifier>
     </Filter>
-    <Filter Include="ソースファイル\アニメーション管理">
+    <Filter Include="ソースファイル\AnimationManager">
       <UniqueIdentifier>{4c522e1d-ee65-4897-b9f2-a9fc3042f364}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソースファイル\Mode">
+      <UniqueIdentifier>{62a97a20-9e08-496b-b3aa-4acb70f7f87e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソースファイル\Application">
+      <UniqueIdentifier>{45a79270-b5fe-4d25-8b7f-ee6e0374af54}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソースファイル\CFile">
+      <UniqueIdentifier>{38ea02a2-5289-41f0-a836-0919d8079840}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="source\Application\ApplicationBase.cpp">
-      <Filter>Application</Filter>
+      <Filter>ソースファイル\Application</Filter>
     </ClCompile>
     <ClCompile Include="source\Application\WinMain.cpp">
-      <Filter>Application</Filter>
+      <Filter>ソースファイル\Application</Filter>
     </ClCompile>
     <ClCompile Include="source\CFile\CFile.cpp">
-      <Filter>CFile</Filter>
+      <Filter>ソースファイル\CFile</Filter>
     </ClCompile>
     <ClCompile Include="source\Mode\ModeBase.cpp">
-      <Filter>Mode</Filter>
+      <Filter>ソースファイル\Mode</Filter>
     </ClCompile>
     <ClCompile Include="source\Mode\ModeServer.cpp">
-      <Filter>Mode</Filter>
+      <Filter>ソースファイル\Mode</Filter>
     </ClCompile>
     <ClCompile Include="source\AnimationManager.cpp">
-      <Filter>ソースファイル\アニメーション管理</Filter>
+      <Filter>ソースファイル\AnimationManager</Filter>
     </ClCompile>
     <ClCompile Include="source\SpriteAnimationManager.cpp" />
     <ClCompile Include="source\CollisionMath.cpp" />
     <ClCompile Include="source\StageDateReader.cpp" />
-    <ClCompile Include="..\..\Koudai_Home\AppFrame\source\FrameRateController.cpp" />
+    <ClCompile Include="source\FrameRateController.cpp" />
+    <ClCompile Include="..\Game\Game\source\ParticleEmitter.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="source\Application\ApplicationBase.h">
-      <Filter>Application</Filter>
+      <Filter>ソースファイル\Application</Filter>
     </ClInclude>
     <ClInclude Include="source\Application\UtilMacro.h">
-      <Filter>Application</Filter>
+      <Filter>ソースファイル\Application</Filter>
     </ClInclude>
     <ClInclude Include="source\CFile\CFile.h">
-      <Filter>CFile</Filter>
+      <Filter>ソースファイル\CFile</Filter>
     </ClInclude>
     <ClInclude Include="source\Mode\ModeBase.h">
-      <Filter>Mode</Filter>
+      <Filter>ソースファイル\Mode</Filter>
     </ClInclude>
     <ClInclude Include="source\Mode\ModeServer.h">
-      <Filter>Mode</Filter>
+      <Filter>ソースファイル\Mode</Filter>
     </ClInclude>
     <ClInclude Include="source\appframe.h">
-      <Filter>Application</Filter>
+      <Filter>ソースファイル\Application</Filter>
     </ClInclude>
     <ClInclude Include="source\container.h">
       <Filter>ヘッダーファイル</Filter>
     </ClInclude>
-    <ClInclude Include="source\AnimationManager.h">
-      <Filter>ヘッダーファイル\アニメーション管理</Filter>
-    </ClInclude>
     <ClInclude Include="source\SpriteAnimationManager.h" />
     <ClInclude Include="source\CollisionMath.h" />
     <ClInclude Include="source\StageDateReader.h" />
-    <ClInclude Include="..\..\Koudai_Home\AppFrame\source\FrameRateController.h" />
+    <ClInclude Include="source\FrameRateController.h" />
+    <ClInclude Include="..\Game\Game\source\ParticleEmitter.h" />
+    <ClInclude Include="source\AnimationManager.h">
+      <Filter>ソースファイル\AnimationManager</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
