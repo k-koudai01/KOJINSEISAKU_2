@@ -17,6 +17,11 @@ bool ModeTitle::Initialize()
 
 	_titleUI = std::make_unique<UITitleMenu>();
 	_titleUI->Initialize();
+
+	if(!_sakuraEmitter.Initialize())
+	{
+		return false;
+	}
 	return true;
 }
 
@@ -39,6 +44,12 @@ bool ModeTitle::Process()
 	if(_player) { _player->Process(); }
 	if(_cam)    { _cam->Process();    }
 
+	if(_cam)
+	{
+		_sakuraEmitter.UpdateAutoEmit(_cam->GetTarget(), 1.0f / 60.0f);
+	}
+	_sakuraEmitter.Process(1.0f / 60.0f);
+
 	// UI
 	if(_titleUI)
 	{
@@ -58,6 +69,8 @@ bool ModeTitle::Render()
 
 	if(_player) { _player->Render(); }
 
+	_sakuraEmitter.Render();
+
 	if(_titleUI)
 	{
 		SetUseZBuffer3D(FALSE);
@@ -70,7 +83,7 @@ void ModeTitle::InitTitleCamera()
 {
 	if(_cam && _player)
 	{
-		_player->SetAutoMove(true);
+		_player->SetAutoMove(false);
 		_objFtr.SetUpCamera(_cam.get(), _player.get(), false);
 		CameraManager::GetInstance()->SetActiveCamera(_cam.get());
 		_cam->SetTargetOffset(VGet(200.0f, 100.0f, -30.0f));
@@ -97,16 +110,6 @@ void ModeTitle::UpdateTitlePlayer()
 {
 
 	if(!_player) return;
-
-	//　位置の更新
-	VECTOR pos = _player->GetPos();
-	pos.x += 1.0f;
-
-	if(pos.x > 500.0f)
-	{
-		pos.x = -500.0f;
-	}
-	_player->SetPos(pos);
 }
 
 void ModeTitle::RenderBackground3D()

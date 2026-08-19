@@ -4,6 +4,8 @@
 #include "Player.h"
 #include "Camera.h"
 #include "UITitleMenu.h"
+#include "SakuraEmitter.h"
+
 namespace UI
 {
 }
@@ -27,10 +29,12 @@ protected:
 	ObjectFactry _objFtr;
 	std::unique_ptr<Player> _player;
 	std::unique_ptr<Camera> _cam;
-
 	std::unique_ptr<UITitleMenu> _titleUI;
 
 	// ƒnƒ“ƒhƒ‹
 	int _bgHandle = -1;
+
+private:
+	SakuraEmitter _sakuraEmitter;
 };
 

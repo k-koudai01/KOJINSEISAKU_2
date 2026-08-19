@@ -113,6 +113,9 @@
     <Filter Include="ソース ファイル\UI\UITitleMenu">
       <UniqueIdentifier>{ddabf5e8-43fb-4c30-8f2b-9157dbac7d96}</UniqueIdentifier>
     </Filter>
+    <Filter Include="ソース ファイル\Effekt\SakuraEmitter">
+      <UniqueIdentifier>{84a385db-48fc-4c17-bc61-0056bd17c3e5}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="source\Player.cpp">
@@ -201,6 +204,9 @@
     </ClCompile>
     <ClCompile Include="source\Background2D.cpp">
       <Filter>ソース ファイル</Filter>
+    </ClCompile>
+    <ClCompile Include="source\SakuraEmitter.cpp">
+      <Filter>ソース ファイル\Effekt\SakuraEmitter</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -292,5 +298,8 @@
       <Filter>ソース ファイル\UI\UITitleMenu</Filter>
     </ClInclude>
     <ClInclude Include="source\Background2D.h" />
+    <ClInclude Include="source\SakuraEmitter.h">
+      <Filter>ソース ファイル\Effekt\SakuraEmitter</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

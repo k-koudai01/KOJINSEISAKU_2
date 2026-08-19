@@ -6,23 +6,23 @@ class ParticleEmitter
 {
 public:
 	ParticleEmitter()  = default;
-	~ParticleEmitter() = default;
+	virtual ~ParticleEmitter() = default;
 
-	bool Initialize(int maxParticles, int textureHandle);
-	bool Process(float deltaTime);
-	bool Render();
+	virtual	bool Initialize(const char* texturePath, int maxParticles);
+	virtual bool Process(float deltaTime);
+	virtual bool Render();
 
 	// パーティクルの発生
 	bool Emit(const VECTOR& pos, const VECTOR& vel, float life, float scale = 1.0f);
 
 	void Clear();
 
-private:
-	void UpdateParticle(Particle& p, float deltaTime);
+protected:
+	virtual void UpdateParticle(Particle& p, float deltaTime);
 	void RenderParticle(const Particle& p) const;
 
 	Particle* FindDeadParticle();
-private:
+protected:
 	std::vector<Particle> _pool;
 	int _handle = -1;
 };

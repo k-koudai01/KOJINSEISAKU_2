@@ -1,10 +1,9 @@
 #include "ParticleEmitter.h"
 
-bool ParticleEmitter::Initialize(int maxParticles, int textureHandle)
+bool ParticleEmitter::Initialize(const char* texturePath, int maxParticles)
 {
+	_handle = LoadGraph(texturePath);
 	if(_handle < 0) return false;
-
-	_handle = textureHandle;
 
 	// メモリを事前に確保
 	_pool.resize(maxParticles);
@@ -71,10 +70,16 @@ void ParticleEmitter::RenderParticle(const Particle& p) const
 	float alphaRate = p.life / p.maxLife;
 	int alpha = static_cast<int>(255.0f * alphaRate);
 
+	SetUseLighting(FALSE);        
+	SetWriteZBuffer3D(FALSE);
 	SetDrawBlendMode(DX_BLENDMODE_ALPHA, alpha);
 
 	// ビルボード描画
 	DrawBillboard3D(p.position, 0.5f, 0.5f, p.scale.x, p.rotation, _handle, TRUE);
+
+	// 描画後の状態を元に戻す
+	SetUseLighting(TRUE);
+	SetWriteZBuffer3D(TRUE);
 }
 
 Particle* ParticleEmitter::FindDeadParticle()
