@@ -22,6 +22,7 @@ bool ModeTitle::Initialize()
 	{
 		return false;
 	}
+	_sakuraEmitter.SetSakuraAutoEmit(true);
 	return true;
 }
 
