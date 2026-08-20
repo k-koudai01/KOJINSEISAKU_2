@@ -2,8 +2,33 @@
 
 namespace
 {
-	constexpr const char* SAKURA_TEXTURE_PATH  = "res/Effect/sakura.png";
-	constexpr int		  MAX_SAKURA_PARTICLES = 1000;
+	constexpr const char* SAKURA_TEXTURE_PATH   = "res/Effect/sakura.png";
+	constexpr int		  MAX_SAKURA_PARTICLES  = 1000;
+	constexpr int         WARMUP_PARTICLE_COUNT = 50;
+
+	// 初期配置用パラメーター
+	const VECTOR WARMUP_SPAWN_CENTER = VGet(0.0f, 200.0f, 0.0f);
+	const VECTOR WARMUP_SPAWN_RANGE  = VGet(800.0f, 800.0f, 800.0f);
+
+	// 速度パラメーター
+	constexpr float VEL_X_MIN = 30.0f;
+	constexpr float VEL_X_MAX = 120.0f;
+	constexpr float VEL_Y_MIN = -45.0f;
+	constexpr float VEL_Y_MAX = -10.0f;
+	constexpr float VEL_Z_MIN = -5.0f;
+	constexpr float VEL_Z_MAX = 5.0f;
+
+	// 粒子パラメーター
+	constexpr float LIFE_MIN  = 10.0f;
+	constexpr float LIFE_MAX  = 15.0f;
+	constexpr float SCALE_MIN = 10.0f;
+	constexpr float SCALE_MAX = 10.4f;
+
+	// 風の揺らぎ(Sin / Cos)パラメーター
+	constexpr float WIND_SWAY_FREQ  = 4.0f;  // 横風の揺れの周波数
+	constexpr float WIND_SWAY_AMP   = 20.0f; // 横風の揺れの振幅
+	constexpr float FLOAT_UP_FREQ   = 3.0f;  // 上下のフワフワ感の周波数
+	constexpr float FLOAT_UP_AMP    = 10.0f; // 上下のフワフワ感の振幅	
 }
 
 bool SakuraEmitter::Initialize()
@@ -14,14 +39,9 @@ bool SakuraEmitter::Initialize()
 	}
 
 	// ランダムで50個の桜を初期発生させる
-	VECTOR initCenter = VGet(0.0f, 0.0f, 0.0f); 
-	for(int i = 0; i < 50; ++i)
+	for(int i = 0; i < WARMUP_PARTICLE_COUNT; ++i)
 	{
-		VECTOR spawnPos = VGet(
-			(float)(GetRand(800) - 400),
-			(float)(GetRand(800) - 200), 
-			(float)(GetRand(800) - 400)
-		);
+		VECTOR spawnPos = MyMath::GetRandomPosInRange(WARMUP_SPAWN_CENTER, WARMUP_SPAWN_RANGE);
 		EmitSakura(spawnPos);
 	}
 
@@ -30,17 +50,15 @@ bool SakuraEmitter::Initialize()
 
 bool SakuraEmitter::EmitSakura(const VECTOR& pos)
 {
-	float windPower = 30.0f + (float)GetRand(90);
-	float fallSpeed = -10.0f - (float)GetRand(35);
-
-	VECTOR vel = VGet(
-		windPower,
-		fallSpeed,
-		(float)(GetRand(100) - 50) * 0.1f
+	VECTOR vel = VGet
+	(
+		MyMath::GetRandomFloat(VEL_X_MIN, VEL_X_MAX),
+		MyMath::GetRandomFloat(VEL_Y_MIN, VEL_Y_MAX),
+		MyMath::GetRandomFloat(VEL_Z_MIN, VEL_Z_MAX)
 	);
 
-	float life  = 10.0f + (float)GetRand(5); 
-	float scale = 20.0f + (float)GetRand(4) * 0.1f;
+	float life  = MyMath::GetRandomFloat(LIFE_MIN, LIFE_MAX);
+	float scale = MyMath::GetRandomFloat(SCALE_MIN, SCALE_MAX);
 
 	return Emit(pos, vel, life, scale);
 }
@@ -52,8 +70,8 @@ void SakuraEmitter::UpdateParticle(Particle& p, float deltaTime)
 	if(!p.active) return;
 
 	// 時間経過で風が強くなったり上下に浮き沈みする揺れ
-	float windBreeze = sinf(p.life * 4.0f) * 20.0f * deltaTime; // 横風の強弱
-	float floatUp    = cosf(p.life * 3.0f) * 10.0f * deltaTime; // 上下のフワフワ感
+	float windBreeze = sinf(p.life * WIND_SWAY_FREQ) * WIND_SWAY_AMP * deltaTime; // 横風の強弱
+	float floatUp    = cosf(p.life * FLOAT_UP_FREQ) * FLOAT_UP_AMP * deltaTime;   // 上下のフワフワ感
 
 	p.position.x += windBreeze;
 	p.position.y += floatUp;
@@ -67,21 +85,9 @@ void SakuraEmitter::UpdateAutoEmit(const VECTOR& centerPos, float deltaTime)
 	{
 		_emitTimer = 0.0f;
 		
-		for(int i = 0; i < _emitCount; ++i)
-		{
-			VECTOR basePos = VAdd(centerPos, _spawnOffset);
+		VECTOR basePos = VAdd(centerPos, _spawnOffset);
+		VECTOR spawnPos = MyMath::GetRandomPosInRange(basePos, _spawnRange);
 
-			int rangeX = static_cast<int>(_spawnRange.x);
-			int rangeY = static_cast<int>(_spawnRange.y);
-			int rangeZ = static_cast<int>(_spawnRange.z);
-
-			VECTOR spawnPos = VGet(
-				basePos.x + (float)(GetRand(rangeX) - rangeX / 2),
-				basePos.y + (float)(GetRand(rangeY) - rangeY / 2),
-				basePos.z + (float)(GetRand(rangeZ) - rangeZ / 2)
-			);
-
-			EmitSakura(spawnPos);
-		}
+		EmitSakura(spawnPos);
 	}
 }

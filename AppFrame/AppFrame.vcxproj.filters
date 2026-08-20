@@ -46,6 +46,9 @@
     <Filter Include="ソースファイル\Particle\ParticleEmitter">
       <UniqueIdentifier>{4ffdb547-2034-4a56-b867-cfa869a7ae85}</UniqueIdentifier>
     </Filter>
+    <Filter Include="ソースファイル\Math\MyMath">
+      <UniqueIdentifier>{1c333d60-a1e0-4713-bc7f-847517fe64a5}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="source\Application\WinMain.cpp">
@@ -80,6 +83,9 @@
     </ClCompile>
     <ClCompile Include="source\ParticleEmitter.cpp">
       <Filter>ソースファイル\Particle\ParticleEmitter</Filter>
+    </ClCompile>
+    <ClCompile Include="source\MyMath.cpp">
+      <Filter>ソースファイル\Math\MyMath</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -124,6 +130,9 @@
     </ClInclude>
     <ClInclude Include="source\ParticleEmitter.h">
       <Filter>ソースファイル\Particle\ParticleEmitter</Filter>
+    </ClInclude>
+    <ClInclude Include="source\MyMath.h">
+      <Filter>ソースファイル\Math\MyMath</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

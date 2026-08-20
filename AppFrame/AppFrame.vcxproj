@@ -162,6 +162,7 @@
     <ClCompile Include="source\FrameRateController.cpp" />
     <ClCompile Include="source\Mode\ModeBase.cpp" />
     <ClCompile Include="source\Mode\ModeServer.cpp" />
+    <ClCompile Include="source\MyMath.cpp" />
     <ClCompile Include="source\ParticleEmitter.cpp" />
     <ClCompile Include="source\SpriteAnimationManager.cpp" />
     <ClCompile Include="source\StageDateReader.cpp" />
@@ -177,6 +178,7 @@
     <ClInclude Include="source\FrameRateController.h" />
     <ClInclude Include="source\Mode\ModeBase.h" />
     <ClInclude Include="source\Mode\ModeServer.h" />
+    <ClInclude Include="source\MyMath.h" />
     <ClInclude Include="source\Particle.h" />
     <ClInclude Include="source\ParticleEmitter.h" />
     <ClInclude Include="source\SpriteAnimationManager.h" />
