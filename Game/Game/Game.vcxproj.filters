@@ -116,6 +116,12 @@
     <Filter Include="ソース ファイル\Effekt\SakuraEmitter">
       <UniqueIdentifier>{84a385db-48fc-4c17-bc61-0056bd17c3e5}</UniqueIdentifier>
     </Filter>
+    <Filter Include="ソース ファイル\Stage//Map\Background2D">
+      <UniqueIdentifier>{269ea1ec-4c73-4c73-b01c-23f538399122}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\Stage//Map\StageLoader">
+      <UniqueIdentifier>{3c501e86-5abe-4fde-b7ca-dea0db9f1f3b}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="source\Player.cpp">
@@ -193,20 +199,23 @@
     <ClCompile Include="source\Enemy.cpp">
       <Filter>ソース ファイル\Object\Character\Enemy</Filter>
     </ClCompile>
-    <ClCompile Include="source\StageLoader.cpp">
-      <Filter>ソース ファイル\Stage//Map</Filter>
-    </ClCompile>
     <ClCompile Include="source\ModeTitle.cpp">
       <Filter>ソース ファイル\Mode\ModeTitle</Filter>
     </ClCompile>
     <ClCompile Include="source\UITitleMenu.cpp">
       <Filter>ソース ファイル\UI\UITitleMenu</Filter>
     </ClCompile>
-    <ClCompile Include="source\Background2D.cpp">
-      <Filter>ソース ファイル</Filter>
-    </ClCompile>
     <ClCompile Include="source\SakuraEmitter.cpp">
       <Filter>ソース ファイル\Effekt\SakuraEmitter</Filter>
+    </ClCompile>
+    <ClCompile Include="source\LeavesEmitter.cpp">
+      <Filter>ソース ファイル</Filter>
+    </ClCompile>
+    <ClCompile Include="source\Background2D.cpp">
+      <Filter>ソース ファイル\Stage//Map\Background2D</Filter>
+    </ClCompile>
+    <ClCompile Include="source\StageLoader.cpp">
+      <Filter>ソース ファイル\Stage//Map\StageLoader</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -288,18 +297,21 @@
     <ClInclude Include="source\Enemy.h">
       <Filter>ソース ファイル\Object\Character\Enemy</Filter>
     </ClInclude>
-    <ClInclude Include="source\StageLoader.h">
-      <Filter>ソース ファイル\Stage//Map</Filter>
-    </ClInclude>
     <ClInclude Include="source\ModeTitle.h">
       <Filter>ソース ファイル\Mode\ModeTitle</Filter>
     </ClInclude>
     <ClInclude Include="source\UITitleMenu.h">
       <Filter>ソース ファイル\UI\UITitleMenu</Filter>
     </ClInclude>
-    <ClInclude Include="source\Background2D.h" />
     <ClInclude Include="source\SakuraEmitter.h">
       <Filter>ソース ファイル\Effekt\SakuraEmitter</Filter>
+    </ClInclude>
+    <ClInclude Include="source\LeavesEmitter.h" />
+    <ClInclude Include="source\Background2D.h">
+      <Filter>ソース ファイル\Stage//Map\Background2D</Filter>
+    </ClInclude>
+    <ClInclude Include="source\StageLoader.h">
+      <Filter>ソース ファイル\Stage//Map\StageLoader</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

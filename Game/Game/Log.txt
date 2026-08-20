@@ -1,884 +1,175 @@
 ﻿0:ChangeWindowMode実行 
 0:ウインドウモードフラグが立てられました
-3:ＤＸライブラリの初期化処理開始
-5:	システムの情報を出力します
-5:		ＤＸライブラリ Ver3.24b
-5:		論理プロセッサの数 : 12
-5:		ＯＳ  Windows11 ( Build 26200  )
-107:		現時点のＣＰＵ動作速度：大体3.18GHz
-107:		ＭＭＸ命令を使用します
-107:		ＳＳＥ命令が使用可能です
-107:		ＳＳＥ２命令が使用可能です
-108:		ＣＰＵベンダ：GenuineIntel
-110:		ＣＰＵ名：Intel(R) Core(TM) i7-8700 CPU @ 3.20GHz
-110:	ＣＯＭの初期化... 成功
-114:	非同期読み込み処理の初期化...成功
-115:	ファイルアクセス処理の初期化...成功
-116:	メモリ総量:16214.34MB  空きメモリ領域:5968.57MB 
-117:	タイマーの精度を検査します
-117:	精度結果 更新回数 マルチメディアタイマー：0  パフォーマンスカウンター：60
-117:	 パフォーマンスカウンターを使用します タイマー精度 : 10000.000000 KHz 
-118:	 
-118:	ソフトの二重起動検査... 二重起動はされていませんでした
-119:	ウインドウクラスを登録します... 登録に成功しました
-119:	ウインドウモード起動用のウインドウを作成します
-119:	ディスプレイ情報のセットアップ開始
-121:		モニターの数：1  ディスプレイデバイスの数：7
-121:		No.0  モニター名：\\.\DISPLAY1　1920x1080　32bit　60Hz  96x96dpi
-131:	ディスプレイ情報のセットアップ完了
-132:	ウインドウ矩形 ( -16, -50 )-( 1920, 1069 )
-136:	ウインドウの作成に成功しました
-137:	ウインドウを表示します
-155:	ＩＭＥを無効にしました
-162:	ウインドウスタイルをウインドウモード用に変更します... 完了
-190:	XInput DLL の読み込み中... 成功
-193:	DirectInput関係初期化処理
-193:		DirectInput8 の取得を試みます...成功
-216:			引き続き初期化処理... 初期化成功
-218:		ジョイパッドの初期化... 
-219:			XInput 対応コントローラーのチェックを開始します
-219:				XInput 対応コントローラー No.0 をチェック
-222:				XInput 対応コントローラー No.0 の接続を確認しました
-224:				XInput 対応コントローラー No.0 を入力ナンバー 0 で登録します
-224:				XInput 対応コントローラー No.1 をチェック
-224:				XInput 対応コントローラー No.1 の接続は確認できませんでした
-225:				XInput 対応コントローラー No.2 をチェック
-225:				XInput 対応コントローラー No.2 の接続は確認できませんでした
-225:				XInput 対応コントローラー No.3 をチェック
-226:				XInput 対応コントローラー No.3 の接続は確認できませんでした
-226:			XInput 対応コントローラーのチェック完了
-227:			DirectInput 対応ジョイパッドの列挙を開始します
-245:				DirectInput 対応入力装置を検出しました
-246:						Device Product GUID  : c21d046d,0000,0000,00,00,50,49,44,56,49,44
-246:						Device Instance GUID : e7af56f0,3f44,11f1,80,02,44,45,53,54,00,00
-246:					DirectInputDevice8 の作成... 成功
-247:					DirectInputDevice の情報を取得します... 成功
-248:						Device Product Name  : Controller (Gamepad F310)
-248:						Device Instance Name : Controller (Gamepad F310)
-248:					検出した DirectInput 対応入力装置が Xbox360コントローラーか確認... 不一致
-249:					検出した DirectInput 対応入力装置が XboxOneコントローラーか確認... 不一致
-249:					検出した DirectInput 対応入力装置が XInput 対応コントローラーか確認... 一致
-651:				検出した DirectInput 対応入力装置の初期化を中断します
-675:			DirectInput 対応ジョイパッドの列挙終了
-676:		ジョイパッドの初期化は正常に終了しました
-677:		マウスデバイスの初期化... 初期化成功
-679:		キーボードデバイスの初期化... 初期化成功
-685:	DirectInput 関連の初期化は正常に終了しました
-690:	WASAPI の初期化を行います
-700:		デバイス名 : スピーカー (Dell AC511 USB SoundBar)
-709:		デフォルト遅延時間 : 10.000 ms
-710:		最小遅延時間       : 3.000 ms
-710:		遅延時間           : 10.000 ms
-749:		チャンネル数  　   : 2 ch
-749:		量子化ビット深度   : 32 bit
-749:		有効ビット深度　   : 32 bit
-749:		サンプリングレート : 48000 Hz
-750:		データ形式         : 浮動小数点型
-794:		動作モード         : 共有モード
-795:	WASAPI の初期化は正常に終了しました
-801:	d3d11.dll の読み込み.... 成功
-806:	dxgi.dll の読み込み.... 成功
-806:	API CreateDXGIFactory2 のアドレスを取得します.... 成功
-807:	IDXGIFactory2 を作成します.... 成功
-832:	API CreateDXGIFactory6 のアドレスを取得します.... 成功
-832:	IDXGIAdapter を列挙
-833:		Adapter No.0 Desc:NVIDIA GeForce GTX 1080  VRAM:8059MB
-833:			Output Device No.0 Name:\\.\DISPLAY1 ( 0, 0 )-( 1920, 1080 )
-833:		Adapter No.1 Desc:Intel(R) UHD Graphics 630  VRAM:128MB
-834:		Adapter No.2 Desc:Microsoft Basic Render Driver  VRAM:0MB
-834:	API D3D11CreateDevice のアドレスを取得します.... 成功
-835:	IDXGIAdapter を取得します.... 成功
-835:	IDXGIAdapter1 を取得します.... 成功
-836:	IDXGIAdapter2 を取得します.... 成功
-836:	IDXGIAdapter3 を取得します.... 成功
-836:	IDXGIAdapter4 を取得します.... 成功
-838:	Direct3D 11 FeatureLevel 11_0 以上を対象とします
-838:	ID3D11Device オブジェクトを取得します.... 成功
-1070:	IDXGIDevice1 を取得します.... 成功
-1070:	IDXGIDevice1->SetMaximunFrameLatency( 1 ); を実行しました
-1070:	[ウインドウモード 1920x1080 ( 0, 0 )-( 1920, 1080 )]
-1070:	IDXGISwapChain2 を作成します.... 成功
-1078:	IDXGIFactory2->CreateSwapChainForHwnd の戻り値：0x00000000
-1078:	IDXGIOutput を取得します.... 成功
-1078:	Graphics Device:NVIDIA GeForce GTX 1080
-1079:	画面のフォーマットは DXGI_FORMAT_R8G8B8A8_UNORM です
-1079:	16bit Zバッファフォーマットは DXGI_FORMAT_D16_UNORM です
-1079:	24bit Zバッファフォーマットは DXGI_FORMAT_D24_UNORM_S8_UINT です
-1079:	32bit Zバッファフォーマットは DXGI_FORMAT_D32_FLOAT です
-1079:	16bit カラーフォーマットは DXGI_FORMAT_B5G6R5_UNORM です
-1079:	32bit カラーフォーマットは DXGI_FORMAT_B8G8R8X8_UNORM です
-1081:	アルファ付き 16bit カラーフォーマットは DXGI_FORMAT_B4G4R4A4_UNORM です
-1081:	アルファ付き 32bit カラーフォーマットは DXGI_FORMAT_R8G8B8A8_UNORM です
-1081:	アルファテスト用 16bit カラーフォーマットは DXGI_FORMAT_B5G5R5A1_UNORM です
-1081:	アルファテスト用 32bit カラーフォーマットは DXGI_FORMAT_R8G8B8A8_UNORM です
-1081:	ＤＸＴ１テクスチャフォーマットは DXGI_FORMAT_BC1_UNORM です
-1082:	ＤＸＴ２テクスチャフォーマットは使えません
-1082:	ＤＸＴ３テクスチャフォーマットは DXGI_FORMAT_BC2_UNORM です
-1082:	ＤＸＴ４テクスチャフォーマットは使えません
-1082:	ＤＸＴ５テクスチャフォーマットは DXGI_FORMAT_BC3_UNORM です
-1083:	BC7_UNORM テクスチャフォーマットは DXGI_FORMAT_BC7_UNORM です
-1083:	BC7_UNORM_SRGB テクスチャフォーマットは DXGI_FORMAT_BC7_UNORM_SRGB です
-1083:	ABGR 整数 16 ビット型カラーフォーマットは DXGI_FORMAT_R16G16B16A16_UNORM です
-1083:	ABGR 浮動小数点 16 ビット型カラーフォーマットは DXGI_FORMAT_R16G16B16A16_FLOAT です
-1083:	ABGR 浮動小数点 32 ビット型カラーフォーマットは DXGI_FORMAT_R32G32B32A32_FLOAT です
-1084:	１チャンネル整数 8 ビット型カラーフォーマットは DXGI_FORMAT_R8_UNORM です
-1084:	１チャンネル整数 16 ビット型カラーフォーマットは DXGI_FORMAT_R16_UNORM です
-1084:	１チャンネル浮動小数点 16 ビット型カラーフォーマットは DXGI_FORMAT_R16_FLOAT です
-1084:	１チャンネル浮動小数点 32 ビット型カラーフォーマットは DXGI_FORMAT_R32_FLOAT です
-1084:	２チャンネル整数 8 ビット型カラーフォーマットは DXGI_FORMAT_R8G8_UNORM です
-1084:	２チャンネル整数 16 ビット型カラーフォーマットは DXGI_FORMAT_R16G16_UNORM です
-1085:	２チャンネル浮動小数点 16 ビット型カラーフォーマットは DXGI_FORMAT_R16G16_FLOAT です
-1085:	２チャンネル浮動小数点 32 ビット型カラーフォーマットは DXGI_FORMAT_R32G32_FLOAT です
-1085:	描画用 16bit カラーフォーマットは DXGI_FORMAT_B5G6R5_UNORM です
-1085:	描画用 32bit カラーフォーマットは DXGI_FORMAT_B8G8R8X8_UNORM です
-1085:	描画用アルファ付き 32bit カラーフォーマットは DXGI_FORMAT_R8G8B8A8_UNORM です
-1086:	描画用 ABGR 整数 16 ビット型カラーフォーマットは DXGI_FORMAT_R16G16B16A16_UNORM です
-1086:	描画用 ABGR 浮動小数点 16 ビット型カラーフォーマットは DXGI_FORMAT_R16G16B16A16_FLOAT です
-1086:	描画用 ABGR 浮動小数点 32 ビット型カラーフォーマットは DXGI_FORMAT_R32G32B32A32_FLOAT です
-1086:	描画用１チャンネル整数 8 ビット型カラーフォーマットは DXGI_FORMAT_R8_UNORM です
-1086:	描画用１チャンネル整数 16 ビット型カラーフォーマットは DXGI_FORMAT_R16_UNORM です
-1087:	描画用１チャンネル浮動小数点 16 ビット型カラーフォーマットは DXGI_FORMAT_R16_FLOAT です
-1087:	描画用１チャンネル浮動小数点 32 ビット型カラーフォーマットは DXGI_FORMAT_R32_FLOAT です
-1087:	描画用２チャンネル整数 8 ビット型カラーフォーマットは DXGI_FORMAT_R8G8_UNORM です
-1087:	描画用２チャンネル整数 16 ビット型カラーフォーマットは DXGI_FORMAT_R16G16_UNORM です
-1087:	描画用２チャンネル浮動小数点 16 ビット型カラーフォーマットは DXGI_FORMAT_R16G16_FLOAT です
-1088:	描画用２チャンネル浮動小数点 32 ビット型カラーフォーマットは DXGI_FORMAT_R32G32_FLOAT です
-1088:	使用する機能レベル:D3D_FEATURE_LEVEL_11_1
-1088:	同時にレンダリングできるバッファの数:8
-1088:	最大テクスチャサイズ　幅:16384 高さ:16384
-1088:	標準描画用の頂点バッファの作成.... 成功
-1089:	シェーダーコード関係の初期化.... 成功
-1100:	各種シェーダー用定数バッファの作成.... 成功
-1101:	各種 ID3D11InputLayout の作成.... 成功
-1126:	画像の単純転送処理の初期化... 成功
-1127:	深度バッファを作成します.... 成功
-1130:	フォントの初期化を行います
-1133:	フォントの初期化は正常に終了しました
-1225:	文字コードバッファの初期化を行います... 完了しました
-1228:ＤＸライブラリの初期化処理終了
-4932592:ジョイパッドの初期化... 
-4932592:	XInput 対応コントローラーのチェックを開始します
-4932592:		XInput 対応コントローラー No.0 をチェック
-4932593:		XInput 対応コントローラー No.0 の接続を確認しました
-4932593:		XInput 対応コントローラー No.0 を入力ナンバー 0 で登録します
-4932593:		XInput 対応コントローラー No.1 をチェック
-4932594:		XInput 対応コントローラー No.1 の接続は確認できませんでした
-4932594:		XInput 対応コントローラー No.2 をチェック
-4932595:		XInput 対応コントローラー No.2 の接続は確認できませんでした
-4932595:		XInput 対応コントローラー No.3 をチェック
-4932597:		XInput 対応コントローラー No.3 の接続は確認できませんでした
-4932597:	XInput 対応コントローラーのチェック完了
-4932597:	DirectInput 対応ジョイパッドの列挙を開始します
-4932617:		DirectInput 対応入力装置を検出しました
-4932617:				Device Product GUID  : c21d046d,0000,0000,00,00,50,49,44,56,49,44
-4932617:				Device Instance GUID : e7af56f0,3f44,11f1,80,02,44,45,53,54,00,00
-4932617:			DirectInputDevice8 の作成... 成功
-4932618:			DirectInputDevice の情報を取得します... 成功
-4932619:				Device Product Name  : Controller (Gamepad F310)
-4932619:				Device Instance Name : Controller (Gamepad F310)
-4932619:			検出した DirectInput 対応入力装置が Xbox360コントローラーか確認... 不一致
-4932620:			検出した DirectInput 対応入力装置が XboxOneコントローラーか確認... 不一致
-4932620:			検出した DirectInput 対応入力装置が XInput 対応コントローラーか確認... ジョイパッドの初期化... 
-4932747:				XInput 対応コントローラーのチェックを開始します
-4932747:					XInput 対応コントローラー No.0 をチェック
-4932747:					XInput 対応コントローラー No.0 の接続を確認しました
-4932747:					XInput 対応コントローラー No.0 を入力ナンバー 0 で登録します
-4932747:					XInput 対応コントローラー No.1 をチェック
-4932748:					XInput 対応コントローラー No.1 の接続は確認できませんでした
-4932748:					XInput 対応コントローラー No.2 をチェック
-4932749:					XInput 対応コントローラー No.2 の接続は確認できませんでした
-4932749:					XInput 対応コントローラー No.3 をチェック
-4932749:					XInput 対応コントローラー No.3 の接続は確認できませんでした
-4932750:				XInput 対応コントローラーのチェック完了
-4932750:				DirectInput 対応ジョイパッドの列挙を開始します
-4932769:					DirectInput 対応入力装置を検出しました
-4932770:							Device Product GUID  : c21d046d,0000,0000,00,00,50,49,44,56,49,44
-4932770:							Device Instance GUID : e7af56f0,3f44,11f1,80,02,44,45,53,54,00,00
-4932770:						DirectInputDevice8 の作成... 成功
-4932771:						DirectInputDevice の情報を取得します... 成功
-4932771:							Device Product Name  : Controller (Gamepad F310)
-4932773:							Device Instance Name : Controller (Gamepad F310)
-4932773:						検出した DirectInput 対応入力装置が Xbox360コントローラーか確認... 不一致
-4932773:						検出した DirectInput 対応入力装置が XboxOneコントローラーか確認... 不一致
-4932774:						検出した DirectInput 対応入力装置が XInput 対応コントローラーか確認... ジョイパッドの初期化... 
-4932775:							XInput 対応コントローラーのチェックを開始します
-4932775:								XInput 対応コントローラー No.0 をチェック
-4932775:								XInput 対応コントローラー No.0 の接続を確認しました
-4932775:								XInput 対応コントローラー No.0 を入力ナンバー 0 で登録します
-4932777:								XInput 対応コントローラー No.1 をチェック
-4932778:								XInput 対応コントローラー No.1 の接続は確認できませんでした
-4932778:								XInput 対応コントローラー No.2 をチェック
-4932779:								XInput 対応コントローラー No.2 の接続は確認できませんでした
-4932780:								XInput 対応コントローラー No.3 をチェック
-4932780:								XInput 対応コントローラー No.3 の接続は確認できませんでした
-4932780:							XInput 対応コントローラーのチェック完了
-4932781:							DirectInput 対応ジョイパッドの列挙を開始します
-4932800:								DirectInput 対応入力装置を検出しました
-4932800:										Device Product GUID  : c21d046d,0000,0000,00,00,50,49,44,56,49,44
-4932800:										Device Instance GUID : e7af56f0,3f44,11f1,80,02,44,45,53,54,00,00
-4932800:									DirectInputDevice8 の作成... 成功
-4932802:									DirectInputDevice の情報を取得します... 成功
-4932802:										Device Product Name  : Controller (Gamepad F310)
-4932802:										Device Instance Name : Controller (Gamepad F310)
-4932803:									検出した DirectInput 対応入力装置が Xbox360コントローラーか確認... 不一致
-4932803:									検出した DirectInput 対応入力装置が XboxOneコントローラーか確認... 不一致
-4932804:									検出した DirectInput 対応入力装置が XInput 対応コントローラーか確認... ジョイパッドの初期化... 
-4932804:										XInput 対応コントローラーのチェックを開始します
-4932805:											XInput 対応コントローラー No.0 をチェック
-4932805:											XInput 対応コントローラー No.0 の接続を確認しました
-4932806:											XInput 対応コントローラー No.0 を入力ナンバー 0 で登録します
-4932806:											XInput 対応コントローラー No.1 をチェック
-4932806:											XInput 対応コントローラー No.1 の接続は確認できませんでした
-4932807:											XInput 対応コントローラー No.2 をチェック
-4932807:											XInput 対応コントローラー No.2 の接続は確認できませんでした
-4932807:											XInput 対応コントローラー No.3 をチェック
-4932808:											XInput 対応コントローラー No.3 の接続は確認できませんでした
-4932808:										XInput 対応コントローラーのチェック完了
-4932808:										DirectInput 対応ジョイパッドの列挙を開始します
-4932829:											DirectInput 対応入力装置を検出しました
-4932829:													Device Product GUID  : c21d046d,0000,0000,00,00,50,49,44,56,49,44
-4932829:													Device Instance GUID : e7af56f0,3f44,11f1,80,02,44,45,53,54,00,00
-4932829:												DirectInputDevice8 の作成... 成功
-4932830:												DirectInputDevice の情報を取得します... 成功
-4932831:													Device Product Name  : Controller (Gamepad F310)
-4932831:													Device Instance Name : Controller (Gamepad F310)
-4932831:												検出した DirectInput 対応入力装置が Xbox360コントローラーか確認... 不一致
-4932832:												検出した DirectInput 対応入力装置が XboxOneコントローラーか確認... 不一致
-4932832:												検出した DirectInput 対応入力装置が XInput 対応コントローラーか確認... ジョイパッドの初期化... 
-4932861:													XInput 対応コントローラーのチェックを開始します
-4932862:														XInput 対応コントローラー No.0 をチェック
-4932862:														XInput 対応コントローラー No.0 の接続を確認しました
-4932862:														XInput 対応コントローラー No.0 を入力ナンバー 0 で登録します
-4932862:														XInput 対応コントローラー No.1 をチェック
-4932863:														XInput 対応コントローラー No.1 の接続は確認できませんでした
-4932863:														XInput 対応コントローラー No.2 をチェック
-4932863:														XInput 対応コントローラー No.2 の接続は確認できませんでした
-4932863:														XInput 対応コントローラー No.3 をチェック
-4932864:														XInput 対応コントローラー No.3 の接続は確認できませんでした
-4932864:													XInput 対応コントローラーのチェック完了
-4932864:													DirectInput 対応ジョイパッドの列挙を開始します
-4932883:														DirectInput 対応入力装置を検出しました
-4932884:																Device Product GUID  : c21d046d,0000,0000,00,00,50,49,44,56,49,44
-4932884:																Device Instance GUID : e7af56f0,3f44,11f1,80,02,44,45,53,54,00,00
-4932884:															DirectInputDevice8 の作成... 成功
-4932885:															DirectInputDevice の情報を取得します... 成功
-4932886:																Device Product Name  : Controller (Gamepad F310)
-4932886:																Device Instance Name : Controller (Gamepad F310)
-4932886:															検出した DirectInput 対応入力装置が Xbox360コントローラーか確認... 不一致
-4932887:															検出した DirectInput 対応入力装置が XboxOneコントローラーか確認... 不一致
-4932887:															検出した DirectInput 対応入力装置が XInput 対応コントローラーか確認... ジョイパッドの初期化... 
-4932938:																XInput 対応コントローラーのチェックを開始します
-4932938:																	XInput 対応コントローラー No.0 をチェック
-4932939:																	XInput 対応コントローラー No.0 の接続を確認しました
-4932939:																	XInput 対応コントローラー No.0 を入力ナンバー 0 で登録します
-4932940:																	XInput 対応コントローラー No.1 をチェック
-4932940:																	XInput 対応コントローラー No.1 の接続は確認できませんでした
-4932941:																	XInput 対応コントローラー No.2 をチェック
-4932941:																	XInput 対応コントローラー No.2 の接続は確認できませんでした
-4932941:																	XInput 対応コントローラー No.3 をチェック
-4932942:																	XInput 対応コントローラー No.3 の接続は確認できませんでした
-4932942:																XInput 対応コントローラーのチェック完了
-4932942:																DirectInput 対応ジョイパッドの列挙を開始します
-4933028:																	DirectInput 対応入力装置を検出しました
-4933028:																			Device Product GUID  : c21d046d,0000,0000,00,00,50,49,44,56,49,44
-4933028:																			Device Instance GUID : e7af56f0,3f44,11f1,80,02,44,45,53,54,00,00
-4933028:																		DirectInputDevice8 の作成... 成功
-4933029:																		DirectInputDevice の情報を取得します... 成功
-4933030:																			Device Product Name  : Controller (Gamepad F310)
-4933031:																			Device Instance Name : Controller (Gamepad F310)
-4933032:																		検出した DirectInput 対応入力装置が Xbox360コントローラーか確認... 不一致
-4933037:																		検出した DirectInput 対応入力装置が XboxOneコントローラーか確認... 不一致
-4933039:																		検出した DirectInput 対応入力装置が XInput 対応コントローラーか確認... ジョイパッドの初期化... 
-4933040:																			XInput 対応コントローラーのチェックを開始します
-4933040:																				XInput 対応コントローラー No.0 をチェック
-4933040:																				XInput 対応コントローラー No.0 の接続を確認しました
-4933040:																				XInput 対応コントローラー No.0 を入力ナンバー 0 で登録します
-4933040:																				XInput 対応コントローラー No.1 をチェック
-4933041:																				XInput 対応コントローラー No.1 の接続は確認できませんでした
-4933041:																				XInput 対応コントローラー No.2 をチェック
-4933042:																				XInput 対応コントローラー No.2 の接続は確認できませんでした
-4933042:																				XInput 対応コントローラー No.3 をチェック
-4933042:																				XInput 対応コントローラー No.3 の接続は確認できませんでした
-4933043:																			XInput 対応コントローラーのチェック完了
-4933043:																			DirectInput 対応ジョイパッドの列挙を開始します
-4933104:																				DirectInput 対応入力装置を検出しました
-4933105:																						Device Product GUID  : c21d046d,0000,0000,00,00,50,49,44,56,49,44
-4933105:																						Device Instance GUID : e7af56f0,3f44,11f1,80,02,44,45,53,54,00,00
-4933106:																					DirectInputDevice8 の作成... 成功
-4933108:																					DirectInputDevice の情報を取得します... 成功
-4933109:																						Device Product Name  : Controller (Gamepad F310)
-4933109:																						Device Instance Name : Controller (Gamepad F310)
-4933109:																					検出した DirectInput 対応入力装置が Xbox360コントローラーか確認... 不一致
-4933110:																					検出した DirectInput 対応入力装置が XboxOneコントローラーか確認... 不一致
-4933110:																					検出した DirectInput 対応入力装置が XInput 対応コントローラーか確認... ジョイパッドの初期化... 
-4933112:																						XInput 対応コントローラーのチェックを開始します
-4933112:																							XInput 対応コントローラー No.0 をチェック
-4933112:																							XInput 対応コントローラー No.0 の接続を確認しました
-4933112:																							XInput 対応コントローラー No.0 を入力ナンバー 0 で登録します
-4933113:																							XInput 対応コントローラー No.1 をチェック
-4933113:																							XInput 対応コントローラー No.1 の接続は確認できませんでした
-4933114:																							XInput 対応コントローラー No.2 をチェック
-4933114:																							XInput 対応コントローラー No.2 の接続は確認できませんでした
-4933115:																							XInput 対応コントローラー No.3 をチェック
-4933116:																							XInput 対応コントローラー No.3 の接続は確認できませんでした
-4933116:																						XInput 対応コントローラーのチェック完了
-4933116:																						DirectInput 対応ジョイパッドの列挙を開始します
-4933176:																							DirectInput 対応入力装置を検出しました
-4933176:																									Device Product GUID  : c21d046d,0000,0000,00,00,50,49,44,56,49,44
-4933176:																									Device Instance GUID : e7af56f0,3f44,11f1,80,02,44,45,53,54,00,00
-4933177:																								DirectInputDevice8 の作成... 成功
-4933178:																								DirectInputDevice の情報を取得します... 成功
-4933178:																									Device Product Name  : Controller (Gamepad F310)
-4933178:																									Device Instance Name : Controller (Gamepad F310)
-4933178:																								検出した DirectInput 対応入力装置が Xbox360コントローラーか確認... 不一致
-4933179:																								検出した DirectInput 対応入力装置が XboxOneコントローラーか確認... 不一致
-4933179:																								検出した DirectInput 対応入力装置が XInput 対応コントローラーか確認... 一致
-4933396:																							検出した DirectInput 対応入力装置の初期化を中断します
-4933419:																						DirectInput 対応ジョイパッドの列挙終了
-4933419:																					ジョイパッドの初期化は正常に終了しました
-4933652:																					一致
-4933652:																				検出した DirectInput 対応入力装置の初期化を中断します
-4933675:																			DirectInput 対応ジョイパッドの列挙終了
-4933675:																		ジョイパッドの初期化は正常に終了しました
-4933856:																		ジョイパッドの初期化... 
-4933857:																			XInput 対応コントローラーのチェックを開始します
-4933857:																				XInput 対応コントローラー No.0 をチェック
-4933859:																				XInput 対応コントローラー No.0 の接続を確認しました
-4933859:																				XInput 対応コントローラー No.0 を入力ナンバー 0 で登録します
-4933859:																				XInput 対応コントローラー No.1 をチェック
-4933873:																				XInput 対応コントローラー No.1 の接続は確認できませんでした
-4933874:																				XInput 対応コントローラー No.2 をチェック
-4933878:																				XInput 対応コントローラー No.2 の接続は確認できませんでした
-4933878:																				XInput 対応コントローラー No.3 をチェック
-4933880:																				XInput 対応コントローラー No.3 の接続は確認できませんでした
-4933881:																			XInput 対応コントローラーのチェック完了
-4933881:																			DirectInput 対応ジョイパッドの列挙を開始します
-4933949:																				DirectInput 対応入力装置を検出しました
-4933950:																						Device Product GUID  : c21d046d,0000,0000,00,00,50,49,44,56,49,44
-4933950:																						Device Instance GUID : e7af56f0,3f44,11f1,80,02,44,45,53,54,00,00
-4933950:																					DirectInputDevice8 の作成... 成功
-4933951:																					DirectInputDevice の情報を取得します... 成功
-4933951:																						Device Product Name  : Controller (Gamepad F310)
-4933953:																						Device Instance Name : Controller (Gamepad F310)
-4933953:																					検出した DirectInput 対応入力装置が Xbox360コントローラーか確認... 不一致
-4933953:																					検出した DirectInput 対応入力装置が XboxOneコントローラーか確認... 不一致
-4933954:																					検出した DirectInput 対応入力装置が XInput 対応コントローラーか確認... ジョイパッドの初期化... 
-4933955:																						XInput 対応コントローラーのチェックを開始します
-4933955:																							XInput 対応コントローラー No.0 をチェック
-4933955:																							XInput 対応コントローラー No.0 の接続を確認しました
-4933955:																							XInput 対応コントローラー No.0 を入力ナンバー 0 で登録します
-4933956:																							XInput 対応コントローラー No.1 をチェック
-4933956:																							XInput 対応コントローラー No.1 の接続は確認できませんでした
-4933956:																							XInput 対応コントローラー No.2 をチェック
-4933958:																							XInput 対応コントローラー No.2 の接続は確認できませんでした
-4933958:																							XInput 対応コントローラー No.3 をチェック
-4933958:																							XInput 対応コントローラー No.3 の接続は確認できませんでした
-4933959:																						XInput 対応コントローラーのチェック完了
-4933959:																						DirectInput 対応ジョイパッドの列挙を開始します
-4934019:																							DirectInput 対応入力装置を検出しました
-4934019:																									Device Product GUID  : c21d046d,0000,0000,00,00,50,49,44,56,49,44
-4934019:																									Device Instance GUID : e7af56f0,3f44,11f1,80,02,44,45,53,54,00,00
-4934019:																								DirectInputDevice8 の作成... 成功
-4934020:																								DirectInputDevice の情報を取得します... 成功
-4934021:																									Device Product Name  : Controller (Gamepad F310)
-4934021:																									Device Instance Name : Controller (Gamepad F310)
-4934021:																								検出した DirectInput 対応入力装置が Xbox360コントローラーか確認... 不一致
-4934021:																								検出した DirectInput 対応入力装置が XboxOneコントローラーか確認... 不一致
-4934022:																								検出した DirectInput 対応入力装置が XInput 対応コントローラーか確認... ジョイパッドの初期化... 
-4934023:																									XInput 対応コントローラーのチェックを開始します
-4934023:																										XInput 対応コントローラー No.0 をチェック
-4934023:																										XInput 対応コントローラー No.0 の接続を確認しました
-4934024:																										XInput 対応コントローラー No.0 を入力ナンバー 0 で登録します
-4934024:																										XInput 対応コントローラー No.1 をチェック
-4934024:																										XInput 対応コントローラー No.1 の接続は確認できませんでした
-4934024:																										XInput 対応コントローラー No.2 をチェック
-4934025:																										XInput 対応コントローラー No.2 の接続は確認できませんでした
-4934026:																										XInput 対応コントローラー No.3 をチェック
-4934026:																										XInput 対応コントローラー No.3 の接続は確認できませんでした
-4934026:																									XInput 対応コントローラーのチェック完了
-4934026:																									DirectInput 対応ジョイパッドの列挙を開始します
-4934085:																										DirectInput 対応入力装置を検出しました
-4934085:																												Device Product GUID  : c21d046d,0000,0000,00,00,50,49,44,56,49,44
-4934085:																												Device Instance GUID : e7af56f0,3f44,11f1,80,02,44,45,53,54,00,00
-4934085:																											DirectInputDevice8 の作成... 成功
-4934086:																											DirectInputDevice の情報を取得します... 成功
-4934086:																												Device Product Name  : Controller (Gamepad F310)
-4934086:																												Device Instance Name : Controller (Gamepad F310)
-4934086:																											検出した DirectInput 対応入力装置が Xbox360コントローラーか確認... 不一致
-4934088:																											検出した DirectInput 対応入力装置が XboxOneコントローラーか確認... 不一致
-4934088:																											検出した DirectInput 対応入力装置が XInput 対応コントローラーか確認... 一致
-4934304:																										検出した DirectInput 対応入力装置の初期化を中断します
-4934326:																									DirectInput 対応ジョイパッドの列挙終了
-4934326:																								ジョイパッドの初期化は正常に終了しました
-4934537:																								一致
-4934537:																							検出した DirectInput 対応入力装置の初期化を中断します
-4934560:																						DirectInput 対応ジョイパッドの列挙終了
-4934560:																					ジョイパッドの初期化は正常に終了しました
-4934767:																					一致
-4934768:																				検出した DirectInput 対応入力装置の初期化を中断します
-4934790:																			DirectInput 対応ジョイパッドの列挙終了
-4934791:																		ジョイパッドの初期化は正常に終了しました
-4934793:																		一致
-4934794:																	検出した DirectInput 対応入力装置の初期化を中断します
-4934815:																DirectInput 対応ジョイパッドの列挙終了
-4934817:															ジョイパッドの初期化は正常に終了しました
-4934819:															一致
-4934819:														検出した DirectInput 対応入力装置の初期化を中断します
-4934842:													DirectInput 対応ジョイパッドの列挙終了
-4934842:												ジョイパッドの初期化は正常に終了しました
-4934845:												一致
-4934846:											検出した DirectInput 対応入力装置の初期化を中断します
-4934868:										DirectInput 対応ジョイパッドの列挙終了
-4934868:									ジョイパッドの初期化は正常に終了しました
-4935081:									一致
-4935081:								検出した DirectInput 対応入力装置の初期化を中断します
-4935103:							DirectInput 対応ジョイパッドの列挙終了
-4935104:						ジョイパッドの初期化は正常に終了しました
-4935304:						一致
-4935304:					検出した DirectInput 対応入力装置の初期化を中断します
-4935327:				DirectInput 対応ジョイパッドの列挙終了
-4935327:			ジョイパッドの初期化は正常に終了しました
-4935329:			一致
-4935329:		検出した DirectInput 対応入力装置の初期化を中断します
-4935353:	DirectInput 対応ジョイパッドの列挙終了
-4935353:ジョイパッドの初期化は正常に終了しました
-4941657:ジョイパッドの初期化... 
-4941657:	XInput 対応コントローラーのチェックを開始します
-4941658:		XInput 対応コントローラー No.0 をチェック
-4941659:		XInput 対応コントローラー No.0 の接続を確認しました
-4941661:		XInput 対応コントローラー No.0 を入力ナンバー 0 で登録します
-4941661:		XInput 対応コントローラー No.1 をチェック
-4941662:		XInput 対応コントローラー No.1 の接続は確認できませんでした
-4941663:		XInput 対応コントローラー No.2 をチェック
-4941664:		XInput 対応コントローラー No.2 の接続は確認できませんでした
-4941666:		XInput 対応コントローラー No.3 をチェック
-4941666:		XInput 対応コントローラー No.3 の接続は確認できませんでした
-4941666:	XInput 対応コントローラーのチェック完了
-4941667:	DirectInput 対応ジョイパッドの列挙を開始します
-4941729:		DirectInput 対応入力装置を検出しました
-4941730:				Device Product GUID  : c21d046d,0000,0000,00,00,50,49,44,56,49,44
-4941730:				Device Instance GUID : e7af56f0,3f44,11f1,80,02,44,45,53,54,00,00
-4941730:			DirectInputDevice8 の作成... 成功
-4941732:			DirectInputDevice の情報を取得します... 成功
-4941732:				Device Product Name  : Controller (Gamepad F310)
-4941733:				Device Instance Name : Controller (Gamepad F310)
-4941733:			検出した DirectInput 対応入力装置が Xbox360コントローラーか確認... 不一致
-4941733:			検出した DirectInput 対応入力装置が XboxOneコントローラーか確認... 不一致
-4941734:			検出した DirectInput 対応入力装置が XInput 対応コントローラーか確認... ジョイパッドの初期化... 
-4941736:				XInput 対応コントローラーのチェックを開始します
-4941737:					XInput 対応コントローラー No.0 をチェック
-4941737:					XInput 対応コントローラー No.0 の接続を確認しました
-4941738:					XInput 対応コントローラー No.0 を入力ナンバー 0 で登録します
-4941738:					XInput 対応コントローラー No.1 をチェック
-4941738:					XInput 対応コントローラー No.1 の接続は確認できませんでした
-4941740:					XInput 対応コントローラー No.2 をチェック
-4941740:					XInput 対応コントローラー No.2 の接続は確認できませんでした
-4941744:					XInput 対応コントローラー No.3 をチェック
-4941746:					XInput 対応コントローラー No.3 の接続は確認できませんでした
-4941746:				XInput 対応コントローラーのチェック完了
-4941747:				DirectInput 対応ジョイパッドの列挙を開始します
-4941808:					DirectInput 対応入力装置を検出しました
-4941809:							Device Product GUID  : c21d046d,0000,0000,00,00,50,49,44,56,49,44
-4941809:							Device Instance GUID : e7af56f0,3f44,11f1,80,02,44,45,53,54,00,00
-4941809:						DirectInputDevice8 の作成... 成功
-4941811:						DirectInputDevice の情報を取得します... 成功
-4941811:							Device Product Name  : Controller (Gamepad F310)
-4941811:							Device Instance Name : Controller (Gamepad F310)
-4941812:						検出した DirectInput 対応入力装置が Xbox360コントローラーか確認... 不一致
-4941812:						検出した DirectInput 対応入力装置が XboxOneコントローラーか確認... 不一致
-4941812:						検出した DirectInput 対応入力装置が XInput 対応コントローラーか確認... ジョイパッドの初期化... 
-4941813:							XInput 対応コントローラーのチェックを開始します
-4941814:								XInput 対応コントローラー No.0 をチェック
-4941814:								XInput 対応コントローラー No.0 の接続を確認しました
-4941814:								XInput 対応コントローラー No.0 を入力ナンバー 0 で登録します
-4941814:								XInput 対応コントローラー No.1 をチェック
-4941815:								XInput 対応コントローラー No.1 の接続は確認できませんでした
-4941815:								XInput 対応コントローラー No.2 をチェック
-4941815:								XInput 対応コントローラー No.2 の接続は確認できませんでした
-4941816:								XInput 対応コントローラー No.3 をチェック
-4941816:								XInput 対応コントローラー No.3 の接続は確認できませんでした
-4941817:							XInput 対応コントローラーのチェック完了
-4941817:							DirectInput 対応ジョイパッドの列挙を開始します
-4941876:								DirectInput 対応入力装置を検出しました
-4941876:										Device Product GUID  : c21d046d,0000,0000,00,00,50,49,44,56,49,44
-4941878:										Device Instance GUID : e7af56f0,3f44,11f1,80,02,44,45,53,54,00,00
-4941878:									DirectInputDevice8 の作成... 成功
-4941881:									DirectInputDevice の情報を取得します... 成功
-4941882:										Device Product Name  : Controller (Gamepad F310)
-4941882:										Device Instance Name : Controller (Gamepad F310)
-4941882:									検出した DirectInput 対応入力装置が Xbox360コントローラーか確認... 不一致
-4941882:									検出した DirectInput 対応入力装置が XboxOneコントローラーか確認... 不一致
-4941883:									検出した DirectInput 対応入力装置が XInput 対応コントローラーか確認... 一致
-4942115:								検出した DirectInput 対応入力装置の初期化を中断します
-4942137:							DirectInput 対応ジョイパッドの列挙終了
-4942138:						ジョイパッドの初期化は正常に終了しました
-4942332:						一致
-4942332:					検出した DirectInput 対応入力装置の初期化を中断します
-4942355:				DirectInput 対応ジョイパッドの列挙終了
-4942355:			ジョイパッドの初期化は正常に終了しました
-4942541:			一致
-4942541:		検出した DirectInput 対応入力装置の初期化を中断します
-4942563:	DirectInput 対応ジョイパッドの列挙終了
-4942563:ジョイパッドの初期化は正常に終了しました
-4942675:ジョイパッドの初期化... 
-4942675:	XInput 対応コントローラーのチェックを開始します
-4942675:		XInput 対応コントローラー No.0 をチェック
-4942675:		XInput 対応コントローラー No.0 の接続を確認しました
-4942676:		XInput 対応コントローラー No.0 を入力ナンバー 0 で登録します
-4942676:		XInput 対応コントローラー No.1 をチェック
-4942676:		XInput 対応コントローラー No.1 の接続は確認できませんでした
-4942676:		XInput 対応コントローラー No.2 をチェック
-4942678:		XInput 対応コントローラー No.2 の接続は確認できませんでした
-4942678:		XInput 対応コントローラー No.3 をチェック
-4942678:		XInput 対応コントローラー No.3 の接続は確認できませんでした
-4942678:	XInput 対応コントローラーのチェック完了
-4942679:	DirectInput 対応ジョイパッドの列挙を開始します
-4942743:		DirectInput 対応入力装置を検出しました
-4942743:				Device Product GUID  : c21d046d,0000,0000,00,00,50,49,44,56,49,44
-4942743:				Device Instance GUID : e7af56f0,3f44,11f1,80,02,44,45,53,54,00,00
-4942743:			DirectInputDevice8 の作成... 成功
-4942745:			DirectInputDevice の情報を取得します... 成功
-4942745:				Device Product Name  : Controller (Gamepad F310)
-4942746:				Device Instance Name : Controller (Gamepad F310)
-4942746:			検出した DirectInput 対応入力装置が Xbox360コントローラーか確認... 不一致
-4942746:			検出した DirectInput 対応入力装置が XboxOneコントローラーか確認... 不一致
-4942748:			検出した DirectInput 対応入力装置が XInput 対応コントローラーか確認... ジョイパッドの初期化... 
-4942750:				XInput 対応コントローラーのチェックを開始します
-4942751:					XInput 対応コントローラー No.0 をチェック
-4942751:					XInput 対応コントローラー No.0 の接続を確認しました
-4942751:					XInput 対応コントローラー No.0 を入力ナンバー 0 で登録します
-4942751:					XInput 対応コントローラー No.1 をチェック
-4942752:					XInput 対応コントローラー No.1 の接続は確認できませんでした
-4942752:					XInput 対応コントローラー No.2 をチェック
-4942752:					XInput 対応コントローラー No.2 の接続は確認できませんでした
-4942752:					XInput 対応コントローラー No.3 をチェック
-4942754:					XInput 対応コントローラー No.3 の接続は確認できませんでした
-4942754:				XInput 対応コントローラーのチェック完了
-4942754:				DirectInput 対応ジョイパッドの列挙を開始します
-4942814:					DirectInput 対応入力装置を検出しました
-4942814:							Device Product GUID  : c21d046d,0000,0000,00,00,50,49,44,56,49,44
-4942814:							Device Instance GUID : e7af56f0,3f44,11f1,80,02,44,45,53,54,00,00
-4942815:						DirectInputDevice8 の作成... 成功
-4942816:						DirectInputDevice の情報を取得します... 成功
-4942816:							Device Product Name  : Controller (Gamepad F310)
-4942816:							Device Instance Name : Controller (Gamepad F310)
-4942818:						検出した DirectInput 対応入力装置が Xbox360コントローラーか確認... 不一致
-4942818:						検出した DirectInput 対応入力装置が XboxOneコントローラーか確認... 不一致
-4942818:						検出した DirectInput 対応入力装置が XInput 対応コントローラーか確認... ジョイパッドの初期化... 
-4942819:							XInput 対応コントローラーのチェックを開始します
-4942819:								XInput 対応コントローラー No.0 をチェック
-4942819:								XInput 対応コントローラー No.0 の接続を確認しました
-4942820:								XInput 対応コントローラー No.0 を入力ナンバー 0 で登録します
-4942820:								XInput 対応コントローラー No.1 をチェック
-4942820:								XInput 対応コントローラー No.1 の接続は確認できませんでした
-4942821:								XInput 対応コントローラー No.2 をチェック
-4942821:								XInput 対応コントローラー No.2 の接続は確認できませんでした
-4942821:								XInput 対応コントローラー No.3 をチェック
-4942822:								XInput 対応コントローラー No.3 の接続は確認できませんでした
-4942822:							XInput 対応コントローラーのチェック完了
-4942822:							DirectInput 対応ジョイパッドの列挙を開始します
-4942881:								DirectInput 対応入力装置を検出しました
-4942881:										Device Product GUID  : c21d046d,0000,0000,00,00,50,49,44,56,49,44
-4942882:										Device Instance GUID : e7af56f0,3f44,11f1,80,02,44,45,53,54,00,00
-4942882:									DirectInputDevice8 の作成... 成功
-4942883:									DirectInputDevice の情報を取得します... 成功
-4942883:										Device Product Name  : Controller (Gamepad F310)
-4942883:										Device Instance Name : Controller (Gamepad F310)
-4942883:									検出した DirectInput 対応入力装置が Xbox360コントローラーか確認... 不一致
-4942884:									検出した DirectInput 対応入力装置が XboxOneコントローラーか確認... 不一致
-4942884:									検出した DirectInput 対応入力装置が XInput 対応コントローラーか確認... ジョイパッドの初期化... 
-4942885:										XInput 対応コントローラーのチェックを開始します
-4942885:											XInput 対応コントローラー No.0 をチェック
-4942886:											XInput 対応コントローラー No.0 の接続を確認しました
-4942886:											XInput 対応コントローラー No.0 を入力ナンバー 0 で登録します
-4942886:											XInput 対応コントローラー No.1 をチェック
-4942886:											XInput 対応コントローラー No.1 の接続は確認できませんでした
-4942887:											XInput 対応コントローラー No.2 をチェック
-4942887:											XInput 対応コントローラー No.2 の接続は確認できませんでした
-4942887:											XInput 対応コントローラー No.3 をチェック
-4942887:											XInput 対応コントローラー No.3 の接続は確認できませんでした
-4942888:										XInput 対応コントローラーのチェック完了
-4942888:										DirectInput 対応ジョイパッドの列挙を開始します
-4942950:											DirectInput 対応入力装置を検出しました
-4942950:													Device Product GUID  : c21d046d,0000,0000,00,00,50,49,44,56,49,44
-4942950:													Device Instance GUID : e7af56f0,3f44,11f1,80,02,44,45,53,54,00,00
-4942950:												DirectInputDevice8 の作成... 成功
-4942951:												DirectInputDevice の情報を取得します... 成功
-4942951:													Device Product Name  : Controller (Gamepad F310)
-4942951:													Device Instance Name : Controller (Gamepad F310)
-4942952:												検出した DirectInput 対応入力装置が Xbox360コントローラーか確認... 不一致
-4942952:												検出した DirectInput 対応入力装置が XboxOneコントローラーか確認... 不一致
-4942952:												検出した DirectInput 対応入力装置が XInput 対応コントローラーか確認... ジョイパッドの初期化... 
-4942953:													XInput 対応コントローラーのチェックを開始します
-4942953:														XInput 対応コントローラー No.0 をチェック
-4942953:														XInput 対応コントローラー No.0 の接続を確認しました
-4942954:														XInput 対応コントローラー No.0 を入力ナンバー 0 で登録します
-4942954:														XInput 対応コントローラー No.1 をチェック
-4942954:														XInput 対応コントローラー No.1 の接続は確認できませんでした
-4942954:														XInput 対応コントローラー No.2 をチェック
-4942955:														XInput 対応コントローラー No.2 の接続は確認できませんでした
-4942955:														XInput 対応コントローラー No.3 をチェック
-4942956:														XInput 対応コントローラー No.3 の接続は確認できませんでした
-4942956:													XInput 対応コントローラーのチェック完了
-4942956:													DirectInput 対応ジョイパッドの列挙を開始します
-4943014:														DirectInput 対応入力装置を検出しました
-4943014:																Device Product GUID  : c21d046d,0000,0000,00,00,50,49,44,56,49,44
-4943014:																Device Instance GUID : e7af56f0,3f44,11f1,80,02,44,45,53,54,00,00
-4943014:															DirectInputDevice8 の作成... 成功
-4943016:															DirectInputDevice の情報を取得します... 成功
-4943016:																Device Product Name  : Controller (Gamepad F310)
-4943016:																Device Instance Name : Controller (Gamepad F310)
-4943016:															検出した DirectInput 対応入力装置が Xbox360コントローラーか確認... 不一致
-4943018:															検出した DirectInput 対応入力装置が XboxOneコントローラーか確認... 不一致
-4943018:															検出した DirectInput 対応入力装置が XInput 対応コントローラーか確認... ジョイパッドの初期化... 
-4943019:																XInput 対応コントローラーのチェックを開始します
-4943019:																	XInput 対応コントローラー No.0 をチェック
-4943019:																	XInput 対応コントローラー No.0 の接続を確認しました
-4943019:																	XInput 対応コントローラー No.0 を入力ナンバー 0 で登録します
-4943019:																	XInput 対応コントローラー No.1 をチェック
-4943020:																	XInput 対応コントローラー No.1 の接続は確認できませんでした
-4943020:																	XInput 対応コントローラー No.2 をチェック
-4943020:																	XInput 対応コントローラー No.2 の接続は確認できませんでした
-4943021:																	XInput 対応コントローラー No.3 をチェック
-4943021:																	XInput 対応コントローラー No.3 の接続は確認できませんでした
-4943021:																XInput 対応コントローラーのチェック完了
-4943022:																DirectInput 対応ジョイパッドの列挙を開始します
-4943080:																	DirectInput 対応入力装置を検出しました
-4943080:																			Device Product GUID  : c21d046d,0000,0000,00,00,50,49,44,56,49,44
-4943080:																			Device Instance GUID : e7af56f0,3f44,11f1,80,02,44,45,53,54,00,00
-4943081:																		DirectInputDevice8 の作成... 成功
-4943081:																		DirectInputDevice の情報を取得します... 成功
-4943082:																			Device Product Name  : Controller (Gamepad F310)
-4943082:																			Device Instance Name : Controller (Gamepad F310)
-4943082:																		検出した DirectInput 対応入力装置が Xbox360コントローラーか確認... 不一致
-4943083:																		検出した DirectInput 対応入力装置が XboxOneコントローラーか確認... 不一致
-4943083:																		検出した DirectInput 対応入力装置が XInput 対応コントローラーか確認... ジョイパッドの初期化... 
-4943083:																			XInput 対応コントローラーのチェックを開始します
-4943084:																				XInput 対応コントローラー No.0 をチェック
-4943084:																				XInput 対応コントローラー No.0 の接続を確認しました
-4943084:																				XInput 対応コントローラー No.0 を入力ナンバー 0 で登録します
-4943084:																				XInput 対応コントローラー No.1 をチェック
-4943085:																				XInput 対応コントローラー No.1 の接続は確認できませんでした
-4943086:																				XInput 対応コントローラー No.2 をチェック
-4943086:																				XInput 対応コントローラー No.2 の接続は確認できませんでした
-4943086:																				XInput 対応コントローラー No.3 をチェック
-4943087:																				XInput 対応コントローラー No.3 の接続は確認できませんでした
-4943087:																			XInput 対応コントローラーのチェック完了
-4943087:																			DirectInput 対応ジョイパッドの列挙を開始します
-4943144:																				DirectInput 対応入力装置を検出しました
-4943144:																						Device Product GUID  : c21d046d,0000,0000,00,00,50,49,44,56,49,44
-4943144:																						Device Instance GUID : e7af56f0,3f44,11f1,80,02,44,45,53,54,00,00
-4943144:																					DirectInputDevice8 の作成... 成功
-4943145:																					DirectInputDevice の情報を取得します... 成功
-4943146:																						Device Product Name  : Controller (Gamepad F310)
-4943146:																						Device Instance Name : Controller (Gamepad F310)
-4943146:																					検出した DirectInput 対応入力装置が Xbox360コントローラーか確認... 不一致
-4943146:																					検出した DirectInput 対応入力装置が XboxOneコントローラーか確認... 不一致
-4943148:																					検出した DirectInput 対応入力装置が XInput 対応コントローラーか確認... ジョイパッドの初期化... 
-4943149:																						XInput 対応コントローラーのチェックを開始します
-4943149:																							XInput 対応コントローラー No.0 をチェック
-4943149:																							XInput 対応コントローラー No.0 の接続を確認しました
-4943149:																							XInput 対応コントローラー No.0 を入力ナンバー 0 で登録します
-4943149:																							XInput 対応コントローラー No.1 をチェック
-4943150:																							XInput 対応コントローラー No.1 の接続は確認できませんでした
-4943150:																							XInput 対応コントローラー No.2 をチェック
-4943150:																							XInput 対応コントローラー No.2 の接続は確認できませんでした
-4943150:																							XInput 対応コントローラー No.3 をチェック
-4943151:																							XInput 対応コントローラー No.3 の接続は確認できませんでした
-4943151:																						XInput 対応コントローラーのチェック完了
-4943152:																						DirectInput 対応ジョイパッドの列挙を開始します
-4943209:																							DirectInput 対応入力装置を検出しました
-4943209:																									Device Product GUID  : c21d046d,0000,0000,00,00,50,49,44,56,49,44
-4943210:																									Device Instance GUID : e7af56f0,3f44,11f1,80,02,44,45,53,54,00,00
-4943210:																								DirectInputDevice8 の作成... 成功
-4943211:																								DirectInputDevice の情報を取得します... 成功
-4943211:																									Device Product Name  : Controller (Gamepad F310)
-4943211:																									Device Instance Name : Controller (Gamepad F310)
-4943212:																								検出した DirectInput 対応入力装置が Xbox360コントローラーか確認... 不一致
-4943212:																								検出した DirectInput 対応入力装置が XboxOneコントローラーか確認... 不一致
-4943212:																								検出した DirectInput 対応入力装置が XInput 対応コントローラーか確認... ジョイパッドの初期化... 
-4943213:																									XInput 対応コントローラーのチェックを開始します
-4943213:																										XInput 対応コントローラー No.0 をチェック
-4943213:																										XInput 対応コントローラー No.0 の接続を確認しました
-4943213:																										XInput 対応コントローラー No.0 を入力ナンバー 0 で登録します
-4943213:																										XInput 対応コントローラー No.1 をチェック
-4943215:																										XInput 対応コントローラー No.1 の接続は確認できませんでした
-4943215:																										XInput 対応コントローラー No.2 をチェック
-4943215:																										XInput 対応コントローラー No.2 の接続は確認できませんでした
-4943215:																										XInput 対応コントローラー No.3 をチェック
-4943215:																										XInput 対応コントローラー No.3 の接続は確認できませんでした
-4943216:																									XInput 対応コントローラーのチェック完了
-4943216:																									DirectInput 対応ジョイパッドの列挙を開始します
-4943274:																										DirectInput 対応入力装置を検出しました
-4943274:																												Device Product GUID  : c21d046d,0000,0000,00,00,50,49,44,56,49,44
-4943274:																												Device Instance GUID : e7af56f0,3f44,11f1,80,02,44,45,53,54,00,00
-4943274:																											DirectInputDevice8 の作成... 成功
-4943275:																											DirectInputDevice の情報を取得します... 成功
-4943277:																												Device Product Name  : Controller (Gamepad F310)
-4943277:																												Device Instance Name : Controller (Gamepad F310)
-4943277:																											検出した DirectInput 対応入力装置が Xbox360コントローラーか確認... 不一致
-4943277:																											検出した DirectInput 対応入力装置が XboxOneコントローラーか確認... 不一致
-4943277:																											検出した DirectInput 対応入力装置が XInput 対応コントローラーか確認... ジョイパッドの初期化... 
-4943278:																												XInput 対応コントローラーのチェックを開始します
-4943278:																													XInput 対応コントローラー No.0 をチェック
-4943278:																													XInput 対応コントローラー No.0 の接続を確認しました
-4943279:																													XInput 対応コントローラー No.0 を入力ナンバー 0 で登録します
-4943279:																													XInput 対応コントローラー No.1 をチェック
-4943279:																													XInput 対応コントローラー No.1 の接続は確認できませんでした
-4943279:																													XInput 対応コントローラー No.2 をチェック
-4943280:																													XInput 対応コントローラー No.2 の接続は確認できませんでした
-4943280:																													XInput 対応コントローラー No.3 をチェック
-4943280:																													XInput 対応コントローラー No.3 の接続は確認できませんでした
-4943280:																												XInput 対応コントローラーのチェック完了
-4943281:																												DirectInput 対応ジョイパッドの列挙を開始します
-4943338:																													DirectInput 対応入力装置を検出しました
-4943338:																															Device Product GUID  : c21d046d,0000,0000,00,00,50,49,44,56,49,44
-4943339:																															Device Instance GUID : e7af56f0,3f44,11f1,80,02,44,45,53,54,00,00
-4943339:																														DirectInputDevice8 の作成... 成功
-4943340:																														DirectInputDevice の情報を取得します... 成功
-4943341:																															Device Product Name  : Controller (Gamepad F310)
-4943341:																															Device Instance Name : Controller (Gamepad F310)
-4943341:																														検出した DirectInput 対応入力装置が Xbox360コントローラーか確認... 不一致
-4943341:																														検出した DirectInput 対応入力装置が XboxOneコントローラーか確認... 不一致
-4943342:																														検出した DirectInput 対応入力装置が XInput 対応コントローラーか確認... ジョイパッドの初期化... 
-4943342:																															XInput 対応コントローラーのチェックを開始します
-4943343:																																XInput 対応コントローラー No.0 をチェック
-4943343:																																XInput 対応コントローラー No.0 の接続を確認しました
-4943343:																																XInput 対応コントローラー No.0 を入力ナンバー 0 で登録します
-4943343:																																XInput 対応コントローラー No.1 をチェック
-4943344:																																XInput 対応コントローラー No.1 の接続は確認できませんでした
-4943344:																																XInput 対応コントローラー No.2 をチェック
-4943345:																																XInput 対応コントローラー No.2 の接続は確認できませんでした
-4943345:																																XInput 対応コントローラー No.3 をチェック
-4943345:																																XInput 対応コントローラー No.3 の接続は確認できませんでした
-4943347:																															XInput 対応コントローラーのチェック完了
-4943347:																															DirectInput 対応ジョイパッドの列挙を開始します
-4943404:																																DirectInput 対応入力装置を検出しました
-4943404:																																		Device Product GUID  : c21d046d,0000,0000,00,00,50,49,44,56,49,44
-4943405:																																		Device Instance GUID : e7af56f0,3f44,11f1,80,02,44,45,53,54,00,00
-4943405:																																	DirectInputDevice8 の作成... 成功
-4943406:																																	DirectInputDevice の情報を取得します... 成功
-4943407:																																		Device Product Name  : Controller (Gamepad F310)
-4943407:																																		Device Instance Name : Controller (Gamepad F310)
-4943407:																																	検出した DirectInput 対応入力装置が Xbox360コントローラーか確認... 不一致
-4943407:																																	検出した DirectInput 対応入力装置が XboxOneコントローラーか確認... 不一致
-4943409:																																	検出した DirectInput 対応入力装置が XInput 対応コントローラーか確認... ジョイパッドの初期化... 
-4943410:																																		XInput 対応コントローラーのチェックを開始します
-4943410:																																			XInput 対応コントローラー No.0 をチェック
-4943410:																																			XInput 対応コントローラー No.0 の接続を確認しました
-4943410:																																			XInput 対応コントローラー No.0 を入力ナンバー 0 で登録します
-4943411:																																			XInput 対応コントローラー No.1 をチェック
-4943411:																																			XInput 対応コントローラー No.1 の接続は確認できませんでした
-4943411:																																			XInput 対応コントローラー No.2 をチェック
-4943412:																																			XInput 対応コントローラー No.2 の接続は確認できませんでした
-4943412:																																			XInput 対応コントローラー No.3 をチェック
-4943413:																																			XInput 対応コントローラー No.3 の接続は確認できませんでした
-4943413:																																		XInput 対応コントローラーのチェック完了
-4943413:																																		DirectInput 対応ジョイパッドの列挙を開始します
-4943470:																																			DirectInput 対応入力装置を検出しました
-4943471:																																					Device Product GUID  : c21d046d,0000,0000,00,00,50,49,44,56,49,44
-4943471:																																					Device Instance GUID : e7af56f0,3f44,11f1,80,02,44,45,53,54,00,00
-4943471:																																				DirectInputDevice8 の作成... 成功
-4943473:																																				DirectInputDevice の情報を取得します... 成功
-4943474:																																					Device Product Name  : Controller (Gamepad F310)
-4943474:																																					Device Instance Name : Controller (Gamepad F310)
-4943474:																																				検出した DirectInput 対応入力装置が Xbox360コントローラーか確認... 不一致
-4943475:																																				検出した DirectInput 対応入力装置が XboxOneコントローラーか確認... 不一致
-4943475:																																				検出した DirectInput 対応入力装置が XInput 対応コントローラーか確認... ジョイパッドの初期化... 
-4943476:																																					XInput 対応コントローラーのチェックを開始します
-4943476:																																						XInput 対応コントローラー No.0 をチェック
-4943477:																																						XInput 対応コントローラー No.0 の接続を確認しました
-4943477:																																						XInput 対応コントローラー No.0 を入力ナンバー 0 で登録します
-4943477:																																						XInput 対応コントローラー No.1 をチェック
-4943478:																																						XInput 対応コントローラー No.1 の接続は確認できませんでした
-4943478:																																						XInput 対応コントローラー No.2 をチェック
-4943479:																																						XInput 対応コントローラー No.2 の接続は確認できませんでした
-4943479:																																						XInput 対応コントローラー No.3 をチェック
-4943480:																																						XInput 対応コントローラー No.3 の接続は確認できませんでした
-4943480:																																					XInput 対応コントローラーのチェック完了
-4943480:																																					DirectInput 対応ジョイパッドの列挙を開始します
-4943538:																																						DirectInput 対応入力装置を検出しました
-4943538:																																								Device Product GUID  : c21d046d,0000,0000,00,00,50,49,44,56,49,44
-4943539:																																								Device Instance GUID : e7af56f0,3f44,11f1,80,02,44,45,53,54,00,00
-4943539:																																							DirectInputDevice8 の作成... 成功
-4943540:																																							DirectInputDevice の情報を取得します... 成功
-4943540:																																								Device Product Name  : Controller (Gamepad F310)
-4943541:																																								Device Instance Name : Controller (Gamepad F310)
-4943541:																																							検出した DirectInput 対応入力装置が Xbox360コントローラーか確認... 不一致
-4943541:																																							検出した DirectInput 対応入力装置が XboxOneコントローラーか確認... 不一致
-4943541:																																							検出した DirectInput 対応入力装置が XInput 対応コントローラーか確認... 一致
-4943738:																																						検出した DirectInput 対応入力装置の初期化を中断します
-4943761:																																					DirectInput 対応ジョイパッドの列挙終了
-4943762:																																				ジョイパッドの初期化は正常に終了しました
-4943960:																																				一致
-4943960:																																			検出した DirectInput 対応入力装置の初期化を中断します
-4943982:																																		DirectInput 対応ジョイパッドの列挙終了
-4943982:																																	ジョイパッドの初期化は正常に終了しました
-4944172:																																	一致
-4944172:																																検出した DirectInput 対応入力装置の初期化を中断します
-4944194:																															DirectInput 対応ジョイパッドの列挙終了
-4944194:																														ジョイパッドの初期化は正常に終了しました
-4944397:																														一致
-4944398:																													検出した DirectInput 対応入力装置の初期化を中断します
-4944421:																												DirectInput 対応ジョイパッドの列挙終了
-4944421:																											ジョイパッドの初期化は正常に終了しました
-4944610:																											一致
-4944610:																										検出した DirectInput 対応入力装置の初期化を中断します
-4944633:																									DirectInput 対応ジョイパッドの列挙終了
-4944633:																								ジョイパッドの初期化は正常に終了しました
-4944827:																								一致
-4944827:																							検出した DirectInput 対応入力装置の初期化を中断します
-4944850:																						DirectInput 対応ジョイパッドの列挙終了
-4944850:																					ジョイパッドの初期化は正常に終了しました
-4945037:																					一致
-4945037:																				検出した DirectInput 対応入力装置の初期化を中断します
-4945060:																			DirectInput 対応ジョイパッドの列挙終了
-4945061:																		ジョイパッドの初期化は正常に終了しました
-4945247:																		一致
-4945247:																	検出した DirectInput 対応入力装置の初期化を中断します
-4945271:																DirectInput 対応ジョイパッドの列挙終了
-4945271:															ジョイパッドの初期化は正常に終了しました
-4945455:															一致
-4945455:														検出した DirectInput 対応入力装置の初期化を中断します
-4945479:													DirectInput 対応ジョイパッドの列挙終了
-4945479:												ジョイパッドの初期化は正常に終了しました
-4945665:												一致
-4945665:											検出した DirectInput 対応入力装置の初期化を中断します
-4945688:										DirectInput 対応ジョイパッドの列挙終了
-4945688:									ジョイパッドの初期化は正常に終了しました
-4945875:									一致
-4945875:								検出した DirectInput 対応入力装置の初期化を中断します
-4945899:							DirectInput 対応ジョイパッドの列挙終了
-4945899:						ジョイパッドの初期化は正常に終了しました
-4946089:						一致
-4946090:					検出した DirectInput 対応入力装置の初期化を中断します
-4946113:				DirectInput 対応ジョイパッドの列挙終了
-4946113:			ジョイパッドの初期化は正常に終了しました
-4946301:			一致
-4946301:		検出した DirectInput 対応入力装置の初期化を中断します
-4946325:	DirectInput 対応ジョイパッドの列挙終了
-4946325:ジョイパッドの初期化は正常に終了しました
-4946328:WASAPI の初期化を行います
-4946332:	デバイス名 : スピーカー/ヘッドホン (Realtek(R) Audio)
-4946332:	デフォルト遅延時間 : 10.000 ms
-4946332:	最小遅延時間       : 3.000 ms
-4946333:	遅延時間           : 10.000 ms
-4946341:	チャンネル数  　   : 8 ch
-4946341:	量子化ビット深度   : 32 bit
-4946342:	有効ビット深度　   : 32 bit
-4946342:	サンプリングレート : 48000 Hz
-4946342:	データ形式         : 浮動小数点型
-4946417:	動作モード         : 共有モード
-4946418:WASAPI の初期化は正常に終了しました
-4952375:WASAPI の初期化を行います
-4952379:	デバイス名 : スピーカー (Logi USB Headset)
-4952381:	デフォルト遅延時間 : 10.000 ms
-4952381:	最小遅延時間       : 3.000 ms
-4952381:	遅延時間           : 10.000 ms
-4952383:	チャンネル数  　   : 2 ch
-4952383:	量子化ビット深度   : 32 bit
-4952383:	有効ビット深度　   : 32 bit
-4952384:	サンプリングレート : 48000 Hz
-4952384:	データ形式         : 浮動小数点型
-4952402:	動作モード         : 共有モード
-4952403:WASAPI の初期化は正常に終了しました
+5:ＤＸライブラリの初期化処理開始
+6:	システムの情報を出力します
+7:		ＤＸライブラリ Ver3.24b
+8:		論理プロセッサの数 : 12
+9:		ＯＳ  Windows11 ( Build 26200  )
+109:		現時点のＣＰＵ動作速度：大体3.15GHz
+136:		ＭＭＸ命令を使用します
+155:		ＳＳＥ命令が使用可能です
+180:		ＳＳＥ２命令が使用可能です
+182:		ＣＰＵベンダ：GenuineIntel
+188:		ＣＰＵ名：Intel(R) Core(TM) i7-8700 CPU @ 3.20GHz
+198:	ＣＯＭの初期化... 成功
+217:	非同期読み込み処理の初期化...成功
+218:	ファイルアクセス処理の初期化...成功
+220:	メモリ総量:16214.34MB  空きメモリ領域:4396.27MB 
+220:	タイマーの精度を検査します
+220:	精度結果 更新回数 マルチメディアタイマー：0  パフォーマンスカウンター：60
+221:	 パフォーマンスカウンターを使用します タイマー精度 : 10000.000000 KHz 
+221:	 
+222:	ソフトの二重起動検査... 二重起動はされていませんでした
+225:	ウインドウクラスを登録します... 登録に成功しました
+226:	ウインドウモード起動用のウインドウを作成します
+227:	ディスプレイ情報のセットアップ開始
+228:		モニターの数：1  ディスプレイデバイスの数：7
+230:		No.0  モニター名：\\.\DISPLAY1　1920x1080　32bit　60Hz  96x96dpi
+249:	ディスプレイ情報のセットアップ完了
+249:	ウインドウ矩形 ( -16, -50 )-( 1920, 1069 )
+254:	ウインドウの作成に成功しました
+255:	ウインドウを表示します
+295:	ＩＭＥを無効にしました
+297:	ウインドウスタイルをウインドウモード用に変更します... 完了
+336:	XInput DLL の読み込み中... 成功
+355:	DirectInput関係初期化処理
+355:		DirectInput8 の取得を試みます...成功
+392:			引き続き初期化処理... 初期化成功
+398:		ジョイパッドの初期化... 
+398:			XInput 対応コントローラーのチェックを開始します
+400:				XInput 対応コントローラー No.0 をチェック
+407:				XInput 対応コントローラー No.0 の接続を確認しました
+408:				XInput 対応コントローラー No.0 を入力ナンバー 0 で登録します
+408:				XInput 対応コントローラー No.1 をチェック
+411:				XInput 対応コントローラー No.1 の接続は確認できませんでした
+411:				XInput 対応コントローラー No.2 をチェック
+413:				XInput 対応コントローラー No.2 の接続は確認できませんでした
+413:				XInput 対応コントローラー No.3 をチェック
+414:				XInput 対応コントローラー No.3 の接続は確認できませんでした
+414:			XInput 対応コントローラーのチェック完了
+414:			DirectInput 対応ジョイパッドの列挙を開始します
+478:				DirectInput 対応入力装置を検出しました
+478:						Device Product GUID  : c21d046d,0000,0000,00,00,50,49,44,56,49,44
+478:						Device Instance GUID : e7af56f0,3f44,11f1,80,02,44,45,53,54,00,00
+478:					DirectInputDevice8 の作成... 成功
+481:					DirectInputDevice の情報を取得します... 成功
+481:						Device Product Name  : Controller (Gamepad F310)
+482:						Device Instance Name : Controller (Gamepad F310)
+482:					検出した DirectInput 対応入力装置が Xbox360コントローラーか確認... 不一致
+482:					検出した DirectInput 対応入力装置が XboxOneコントローラーか確認... 不一致
+483:					検出した DirectInput 対応入力装置が XInput 対応コントローラーか確認... 一致
+948:				検出した DirectInput 対応入力装置の初期化を中断します
+971:			DirectInput 対応ジョイパッドの列挙終了
+971:		ジョイパッドの初期化は正常に終了しました
+977:		マウスデバイスの初期化... 初期化成功
+979:		キーボードデバイスの初期化... 初期化成功
+986:	DirectInput 関連の初期化は正常に終了しました
+995:	WASAPI の初期化を行います
+1006:		デバイス名 : スピーカー (Logi USB Headset)
+1018:		デフォルト遅延時間 : 10.000 ms
+1018:		最小遅延時間       : 3.000 ms
+1019:		遅延時間           : 10.000 ms
+1025:		チャンネル数  　   : 2 ch
+1026:		量子化ビット深度   : 32 bit
+1026:		有効ビット深度　   : 32 bit
+1026:		サンプリングレート : 48000 Hz
+1026:		データ形式         : 浮動小数点型
+1044:		動作モード         : 共有モード
+1046:	WASAPI の初期化は正常に終了しました
+1077:	d3d11.dll の読み込み.... 成功
+1083:	dxgi.dll の読み込み.... 成功
+1083:	API CreateDXGIFactory2 のアドレスを取得します.... 成功
+1084:	IDXGIFactory2 を作成します.... 成功
+1115:	API CreateDXGIFactory6 のアドレスを取得します.... 成功
+1115:	IDXGIAdapter を列挙
+1116:		Adapter No.0 Desc:NVIDIA GeForce GTX 1080  VRAM:8059MB
+1116:			Output Device No.0 Name:\\.\DISPLAY1 ( 0, 0 )-( 1920, 1080 )
+1117:		Adapter No.1 Desc:Intel(R) UHD Graphics 630  VRAM:128MB
+1117:		Adapter No.2 Desc:Microsoft Basic Render Driver  VRAM:0MB
+1117:	API D3D11CreateDevice のアドレスを取得します.... 成功
+1118:	IDXGIAdapter を取得します.... 成功
+1119:	IDXGIAdapter1 を取得します.... 成功
+1119:	IDXGIAdapter2 を取得します.... 成功
+1120:	IDXGIAdapter3 を取得します.... 成功
+1120:	IDXGIAdapter4 を取得します.... 成功
+1120:	Direct3D 11 FeatureLevel 11_0 以上を対象とします
+1121:	ID3D11Device オブジェクトを取得します.... 成功
+1418:	IDXGIDevice1 を取得します.... 成功
+1418:	IDXGIDevice1->SetMaximunFrameLatency( 1 ); を実行しました
+1418:	[ウインドウモード 1920x1080 ( 0, 0 )-( 1920, 1080 )]
+1419:	IDXGISwapChain2 を作成します.... 成功
+1429:	IDXGIFactory2->CreateSwapChainForHwnd の戻り値：0x00000000
+1429:	IDXGIOutput を取得します.... 成功
+1430:	Graphics Device:NVIDIA GeForce GTX 1080
+1431:	画面のフォーマットは DXGI_FORMAT_R8G8B8A8_UNORM です
+1431:	16bit Zバッファフォーマットは DXGI_FORMAT_D16_UNORM です
+1431:	24bit Zバッファフォーマットは DXGI_FORMAT_D24_UNORM_S8_UINT です
+1431:	32bit Zバッファフォーマットは DXGI_FORMAT_D32_FLOAT です
+1431:	16bit カラーフォーマットは DXGI_FORMAT_B5G6R5_UNORM です
+1432:	32bit カラーフォーマットは DXGI_FORMAT_B8G8R8X8_UNORM です
+1432:	アルファ付き 16bit カラーフォーマットは DXGI_FORMAT_B4G4R4A4_UNORM です
+1432:	アルファ付き 32bit カラーフォーマットは DXGI_FORMAT_R8G8B8A8_UNORM です
+1432:	アルファテスト用 16bit カラーフォーマットは DXGI_FORMAT_B5G5R5A1_UNORM です
+1433:	アルファテスト用 32bit カラーフォーマットは DXGI_FORMAT_R8G8B8A8_UNORM です
+1433:	ＤＸＴ１テクスチャフォーマットは DXGI_FORMAT_BC1_UNORM です
+1433:	ＤＸＴ２テクスチャフォーマットは使えません
+1433:	ＤＸＴ３テクスチャフォーマットは DXGI_FORMAT_BC2_UNORM です
+1434:	ＤＸＴ４テクスチャフォーマットは使えません
+1434:	ＤＸＴ５テクスチャフォーマットは DXGI_FORMAT_BC3_UNORM です
+1434:	BC7_UNORM テクスチャフォーマットは DXGI_FORMAT_BC7_UNORM です
+1434:	BC7_UNORM_SRGB テクスチャフォーマットは DXGI_FORMAT_BC7_UNORM_SRGB です
+1434:	ABGR 整数 16 ビット型カラーフォーマットは DXGI_FORMAT_R16G16B16A16_UNORM です
+1436:	ABGR 浮動小数点 16 ビット型カラーフォーマットは DXGI_FORMAT_R16G16B16A16_FLOAT です
+1436:	ABGR 浮動小数点 32 ビット型カラーフォーマットは DXGI_FORMAT_R32G32B32A32_FLOAT です
+1436:	１チャンネル整数 8 ビット型カラーフォーマットは DXGI_FORMAT_R8_UNORM です
+1436:	１チャンネル整数 16 ビット型カラーフォーマットは DXGI_FORMAT_R16_UNORM です
+1436:	１チャンネル浮動小数点 16 ビット型カラーフォーマットは DXGI_FORMAT_R16_FLOAT です
+1437:	１チャンネル浮動小数点 32 ビット型カラーフォーマットは DXGI_FORMAT_R32_FLOAT です
+1437:	２チャンネル整数 8 ビット型カラーフォーマットは DXGI_FORMAT_R8G8_UNORM です
+1437:	２チャンネル整数 16 ビット型カラーフォーマットは DXGI_FORMAT_R16G16_UNORM です
+1437:	２チャンネル浮動小数点 16 ビット型カラーフォーマットは DXGI_FORMAT_R16G16_FLOAT です
+1437:	２チャンネル浮動小数点 32 ビット型カラーフォーマットは DXGI_FORMAT_R32G32_FLOAT です
+1438:	描画用 16bit カラーフォーマットは DXGI_FORMAT_B5G6R5_UNORM です
+1438:	描画用 32bit カラーフォーマットは DXGI_FORMAT_B8G8R8X8_UNORM です
+1438:	描画用アルファ付き 32bit カラーフォーマットは DXGI_FORMAT_R8G8B8A8_UNORM です
+1438:	描画用 ABGR 整数 16 ビット型カラーフォーマットは DXGI_FORMAT_R16G16B16A16_UNORM です
+1439:	描画用 ABGR 浮動小数点 16 ビット型カラーフォーマットは DXGI_FORMAT_R16G16B16A16_FLOAT です
+1439:	描画用 ABGR 浮動小数点 32 ビット型カラーフォーマットは DXGI_FORMAT_R32G32B32A32_FLOAT です
+1439:	描画用１チャンネル整数 8 ビット型カラーフォーマットは DXGI_FORMAT_R8_UNORM です
+1439:	描画用１チャンネル整数 16 ビット型カラーフォーマットは DXGI_FORMAT_R16_UNORM です
+1440:	描画用１チャンネル浮動小数点 16 ビット型カラーフォーマットは DXGI_FORMAT_R16_FLOAT です
+1440:	描画用１チャンネル浮動小数点 32 ビット型カラーフォーマットは DXGI_FORMAT_R32_FLOAT です
+1440:	描画用２チャンネル整数 8 ビット型カラーフォーマットは DXGI_FORMAT_R8G8_UNORM です
+1441:	描画用２チャンネル整数 16 ビット型カラーフォーマットは DXGI_FORMAT_R16G16_UNORM です
+1441:	描画用２チャンネル浮動小数点 16 ビット型カラーフォーマットは DXGI_FORMAT_R16G16_FLOAT です
+1441:	描画用２チャンネル浮動小数点 32 ビット型カラーフォーマットは DXGI_FORMAT_R32G32_FLOAT です
+1441:	使用する機能レベル:D3D_FEATURE_LEVEL_11_1
+1442:	同時にレンダリングできるバッファの数:8
+1442:	最大テクスチャサイズ　幅:16384 高さ:16384
+1442:	標準描画用の頂点バッファの作成.... 成功
+1443:	シェーダーコード関係の初期化.... 成功
+1456:	各種シェーダー用定数バッファの作成.... 成功
+1457:	各種 ID3D11InputLayout の作成.... 成功
+1483:	画像の単純転送処理の初期化... 成功
+1485:	深度バッファを作成します.... 成功
+1488:	フォントの初期化を行います
+1491:	フォントの初期化は正常に終了しました
+1588:	文字コードバッファの初期化を行います... 完了しました
+1599:ＤＸライブラリの初期化処理終了
+3964:ウインドウを閉じようとしています
+3970:ウインドウが破棄されようとしています
+3970:ソフトを終了する準備が整いました
+4009:フォントの初期化を行います
+4010:フォントの初期化は正常に終了しました
+4039:d3d11.dll の解放 1
+4040:dxgi.dll の解放 1
+4042:Direct3D11 のオブジェクト数を出力
+4042:Direct3D11 のオブジェクト合計数 : 0
+4043:DirectInput 関連の終了処理... 完了
+4046:サウンド関連の終了処理... 完了
+4071:ウィンドウ関連の終了処理... 完了
+4131:ＣＯＭを終了... 完了
+4132:
+4132:Alloc memory dump
+4132:	Total size:0(0.000kb)  Alloc num:0
+4132:
