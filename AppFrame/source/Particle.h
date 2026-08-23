@@ -11,4 +11,5 @@ struct Particle
 	float life		   { 0.0f };
 	float maxLife	   { 1.0f };
 	bool active		   { false };
+	int handle		   { -1 };
 };

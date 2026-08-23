@@ -5,6 +5,7 @@
 #include "Camera.h"
 #include "UITitleMenu.h"
 #include "SakuraEmitter.h"
+#include "LeavesEmitter.h"
 
 namespace UI
 {
@@ -36,5 +37,6 @@ protected:
 
 private:
 	SakuraEmitter _sakuraEmitter;
+	LeavesEmitter _leavesEmitter;
 };
 

@@ -3,6 +3,7 @@
 
 class SakuraEmitter : public ParticleEmitter
 {
+	typedef ParticleEmitter base;
 public:
 	SakuraEmitter()  = default;
 	~SakuraEmitter() = default;
@@ -15,8 +16,8 @@ public:
 	void UpdateAutoEmit(const VECTOR& centerPos, float deltaTime); // 自動発生
 
 	// 自動発生のON/OFF切り替え
-	void SetSakuraAutoEmit(bool enable) { _isAutoEmit = enable; }
-	bool IsSakuraAutoEmit() const		{ return _isAutoEmit;   }
+	void SetSakuraEmit(bool enable) { _isEmit = enable; }
+	bool IsSakuraEmit() const		{ return _isEmit;   }
 
 	// パラメーター関数
 	void SetEmitInterval(float interval)      { _emitInterval = interval; }
@@ -25,7 +26,8 @@ public:
 protected:
 	void UpdateParticle(Particle& p, float deltaTime) override;
 private:
-	bool	_isAutoEmit  = true; // 発生フラグ
+	bool	_isEmit		 = true; // 発生フラグ
+	bool	_isFirstEmit = true; // 初回発生フラグ
 	float  _emitTimer    = 0.0f; 
 	float  _emitInterval = 0.08f;					      // 発生間隔						  
 	VECTOR _spawnOffset  = VGet(-530.0f, 230.0f, 0.0f);

@@ -32,19 +32,16 @@ namespace
 
 bool SakuraEmitter::Initialize()
 {
-	if(!ParticleEmitter::Initialize(SAKURA_TEXTURE_PATH, MAX_SAKURA_PARTICLES))
+	if(!base::Initialize(SAKURA_TEXTURE_PATH, MAX_SAKURA_PARTICLES))
 	{
 		return false;
 	}
-
-	SpawnWarmupParticles();
-
 	return true;
 }
 
 void SakuraEmitter::SpawnWarmupParticles()
 {
-	if(!_isAutoEmit) return;
+	if(!_isEmit) return;
 
 	// ランダムで50個の桜を初期発生させる
 	for(int i = 0; i < WARMUP_PARTICLE_COUNT; ++i)
@@ -71,7 +68,7 @@ bool SakuraEmitter::EmitSakura(const VECTOR& pos)
 
 void SakuraEmitter::UpdateParticle(Particle& p, float deltaTime)
 {
-	ParticleEmitter::UpdateParticle(p, deltaTime);
+	base::UpdateParticle(p, deltaTime);
 
 	if(!p.active) return;
 
@@ -90,8 +87,13 @@ void SakuraEmitter::UpdateParticle(Particle& p, float deltaTime)
 
 void SakuraEmitter::UpdateAutoEmit(const VECTOR& centerPos, float deltaTime)
 {
-	if(!_isAutoEmit) return;
+	if(!_isEmit) return;
 
+	if(_isFirstEmit)
+	{
+		SpawnWarmupParticles();
+		_isFirstEmit = false;
+	}
 	_emitTimer += deltaTime;
 
 	if(_emitTimer >= _emitInterval)

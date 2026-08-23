@@ -8,11 +8,13 @@ namespace
 
 float MyMath::GetRandomFloat(float min, float max)
 {
+	// min以上max未満の範囲でランダムな小数を返す
 	if(min >= max) return min;
 
 	// 0.0f～1.0fの範囲でランダムな小数を生成
 	float rate = static_cast<float>(GetRand(RANDOM_PRECISION)) / RANDOM_PRECISION;
 
+	// min～maxの範囲に変換して返す
 	return min + (max - min) * rate;
 }
 

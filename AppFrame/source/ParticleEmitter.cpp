@@ -75,7 +75,7 @@ void ParticleEmitter::RenderParticle(const Particle& p) const
 	SetDrawBlendMode(DX_BLENDMODE_ALPHA, alpha);
 
 	// ビルボード描画
-	DrawBillboard3D(p.position, 0.5f, 0.5f, p.scale.x, p.rotation, _handle, TRUE);
+	DrawBillboard3D(p.position, 0.5f, 0.5f, p.scale.x, p.rotation, p.handle, TRUE);
 
 	// 描画後の状態を元に戻す
 	SetUseLighting(TRUE);
@@ -91,19 +91,22 @@ Particle* ParticleEmitter::FindDeadParticle()
 	return nullptr; // 上限を達した場合
 }
 
-bool ParticleEmitter::Emit(const VECTOR& pos, const VECTOR& vel, float life, float scale)
+bool ParticleEmitter::Emit(const VECTOR& pos, const VECTOR& vel, float life, float scale, int handle)
 {
 	Particle* p = FindDeadParticle();
 	if(!p) return false; 
 
 	p->position = pos;
 	p->velocity = vel;
-	p->life = life;
-	p->maxLife = life;
-	p->scale = VGet(scale, scale, scale);
+	p->life		= life;
+	p->maxLife  = life;
+	p->scale    = VGet(scale, scale, scale);
 	p->rotation = 0.0f;
 	p->rotSpeed = (GetRand(100) - 50) * 0.05f;
-	p->active = true;
+	p->active   = true;
 
+	// 個別のハンドルが指定されていればそれを使用
+	// そうでなければデフォルトのハンドルを使用
+	p->handle   = (handle >= 0) ? handle : _handle;
 	return true;
 }

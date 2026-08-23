@@ -22,7 +22,13 @@ bool ModeTitle::Initialize()
 	{
 		return false;
 	}
-	_sakuraEmitter.SetSakuraAutoEmit(true);
+	_sakuraEmitter.SetSakuraEmit(false);
+
+	if(!_leavesEmitter.Initialize())
+	{
+		return false;
+	}
+	_leavesEmitter.SetLeavesEmit(false);
 	return true;
 }
 
@@ -45,11 +51,14 @@ bool ModeTitle::Process()
 	if(_player) { _player->Process(); }
 	if(_cam)    { _cam->Process();    }
 
+	// エフェクト
 	if(_cam)
 	{
 		_sakuraEmitter.UpdateAutoEmit(_cam->GetTarget(), 1.0f / 60.0f);
+		_leavesEmitter.UpdateAutoEmit(_cam->GetTarget(), 1.0f / 60.0f);
 	}
 	_sakuraEmitter.Process(1.0f / 60.0f);
+	_leavesEmitter.Process(1.0f / 60.0f);
 
 	// UI
 	if(_titleUI)
@@ -71,6 +80,7 @@ bool ModeTitle::Render()
 	if(_player) { _player->Render(); }
 
 	_sakuraEmitter.Render();
+	_leavesEmitter.Render();
 
 	if(_titleUI)
 	{

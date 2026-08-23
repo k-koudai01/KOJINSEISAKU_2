@@ -13,7 +13,7 @@ public:
 	virtual bool Render();
 
 	// パーティクルの発生
-	bool Emit(const VECTOR& pos, const VECTOR& vel, float life, float scale = 1.0f);
+	bool Emit(const VECTOR& pos, const VECTOR& vel, float life, float scale = 1.0f, int handle = -1);
 
 	void Clear();
 
