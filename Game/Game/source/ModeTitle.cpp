@@ -18,17 +18,12 @@ bool ModeTitle::Initialize()
 	_titleUI = std::make_unique<UITitleMenu>();
 	_titleUI->Initialize();
 
-	if(!_sakuraEmitter.Initialize())
+	// エフェクト
+	if(!InitEffects())
 	{
 		return false;
 	}
-	_sakuraEmitter.SetSakuraEmit(false);
 
-	if(!_leavesEmitter.Initialize())
-	{
-		return false;
-	}
-	_leavesEmitter.SetLeavesEmit(false);
 	return true;
 }
 
@@ -52,13 +47,7 @@ bool ModeTitle::Process()
 	if(_cam)    { _cam->Process();    }
 
 	// エフェクト
-	if(_cam)
-	{
-		_sakuraEmitter.UpdateAutoEmit(_cam->GetTarget(), 1.0f / 60.0f);
-		_leavesEmitter.UpdateAutoEmit(_cam->GetTarget(), 1.0f / 60.0f);
-	}
-	_sakuraEmitter.Process(1.0f / 60.0f);
-	_leavesEmitter.Process(1.0f / 60.0f);
+	UpdateEffects(1.0f / 60.0f);
 
 	// UI
 	if(_titleUI)
@@ -95,6 +84,8 @@ void ModeTitle::InitTitleCamera()
 	if(_cam && _player)
 	{
 		_player->SetAutoMove(false);
+		_player->SetCanControl(false);
+
 		_objFtr.SetUpCamera(_cam.get(), _player.get(), false);
 		CameraManager::GetInstance()->SetActiveCamera(_cam.get());
 		_cam->SetTargetOffset(VGet(200.0f, 100.0f, -30.0f));
@@ -151,4 +142,29 @@ void ModeTitle::RenderBackground3D()
 		SetCameraPositionAndTarget_UpVecY(pos, target);
 		SetCameraNearFar(_cam->GetClipNear(), _cam->GetClipFar());
 	}
+}
+
+bool ModeTitle::InitEffects()
+{
+	// 桜エフェクト
+	if(!_sakuraEmitter.Initialize()) return false;
+	_sakuraEmitter.SetSakuraEmit(false);
+
+	// 葉っぱエフェクト
+	if(!_leavesEmitter.Initialize()) return false;
+	_leavesEmitter.SetLeavesEmit(true);
+
+	return true;
+}
+
+void ModeTitle::UpdateEffects(float deltaTime)
+{
+	if(_cam)
+	{
+		_sakuraEmitter.UpdateAutoEmit(_cam->GetTarget(), deltaTime);
+		_leavesEmitter.UpdateAutoEmit(_cam->GetTarget(), deltaTime);
+	}
+
+	_sakuraEmitter.Process(deltaTime);
+	_leavesEmitter.Process(deltaTime);
 }

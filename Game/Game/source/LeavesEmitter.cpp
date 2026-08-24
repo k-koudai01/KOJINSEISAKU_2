@@ -20,7 +20,7 @@ namespace
 
 	// 風の基本設定
 	const VECTOR WIND_DIRECTION   = VGet(1.2f, -0.5f, 0.0f);
-	constexpr float WIND_STRENGTH = 60.0f;
+	constexpr float WIND_STRENGTH = 130.0f;
 
 	// 葉っぱ特有のゆらぎ設定
 	constexpr float WIND_SWAY_FREQ = 2.5f;  // 周期を少し遅く

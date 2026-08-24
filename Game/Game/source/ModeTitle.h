@@ -26,6 +26,10 @@ protected:
 	void RenderBackground3D();
 	void ProcessMenuSelection();
 
+	// エフェクト
+	bool InitEffects();
+	void UpdateEffects(float deltaTime);
+
 	// オブジェクト
 	ObjectFactry _objFtr;
 	std::unique_ptr<Player> _player;

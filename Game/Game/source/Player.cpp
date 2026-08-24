@@ -274,6 +274,8 @@ void Player::UpdateMovement()
 
 void Player::UpdateJump()
 {
+	if(!_canJump) return;
+
 	int trg = ApplicationBase::GetInstance()->GetTrg();
 
 	// ジャンプ開始
@@ -395,4 +397,12 @@ void Player::OnHitEnemy()
 	{
 		_cam->Shake(50.0f, 0.3f);
 	}
+}
+
+void Player::SetCanControl(bool enable)
+{
+	SetAllowMoveHorizontal(enable);
+	SetAllowMoveVertical(enable);
+	SetCanJump(enable);
+	_canAttack = enable;
 }

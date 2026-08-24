@@ -42,6 +42,12 @@ public:
 	bool CanMoveVertical() const   { return _allowMoveVertical; }
 	bool CanMoveHorizontal() const { return _allowMoveHorizontal; }
 
+	// 操作可能フラグ
+	void SetCanControl(bool enable);
+	bool CanControl() const { return _canControl; }
+
+	void SetCanJump(bool allow) { _canJump = allow; }
+	bool CanJump() const { return _canJump; }
 protected:
 	void UpdateDamage();
 	VECTOR CalculateInputVector();
@@ -71,8 +77,6 @@ protected:
 	// 自動移動
 	bool _isAutoMove{ false };
 
-	
-
 	// 攻撃・無敵関連
 	bool _canAttack   { true  };
 	bool _isInvincible{ false };
@@ -82,9 +86,10 @@ protected:
 	STATUS _debugOldStatus = STATUS::NONE;
 
 private:
-	
 	// 移動制限フラグ
 	bool _allowMoveVertical  { false };
 	bool _allowMoveHorizontal{ true };
+	bool _canControl{ true };
+	bool _canJump   { true };
 };
 
