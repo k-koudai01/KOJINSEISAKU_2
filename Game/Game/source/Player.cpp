@@ -314,35 +314,59 @@ void Player::UpdateJump()
 
 void Player::UpdateAttack()
 {
+	int key = ApplicationBase::GetInstance()->GetKey();
+	int rel = ApplicationBase::GetInstance()->GetRel();
+
 	_isAttacking = (_status == STATUS::ATTACK || _status == STATUS::RUNATTACK);
 
 	if(_isAttacking)
 	{
-		// アニメーションが終わったらステータスを戻す
 		if(IsSpriteAnimationFinished())
 		{
 			_status = STATUS::IDLE;
 		}
-		return; 
+		return;
 	}
 
-	// 攻撃許可がないなら判定しない
 	if(!_canAttack) return;
 
-	int trg = ApplicationBase::GetInstance()->GetTrg();
+	if(key & PAD_INPUT_1)
+	{
+		_isCharging = true;
+		_chargeTime += 1.0f / 60.0f;
 
-	// 攻撃
-	if(trg & PAD_INPUT_1)
+		if(_chargeTime >= 3.0f)
+		{
+			_isCharge = true;
+		}
+	}
+	else if(rel & PAD_INPUT_1)
 	{
 		if(VSize(_v) > 0.0f)
 		{
-			_status = STATUS::RUNATTACK;
+			_status = STATUS::RUNATTACK; 
 		}
 		else
 		{
-			_status = STATUS::ATTACK;
+			_status = STATUS::ATTACK;   
 		}
 
+		if(_isCharge)
+		{
+			// チャージ弾発射
+			BulletManager::GetInstance()->Spawn(_vPos, _vDir, 15.0f, 3.0f);
+		}
+		else
+		{
+			// 弾発射
+			BulletManager::GetInstance()->Spawn(_vPos, _vDir, 10.0f, 2.0f);
+			
+		}
+
+		// リセット
+		_chargeTime  = 0.0f;
+		_isCharging  = false;
+		_isCharge    = false;
 		_hasHitEnemy = false;
 	}
 }

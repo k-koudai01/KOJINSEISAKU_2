@@ -78,6 +78,7 @@ void SakuraEmitter::UpdateParticle(Particle& p, float deltaTime)
 	p.position.z += WIND_DIRECTION.z * WIND_STRENGTH * deltaTime;
 
 	// 時間経過で風が強くなったり上下に浮き沈みする揺れ
+	// 加算値 = sin(経過時間 * 周波数 * 振幅 * 時間)	
 	float windBreeze = sinf(p.life * WIND_SWAY_FREQ) * WIND_SWAY_AMP * deltaTime; // 横風の強弱
 	float floatUp    = cosf(p.life * FLOAT_UP_FREQ)  * FLOAT_UP_AMP * deltaTime;   // 上下のフワフワ感
 

@@ -29,12 +29,13 @@ public:
 	static	ApplicationBase	*GetInstance() { return _lpInstance; }
 	virtual int GetKey() { return _gKey; }
 	virtual int GetTrg() { return _gTrg; }
+	virtual int GetRel() { return _gRel; }
 
 	FrameRateController* GetFrameRateController() { return _frameRateController.get(); }
 protected:
 	static	ApplicationBase	*_lpInstance;
 
-	int		_gKey, _gTrg;
+	int	_gKey, _gTrg, _gRel;
 
 	ModeServer* _serverMode;
 	std::unique_ptr<FrameRateController> _frameRateController;

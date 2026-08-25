@@ -177,6 +177,8 @@
     <ClCompile Include="source\ObjectFactry.cpp" />
     <ClCompile Include="source\ObjectManager.cpp" />
     <ClCompile Include="source\Player.cpp" />
+    <ClCompile Include="source\PlayerChargeBullet.cpp" />
+    <ClCompile Include="source\PlayerNormalBullet.cpp" />
     <ClCompile Include="source\SakuraEmitter.cpp" />
     <ClCompile Include="source\SpriteCharaBase.cpp" />
     <ClCompile Include="source\StageLoader.cpp" />
@@ -214,6 +216,8 @@
     <ClInclude Include="source\ObjectFactry.h" />
     <ClInclude Include="source\ObjectManager.h" />
     <ClInclude Include="source\Player.h" />
+    <ClInclude Include="source\PlayerChargeBullet.h" />
+    <ClInclude Include="source\PlayerNormalBullet.h" />
     <ClInclude Include="source\SakuraEmitter.h" />
     <ClInclude Include="source\SpriteCharaBase.h" />
     <ClInclude Include="source\StageLoader.h" />

@@ -122,6 +122,21 @@
     <Filter Include="ソース ファイル\Stage//Map\StageLoader">
       <UniqueIdentifier>{3c501e86-5abe-4fde-b7ca-dea0db9f1f3b}</UniqueIdentifier>
     </Filter>
+    <Filter Include="ソース ファイル\Object\Bullet\BulletBase">
+      <UniqueIdentifier>{8296450c-01a6-408e-80ee-5db5e99c1c2b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\Object\Bullet\PlayerBullet">
+      <UniqueIdentifier>{c0e0ee50-e727-4ab9-9ec8-75cab7e61bdc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\Object\Bullet\PlayerBullet\PlayerNormalBullet">
+      <UniqueIdentifier>{e23c5422-7aae-4f69-91a3-96db7704f33e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\Effekt\LeavesEmitter">
+      <UniqueIdentifier>{17af0ed8-c214-4fc9-98b5-e2c1e5497875}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\Object\Bullet\PlayerBullet\PlayerChargeBullet">
+      <UniqueIdentifier>{26739c08-ee75-4d57-bd71-d7818d719507}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="source\Player.cpp">
@@ -187,9 +202,6 @@
     <ClCompile Include="source\ApplicationMain.cpp">
       <Filter>ソース ファイル\ApplicationMain</Filter>
     </ClCompile>
-    <ClCompile Include="source\Bullet.cpp">
-      <Filter>ソース ファイル\Object\Bullet</Filter>
-    </ClCompile>
     <ClCompile Include="source\BulletManager.cpp">
       <Filter>ソース ファイル\System\BulletManager</Filter>
     </ClCompile>
@@ -208,14 +220,23 @@
     <ClCompile Include="source\SakuraEmitter.cpp">
       <Filter>ソース ファイル\Effekt\SakuraEmitter</Filter>
     </ClCompile>
-    <ClCompile Include="source\LeavesEmitter.cpp">
-      <Filter>ソース ファイル</Filter>
-    </ClCompile>
     <ClCompile Include="source\Background2D.cpp">
       <Filter>ソース ファイル\Stage//Map\Background2D</Filter>
     </ClCompile>
     <ClCompile Include="source\StageLoader.cpp">
       <Filter>ソース ファイル\Stage//Map\StageLoader</Filter>
+    </ClCompile>
+    <ClCompile Include="source\Bullet.cpp">
+      <Filter>ソース ファイル\Object\Bullet\BulletBase</Filter>
+    </ClCompile>
+    <ClCompile Include="source\PlayerNormalBullet.cpp">
+      <Filter>ソース ファイル\Object\Bullet\PlayerBullet\PlayerNormalBullet</Filter>
+    </ClCompile>
+    <ClCompile Include="source\LeavesEmitter.cpp">
+      <Filter>ソース ファイル\Effekt\LeavesEmitter</Filter>
+    </ClCompile>
+    <ClCompile Include="source\PlayerChargeBullet.cpp">
+      <Filter>ソース ファイル</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -285,9 +306,6 @@
     <ClInclude Include="source\ApplicationMain.h">
       <Filter>ソース ファイル\ApplicationMain</Filter>
     </ClInclude>
-    <ClInclude Include="source\Bullet.h">
-      <Filter>ソース ファイル\Object\Bullet</Filter>
-    </ClInclude>
     <ClInclude Include="source\BulletManager.h">
       <Filter>ソース ファイル\System\BulletManager</Filter>
     </ClInclude>
@@ -306,12 +324,21 @@
     <ClInclude Include="source\SakuraEmitter.h">
       <Filter>ソース ファイル\Effekt\SakuraEmitter</Filter>
     </ClInclude>
-    <ClInclude Include="source\LeavesEmitter.h" />
     <ClInclude Include="source\Background2D.h">
       <Filter>ソース ファイル\Stage//Map\Background2D</Filter>
     </ClInclude>
     <ClInclude Include="source\StageLoader.h">
       <Filter>ソース ファイル\Stage//Map\StageLoader</Filter>
     </ClInclude>
+    <ClInclude Include="source\Bullet.h">
+      <Filter>ソース ファイル\Object\Bullet\BulletBase</Filter>
+    </ClInclude>
+    <ClInclude Include="source\PlayerNormalBullet.h">
+      <Filter>ソース ファイル\Object\Bullet\PlayerBullet\PlayerNormalBullet</Filter>
+    </ClInclude>
+    <ClInclude Include="source\LeavesEmitter.h">
+      <Filter>ソース ファイル\Effekt\LeavesEmitter</Filter>
+    </ClInclude>
+    <ClInclude Include="source\PlayerChargeBullet.h" />
   </ItemGroup>
 </Project>

@@ -89,12 +89,13 @@ void LeavesEmitter::UpdateParticle(Particle& p, float deltaTime)
 
 	if(!p.active) return;
 
-	// 風の移動
+	// 風の移動(最終座標 = 風の向き * 風の強さ * 時間)
 	p.position.x += WIND_DIRECTION.x * WIND_STRENGTH * deltaTime;
 	p.position.y += WIND_DIRECTION.y * WIND_STRENGTH * deltaTime;
 	p.position.z += WIND_DIRECTION.z * WIND_STRENGTH * deltaTime;
 
-	// 葉っぱ特有の揺れを追加
+	// 時間経過で風が強くなったり上下に浮き沈みする揺れ
+	// 加算値 = sin(経過時間 * 周波数 * 振幅 * 時間)	
 	float windBreeze = sinf(p.life * WIND_SWAY_FREQ) * WIND_SWAY_AMP * deltaTime;
 	float floatUp    = cosf(p.life * FLOAT_UP_FREQ ) * FLOAT_UP_AMP  * deltaTime;
 

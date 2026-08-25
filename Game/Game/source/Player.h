@@ -3,14 +3,16 @@
 #include "SpriteCharaBase.h"
 #include "Camera.h"
 #include "Bullet.h"
-
+#include "BulletManager.h"
 
 
 class Player: public SpriteCharaBase
 {	
 	typedef SpriteCharaBase base;
 public:
-
+	// ----------------------------------------------------
+	// 基本関数
+	// ----------------------------------------------------
 	virtual bool Initialize()override;
 	virtual bool Terminate() override;
 	virtual bool Process()   override;
@@ -56,40 +58,41 @@ protected:
 	void UpdateJump();
 	void UpdateAttack();
 
-	//　ダメージ点滅
+	// ダメージ点滅
 	bool ShouldDraw() const;
-
-protected:
-	// ダメージカウンタ
-	float _damageCounter = 0.0f;
-
-	// カメラ参照
-	Camera* _cam = nullptr;
-
-	// アナログスティック関係
-	float _analogDeadZone = 0.2f;
-	float lx = 0.0f;
-	float lz = 0.0f;
-
-	// 移動方向ベクトル
-	VECTOR _v = VGet(0.0f, 0.0f, 0.0f);
-
-	// 自動移動
-	bool _isAutoMove{ false };
-
-	// 攻撃・無敵関連
-	bool _canAttack   { true  };
-	bool _isInvincible{ false };
-
-	bool _hasHitEnemy{ false };
-
-	STATUS _debugOldStatus = STATUS::NONE;
-
 private:
-	// 移動制限フラグ
-	bool _allowMoveVertical  { false };
-	bool _allowMoveHorizontal{ true };
-	bool _canControl{ true };
-	bool _canJump   { true };
+	// ----------------------------------------------------
+	// メイン変数
+	// ----------------------------------------------------
+	
+	// 外部参照・コンポーネント
+	Camera* _cam = nullptr;                 // カメラ参照
+
+	// 移動・入力関連
+	VECTOR _v = VGet(0.0f, 0.0f, 0.0f);     // 移動方向ベクトル
+	float  _analogDeadZone = 0.2f;          // アナログスティックのデッドゾーン
+	float  lx = 0.0f;                       // アナログスティック入力X
+	float  lz = 0.0f;                       // アナログスティック入力Z
+										    
+	// 状態・操作制限フラグ				  
+	bool _canControl{ true };			    // 操作許可
+	bool _canJump{ true };				    // ジャンプ許可
+	bool _allowMoveVertical{ false };       // 縦移動制限
+	bool _allowMoveHorizontal{ true };      // 横移動制限
+	bool _isAutoMove{ false };			    // 自動移動
+										    
+	// 戦闘・ダメージ関連				    
+	float _damageCounter = 0.0f;            // ダメージカウンター
+	bool  _canAttack{ true };			    // 攻撃許可
+	bool  _isInvincible{ false };		    // 無敵フラグ
+	bool  _hasHitEnemy{ false };		    // 攻撃ヒットフラグ
+										   
+	// チャージショット関連			       
+	float _chargeTime = 0.0f;               // チャージ蓄積時間
+	bool  _isCharging = false;              // ボタン長押し中フラグ
+	bool  _isCharge = false;                // 最大チャージ完了フラグ
+
+	// デバッグ用
+	STATUS _debugOldStatus = STATUS::NONE;  // デバッグ用の過去ステータス
 };
 

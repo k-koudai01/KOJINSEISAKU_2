@@ -5,11 +5,13 @@ class SakuraEmitter : public ParticleEmitter
 {
 	typedef ParticleEmitter base;
 public:
+	// 基本関数
 	SakuraEmitter()  = default;
 	~SakuraEmitter() = default;
 
 	bool Initialize();
 
+	// 内部関数
 	// 発生処理
 	void SpawnWarmupParticles();						           // 初期発生
 	bool EmitSakura(const VECTOR& pos);					           // 桜の発生
