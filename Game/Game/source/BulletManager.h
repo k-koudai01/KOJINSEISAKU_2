@@ -2,6 +2,7 @@
 #include "appframe.h"
 #include "Bullet.h"
 
+
 class BulletManager
 {
 public:
@@ -16,12 +17,19 @@ public:
 	bool Process();
 	bool Render();
 
-	void Spawn(const VECTOR& pos, const VECTOR& dir, float speed, float maxLifeTime);
+	template <typename T>
+	void Spawn(const VECTOR& pos, const VECTOR& dir)
+	{
+		static_assert(std::is_base_of<Bullet, T>::value, "Bullet の派生クラスを指定してください");
+
+		auto bullet = std::make_unique<T>();
+		if(bullet->Initialize(pos, dir))
+		{
+			_bullets.push_back(std::move(bullet));
+		}
+	}
 
 private:
-	BulletManager()  = default;
-	~BulletManager() = default;
-
 	// 弾
 	std::vector<std::unique_ptr<Bullet>> _bullets;
 };

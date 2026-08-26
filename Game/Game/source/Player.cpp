@@ -4,6 +4,9 @@
 #include "ModeGame.h"
 #include "mymath.h"
 #include "CameraManager.h"
+#include "BulletManager.h"
+#include "PlayerChargeBullet.h"
+#include "PlayerNormalBullet.h"
 
 namespace
 {
@@ -335,7 +338,7 @@ void Player::UpdateAttack()
 		_isCharging = true;
 		_chargeTime += 1.0f / 60.0f;
 
-		if(_chargeTime >= 3.0f)
+		if(_chargeTime >= 1.0f)
 		{
 			_isCharge = true;
 		}
@@ -354,13 +357,12 @@ void Player::UpdateAttack()
 		if(_isCharge)
 		{
 			// チャージ弾発射
-			BulletManager::GetInstance()->Spawn(_vPos, _vDir, 15.0f, 3.0f);
+			BulletManager::GetInstance()->Spawn<PlayerChargeBullet>(_vPos, _vDir);
 		}
 		else
 		{
 			// 弾発射
-			BulletManager::GetInstance()->Spawn(_vPos, _vDir, 10.0f, 2.0f);
-			
+			BulletManager::GetInstance()->Spawn<PlayerNormalBullet>(_vPos, _vDir);
 		}
 
 		// リセット

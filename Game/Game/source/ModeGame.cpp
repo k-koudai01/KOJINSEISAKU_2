@@ -279,5 +279,5 @@ void ModeGame::Render3DObjects()
 	if(_cam) { _cam->Render(); }
 
 	// デバッグ
-	//_collision.DebugRenderCapsule(_player.get(), _enemy.get());
+	_collision.DebugRenderCapsule(_player.get(), _enemy.get());
 }

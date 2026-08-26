@@ -2,68 +2,47 @@
 #include "mymath.h"	
 
 Bullet::Bullet()
-	: SpriteCharaBase()
+	: base()
+	, _vDir(VGet(0.0f, 0.0f, 0.0f))
+	, _speed(0.0f)
 	, _lifeTimer(0.0f)
 	, _isActive(false)
 {
-	_vPos = VGet(0.0f, 0.0f, 0.0f);
-	_vDir = VGet(0.0f, 0.0f, 0.0f);
-	_speed = 0.0f;
-	_radius = 10.0f;
-	_spriteScale = 20.0f;
 }
 
-bool Bullet::Initialize(const VECTOR& pos, const VECTOR& dir, float speed, float maxlifeTime)
+bool Bullet::Initialize(const VECTOR& pos, const VECTOR& dir, float speed, float maxLifeTime)
 {
 	if(!base::Initialize()) { return false; }
 
-	SetSpriteSheet(STATUS::IDLE, "res/Enemy/Enemy_Idle.png", 4, 4);
-
-	SetSpriteAnimTable
-	({
-		{ STATUS::IDLE, {  4,  10.0f, true  } },
-	});
-
+	// 変数の初期化
 	_vPos      = pos;
 	_speed     = speed;
-	_lifeTimer = maxlifeTime;
-	_isActive  = true;	
-	
-	_status = STATUS::IDLE;
+	_lifeTimer = maxLifeTime;
+	_isActive  = true;
 
-	// 方向ベクトルを正規化
+	// 方向ベクトルの正規化
 	float dirLength = VSize(dir);
-	if(dirLength > 0.0f)
-	{
-		_vDir = VNorm(dir);
-	}
-	else
-	{
-		_vDir = VGet(1.0f, 0.0f, 0.0f); 
-	}
+	_vDir = (dirLength > 0.0f) ? VNorm(dir) : VGet(1.0f, 0.0f, 0.0f);
 
-	return true;
-}
-
-bool Bullet::Terminate()
-{
-	base::Terminate();
-	_isActive = false;
 	return true;
 }
 
 bool Bullet::Process()
 {
 	if(!_isActive) { return false; }
+	
+	STATUS oldStatus = _status;
+
+	base::Process();
 
 	// 移動
 	_vPos = VAdd(_vPos, VScale(_vDir, _speed));
 
+	UpdateFacing(_vDir);
+	UpdateSpriteAnimation(oldStatus);
+
 	// 寿命計算
 	UpdateLifeTimer();
-
-	STATUS oldStatus = _status;
-	UpdateSpriteAnimation(oldStatus);
 
 	return true;
 }
@@ -71,6 +50,8 @@ bool Bullet::Process()
 bool Bullet::Render()
 {
 	if(!_isActive) return false;
+
+	DrawSphere3D(_vPos, _radius, 8, GetColor(255, 255, 0), GetColor(255, 255, 255), TRUE);
 
 	return base::Render();
 }

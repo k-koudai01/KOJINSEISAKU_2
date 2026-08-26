@@ -137,6 +137,9 @@
     <Filter Include="ソース ファイル\Object\Bullet\PlayerBullet\PlayerChargeBullet">
       <UniqueIdentifier>{26739c08-ee75-4d57-bd71-d7818d719507}</UniqueIdentifier>
     </Filter>
+    <Filter Include="ソース ファイル\Object\Bullet\BulletData">
+      <UniqueIdentifier>{4b10a068-167c-4377-9bd8-07810f0bd8d4}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="source\Player.cpp">
@@ -236,7 +239,7 @@
       <Filter>ソース ファイル\Effekt\LeavesEmitter</Filter>
     </ClCompile>
     <ClCompile Include="source\PlayerChargeBullet.cpp">
-      <Filter>ソース ファイル</Filter>
+      <Filter>ソース ファイル\Object\Bullet\PlayerBullet\PlayerChargeBullet</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -339,6 +342,11 @@
     <ClInclude Include="source\LeavesEmitter.h">
       <Filter>ソース ファイル\Effekt\LeavesEmitter</Filter>
     </ClInclude>
-    <ClInclude Include="source\PlayerChargeBullet.h" />
+    <ClInclude Include="source\BulletData.h">
+      <Filter>ソース ファイル\Object\Bullet\BulletData</Filter>
+    </ClInclude>
+    <ClInclude Include="source\PlayerChargeBullet.h">
+      <Filter>ソース ファイル\Object\Bullet\PlayerBullet\PlayerChargeBullet</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

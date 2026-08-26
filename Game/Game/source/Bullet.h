@@ -10,19 +10,22 @@ public:
 	Bullet();
 	~Bullet() = default;
 
-	bool Initialize(const VECTOR& pos, const VECTOR& dir, float speed, float maxlifeTime);
-	bool Terminate();
-	bool Process();
-	bool Render();
+	virtual bool Initialize(const VECTOR& pos, const VECTOR& dir, float speed, float maxLifeTime);
+	virtual bool Process() override;
+    virtual bool Render() override;
 
-	void UpdateLifeTimer();
-
-	// 外部から状態をチェックする関数
-	bool IsActive() const { return _isActive; }
-	void Destroy() { _isActive = false; }
+    // ゲッター / セッター
+    bool IsActive() const { return _isActive; }
+    void Destroy() { _isActive = false; }
 
 protected:
-	float _lifeTimer; 
-	bool _isActive; 
+	// メイン関数
+	void UpdateLifeTimer();
+
+	// メイン変数
+	VECTOR _vDir;
+	float  _speed;
+	float  _lifeTimer;
+	bool   _isActive;
 };
 

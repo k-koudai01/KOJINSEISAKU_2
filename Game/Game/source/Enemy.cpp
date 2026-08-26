@@ -264,7 +264,7 @@ void Enemy::UpdateShootAttack(const VECTOR& playerPos)
 		// 弾を飛ばす方向
 		VECTOR bulletDir = _vDir;
 		bulletDir.z = 0.0f;
-		BulletManager::GetInstance()->Spawn(_vPos, bulletDir, 10.0f, 3.0f);
+		//BulletManager::GetInstance()->Spawn(_vPos, bulletDir, 10.0f, 3.0f);
 	}
 
 	if(_stateTimer >= SHOOT_END_TIME)

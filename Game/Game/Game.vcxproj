@@ -191,6 +191,7 @@
     <ClInclude Include="source\ApplicationMain.h" />
     <ClInclude Include="source\Background2D.h" />
     <ClInclude Include="source\Bullet.h" />
+    <ClInclude Include="source\BulletData.h" />
     <ClInclude Include="source\BulletManager.h" />
     <ClInclude Include="source\Camera.h" />
     <ClInclude Include="source\CameraBase.h" />

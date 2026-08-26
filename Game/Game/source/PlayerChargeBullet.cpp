@@ -2,13 +2,19 @@
 
 bool PlayerChargeBullet::Initialize(const VECTOR& pos, const VECTOR& dir)
 {
-	if(!base::Initialize(pos, dir, 18.0f, 3.0f)) { return false; }
+	if(!base::Initialize(pos, dir, 18.0f, 3.0f))
+	{
+		return false;
+	}
 
-	SetSpriteSheet(STATUS::IDLE, "res/Player/Bullet_Charge.png", 1, 1);
-	SetSpriteAnimTable({ { STATUS::IDLE, { 1, 1.0f, true } } });
+	_isActive = true;
 
-	_radius = 20.0f;       
-	_spriteScale = 40.0f;  
+	SetSpriteSheet(STATUS::IDLE, "res/Effect/Attack_0.png", 3, 4);
+	SetSpriteAnimTable({ { STATUS::IDLE, { 3, 30.0f, true } } });
+
+	_status		 = STATUS::IDLE;
+	_radius		 = 30.0f;
+	_spriteScale = 120.0f;
 
 	return true;
 }

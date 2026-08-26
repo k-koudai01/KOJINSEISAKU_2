@@ -1,4 +1,6 @@
 #include "BulletManager.h"
+#include "PlayerNormalBullet.h"
+#include "PlayerChargeBullet.h"
 
 bool BulletManager::Initialize()
 {
@@ -49,15 +51,4 @@ bool BulletManager::Render()
 		}
 	}
 	return true;
-}
-
-void BulletManager::Spawn(const VECTOR& pos, const VECTOR& dir, float speed, float maxLifeTime)
-{
-	auto newBullet = std::make_unique<Bullet>();
-
-	// 弾の初期化
-	if(newBullet->Initialize(pos, dir, speed, maxLifeTime))
-	{
-		_bullets.push_back(std::move(newBullet));
-	}
 }

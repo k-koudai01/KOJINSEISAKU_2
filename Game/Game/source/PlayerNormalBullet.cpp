@@ -6,11 +6,15 @@ bool PlayerNormalBullet::Initialize(const VECTOR& pos, const VECTOR& dir)
 	{
 		return false;
 	}
-	SetSpriteSheet(STATUS::IDLE, "res,PlayerNormalBullet.png", 1, 1);
-	SetSpriteAnimTable({ { STATUS::IDLE, { 1, 1.0f, true } } });
 
-	_radius		 = 5.0f;
-	_spriteScale = 16.0f;
+	_isActive = true; 
+
+	SetSpriteSheet(STATUS::IDLE, "res/Effect/Attack_0.png", 3, 4);
+	SetSpriteAnimTable({ { STATUS::IDLE, { 3, 30.0f, true } } });
+
+	_status		 = STATUS::IDLE;
+	_radius      = 10.0f;
+	_spriteScale = 80.0f;
 
 	return true;
 }
