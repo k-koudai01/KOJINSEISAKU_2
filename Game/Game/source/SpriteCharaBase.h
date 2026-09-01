@@ -10,6 +10,10 @@ public:
 	virtual bool Terminate() override;
 	virtual bool Render() override;
 
+	// 2Dビルボード用
+	void UpdateFacing(const VECTOR& dir);
+	virtual void UpdateSpriteAnimation(STATUS oldStatus);
+
 protected:
 
 	struct SpriteAnimDef
@@ -39,10 +43,6 @@ protected:
 
 	// アニメーションが終了したか
 	bool IsSpriteAnimationFinished() const;
-
-	// 2Dビルボード用
-	void UpdateFacing(const VECTOR& dir);
-	virtual void UpdateSpriteAnimation(STATUS oldStatus);
 
 	int _frameIndex{ 0 };
 	int _spriteAnimId{ -1 };

@@ -140,6 +140,27 @@
     <Filter Include="ソース ファイル\Object\Bullet\BulletData">
       <UniqueIdentifier>{4b10a068-167c-4377-9bd8-07810f0bd8d4}</UniqueIdentifier>
     </Filter>
+    <Filter Include="ソース ファイル\Object\Character\Enemy\EnemyState">
+      <UniqueIdentifier>{37e53e1b-02ff-499c-b473-374edea32e30}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\Object\Character\Enemy\EnemyState\EnemyStateIdle">
+      <UniqueIdentifier>{3f61fd16-6ab3-4f3a-8602-7586026ddc7e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\Object\Character\Enemy\EnemyState\EnemyStateJumpPrep">
+      <UniqueIdentifier>{e6d3e15b-12d1-4a56-84f2-3dbd2c9460cd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\Object\Character\Enemy\EnemyState\EnemyStateRushAttack">
+      <UniqueIdentifier>{4f34ba31-cdb5-43e4-8f2d-10f6224b87c5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\Object\Character\Enemy\EnemyState\EnemyStateStun">
+      <UniqueIdentifier>{e51c894e-1a7d-4bbe-9b95-dd8da9d6b472}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\Object\Character\Enemy\EnemyState\EnemyStateReflectShoot">
+      <UniqueIdentifier>{c50959ee-14a1-4229-9ea3-aa676e643689}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\Object\Character\Enemy\EnemyState\EnemyStateSummonMinions">
+      <UniqueIdentifier>{a9ffd384-38f6-4530-aa1d-d8acf6b78662}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="source\Player.cpp">
@@ -240,6 +261,24 @@
     </ClCompile>
     <ClCompile Include="source\PlayerChargeBullet.cpp">
       <Filter>ソース ファイル\Object\Bullet\PlayerBullet\PlayerChargeBullet</Filter>
+    </ClCompile>
+    <ClCompile Include="source\EnemyStateIdle.cpp">
+      <Filter>ソース ファイル\Object\Character\Enemy\EnemyState\EnemyStateIdle</Filter>
+    </ClCompile>
+    <ClCompile Include="source\EnemyStateJumpPrep.cpp">
+      <Filter>ソース ファイル\Object\Character\Enemy\EnemyState\EnemyStateJumpPrep</Filter>
+    </ClCompile>
+    <ClCompile Include="source\EnemyStateRushAttack.cpp">
+      <Filter>ソース ファイル\Object\Character\Enemy\EnemyState\EnemyStateRushAttack</Filter>
+    </ClCompile>
+    <ClCompile Include="source\EnemyStateStun.cpp">
+      <Filter>ソース ファイル\Object\Character\Enemy\EnemyState\EnemyStateStun</Filter>
+    </ClCompile>
+    <ClCompile Include="source\EnemyStateReflectShoot.cpp">
+      <Filter>ソース ファイル\Object\Character\Enemy\EnemyState\EnemyStateReflectShoot</Filter>
+    </ClCompile>
+    <ClCompile Include="source\EnemyStateSummonMinions.cpp">
+      <Filter>ソース ファイル</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -348,5 +387,24 @@
     <ClInclude Include="source\PlayerChargeBullet.h">
       <Filter>ソース ファイル\Object\Bullet\PlayerBullet\PlayerChargeBullet</Filter>
     </ClInclude>
+    <ClInclude Include="source\EnemyState.h">
+      <Filter>ソース ファイル\Object\Character\Enemy\EnemyState</Filter>
+    </ClInclude>
+    <ClInclude Include="source\EnemyStateIdle.h">
+      <Filter>ソース ファイル\Object\Character\Enemy\EnemyState\EnemyStateIdle</Filter>
+    </ClInclude>
+    <ClInclude Include="source\EnemyStateJumpPrep.h">
+      <Filter>ソース ファイル\Object\Character\Enemy\EnemyState\EnemyStateJumpPrep</Filter>
+    </ClInclude>
+    <ClInclude Include="source\EnemyStateRushAttack.h">
+      <Filter>ソース ファイル\Object\Character\Enemy\EnemyState\EnemyStateRushAttack</Filter>
+    </ClInclude>
+    <ClInclude Include="source\EnemyStateStun.h">
+      <Filter>ソース ファイル\Object\Character\Enemy\EnemyState\EnemyStateStun</Filter>
+    </ClInclude>
+    <ClInclude Include="source\EnemyStateReflectShoot.h">
+      <Filter>ソース ファイル\Object\Character\Enemy\EnemyState\EnemyStateReflectShoot</Filter>
+    </ClInclude>
+    <ClInclude Include="source\EnemyStateSummonMinions.h" />
   </ItemGroup>
 </Project>

@@ -148,11 +148,11 @@ bool ModeTitle::InitEffects()
 {
 	// 桜エフェクト
 	if(!_sakuraEmitter.Initialize()) return false;
-	_sakuraEmitter.SetSakuraEmit(true);
+	_sakuraEmitter.SetSakuraEmit(false);
 
 	// 葉っぱエフェクト
 	if(!_leavesEmitter.Initialize()) return false;
-	_leavesEmitter.SetLeavesEmit(false);
+	_leavesEmitter.SetLeavesEmit(true);
 
 	return true;
 }

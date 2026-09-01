@@ -110,6 +110,11 @@ public:
 	void SetGrounded(bool grounded) { _isGrounded = grounded; }
 	bool IsGrounded() const         { return _isGrounded; }
 
+	// スピード
+	float GetMvSpeed() const { return _mvSpeed; }
+	void SetMvSpeed(float speed) { _mvSpeed = speed; }
+
+
 protected:
 
 	// 2Dビルボード用

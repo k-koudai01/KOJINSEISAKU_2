@@ -142,19 +142,16 @@ void CollisionManager::DebugRenderCapsule(const Player* player, const Enemy* ene
 		);
 	}
 
-	if(enemy->IsStunned())
-	{
-		DrawCapsule3D
-		(
-			enemy->GetCapsuleBottom(),
-			enemy->GetCapsuleTop(),
-			enemy->GetCollisionRadius(),
-			divNum,
-			GetColor(0, 0, 255),
-			spcCol,
-			TRUE
-		);
-	}
+	DrawCapsule3D
+	(
+		enemy->GetCapsuleBottom(),
+		enemy->GetCapsuleTop(),
+		enemy->GetCollisionRadius(),
+		divNum,
+		GetColor(0, 0, 255),
+		spcCol,
+		TRUE
+	);
 	
 }
 

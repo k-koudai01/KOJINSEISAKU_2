@@ -53,10 +53,10 @@ bool Player::Initialize()
 	_vDir = VGet(1.0f, 0.0f, 0.0f);
 
 	// “–‚½‚è”»’è‚Ì‰Šú‰»
-	_fColSubY = 10.0f;
-	_fCollisionR = 11.0f;
+	_fColSubY         = 10.0f;
+	_fCollisionR      = 11.0f;
 	_fCollisionWeight = 50.0f;
-
+	_attackCollisionR = 20.0f;
 	// ƒJƒƒ‰‚Ì‰Šú‰»
 	_cam = nullptr;
 

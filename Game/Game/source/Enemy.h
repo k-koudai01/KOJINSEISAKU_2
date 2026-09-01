@@ -1,6 +1,7 @@
 #pragma once
 #include "appframe.h"
 #include "SpriteCharaBase.h"
+#include "EnemyState.h"
 
 class Player;
 
@@ -8,16 +9,6 @@ class Enemy : public SpriteCharaBase
 {
 	typedef SpriteCharaBase base;
 public:
-
-	// ボスの行動状態
-	enum class BossState
-	{
-		IDLE,
-		SHOOT_ATTACK,
-		RUSH_PREP,
-		RUSH_ATTACK,
-		STUN,
-	};
 
 	virtual bool Initialize() override;
 	virtual bool Terminate() override;
@@ -29,39 +20,36 @@ public:
 
 	void SetPlayer(Player* player) { _player = player; }
 
-	// 行動関連
+	// メイン関数
 	virtual bool Damage(float damage) override;
 	void SetParried(bool parried) { _isParried = parried; }
 
-	//　状態関連
-	bool IsStunned() const { return _bossState == BossState::STUN;        }
-	bool IsRushing() const { return _bossState == BossState::RUSH_ATTACK; }
+	void ChangeState(EnemyState* newState);
 
+	float GetBaseY() const { return _baseY; }
+	void  SetBaseY(float baseY) { _baseY = baseY; }
+
+	VECTOR GetTargetDir() const { return _targetDir; }
+	void  SetTargetDir(const VECTOR& dir) { _targetDir = dir; }
+
+	bool IsParried() const { return _isParried; }
+	void SetParriedFlag(bool parried) { _isParried = parried; }
+
+	void UpdateFacingPublic(const VECTOR& dir) { UpdateFacing(dir); }
+
+	bool IsStunned() const;
+	bool IsRushing() const;
 protected:
-
-	// AI関連
-	void UpdateAI();
-	void UpdateStatusAndAI();                        // ステータスとAIの更新
-	void UpdateIdle(const VECTOR& playerPos);        // 待機状態
-	void UpdateShootAttack(const VECTOR& playerPos); // 遠距離攻撃
-	void UpdateRushPrep(const VECTOR& playerPos);    // 突進予兆
-	void UpdateRushAttack();                         // 突進攻撃
-	void UpdateStun();                               // スタン状態      
-
-	// 状態変更
-	void ChangeBossState(BossState newState);
-
 	Player* _player = nullptr;
 
 	// ボスの状態
-	BossState _bossState  = BossState::IDLE;
-	float     _stateTimer = 0.0f;
-	bool      _hasFired   = false;
-	VECTOR    _targetDir  = VGet(0, 0, 0);
-	bool      _isParried  = false;
+	VECTOR _targetDir   = VGet(0, 0, 0);
+	bool   _isParried   = false;
+	float  _damageTimer = 0.0f;
+	float  _baseY		= 0.0f;
 
-	float _damageTimer = 0.0f;
 private:
 	void DebugRender();
+	EnemyState* _currentState = nullptr;	
 };
 
