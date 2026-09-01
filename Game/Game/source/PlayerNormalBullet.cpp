@@ -15,6 +15,6 @@ bool PlayerNormalBullet::Initialize(const VECTOR& pos, const VECTOR& dir)
 	_status		 = STATUS::IDLE;
 	_radius      = 10.0f;
 	_spriteScale = 80.0f;
-
+	_damage		 = 1.0f;
 	return true;
 }

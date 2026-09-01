@@ -2,9 +2,11 @@
 #include "appframe.h"
 #include "Player.h"
 #include "Enemy.h"
+#include "EnemyReflectBullet.h"
 #include "Cube.h"
 #include "Camera.h"
 #include "CameraManager.h"
+
 
 class CollisionManager
 {
@@ -13,6 +15,19 @@ public:
 	void CheckPlayerEnemy(Player* player, Enemy* enemy);
 	void CheckPlayerAttack(Player* player, Enemy* enemy);
 	void CheckCharacterCube(CharaBase* character, Cube* cube);
+
+	/** @brief プレイヤーの近接攻撃によるラリー弾の一撃打ち返し判定 */
+	void CheckPlayerAttackBullet(Player* player, EnemyReflectBullet* bullet);
+
+	/** @brief 敵のラリー弾とプレイヤーの衝突・ダメージ判定 */
+	void CheckPlayerReflectBullet(Player* player, EnemyReflectBullet* bullet);
+
+	/** @brief プレイヤーの遠距離弾によるラリー弾の押し返し判定 */
+	void CheckPlayerBulletWithReflectBullet(Bullet* playerBullet, EnemyReflectBullet* reflectBullet);
+
+	/** @brief 打ち返されたラリー弾とボスの衝突・ダメージ判定 */
+	void CheckBulletEnemy(EnemyReflectBullet* bullet, Enemy* enemy);
+
 	// 描画処理
 	void DebugRenderCapsule(const Player* player, const Enemy* enemy) const;
 	

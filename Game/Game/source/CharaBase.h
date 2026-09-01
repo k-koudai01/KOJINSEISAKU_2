@@ -44,11 +44,19 @@ public:
 	STATUS GetStatus() const      { return _status;   }
 	void SetStatus(STATUS status) { _status = status; }
 
-	//Hp
+	// 体力関連
 	float GetHP()  const      { return _hp;                    }
 	bool IsAlive() const      { return _hp > 0.0f && _isAlive; }
 	bool IsDead()  const	  { return !_isAlive;              }
 	void SetAlive(bool alive) { _isAlive = alive;              }
+
+	// ダメージ
+	float GetDamage() const { return _damage; }
+	void  SetDamage(float damage) { _damage = damage; }
+	virtual bool Damage(float damage);							  //ダメージ処理
+	bool IsInvincible() const { return _invincibleTimer > 0.0f; } // 無敵状態か
+	void SetInvincible(float time) { _invincibleTimer = time; }   // 無敵状態にする
+
 
 	// 移動関連
 	const VECTOR& GetInputVector() const { return _vInput; }
@@ -88,11 +96,6 @@ public:
 	{
 		return VAdd(GetCapsuleTop(), VScale(_vDir, ATTACK_OFFSET));
 	}
-
-	// ダメージ
-	virtual bool Damage(float damage);
-	bool IsInvincible() const      { return _invincibleTimer > 0.0f; }  // 無敵状態か
-	void SetInvincible(float time) { _invincibleTimer = time;        }  // 無敵状態にする
 
 	// アニメーション関連
 	int   PlayAnimation(std::string name, bool loop = false, float speed = 1.0f); // アニメーション再生。
@@ -144,8 +147,10 @@ protected:
 	float _fCollisionWeight { 0.0f }; // キャラの重さ
 
 	// 体力関係
-	float _hp { 0.0f };       
+	float _hp     { 0.0f };      
+	float _damage { 0.0f }; // ダメージ数
 	bool _isAlive { true }; // 生死フラグ
+
 
 	// 移動関係
 	float _mvSpeed; // 移動速度

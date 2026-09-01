@@ -111,6 +111,104 @@ void CollisionManager::CheckCharacterCube(CharaBase* character, Cube* cube)
 	}
 }
 
+void CollisionManager::CheckPlayerAttackBullet(Player* player, EnemyReflectBullet* bullet)
+{
+	if(!player || !bullet) return;
+	if(!player->IsAlive() || !bullet->IsActive()) return;
+	if(!player->IsAttacking() || bullet->IsReflected()) return;
+
+	const VECTOR p0 = player->GetAttackCapsuleBottom();
+	const VECTOR p1 = player->GetAttackCapsuleTop();
+	const VECTOR bPos = bullet->GetPos();
+	const float  r = player->GetAttackRadius() + bullet->GetCollisionRadius();
+
+	const float distSq = CollisionMath::SegmentPointDistSq(p0, p1, bPos);
+	if(distSq <= r * r)
+	{
+		// 近接攻撃の威力を与える
+		bullet->Damage(player->GetDamage());
+		if(bullet->GetHP() <= 0.0f)
+		{
+			bullet->Reflect(player->GetDir());
+		}
+		// CameraManager::GetInstance()->Shake(30.0f, 0.3f);
+	}
+}
+
+void CollisionManager::CheckPlayerReflectBullet(Player* player, EnemyReflectBullet* bullet)
+{
+	if(!player || !bullet) return;
+	if(!player->IsAlive() || !bullet->IsActive()) return;
+
+	// 無敵時間中、または【打ち返し済み】の弾ならプレイヤーには当たらない
+	if(player->IsInvincible()) return;
+
+	if(bullet->IsReflected()) return;
+
+	const VECTOR pPos = player->GetPos();
+	const VECTOR bPos = bullet->GetPos();
+	const float  rSum = player->GetCollisionRadius() + bullet->GetCollisionRadius();
+
+	// 距離の計算
+	float distSq = CollisionMath::PointPointDistSq(pPos, bPos);
+
+	if(distSq <= rSum * rSum)
+	{
+		player->Damage(1.0f);
+		bullet->Destroy();
+	}
+}
+
+void CollisionManager::CheckPlayerBulletWithReflectBullet(Bullet* playerBullet, EnemyReflectBullet* reflectBullet)
+{
+	if(!playerBullet || !reflectBullet)return;
+	if(!playerBullet->IsActive() || !reflectBullet->IsActive())return;
+	if(reflectBullet->IsReflected()) return;
+
+	const VECTOR pPos = playerBullet->GetPos();
+	const VECTOR rPos = reflectBullet->GetPos();
+	const float  r    = playerBullet->GetCollisionRadius() + reflectBullet->GetCollisionRadius();
+
+	// 最短距離
+	const float distSq = CollisionMath::PointPointDistSq(pPos, rPos);
+
+	if(distSq <= r * r)
+	{
+		reflectBullet->Damage(playerBullet->GetDamage());
+		if(reflectBullet->GetHP() <= 0.0f)
+		{
+			reflectBullet->Reflect(playerBullet->GetDir());
+		}
+		playerBullet->Destroy();
+		// CameraManager::GetInstance()->Shake(15.0f, 0.15f);
+	}
+}
+
+void CollisionManager::CheckBulletEnemy(EnemyReflectBullet* bullet, Enemy* enemy)
+{
+	if(!bullet || !enemy) return;
+	if(!bullet->IsActive() || !enemy->IsAlive()) return;
+	
+	// 打ち返されていない弾はボスにダメージを与えない
+	if(!bullet->IsReflected()) return;
+
+	const VECTOR bPos = bullet->GetPos();
+	const VECTOR ePos = enemy->GetPos();
+	const float  r = bullet->GetCollisionRadius() + enemy->GetCollisionRadius();
+	const float distSq = CollisionMath::PointPointDistSq(bPos, ePos);
+
+	if(distSq <= r * r)
+	{
+		// ボスに弾のダメージを与える
+		enemy->Damage(bullet->GetDamage());
+
+		// 着弾したので弾を消去
+		bullet->Destroy();
+		CameraManager::GetInstance()->Shake(20.0f, 0.2f);
+	}
+	
+}
+
 void CollisionManager::DebugRenderCapsule(const Player* player, const Enemy* enemy) const
 {
 	if (!player || !enemy) return;
@@ -152,6 +250,5 @@ void CollisionManager::DebugRenderCapsule(const Player* player, const Enemy* ene
 		spcCol,
 		TRUE
 	);
-	
 }
 

@@ -27,5 +27,6 @@ protected:
 	float  _speed;
 	float  _lifeTimer;
 	bool   _isActive;
+
 };
 

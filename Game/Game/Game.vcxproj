@@ -160,6 +160,7 @@
     <ClCompile Include="source\CollisionManager.cpp" />
     <ClCompile Include="source\Cube.cpp" />
     <ClCompile Include="source\Enemy.cpp" />
+    <ClCompile Include="source\EnemyReflectBullet.cpp" />
     <ClCompile Include="source\EnemyStateIdle.cpp" />
     <ClCompile Include="source\EnemyStateJumpPrep.cpp" />
     <ClCompile Include="source\EnemyStateReflectShoot.cpp" />
@@ -206,6 +207,7 @@
     <ClInclude Include="source\CollisionManager.h" />
     <ClInclude Include="source\Cube.h" />
     <ClInclude Include="source\Enemy.h" />
+    <ClInclude Include="source\EnemyReflectBullet.h" />
     <ClInclude Include="source\EnemyState.h" />
     <ClInclude Include="source\EnemyStateIdle.h" />
     <ClInclude Include="source\EnemyStateJumpPrep.h" />

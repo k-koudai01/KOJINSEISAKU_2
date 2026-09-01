@@ -161,6 +161,9 @@
     <Filter Include="ソース ファイル\Object\Character\Enemy\EnemyState\EnemyStateSummonMinions">
       <UniqueIdentifier>{a9ffd384-38f6-4530-aa1d-d8acf6b78662}</UniqueIdentifier>
     </Filter>
+    <Filter Include="ソース ファイル\Object\Bullet\EnemyReflectBullet">
+      <UniqueIdentifier>{bfef4da9-328e-4b87-bfda-bcbde367350a}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="source\Player.cpp">
@@ -278,7 +281,10 @@
       <Filter>ソース ファイル\Object\Character\Enemy\EnemyState\EnemyStateReflectShoot</Filter>
     </ClCompile>
     <ClCompile Include="source\EnemyStateSummonMinions.cpp">
-      <Filter>ソース ファイル</Filter>
+      <Filter>ソース ファイル\Object\Character\Enemy\EnemyState\EnemyStateSummonMinions</Filter>
+    </ClCompile>
+    <ClCompile Include="source\EnemyReflectBullet.cpp">
+      <Filter>ソース ファイル\Object\Bullet\EnemyReflectBullet</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -405,6 +411,11 @@
     <ClInclude Include="source\EnemyStateReflectShoot.h">
       <Filter>ソース ファイル\Object\Character\Enemy\EnemyState\EnemyStateReflectShoot</Filter>
     </ClInclude>
-    <ClInclude Include="source\EnemyStateSummonMinions.h" />
+    <ClInclude Include="source\EnemyStateSummonMinions.h">
+      <Filter>ソース ファイル\Object\Character\Enemy\EnemyState\EnemyStateSummonMinions</Filter>
+    </ClInclude>
+    <ClInclude Include="source\EnemyReflectBullet.h">
+      <Filter>ソース ファイル\Object\Bullet\EnemyReflectBullet</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

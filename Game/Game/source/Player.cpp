@@ -80,6 +80,7 @@ bool Player::Initialize()
 	// –³“Gó‘Ô‚Ì‰Šú‰»
 	_isInvincible = false;
 
+	_damage		   = 99.0f;
 	_damageCounter = 0;
 
 	_hasHitEnemy = false;

@@ -29,6 +29,7 @@ public:
 		}
 	}
 
+	const std::vector<std::unique_ptr<Bullet>>& GetBullets() const { return _bullets; }
 private:
 	// 弾
 	std::vector<std::unique_ptr<Bullet>> _bullets;
