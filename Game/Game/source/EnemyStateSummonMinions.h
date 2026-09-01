@@ -1,5 +1,9 @@
 #pragma once
 #include "EnemyState.h"
+
+/**
+ * @brief 敵AI：手下を召喚ステート
+ */
 class EnemyStateSummonMinions : public EnemyState
 {
 public:

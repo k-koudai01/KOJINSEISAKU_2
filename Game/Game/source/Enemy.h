@@ -5,6 +5,10 @@
 
 class Player;
 
+/**
+ * @brief エネミーのコンテキストクラス
+ * @details 各種パラメータの保持とEnemyStateの管理・遷移を担当します。
+ */
 class Enemy : public SpriteCharaBase
 {
 	typedef SpriteCharaBase base;
@@ -35,6 +39,7 @@ public:
 	bool IsParried() const { return _isParried; }
 	void SetParriedFlag(bool parried) { _isParried = parried; }
 
+	/** @brief StateクラスからSpriteCharaBaseの向き更新を呼ぶための公開用関数 */
 	void UpdateFacingPublic(const VECTOR& dir) { UpdateFacing(dir); }
 
 	bool IsStunned() const;
@@ -49,6 +54,7 @@ protected:
 	float  _baseY		= 0.0f;
 
 private:
+	void TerminateState();
 	void DebugRender();
 	EnemyState* _currentState = nullptr;	
 };
