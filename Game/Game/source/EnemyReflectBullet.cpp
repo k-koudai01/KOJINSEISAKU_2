@@ -2,7 +2,7 @@
 
 namespace
 {
-	constexpr float MAX_HP = 5.0f; 
+	constexpr float MAX_HP = 2.0f; 
 }
 
 bool EnemyReflectBullet::Initialize(const VECTOR& pos, const VECTOR& dir)
@@ -19,6 +19,7 @@ bool EnemyReflectBullet::Initialize(const VECTOR& pos, const VECTOR& dir)
 	_status      = STATUS::IDLE;
 	_fCollisionR = 25.0f;
 	_radius      = 25.0f; 
+	_speed		 = 2.0f;
 	_spriteScale = 100.0f;
 	_isReflected = false;
 	_hp			 = MAX_HP;
@@ -29,6 +30,12 @@ bool EnemyReflectBullet::Initialize(const VECTOR& pos, const VECTOR& dir)
 bool EnemyReflectBullet::Process()
 {
 	if(!_isActive) return false;
+
+	_vPos = VAdd(_vPos, VScale(_vDir, _speed));
+
+	// 寿命やアニメーションの更新
+	UpdateLifeTimer();
+
 	return base::Process();
 }
 

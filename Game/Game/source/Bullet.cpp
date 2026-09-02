@@ -3,7 +3,7 @@
 
 Bullet::Bullet()
 	: base()
-	, _vDir(VGet(0.0f, 0.0f, 0.0f))
+	// , _vDir(VGet(0.0f, 0.0f, 0.0f))
 	, _speed(0.0f)
 	, _lifeTimer(0.0f)
 	, _isActive(false)

@@ -159,28 +159,32 @@ void CollisionManager::CheckPlayerReflectBullet(Player* player, EnemyReflectBull
 	}
 }
 
-void CollisionManager::CheckPlayerBulletWithReflectBullet(Bullet* playerBullet, EnemyReflectBullet* reflectBullet)
+void CollisionManager::CheckPlayerBulletWithReflectBullet(Player* player, Bullet* playerBullet, EnemyReflectBullet* reflectBullet)
 {
-	if(!playerBullet || !reflectBullet)return;
-	if(!playerBullet->IsActive() || !reflectBullet->IsActive())return;
+	if(!player || !playerBullet || !reflectBullet) return;
+	if(!playerBullet->IsActive() || !reflectBullet->IsActive()) return;
 	if(reflectBullet->IsReflected()) return;
 
 	const VECTOR pPos = playerBullet->GetPos();
 	const VECTOR rPos = reflectBullet->GetPos();
-	const float  r    = playerBullet->GetCollisionRadius() + reflectBullet->GetCollisionRadius();
+	const float  rSum = playerBullet->GetCollisionRadius() + reflectBullet->GetCollisionRadius();
 
-	// 最短距離
-	const float distSq = CollisionMath::PointPointDistSq(pPos, rPos);
+	// 距離判定（XZ平面）
+	VECTOR pPosXZ = VGet(pPos.x, 0.0f, pPos.z);
+	VECTOR rPosXZ = VGet(rPos.x, 0.0f, rPos.z);
+	const float distSq = CollisionMath::PointPointDistSq(pPosXZ, rPosXZ);
 
-	if(distSq <= r * r)
+	if(distSq <= rSum * rSum)
 	{
 		reflectBullet->Damage(playerBullet->GetDamage());
+
 		if(reflectBullet->GetHP() <= 0.0f)
 		{
 			reflectBullet->Reflect(playerBullet->GetDir());
 		}
+
+		// プレイヤー弾を消滅
 		playerBullet->Destroy();
-		// CameraManager::GetInstance()->Shake(15.0f, 0.15f);
 	}
 }
 

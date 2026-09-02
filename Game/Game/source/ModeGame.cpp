@@ -227,7 +227,7 @@ void ModeGame::UpdateGameLogic()
 
 	if(_player && _enemy)
 	{
-		// BulletManager 内の全弾をループチェック
+		// 全弾をループチェック
 		for(const auto& bullet : BulletManager::GetInstance()->GetBullets())
 		{
 			if(!bullet || !bullet->IsActive()) continue;
@@ -236,29 +236,25 @@ void ModeGame::UpdateGameLogic()
 			auto* reflectBullet = dynamic_cast<EnemyReflectBullet*>(bullet.get());
 			if(reflectBullet)
 			{
-				// 敵のラリー弾 vs プレイヤー
-				_collision.CheckPlayerReflectBullet(_player.get(), reflectBullet);
-
-				// プレイヤーの近接攻撃 vs ラリー弾
+				// 当たり判定
+				_collision.CheckPlayerReflectBullet(_player.get(), reflectBullet);	
 				_collision.CheckPlayerAttackBullet(_player.get(), reflectBullet);
-
-				// 打ち返されたラリー弾 vs ボス
 				_collision.CheckBulletEnemy(reflectBullet, _enemy.get());
 			}
-			// プレイヤーの通常弾・チャージ弾などの場合
 			else
 			{
-				// プレイヤー弾 vs ラリー弾の押し返し判定を行いたい場合
+				//　プレイヤー弾とラリー弾の押し返し判定
 				for(const auto& targetBullet : BulletManager::GetInstance()->GetBullets())
 				{
-					auto* targetReflect = dynamic_cast<EnemyReflectBullet*>(targetBullet.get());
-					if(targetReflect)
+					auto* targetReflectBullet = dynamic_cast<EnemyReflectBullet*>(targetBullet.get());
+					if(targetReflectBullet)
 					{
-						// プレイヤー遠距離弾 vs ラリー弾
-						_collision.CheckPlayerBulletWithReflectBullet(bullet.get(), targetReflect);
+						_collision.CheckPlayerBulletWithReflectBullet(_player.get(), bullet.get(), targetReflectBullet);
 					}
 				}
 			}
+
+
 		}
 	}
 

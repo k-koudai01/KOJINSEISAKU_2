@@ -41,12 +41,12 @@ bool Enemy::Initialize()
 	_status = STATUS::IDLE;
 
 	// 初期位置・コリジョン設定
-	_vPos = VGet(100.0f, 0.0f, -30.0f);
+	_vPos = VGet(100.0f, 0.0f, -25.0f);
 	_baseY = _vPos.y;
 	_vDir = VGet(-1.0f, 0.0f, 0.0f);
 
-	_fColSubY = 17.0f;
-	_fCollisionR = 40.0f;
+	_fColSubY         = 17.0f;
+	_fCollisionR      = 40.0f;
 	_fCollisionWeight = 20.0f;
 
 	_mvSpeed = 0.0f;

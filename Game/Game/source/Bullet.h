@@ -23,7 +23,7 @@ protected:
 	void UpdateLifeTimer();
 
 	// ƒƒCƒ“•Ï”
-	VECTOR _vDir;
+	// VECTOR _vDir;
 	float  _speed;
 	float  _lifeTimer;
 	bool   _isActive;

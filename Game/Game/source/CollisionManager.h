@@ -23,7 +23,7 @@ public:
 	void CheckPlayerReflectBullet(Player* player, EnemyReflectBullet* bullet);
 
 	/** @brief プレイヤーの遠距離弾によるラリー弾の押し返し判定 */
-	void CheckPlayerBulletWithReflectBullet(Bullet* playerBullet, EnemyReflectBullet* reflectBullet);
+	void CheckPlayerBulletWithReflectBullet(Player* player, Bullet* playerBullet, EnemyReflectBullet* reflectBullet);
 
 	/** @brief 打ち返されたラリー弾とボスの衝突・ダメージ判定 */
 	void CheckBulletEnemy(EnemyReflectBullet* bullet, Enemy* enemy);

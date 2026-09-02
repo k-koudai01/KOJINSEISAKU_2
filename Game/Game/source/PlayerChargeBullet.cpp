@@ -14,6 +14,7 @@ bool PlayerChargeBullet::Initialize(const VECTOR& pos, const VECTOR& dir)
 
 	_status		 = STATUS::IDLE;
 	_radius		 = 30.0f;
+	_fCollisionR = 30.0f;
 	_spriteScale = 120.0f;
 	_damage		 = 5.0f;
 
