@@ -2,7 +2,7 @@
 #include "mymath.h"
 #include "ApplicationMain.h"
 #include "Player.h"
-#include "Enemy.h"
+#include "EnemyBase.h"
 
 bool Camera::Initialize()
 {

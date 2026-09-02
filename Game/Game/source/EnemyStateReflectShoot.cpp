@@ -1,17 +1,17 @@
 #include "EnemyStateReflectShoot.h"
-#include "Enemy.h"
+#include "EnemyBase.h"
 #include "EnemyStateIdle.h"
 #include "BulletManager.h"     
 #include "EnemyReflectBullet.h"
 
-void EnemyStateReflectShoot::Enter(Enemy* enemy)
+void EnemyStateReflectShoot::Enter(EnemyBase* enemy)
 {
 	EnemyState::Enter(enemy);
 	_hasFired = false;
 	enemy->SetMvSpeed(0.0f);
 }
 
-void EnemyStateReflectShoot::Update(Enemy* enemy, float deltaTime)
+void EnemyStateReflectShoot::Update(EnemyBase* enemy, float deltaTime)
 {
 	_timer += deltaTime;
 	enemy->UpdateRotation(); 

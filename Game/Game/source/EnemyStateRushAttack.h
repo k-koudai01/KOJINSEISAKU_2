@@ -8,8 +8,8 @@
 class EnemyStateRushAttack : public EnemyState
 {
 public:
-	virtual void Enter(Enemy* enemy) override;
-	virtual void Update(Enemy* enemy, float deltaTime) override;
+	virtual void Enter(EnemyBase* enemy) override;
+	virtual void Update(EnemyBase* enemy, float deltaTime) override;
 
 	/** @brief 突進中がtrue */
 	virtual bool IsRushing() const override { return true; }

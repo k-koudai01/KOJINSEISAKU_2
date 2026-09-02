@@ -1,15 +1,15 @@
 #include "EnemyStateRushAttack.h"
-#include "Enemy.h"
+#include "EnemyBase.h"
 #include "EnemyStateStun.h"
 #include "EnemyStateIdle.h"
 
-void EnemyStateRushAttack::Enter(Enemy* enemy)
+void EnemyStateRushAttack::Enter(EnemyBase* enemy)
 {
 	EnemyState::Enter(enemy); 
 	enemy->SetMvSpeed(8.0f);
 }
 
-void EnemyStateRushAttack::Update(Enemy* enemy, float deltaTime)
+void EnemyStateRushAttack::Update(EnemyBase* enemy, float deltaTime)
 {
 	_timer += deltaTime;
 

@@ -1,14 +1,14 @@
 #include "EnemyStateJumpPrep.h"
-#include "Enemy.h"
+#include "EnemyBase.h"
 #include "EnemyStateRushAttack.h"
 
-void EnemyStateJumpPrep::Enter(Enemy* enemy)
+void EnemyStateJumpPrep::Enter(EnemyBase* enemy)
 {
 	_timer = 0.0f;
 	enemy->SetMvSpeed(0.0f);
 }
 
-void EnemyStateJumpPrep::Update(Enemy* enemy, float deltaTime)
+void EnemyStateJumpPrep::Update(EnemyBase* enemy, float deltaTime)
 {
 	_timer += deltaTime;
 	enemy->UpdateRotation(); 

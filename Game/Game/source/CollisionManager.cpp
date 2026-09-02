@@ -1,6 +1,6 @@
 #include "CollisionManager.h"
 
-void CollisionManager::CheckPlayerEnemy(Player* player, Enemy* enemy)
+void CollisionManager::CheckPlayerEnemy(Player* player, EnemyBase* enemy)
 {
 	if(!player || !enemy) return;
 	if(!player->IsAlive() || !enemy->IsAlive()) { return; }
@@ -41,7 +41,7 @@ void CollisionManager::CheckPlayerEnemy(Player* player, Enemy* enemy)
 	}
 }
 
-void CollisionManager::CheckPlayerAttack(Player* player, Enemy* enemy)
+void CollisionManager::CheckPlayerAttack(Player* player, EnemyBase* enemy)
 {
 	if(!player            || !enemy           ) return;
 	if(!player->IsAlive() || !enemy->IsAlive()) return;
@@ -111,7 +111,7 @@ void CollisionManager::CheckCharacterCube(CharaBase* character, Cube* cube)
 	}
 }
 
-void CollisionManager::CheckPlayerBulletEnemy(Bullet* playerBullet, Enemy* enemy)
+void CollisionManager::CheckPlayerBulletEnemy(Bullet* playerBullet, EnemyBase* enemy)
 {
 	if(!playerBullet || !enemy) return;
 	if(!playerBullet->IsActive() || !enemy->IsAlive()) return;
@@ -212,7 +212,7 @@ void CollisionManager::CheckPlayerBulletWithReflectBullet(Player* player, Bullet
 	}
 }
 
-void CollisionManager::CheckBulletEnemy(EnemyReflectBullet* bullet, Enemy* enemy)
+void CollisionManager::CheckBulletEnemy(EnemyReflectBullet* bullet, EnemyBase* enemy)
 {
 	if(!bullet || !enemy) return;
 	if(!bullet->IsActive() || !enemy->IsAlive()) return;
@@ -237,7 +237,7 @@ void CollisionManager::CheckBulletEnemy(EnemyReflectBullet* bullet, Enemy* enemy
 	
 }
 
-void CollisionManager::DebugRenderCapsule(const Player* player, const Enemy* enemy) const
+void CollisionManager::DebugRenderCapsule(const Player* player, const EnemyBase* enemy) const
 {
 	if (!player || !enemy) return;
 	const int divNum = 8;

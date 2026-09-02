@@ -1,4 +1,4 @@
-#include "Enemy.h"
+#include "EnemyBase.h"
 #include "mymath.h"
 #include "Player.h"
 #include "DxLib.h"
@@ -17,54 +17,35 @@ namespace
 }
 
 
-bool Enemy::Initialize()
+bool EnemyBase::Initialize()
 {
 	if(!base::Initialize()) { return false; }
-
-	// スプライトシートの設定
-	SetSpriteSheet(STATUS::IDLE,	"res/Enemy/Enemy_Idle.png"	, 4, 4);
-	SetSpriteSheet(STATUS::WALK,	"res/Enemy/Enemy_Run.png"	, 8, 4);
-	SetSpriteSheet(STATUS::RUN,		"res/Enemy/Enemy_Run.png"	, 8, 4);
-	SetSpriteSheet(STATUS::DAMAGE,  "res/Enemy/Enemy_Damage.png", 6, 4);
-	SetSpriteSheet(STATUS::DIE,		"res/Enemy/Enemy_Die.png"	, 8, 4);
-
-	SetSpriteAnimTable
-	({
-		{ STATUS::IDLE,   { 4, 10.0f, true  } },
-		{ STATUS::WALK,   { 8, 10.0f, true  } },
-		{ STATUS::RUN,    { 8, 17.0f, true  } },
-		{ STATUS::DAMAGE, { 6,  8.0f, false } },
-		{ STATUS::DIE,    { 8, 10.0f, false } },
-	});
 
 	_spriteScale = 200.0f;
 	_status = STATUS::IDLE;
 
-	// 初期位置・コリジョン設定
-	_vPos = VGet(100.0f, 0.0f, -25.0f);
+	_vPos = VGet(0.0f, 0.0f, 0.0f);
 	_baseY = _vPos.y;
 	_vDir = VGet(-1.0f, 0.0f, 0.0f);
 
-	_fColSubY         = 17.0f;
-	_fCollisionR      = 40.0f;
+	_fColSubY = 17.0f;
+	_fCollisionR = 40.0f;
 	_fCollisionWeight = 20.0f;
 
 	_mvSpeed = 0.0f;
 	_hp = 5.0f;
 
-	// 最初のステートを割り当て
-	ChangeState(new EnemyStateIdle());
 	return true;
 }
 
-bool Enemy::Terminate()
+bool EnemyBase::Terminate()
 {
 	TerminateState();
 	base::Terminate();
 	return true;
 }
 
-bool Enemy::Process()
+bool EnemyBase::Process()
 {
 	STATUS oldStatus = _status;
 
@@ -87,14 +68,13 @@ bool Enemy::Process()
 	return true;
 }
 
-bool Enemy::Render()
+bool EnemyBase::Render()
 {
 	if(!base::Render()) { return false; }
-	// DebugRender();
 	return true;
 }
 
-void Enemy::ChangeState(EnemyState* newState)
+void EnemyBase::ChangeState(EnemyState* newState)
 {
 	// 旧ステートの終了処理と破棄
 	if(_currentState)
@@ -113,17 +93,17 @@ void Enemy::ChangeState(EnemyState* newState)
 	}
 }
 
-bool Enemy::IsStunned() const
+bool EnemyBase::IsStunned() const
 {
 	return dynamic_cast<EnemyStateStun*>(_currentState) != nullptr;
 }
 
-bool Enemy::IsRushing() const
+bool EnemyBase::IsRushing() const
 {
 	return dynamic_cast<EnemyStateRushAttack*>(_currentState) != nullptr;
 }
 
-bool Enemy::Damage(float damage)
+bool EnemyBase::Damage(float damage)
 {
 	if(!IsStunned() && IsInvincible())
 	{
@@ -143,7 +123,7 @@ bool Enemy::Damage(float damage)
 	return true;
 }
 
-void Enemy::UpdateRotation()
+void EnemyBase::UpdateRotation()
 {
 	if(!_player) return;
 
@@ -157,7 +137,7 @@ void Enemy::UpdateRotation()
 	}
 }
 
-void Enemy::UpdateSpriteAnimation(STATUS oldStatus)
+void EnemyBase::UpdateSpriteAnimation(STATUS oldStatus)
 {
 	if(_status == STATUS::DIE)
 	{
@@ -184,7 +164,7 @@ void Enemy::UpdateSpriteAnimation(STATUS oldStatus)
 	base::UpdateSpriteAnimation(oldStatus);
 }
 
-void Enemy::TerminateState()
+void EnemyBase::TerminateState()
 {
 	if(_currentState)
 	{
@@ -194,7 +174,7 @@ void Enemy::TerminateState()
 	}
 }
 
-void Enemy::DebugRender()
+void EnemyBase::DebugRender()
 {
 	DrawFormatString(1300, 10, GetColor(255, 255, 255),
 		"[Enemy Debug] Status:%d | AnimID:%d | Frame:%d",

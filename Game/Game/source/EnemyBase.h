@@ -6,13 +6,16 @@
 class Player;
 
 /**
- * @brief エネミーのコンテキストクラス
- * @details 各種パラメータの保持とEnemyStateの管理・遷移を担当します。
+ * @brief エネミーの共通基底クラス
+ * @details 各種パラメータの保持とEnemyStateの管理・共通描画/被弾処理を担当します。
  */
-class Enemy : public SpriteCharaBase
+
+class EnemyBase : public SpriteCharaBase
 {
 	typedef SpriteCharaBase base;
 public:
+	EnemyBase() = default;
+	virtual ~EnemyBase() = default;
 
 	virtual bool Initialize() override;
 	virtual bool Terminate() override;
@@ -23,6 +26,7 @@ public:
 	virtual void UpdateRotation();
 
 	void SetPlayer(Player* player) { _player = player; }
+	Player* GetPlayer() const { return _player; }
 
 	// メイン関数
 	virtual bool Damage(float damage) override;
@@ -44,18 +48,19 @@ public:
 
 	bool IsStunned() const;
 	bool IsRushing() const;
+
 protected:
 	Player* _player = nullptr;
 
-	// ボスの状態
-	VECTOR _targetDir   = VGet(0, 0, 0);
-	bool   _isParried   = false;
+	// エネミーの共通状態
+	VECTOR _targetDir = VGet(0, 0, 0);
+	bool   _isParried = false;
 	float  _damageTimer = 0.0f;
-	float  _baseY		= 0.0f;
+	float  _baseY = 0.0f;
+
+	EnemyState* _currentState = nullptr;
 
 private:
 	void TerminateState();
 	void DebugRender();
-	EnemyState* _currentState = nullptr;	
 };
-

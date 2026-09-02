@@ -164,6 +164,12 @@
     <Filter Include="ソース ファイル\Object\Bullet\EnemyReflectBullet">
       <UniqueIdentifier>{bfef4da9-328e-4b87-bfda-bcbde367350a}</UniqueIdentifier>
     </Filter>
+    <Filter Include="ソース ファイル\Object\Character\Enemy\EnemyBase">
+      <UniqueIdentifier>{414a6b34-bfb9-47ec-a4ca-3622e34e4b8c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\Object\Character\Enemy\EnemyBoss">
+      <UniqueIdentifier>{9a5e46ed-a325-4b4a-839d-4f71f43fb070}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="source\Player.cpp">
@@ -235,9 +241,6 @@
     <ClCompile Include="source\Cube.cpp">
       <Filter>ソース ファイル\Object\Cube</Filter>
     </ClCompile>
-    <ClCompile Include="source\Enemy.cpp">
-      <Filter>ソース ファイル\Object\Character\Enemy</Filter>
-    </ClCompile>
     <ClCompile Include="source\ModeTitle.cpp">
       <Filter>ソース ファイル\Mode\ModeTitle</Filter>
     </ClCompile>
@@ -285,6 +288,12 @@
     </ClCompile>
     <ClCompile Include="source\EnemyReflectBullet.cpp">
       <Filter>ソース ファイル\Object\Bullet\EnemyReflectBullet</Filter>
+    </ClCompile>
+    <ClCompile Include="source\EnemyBase.cpp">
+      <Filter>ソース ファイル\Object\Character\Enemy\EnemyBase</Filter>
+    </ClCompile>
+    <ClCompile Include="source\EnemyBoss.cpp">
+      <Filter>ソース ファイル</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -360,9 +369,6 @@
     <ClInclude Include="source\Cube.h">
       <Filter>ソース ファイル\Object\Cube</Filter>
     </ClInclude>
-    <ClInclude Include="source\Enemy.h">
-      <Filter>ソース ファイル\Object\Character\Enemy</Filter>
-    </ClInclude>
     <ClInclude Include="source\ModeTitle.h">
       <Filter>ソース ファイル\Mode\ModeTitle</Filter>
     </ClInclude>
@@ -417,5 +423,9 @@
     <ClInclude Include="source\EnemyReflectBullet.h">
       <Filter>ソース ファイル\Object\Bullet\EnemyReflectBullet</Filter>
     </ClInclude>
+    <ClInclude Include="source\EnemyBase.h">
+      <Filter>ソース ファイル\Object\Character\Enemy\EnemyBase</Filter>
+    </ClInclude>
+    <ClInclude Include="source\EnemyBoss.h" />
   </ItemGroup>
 </Project>

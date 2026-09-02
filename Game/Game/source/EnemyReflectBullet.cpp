@@ -21,7 +21,7 @@ bool EnemyReflectBullet::Initialize(const VECTOR& pos, const VECTOR& dir)
 	_fCollisionR = 25.0f;
 	_radius      = 25.0f; 
 	_speed		 = 2.0f;
-	_spriteScale = 100.0f;
+	_spriteScale = 120.0f;
 	_isReflected = false;
 	_damage      = DAMAGE;
 	_hp			 = MAX_HP;

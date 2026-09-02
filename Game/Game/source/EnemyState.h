@@ -1,7 +1,7 @@
 #pragma once
 #include "appframe.h"
 
-class Enemy;
+class EnemyBase;
 
 /**
  * @brief 敵AIのステート基底クラス
@@ -16,20 +16,20 @@ public:
 	 * @brief ステート開始時（遷移直後）に1回だけ呼ばれる処理
 	 * @param enemy 対象となるEnemyオブジェクトのポインタ
 	 */
-	virtual void Enter(Enemy* enemy) {}
+	virtual void Enter(EnemyBase* enemy) {}
 
 	/**
 	 * @brief 毎フレーム呼ばれる更新処理
 	 * @param enemy 対象となるEnemyオブジェクトのポインタ
 	 * @param deltaTime 1フレームあたりの経過時間
 	 */
-	virtual void Update(Enemy* enemy, float deltaTime) = 0;
+	virtual void Update(EnemyBase* enemy, float deltaTime) = 0;
 
 	/**
 	 * @brief ステート終了時1回だけ呼ばれる処理
 	 * @param enemy 対象となるEnemyオブジェクトのポインタ
 	 */
-	virtual void Exit(Enemy* enemy) {}
+	virtual void Exit(EnemyBase* enemy) {}
 
 	/** @brief 現在スタン状態かどうかを取得 */
 	virtual bool IsStunned() const { return false; }

@@ -7,7 +7,7 @@
 class EnemyStateJumpPrep : public EnemyState
 {
 public:
-	virtual void Enter(Enemy* enemy) override;
-	virtual void Update(Enemy* enemy, float deltaTime) override;
+	virtual void Enter(EnemyBase* enemy) override;
+	virtual void Update(EnemyBase* enemy, float deltaTime) override;
 };
 

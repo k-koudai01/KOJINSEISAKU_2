@@ -1,5 +1,6 @@
 #include "ObjectFactry.h"
 #include "Cube.h"
+#include "EnemyBoss.h"
 
 std::unique_ptr<Player> ObjectFactry::CreatePlayer() const
 {
@@ -11,10 +12,21 @@ std::unique_ptr<Player> ObjectFactry::CreatePlayer() const
 	return p;
 }
 
-std::unique_ptr<Enemy> ObjectFactry::CreateEnemy() const
+std::unique_ptr<EnemyBase> ObjectFactry::CreateEnemy(EnemyType type) const
 {
-	auto e = std::make_unique<Enemy>();
-	if(!e->Initialize())
+	std::unique_ptr<EnemyBase> e = nullptr;
+
+	switch(type)
+	{
+	case EnemyType::Boss:
+		e = std::make_unique<EnemyBoss>();
+		break;
+	case EnemyType::Minion:
+		// 雑魚の実装時に追加
+		break;
+	}
+
+	if(e && !e->Initialize())
 	{
 		return nullptr;
 	}
@@ -46,7 +58,7 @@ void ObjectFactry::SetUpCamera(Camera* camera, Player* target, bool isFixed) con
 	camera->SetFixedMode(isFixed);
 }
 
-void ObjectFactry::SetUpEnemy(Enemy* enemy, Player* target) const
+void ObjectFactry::SetUpEnemy(EnemyBase* enemy, Player* target) const
 {
 	if(enemy == nullptr) return;
 

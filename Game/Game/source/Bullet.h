@@ -18,7 +18,11 @@ public:
     bool IsActive() const { return _isActive; }
     void Destroy() { _isActive = false; }
 
-	// ヒットストップと振動を開始する関数
+	/** 
+	 *@brief ヒットストップと振動を開始する関数
+	 *@param hitStopTime ヒットストップの時間
+	 *@param shakeStrength 振動の強さ
+	 */
 	void OnHitImpact(float hitStopTime, float shakeStrength);
 
 protected:

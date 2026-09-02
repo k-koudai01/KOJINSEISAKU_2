@@ -1,8 +1,8 @@
 #include "EnemyStateStun.h"
-#include "Enemy.h"
+#include "EnemyBase.h"
 #include "EnemyStateIdle.h"
 
-void EnemyStateStun::Enter(Enemy* enemy)
+void EnemyStateStun::Enter(EnemyBase* enemy)
 {
 	EnemyState::Enter(enemy); 
 	enemy->SetMvSpeed(0.0f);  
@@ -13,7 +13,7 @@ void EnemyStateStun::Enter(Enemy* enemy)
 	enemy->SetPos(pos);
 }
 
-void EnemyStateStun::Update(Enemy* enemy, float deltaTime)
+void EnemyStateStun::Update(EnemyBase* enemy, float deltaTime)
 {
 	_timer += deltaTime;
 

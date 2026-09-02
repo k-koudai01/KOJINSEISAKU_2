@@ -1,10 +1,10 @@
 #include "EnemyStateIdle.h"
-#include "Enemy.h"
+#include "EnemyBase.h"
 #include "EnemyStateJumpPrep.h"
 #include "EnemyStateReflectShoot.h"
 #include "EnemyStateSummonMinions.h"
 
-void EnemyStateIdle::Enter(Enemy* enemy)
+void EnemyStateIdle::Enter(EnemyBase* enemy)
 {
 	_timer = 0.0f;
 	enemy->SetMvSpeed(0.0f);
@@ -15,7 +15,7 @@ void EnemyStateIdle::Enter(Enemy* enemy)
 	enemy->SetPos(pos);
 }
 
-void EnemyStateIdle::Update(Enemy* enemy, float deltaTime)
+void EnemyStateIdle::Update(EnemyBase* enemy, float deltaTime)
 {
 	_timer += deltaTime;
 	enemy->UpdateRotation(); // プレイヤーの方を向く

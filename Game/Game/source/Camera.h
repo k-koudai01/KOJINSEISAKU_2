@@ -27,8 +27,12 @@ public:
 	// プレイヤー追従更新
     void FollowUpdate();
 
-	// カメラ演出
-	void Shake(float strength, float duration); // カメラシェイク
+	/**
+	 *@brief カメラ振動
+	 *@param strength:振動の強さ 
+	 *@param duration:振動の持続時間
+	 */
+	void Shake(float strength, float duration); 
 
 	// ボス戦用の固定カメラモード
 	void SetFixedMode(bool enable) { _isFixedMode = enable; }

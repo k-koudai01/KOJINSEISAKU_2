@@ -1,15 +1,15 @@
 #include "EnemyStateSummonMinions.h"
-#include "Enemy.h"
+#include "EnemyBase.h"
 #include "EnemyStateIdle.h"
 
-void EnemyStateSummonMinions::Enter(Enemy* enemy)
+void EnemyStateSummonMinions::Enter(EnemyBase* enemy)
 {
 	EnemyState::Enter(enemy);
 	_hasSummoned = false;
 	enemy->SetMvSpeed(0.0f);
 }
 
-void EnemyStateSummonMinions::Update(Enemy* enemy, float deltaTime)
+void EnemyStateSummonMinions::Update(EnemyBase* enemy, float deltaTime)
 {
 	_timer += deltaTime;
 
