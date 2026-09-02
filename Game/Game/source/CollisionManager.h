@@ -16,6 +16,9 @@ public:
 	void CheckPlayerAttack(Player* player, Enemy* enemy);
 	void CheckCharacterCube(CharaBase* character, Cube* cube);
 
+	/** @brief プレイヤーの遠距離弾とボスの衝突・ダメージ判定 */
+	void CheckPlayerBulletEnemy(Bullet* playerBullet, Enemy* enemy);
+
 	/** @brief プレイヤーの近接攻撃によるラリー弾の一撃打ち返し判定 */
 	void CheckPlayerAttackBullet(Player* player, EnemyReflectBullet* bullet);
 

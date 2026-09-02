@@ -201,6 +201,7 @@ void ModeGame::UpdateGameOverAnim()
 void ModeGame::UpdateGameClearAnim()
 {
 	// カメラの更新だけ行う
+	if(_player) { _player->Process(); }
 	if(_cam) { _cam->Process(); }
 
 	// 演出タイマー
@@ -227,34 +228,50 @@ void ModeGame::UpdateGameLogic()
 
 	if(_player && _enemy)
 	{
-		// 全弾をループチェック
-		for(const auto& bullet : BulletManager::GetInstance()->GetBullets())
+		auto& bullets = BulletManager::GetInstance()->GetBullets();
+
+		// プレイヤー弾とボスの判定
+		for(const auto& bullet : bullets)
 		{
 			if(!bullet || !bullet->IsActive()) continue;
 
-			// ラリー弾かどうかをキャストで判別
+			// プレイヤーの通常弾とボスの判定を行う
+			if(!dynamic_cast<EnemyReflectBullet*>(bullet.get()))
+			{
+				_collision.CheckPlayerBulletEnemy(bullet.get(), _enemy.get());
+			}
+		}
+
+		// ラリー弾とプレイヤー / ボス の判定
+		for(const auto& bullet : bullets)
+		{
+			if(!bullet || !bullet->IsActive()) continue;
+
 			auto* reflectBullet = dynamic_cast<EnemyReflectBullet*>(bullet.get());
 			if(reflectBullet)
 			{
-				// 当たり判定
-				_collision.CheckPlayerReflectBullet(_player.get(), reflectBullet);	
+				_collision.CheckPlayerReflectBullet(_player.get(), reflectBullet);
 				_collision.CheckPlayerAttackBullet(_player.get(), reflectBullet);
 				_collision.CheckBulletEnemy(reflectBullet, _enemy.get());
 			}
-			else
+		}
+
+		// プレイヤー弾とラリー弾の判定
+		for(const auto& pBullet : bullets)
+		{
+			if(!pBullet || !pBullet->IsActive()) continue;
+			if(dynamic_cast<EnemyReflectBullet*>(pBullet.get())) continue; // プレイヤー弾以外はスキップ
+
+			for(const auto& rBullet : bullets)
 			{
-				//　プレイヤー弾とラリー弾の押し返し判定
-				for(const auto& targetBullet : BulletManager::GetInstance()->GetBullets())
+				if(!rBullet || !rBullet->IsActive()) continue;
+				auto* reflectBullet = dynamic_cast<EnemyReflectBullet*>(rBullet.get());
+
+				if(reflectBullet)
 				{
-					auto* targetReflectBullet = dynamic_cast<EnemyReflectBullet*>(targetBullet.get());
-					if(targetReflectBullet)
-					{
-						_collision.CheckPlayerBulletWithReflectBullet(_player.get(), bullet.get(), targetReflectBullet);
-					}
+					_collision.CheckPlayerBulletWithReflectBullet(_player.get(), pBullet.get(), reflectBullet);
 				}
 			}
-
-
 		}
 	}
 

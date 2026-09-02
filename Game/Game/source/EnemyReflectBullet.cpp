@@ -3,6 +3,7 @@
 namespace
 {
 	constexpr float MAX_HP = 2.0f; 
+	constexpr float DAMAGE = 1.0f;
 }
 
 bool EnemyReflectBullet::Initialize(const VECTOR& pos, const VECTOR& dir)
@@ -22,6 +23,7 @@ bool EnemyReflectBullet::Initialize(const VECTOR& pos, const VECTOR& dir)
 	_speed		 = 2.0f;
 	_spriteScale = 100.0f;
 	_isReflected = false;
+	_damage      = DAMAGE;
 	_hp			 = MAX_HP;
 
 	return true;
@@ -30,6 +32,13 @@ bool EnemyReflectBullet::Initialize(const VECTOR& pos, const VECTOR& dir)
 bool EnemyReflectBullet::Process()
 {
 	if(!_isActive) return false;
+
+	if(!base::Process()) return false;
+
+	if(_hitStopTime > 0.0f)
+	{
+		return true; // 座標更新をスキップして停止状態を維持
+	}
 
 	_vPos = VAdd(_vPos, VScale(_vDir, _speed));
 
@@ -43,10 +52,23 @@ bool EnemyReflectBullet::Render()
 {
 	if(!_isActive) return false;
 
-	unsigned int color = _isReflected ? GetColor(0, 150, 255) : GetColor(255, 50, 50);
-	DrawSphere3D(_vPos, _radius, 8, color, GetColor(255, 255, 255), TRUE);
+	// 振動を加算した座標を作成
+	VECTOR renderPos = VAdd(_vPos, _shakeOffset);
 
-	return base::Render();
+	// 実体座標を退避させ、描画用座標に一瞬だけ差し替える
+	VECTOR backupPos = _vPos;
+	_vPos = renderPos;
+
+	base::Render();
+
+	// 実体座標を元に戻す
+	_vPos = backupPos;
+
+	// デバッグ用の3D球体
+	unsigned int color = _isReflected ? GetColor(0, 150, 255) : GetColor(255, 50, 50);
+	DrawSphere3D(renderPos, _radius, 8, color, GetColor(255, 255, 255), TRUE);
+
+	return true;
 }
 
 bool EnemyReflectBullet::Damage(float damage)

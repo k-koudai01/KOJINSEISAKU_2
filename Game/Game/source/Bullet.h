@@ -18,15 +18,21 @@ public:
     bool IsActive() const { return _isActive; }
     void Destroy() { _isActive = false; }
 
+	// ヒットストップと振動を開始する関数
+	void OnHitImpact(float hitStopTime, float shakeStrength);
+
 protected:
 	// メイン関数
 	void UpdateLifeTimer();
+	bool UpdateHitImpact();
 
 	// メイン変数
-	// VECTOR _vDir;
 	float  _speed;
 	float  _lifeTimer;
 	bool   _isActive;
 
+	float  _hitStopTime   = 0.0f;	
+	float  _shakeStrength = 0.0f;					// 振動の強さ
+	VECTOR _shakeOffset   = VGet(0.0f, 0.0f, 0.0f); // 振動位置のオフセット
 };
 

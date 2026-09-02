@@ -111,6 +111,26 @@ void CollisionManager::CheckCharacterCube(CharaBase* character, Cube* cube)
 	}
 }
 
+void CollisionManager::CheckPlayerBulletEnemy(Bullet* playerBullet, Enemy* enemy)
+{
+	if(!playerBullet || !enemy) return;
+	if(!playerBullet->IsActive() || !enemy->IsAlive()) return;
+
+	const VECTOR pPos = playerBullet->GetPos();
+
+	const VECTOR e0 = enemy->GetCapsuleBottom();
+	const VECTOR e1 = enemy->GetCapsuleTop();
+	const float  r  = playerBullet->GetCollisionRadius() + enemy->GetCollisionRadius();
+
+	const float distSq = CollisionMath::SegmentPointDistSq(e0, e1, pPos);
+
+	if(distSq <= r * r)
+	{
+		enemy->Damage(playerBullet->GetDamage());
+		playerBullet->Destroy();
+	}
+}
+
 void CollisionManager::CheckPlayerAttackBullet(Player* player, EnemyReflectBullet* bullet)
 {
 	if(!player || !bullet) return;
@@ -147,14 +167,14 @@ void CollisionManager::CheckPlayerReflectBullet(Player* player, EnemyReflectBull
 
 	const VECTOR pPos = player->GetPos();
 	const VECTOR bPos = bullet->GetPos();
-	const float  rSum = player->GetCollisionRadius() + bullet->GetCollisionRadius();
+	const float  r    = player->GetCollisionRadius() + bullet->GetCollisionRadius();
 
 	// 距離の計算
 	float distSq = CollisionMath::PointPointDistSq(pPos, bPos);
 
-	if(distSq <= rSum * rSum)
+	if(distSq <= r * r)
 	{
-		player->Damage(1.0f);
+		player->Damage(bullet->GetDamage());
 		bullet->Destroy();
 	}
 }
@@ -167,20 +187,24 @@ void CollisionManager::CheckPlayerBulletWithReflectBullet(Player* player, Bullet
 
 	const VECTOR pPos = playerBullet->GetPos();
 	const VECTOR rPos = reflectBullet->GetPos();
-	const float  rSum = playerBullet->GetCollisionRadius() + reflectBullet->GetCollisionRadius();
+	const float  r = playerBullet->GetCollisionRadius() + reflectBullet->GetCollisionRadius();
 
 	// 距離判定（XZ平面）
 	VECTOR pPosXZ = VGet(pPos.x, 0.0f, pPos.z);
 	VECTOR rPosXZ = VGet(rPos.x, 0.0f, rPos.z);
 	const float distSq = CollisionMath::PointPointDistSq(pPosXZ, rPosXZ);
 
-	if(distSq <= rSum * rSum)
+	if(distSq <= r * r)
 	{
 		reflectBullet->Damage(playerBullet->GetDamage());
+
+		reflectBullet->OnHitImpact(0.5f, 1.0f);
 
 		if(reflectBullet->GetHP() <= 0.0f)
 		{
 			reflectBullet->Reflect(playerBullet->GetDir());
+
+			reflectBullet->OnHitImpact(0.1f, 5.0f);
 		}
 
 		// プレイヤー弾を消滅

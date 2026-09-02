@@ -88,7 +88,6 @@ void Camera::BossBattleUpdate()
 	}
 }
 
-// ‰‰o
 void Camera::UpdateShake()
 {
 	if(_shakeTimer > 0.0f)
