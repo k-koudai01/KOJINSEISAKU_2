@@ -9,7 +9,6 @@ class Player;
  * @brief エネミーの共通基底クラス
  * @details 各種パラメータの保持とEnemyStateの管理・共通描画/被弾処理を担当します。
  */
-
 class EnemyBase : public SpriteCharaBase
 {
 	typedef SpriteCharaBase base;
@@ -23,6 +22,8 @@ public:
 	virtual bool Render() override;
 
 	virtual void UpdateSpriteAnimation(STATUS oldStatus) override;
+
+	// @brief 方向更新処理
 	virtual void UpdateRotation();
 
 	void SetPlayer(Player* player) { _player = player; }

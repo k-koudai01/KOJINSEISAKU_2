@@ -1,8 +1,6 @@
 #include "EnemyBase.h"
 #include "mymath.h"
 #include "Player.h"
-#include "DxLib.h"
-#include <cstdio>
 #include "BulletManager.h"
 #include "EnemyStateIdle.h"
 #include "EnemyStateStun.h"
@@ -16,24 +14,23 @@ namespace
 	constexpr float RUN_SPEED		= 8.0f; 
 }
 
-
 bool EnemyBase::Initialize()
 {
 	if(!base::Initialize()) { return false; }
 
 	_spriteScale = 200.0f;
-	_status = STATUS::IDLE;
+	_status      = STATUS::IDLE;
 
-	_vPos = VGet(0.0f, 0.0f, 0.0f);
+	_vPos  = VGet(0.0f, 0.0f, 0.0f);
 	_baseY = _vPos.y;
-	_vDir = VGet(-1.0f, 0.0f, 0.0f);
+	_vDir  = VGet(-1.0f, 0.0f, 0.0f);
 
-	_fColSubY = 17.0f;
-	_fCollisionR = 40.0f;
+	_fColSubY		  = 17.0f;
+	_fCollisionR      = 40.0f;
 	_fCollisionWeight = 20.0f;
 
 	_mvSpeed = 0.0f;
-	_hp = 5.0f;
+	_hp		 = 5.0f;
 
 	return true;
 }

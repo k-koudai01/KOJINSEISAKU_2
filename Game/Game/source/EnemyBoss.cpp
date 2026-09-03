@@ -21,11 +21,23 @@ bool EnemyBoss::Initialize()
 		{ STATUS::DIE,    { 8, 10.0f, false } },
 		});
 
-	_hp = 5.0f; // ボス用のHP
-	_vPos = VGet(100.0f, 0.0f, -25.0f);
+	_hp    = 5.0f; // ボス用のHP
+	_vPos  = VGet(100.0f, 0.0f, -25.0f);
 	_baseY = _vPos.y;
 
 	// ボス専用の最初のステートを割り当て
 	ChangeState(new EnemyStateIdle());
+	return true;
+}
+
+bool EnemyBoss::Process()
+{
+	base::Process();
+	return true;
+}
+
+bool EnemyBoss::Render()
+{
+	base::Render();
 	return true;
 }

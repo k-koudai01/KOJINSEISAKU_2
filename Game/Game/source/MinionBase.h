@@ -1,14 +1,15 @@
 #pragma once
 #include "EnemyBase.h"
-class EnemyBoss : public EnemyBase
+#include "appframe.h"
+
+class MinionBase : public EnemyBase
 {
 	typedef EnemyBase base;
 public:
-	EnemyBoss() = default;
-	virtual ~EnemyBoss() = default;
+	MinionBase()		   = default;
+	virtual ~MinionBase()  = default;
 
 	virtual bool Initialize() override;
 	virtual bool Process() override;
-	virtual bool Render() override;
 };
 

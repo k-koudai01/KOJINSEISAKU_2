@@ -1,5 +1,6 @@
 #include "EnemyStateSummonMinions.h"
 #include "EnemyBase.h"
+#include "EnemyBoss.h"
 #include "EnemyStateIdle.h"
 
 void EnemyStateSummonMinions::Enter(EnemyBase* enemy)
@@ -17,7 +18,11 @@ void EnemyStateSummonMinions::Update(EnemyBase* enemy, float deltaTime)
 	if(_timer >= 0.8f && !_hasSummoned)
 	{
 		_hasSummoned = true;
-		// TODO: 雑魚生成の関数呼び出し
+
+		if(auto boss = dynamic_cast<EnemyBoss*>(enemy))
+		{
+			
+		}
 	}
 
 	// 待機ステートへ戻る

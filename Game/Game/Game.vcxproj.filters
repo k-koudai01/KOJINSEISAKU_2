@@ -170,6 +170,15 @@
     <Filter Include="ソース ファイル\Object\Character\Enemy\EnemyBoss">
       <UniqueIdentifier>{9a5e46ed-a325-4b4a-839d-4f71f43fb070}</UniqueIdentifier>
     </Filter>
+    <Filter Include="ソース ファイル\Object\Character\Enemy\Enemy_Minion">
+      <UniqueIdentifier>{2ed3b26d-b0a5-456f-97e8-aadebd26c05a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\Object\Character\Enemy\Enemy_Minion\MinionBase">
+      <UniqueIdentifier>{de76844a-d59f-49aa-b67f-07d6ae5f966e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\Object\Character\Enemy\Enemy_Minion\MinionChaser">
+      <UniqueIdentifier>{a7234b6d-b8be-492b-b6f8-b5bc4700e95d}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="source\Player.cpp">
@@ -293,6 +302,12 @@
       <Filter>ソース ファイル\Object\Character\Enemy\EnemyBase</Filter>
     </ClCompile>
     <ClCompile Include="source\EnemyBoss.cpp">
+      <Filter>ソース ファイル\Object\Character\Enemy\EnemyBoss</Filter>
+    </ClCompile>
+    <ClCompile Include="source\MinionBase.cpp">
+      <Filter>ソース ファイル\Object\Character\Enemy\Enemy_Minion\MinionBase</Filter>
+    </ClCompile>
+    <ClCompile Include="source\MinionChaser.cpp">
       <Filter>ソース ファイル</Filter>
     </ClCompile>
   </ItemGroup>
@@ -426,6 +441,12 @@
     <ClInclude Include="source\EnemyBase.h">
       <Filter>ソース ファイル\Object\Character\Enemy\EnemyBase</Filter>
     </ClInclude>
-    <ClInclude Include="source\EnemyBoss.h" />
+    <ClInclude Include="source\EnemyBoss.h">
+      <Filter>ソース ファイル\Object\Character\Enemy\EnemyBoss</Filter>
+    </ClInclude>
+    <ClInclude Include="source\MinionBase.h">
+      <Filter>ソース ファイル\Object\Character\Enemy\Enemy_Minion\MinionBase</Filter>
+    </ClInclude>
+    <ClInclude Include="source\MinionChaser.h" />
   </ItemGroup>
 </Project>

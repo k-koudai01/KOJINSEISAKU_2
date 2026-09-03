@@ -1,6 +1,13 @@
 #include "ObjectFactry.h"
 #include "Cube.h"
 #include "EnemyBoss.h"
+#include "MinionChaser.h"
+
+ObjectFactry::ObjectFactry()
+{
+	RegisterEnemy("Boss",   []() { return std::make_unique<EnemyBoss>();    });
+	RegisterEnemy("Chaser", []() { return std::make_unique<MinionChaser>(); });
+}
 
 std::unique_ptr<Player> ObjectFactry::CreatePlayer() const
 {
@@ -12,25 +19,24 @@ std::unique_ptr<Player> ObjectFactry::CreatePlayer() const
 	return p;
 }
 
-std::unique_ptr<EnemyBase> ObjectFactry::CreateEnemy(EnemyType type) const
+std::unique_ptr<EnemyBase> ObjectFactry::CreateEnemy(const std::string& typeName) const
 {
-	std::unique_ptr<EnemyBase> e = nullptr;
-
-	switch(type)
+	auto it = _enemyRegistry.find(typeName);
+	if(it != _enemyRegistry.end())
 	{
-	case EnemyType::Boss:
-		e = std::make_unique<EnemyBoss>();
-		break;
-	case EnemyType::Minion:
-		// 雑魚の実装時に追加
-		break;
-	}
+		auto enemy = it->second();
+		if(enemy && enemy->Initialize())
+		{
+			return enemy;
 
-	if(e && !e->Initialize())
-	{
-		return nullptr;
+		}
 	}
-	return e;
+	return nullptr;
+}
+
+void ObjectFactry::RegisterEnemy(const std::string& typeName, EnemyCreator creator)
+{
+	_enemyRegistry[typeName] = creator;
 }
 
 std::unique_ptr<Camera> ObjectFactry::CreateCamera() const

@@ -11,7 +11,6 @@ class EnemyState
 public:
 	virtual ~EnemyState() = default;
 
-	
 	/**
 	 * @brief ステート開始時（遷移直後）に1回だけ呼ばれる処理
 	 * @param enemy 対象となるEnemyオブジェクトのポインタ
@@ -39,6 +38,5 @@ public:
 
 protected:
 	float _timer = 0.0f;
-	
 };
 
