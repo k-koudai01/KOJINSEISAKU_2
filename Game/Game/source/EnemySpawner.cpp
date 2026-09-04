@@ -26,8 +26,6 @@ bool EnemySpawner::Update(float deltaTime, OnSpawnCallback onSpawn)
 			newEnemy->SetPos(_vPos);
 			newEnemy->SetPlayer(_player);
 
-			newEnemy->Initialize();
-
 			if(onSpawn)
 			{
 				onSpawn(std::move(newEnemy));

@@ -14,7 +14,7 @@ public:
 	bool Update(float deltaTime, OnSpawnCallback onSpawn);
 	bool Render();
 
-	bool IsDead() const { return false; }
+	bool IsDead() const { return _isDead; }
 
 protected:
 	VECTOR _vPos;

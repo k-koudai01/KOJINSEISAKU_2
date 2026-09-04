@@ -2,11 +2,13 @@
 #include "Cube.h"
 #include "EnemyBoss.h"
 #include "MinionChaser.h"
+#include "MinionRunner.h"
 
 ObjectFactry::ObjectFactry()
 {
 	RegisterEnemy("Boss",   []() { return std::make_unique<EnemyBoss>();    });
 	RegisterEnemy("Chaser", []() { return std::make_unique<MinionChaser>(); });
+	RegisterEnemy("Runner", []() { return std::make_unique<MinionRunner>(); });
 }
 
 std::unique_ptr<Player> ObjectFactry::CreatePlayer() const

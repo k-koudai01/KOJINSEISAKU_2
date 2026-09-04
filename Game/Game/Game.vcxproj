@@ -178,6 +178,7 @@
     <ClCompile Include="source\MenuItems.cpp" />
     <ClCompile Include="source\MinionBase.cpp" />
     <ClCompile Include="source\MinionChaser.cpp" />
+    <ClCompile Include="source\MinionRunner.cpp" />
     <ClCompile Include="source\ModeGame.cpp" />
     <ClCompile Include="source\ModeGameClear.cpp" />
     <ClCompile Include="source\ModeGameOver.cpp" />
@@ -230,6 +231,7 @@
     <ClInclude Include="source\MenuItems.h" />
     <ClInclude Include="source\MinionBase.h" />
     <ClInclude Include="source\MinionChaser.h" />
+    <ClInclude Include="source\MinionRunner.h" />
     <ClInclude Include="source\ModeGame.h" />
     <ClInclude Include="source\ModeGameClear.h" />
     <ClInclude Include="source\ModeGameOver.h" />

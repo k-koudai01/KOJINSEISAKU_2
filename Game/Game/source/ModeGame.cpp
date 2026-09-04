@@ -120,7 +120,14 @@ void ModeGame::CheckCharaMapCollision()
 			// 敵
 			for(const auto& enemy : _enemies)
 			{
-				if(enemy) { _collision.CheckCharacterCube(enemy.get(), cube); }
+				if(!enemy) continue;
+
+				if(dynamic_cast<MinionBase*>(enemy.get()))
+				{
+					continue;
+				}
+
+				_collision.CheckCharacterCube(enemy.get(), cube);
 			}
 		}
 	}
@@ -194,12 +201,10 @@ void ModeGame::UpdatePlaying()
 
 	for(const auto& enemy : _enemies)
 	{
-		if(enemy && enemy->IsDead())
+		if(enemy && dynamic_cast<EnemyBoss*>(enemy.get()) && enemy->IsDead())
 		{
 			_phase = GamePhase::GameClearAnim;
 			_gameClearTimer = 0.0f;
-
-			// 敵を死亡状態に変更
 			enemy->SetStatus(CharaBase::STATUS::DIE);
 			return;
 		}
@@ -250,7 +255,7 @@ void ModeGame::UpdateGameLogic()
 		{
 			if(newEnemy)
 			{
-				newEnemy->Initialize();
+				// newEnemy->Initialize();
 				_objFtr.SetUpEnemy(newEnemy.get(), _player.get());
 				_enemies.push_back(std::move(newEnemy));
 			}
@@ -266,9 +271,20 @@ void ModeGame::UpdateGameLogic()
 		}
 	}
 
-	for(auto& enemy : _enemies)
+	for(auto it = _enemies.begin(); it != _enemies.end();)
 	{
-		if(enemy) { enemy->Process(); }
+		if(*it)
+		{
+			(*it)->Process();
+
+			// ボス以外（ミニオン）で、死亡フラグ（!IsAlive）が立っていたら削除
+			if(!dynamic_cast<EnemyBoss*>(it->get()) && !(*it)->IsAlive())
+			{
+				it = _enemies.erase(it);
+				continue;
+			}
+		}
+		++it;
 	}
 
 	BulletManager::GetInstance()->Process();

@@ -179,6 +179,12 @@
     <Filter Include="ソース ファイル\Object\Character\Enemy\Enemy_Minion\MinionChaser">
       <UniqueIdentifier>{a7234b6d-b8be-492b-b6f8-b5bc4700e95d}</UniqueIdentifier>
     </Filter>
+    <Filter Include="ソース ファイル\Object\Character\Enemy\EnemySpawner">
+      <UniqueIdentifier>{9bfe013d-4f10-4fe0-8273-1669e8f1b3ee}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\Object\Character\Enemy\Enemy_Minion\MinionRunner">
+      <UniqueIdentifier>{19828d26-76a5-4ea3-a236-31d672a5a82d}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="source\Player.cpp">
@@ -307,11 +313,14 @@
     <ClCompile Include="source\MinionBase.cpp">
       <Filter>ソース ファイル\Object\Character\Enemy\Enemy_Minion\MinionBase</Filter>
     </ClCompile>
-    <ClCompile Include="source\MinionChaser.cpp">
-      <Filter>ソース ファイル</Filter>
-    </ClCompile>
     <ClCompile Include="source\EnemySpawner.cpp">
-      <Filter>ソース ファイル</Filter>
+      <Filter>ソース ファイル\Object\Character\Enemy\EnemySpawner</Filter>
+    </ClCompile>
+    <ClCompile Include="source\MinionChaser.cpp">
+      <Filter>ソース ファイル\Object\Character\Enemy\Enemy_Minion\MinionChaser</Filter>
+    </ClCompile>
+    <ClCompile Include="source\MinionRunner.cpp">
+      <Filter>ソース ファイル\Object\Character\Enemy\Enemy_Minion\MinionRunner</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -450,7 +459,14 @@
     <ClInclude Include="source\MinionBase.h">
       <Filter>ソース ファイル\Object\Character\Enemy\Enemy_Minion\MinionBase</Filter>
     </ClInclude>
-    <ClInclude Include="source\MinionChaser.h" />
-    <ClInclude Include="source\EnemySpawner.h" />
+    <ClInclude Include="source\EnemySpawner.h">
+      <Filter>ソース ファイル\Object\Character\Enemy\EnemySpawner</Filter>
+    </ClInclude>
+    <ClInclude Include="source\MinionChaser.h">
+      <Filter>ソース ファイル\Object\Character\Enemy\Enemy_Minion\MinionChaser</Filter>
+    </ClInclude>
+    <ClInclude Include="source\MinionRunner.h">
+      <Filter>ソース ファイル\Object\Character\Enemy\Enemy_Minion\MinionRunner</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

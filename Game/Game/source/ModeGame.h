@@ -14,6 +14,7 @@
 #include "ModeGameOver.h"
 #include "ModeHUD.h"
 #include "MenuController.h"
+#include "MinionBase.h"
 #include "StageLoader.h"
 #include "Background2D.h"
 

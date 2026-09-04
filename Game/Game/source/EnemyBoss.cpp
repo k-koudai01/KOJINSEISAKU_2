@@ -1,6 +1,12 @@
 #include "EnemyBoss.h"
 #include "EnemyStateIdle.h"
 
+namespace
+{
+	static constexpr float SPAWN_OFFSET_DISTANCE = -10.0f; // ボスの後方にスポーンする距離
+	static constexpr float MINION_SPAWN_DELAY	 = 0.5f;   // Minion召喚の遅延時間
+}
+
 bool EnemyBoss::Initialize()
 {
 	if(!base::Initialize()) { return false; }
@@ -51,9 +57,9 @@ void EnemyBoss::SpawnMinion()
 	dirToPlayer        = VNorm(dirToPlayer);
 
 	// ボスの真後ろの座標を計算
-	VECTOR spawnPos    = VSub(_vPos, VScale(dirToPlayer, -10.0f));
+	VECTOR spawnPos    = VSub(_vPos, VScale(dirToPlayer, SPAWN_OFFSET_DISTANCE));
 	
-	auto spawner = std::make_unique<EnemySpawner>(spawnPos, "Runner", _player, 0.8f);
+	auto spawner = std::make_unique<EnemySpawner>(spawnPos, "Runner", _player, MINION_SPAWN_DELAY);
 
 	_onSpawnSpawnerCallback(std::move(spawner));
 }
