@@ -34,6 +34,23 @@ std::unique_ptr<EnemyBase> ObjectFactry::CreateEnemy(const std::string& typeName
 	return nullptr;
 }
 
+std::unique_ptr<EnemyBoss> ObjectFactry::CreateEnemyBoss(Player* target, EnemyBoss::OnSpawnSpawnerCallback spawnerCallback) const
+{
+	auto baseEnemy = CreateEnemy("Boss");
+	if(!baseEnemy) return nullptr;
+
+	auto boss = std::unique_ptr<EnemyBoss>(dynamic_cast<EnemyBoss*>(baseEnemy.release()));
+	if(boss)
+	{
+		boss->SetPlayer(target);
+		SetUpEnemy(boss.get(), target);
+		boss->SetOnSpawnSpawnerCallback(spawnerCallback);
+
+		return boss;
+	}
+	return nullptr;
+}
+
 void ObjectFactry::RegisterEnemy(const std::string& typeName, EnemyCreator creator)
 {
 	_enemyRegistry[typeName] = creator;

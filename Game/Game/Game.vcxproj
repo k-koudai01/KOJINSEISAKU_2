@@ -162,6 +162,7 @@
     <ClCompile Include="source\EnemyBase.cpp" />
     <ClCompile Include="source\EnemyBoss.cpp" />
     <ClCompile Include="source\EnemyReflectBullet.cpp" />
+    <ClCompile Include="source\EnemySpawner.cpp" />
     <ClCompile Include="source\EnemyStateIdle.cpp" />
     <ClCompile Include="source\EnemyStateJumpPrep.cpp" />
     <ClCompile Include="source\EnemyStateReflectShoot.cpp" />
@@ -212,6 +213,7 @@
     <ClInclude Include="source\EnemyBase.h" />
     <ClInclude Include="source\EnemyBoss.h" />
     <ClInclude Include="source\EnemyReflectBullet.h" />
+    <ClInclude Include="source\EnemySpawner.h" />
     <ClInclude Include="source\EnemyState.h" />
     <ClInclude Include="source\EnemyStateIdle.h" />
     <ClInclude Include="source\EnemyStateJumpPrep.h" />

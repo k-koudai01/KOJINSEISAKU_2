@@ -3,6 +3,7 @@
 #include "appframe.h"
 #include "Player.h"
 #include "EnemyBase.h"
+#include "EnemyBoss.h"
 #include "Camera.h"
 #include "ObjectBase.h"
 
@@ -16,6 +17,7 @@ public:
 	// オブジェクト生成
 	std::unique_ptr<Player> CreatePlayer() const;
 	std::unique_ptr<EnemyBase> CreateEnemy(const std::string& typeName = "Boss") const;
+	std::unique_ptr<EnemyBoss> CreateEnemyBoss(Player* target, EnemyBoss::OnSpawnSpawnerCallback spawnerCallback) const;
 	std::unique_ptr<Camera> CreateCamera() const;
 	// ステージオブジェクトの生成
 	std::unique_ptr<ObjectBase> CreateStageObject(const std::string& type) const;

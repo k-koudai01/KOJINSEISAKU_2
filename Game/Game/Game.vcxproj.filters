@@ -310,6 +310,9 @@
     <ClCompile Include="source\MinionChaser.cpp">
       <Filter>ソース ファイル</Filter>
     </ClCompile>
+    <ClCompile Include="source\EnemySpawner.cpp">
+      <Filter>ソース ファイル</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="source\ModeGame.h">
@@ -448,5 +451,6 @@
       <Filter>ソース ファイル\Object\Character\Enemy\Enemy_Minion\MinionBase</Filter>
     </ClInclude>
     <ClInclude Include="source\MinionChaser.h" />
+    <ClInclude Include="source\EnemySpawner.h" />
   </ItemGroup>
 </Project>

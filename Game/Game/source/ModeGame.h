@@ -5,6 +5,7 @@
 #include "ObjectManager.h"
 #include "Player.h" 
 #include "EnemyBase.h"
+#include "EnemySpawner.h"
 #include "CollisionManager.h"
 #include "Camera.h"
 #include "CameraManager.h"
@@ -49,7 +50,8 @@ protected:
 
 	std::unique_ptr<Camera> _cam;    
 	std::unique_ptr<Player> _player;
-	std::unique_ptr<EnemyBase> _enemy;
+	std::vector<std::unique_ptr<EnemyBase>> _enemies;
+	std::vector<std::unique_ptr<EnemySpawner>> _spawners;
 	std::unique_ptr<Background2D> _bg;
 
 	// “–‚½‚è”»’è

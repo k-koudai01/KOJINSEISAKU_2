@@ -21,7 +21,7 @@ void EnemyStateSummonMinions::Update(EnemyBase* enemy, float deltaTime)
 
 		if(auto boss = dynamic_cast<EnemyBoss*>(enemy))
 		{
-			
+			boss->SpawnMinion();
 		}
 	}
 

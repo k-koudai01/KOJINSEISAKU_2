@@ -41,3 +41,19 @@ bool EnemyBoss::Render()
 	base::Render();
 	return true;
 }
+
+void EnemyBoss::SpawnMinion()
+{
+	if(!_player || !_onSpawnSpawnerCallback) return;
+
+	// ボスからプレイヤーの方向を計算
+	VECTOR dirToPlayer = VSub(_player->GetPos(), _vPos);
+	dirToPlayer        = VNorm(dirToPlayer);
+
+	// ボスの真後ろの座標を計算
+	VECTOR spawnPos    = VSub(_vPos, VScale(dirToPlayer, -10.0f));
+	
+	auto spawner = std::make_unique<EnemySpawner>(spawnPos, "Runner", _player, 0.8f);
+
+	_onSpawnSpawnerCallback(std::move(spawner));
+}

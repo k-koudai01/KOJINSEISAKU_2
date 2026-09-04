@@ -4,8 +4,8 @@ bool MinionChaser::Initialize()
 {
 	if (!base::Initialize()) { return false; }
 
-	SetSpriteSheet(STATUS::IDLE, "res/Enemy/Minion_Idle.png", 4, 4);
-	SetSpriteSheet(STATUS::WALK, "res/Enemy/Minion_Run.png" , 8, 4);
+	SetSpriteSheet(STATUS::IDLE, "res/Enemy/Enemy_Idle.png", 4, 4);
+	SetSpriteSheet(STATUS::WALK, "res/Enemy/Enemy_Run.png" , 8, 4);
 
 	SetSpriteAnimTable
 	({
@@ -30,6 +30,12 @@ bool MinionChaser::Process()
 {
 	base::Process();
 	UpdateMove();
+	return true;
+}
+
+bool MinionChaser::Render()
+{
+	base::Render();
 	return true;
 }
 

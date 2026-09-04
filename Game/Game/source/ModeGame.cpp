@@ -2,24 +2,36 @@
 #include "ModeMenu.h"
 #include "ModeTitle.h"
 #include "BulletManager.h"
+#include "EnemyBoss.h"
+#include "MinionBase.h"
+
 
 bool ModeGame::Initialize()
 {
 	if(!base::Initialize()) { return false; }
 
 	// オブジェクト生成
-	_cam    = _objFtr.CreateCamera();
-	_player = _objFtr.CreatePlayer();
-	_enemy  = _objFtr.CreateEnemy();
+	_cam      = _objFtr.CreateCamera();
+	_player   = _objFtr.CreatePlayer();
+	auto boss = _objFtr.CreateEnemyBoss(_player.get(), [this](std::unique_ptr<EnemySpawner> newSpawner)
+		{
+			_spawners.push_back(std::move(newSpawner));
+		});
+
+	if(boss)
+	{
+		_enemies.push_back(std::move(boss));
+	}
+
 	BulletManager::GetInstance()->Initialize();
 
-	if(!_cam || !_player || !_enemy)
+	if(!_cam || !_player || _enemies.empty())
 	{
 		return false;
 	}
 
 	_bg = std::make_unique<Background2D>();
-	_bg->Initialize("res/Title/origbig.png");
+	_bg->Initialize("res/BG/Casul.png");
 
 	CameraManager::GetInstance()->SetActiveCamera(_cam.get());
 
@@ -27,7 +39,10 @@ bool ModeGame::Initialize()
 	_objFtr.SetUpCamera(_cam.get(), _player.get(), true);
 
 	// 敵：プレイヤー追従設定
-	_objFtr.SetUpEnemy(_enemy.get(), _player.get());
+	for(auto& enemy : _enemies)
+	{
+		_objFtr.SetUpEnemy(enemy.get(), _player.get());
+	}	
 
 	// HUD追加
 	AddHUD();
@@ -50,7 +65,11 @@ bool ModeGame::Terminate()
 	_objMgr.TerminateAll();
 
 	if(_player) {_player->Terminate(); _player.reset(); }
-	if(_enemy ) { _enemy->Terminate();  _enemy.reset(); }
+	for(auto& enemy : _enemies)
+	{
+		enemy->Terminate();
+		enemy.reset();
+	}
 	if(_cam   ) {_cam->Terminate();    _cam.reset();    }
 	if(_bg    ) {_bg->Terminate();     _bg.reset();     }
 
@@ -99,7 +118,10 @@ void ModeGame::CheckCharaMapCollision()
 			if(_player) { _collision.CheckCharacterCube(_player.get(), cube); }
 
 			// 敵
-			if(_enemy) { _collision.CheckCharacterCube(_enemy.get(), cube); }
+			for(const auto& enemy : _enemies)
+			{
+				if(enemy) { _collision.CheckCharacterCube(enemy.get(), cube); }
+			}
 		}
 	}
 }
@@ -170,14 +192,17 @@ void ModeGame::UpdatePlaying()
 		_player->SetStatus(CharaBase::STATUS::DIE);
 	}
 
-	if(_enemy && _enemy->IsDead())
+	for(const auto& enemy : _enemies)
 	{
-		_phase = GamePhase::GameClearAnim;
-		_gameClearTimer = 0.0f;
+		if(enemy && enemy->IsDead())
+		{
+			_phase = GamePhase::GameClearAnim;
+			_gameClearTimer = 0.0f;
 
-		// 敵を死亡状態に変更
-		_enemy->SetStatus(CharaBase::STATUS::DIE);
-		return;
+			// 敵を死亡状態に変更
+			enemy->SetStatus(CharaBase::STATUS::DIE);
+			return;
+		}
 	}
 }
 
@@ -217,16 +242,47 @@ void ModeGame::UpdateGameClearAnim()
 void ModeGame::UpdateGameLogic()
 {
 	if(_player) { _player->Process(); }
-	if(_enemy ) { _enemy->Process();  }
 	if(_cam	  ) { _cam->Process();    }
+
+	for(auto it = _spawners.begin(); it != _spawners.end();)
+	{
+		(*it)->Update(1.0f / 60.0f, [this](std::unique_ptr<EnemyBase> newEnemy)
+		{
+			if(newEnemy)
+			{
+				newEnemy->Initialize();
+				_objFtr.SetUpEnemy(newEnemy.get(), _player.get());
+				_enemies.push_back(std::move(newEnemy));
+			}
+		});
+
+		if((*it)->IsDead())
+		{
+			it = _spawners.erase(it);
+		}
+		else
+		{
+			++it;
+		}
+	}
+
+	for(auto& enemy : _enemies)
+	{
+		if(enemy) { enemy->Process(); }
+	}
+
 	BulletManager::GetInstance()->Process();
 
 	// 当たり判定
-	_collision.CheckPlayerEnemy(_player.get(), _enemy.get());
-	_collision.CheckPlayerAttack(_player.get(), _enemy.get());
+	for(auto& enemy : _enemies)
+	{
+		if(!enemy) continue;
+		_collision.CheckPlayerEnemy(_player.get(), enemy.get());
+		_collision.CheckPlayerAttack(_player.get(), enemy.get());
+	}
 	CheckCharaMapCollision();
 
-	if(_player && _enemy)
+	if(_player && !_enemies.empty())
 	{
 		auto& bullets = BulletManager::GetInstance()->GetBullets();
 
@@ -238,7 +294,10 @@ void ModeGame::UpdateGameLogic()
 			// プレイヤーの通常弾とボスの判定を行う
 			if(!dynamic_cast<EnemyReflectBullet*>(bullet.get()))
 			{
-				_collision.CheckPlayerBulletEnemy(bullet.get(), _enemy.get());
+				for(auto& enemy : _enemies)
+				{
+					if(enemy) { _collision.CheckPlayerBulletEnemy(bullet.get(), enemy.get()); }
+				}
 			}
 		}
 
@@ -252,7 +311,11 @@ void ModeGame::UpdateGameLogic()
 			{
 				_collision.CheckPlayerReflectBullet(_player.get(), reflectBullet);
 				_collision.CheckPlayerAttackBullet(_player.get(), reflectBullet);
-				_collision.CheckBulletEnemy(reflectBullet, _enemy.get());
+
+				for(auto& enemy : _enemies)
+				{
+					if(enemy) { _collision.CheckBulletEnemy(reflectBullet, enemy.get()); }
+				}
 			}
 		}
 
@@ -260,7 +323,7 @@ void ModeGame::UpdateGameLogic()
 		for(const auto& pBullet : bullets)
 		{
 			if(!pBullet || !pBullet->IsActive()) continue;
-			if(dynamic_cast<EnemyReflectBullet*>(pBullet.get())) continue; // プレイヤー弾以外はスキップ
+			if(dynamic_cast<EnemyReflectBullet*>(pBullet.get())) continue;
 
 			for(const auto& rBullet : bullets)
 			{
@@ -320,7 +383,14 @@ void ModeGame::SetupCamera()
 void ModeGame::Render3DObjects()
 {
 	if(_player) { _player->Render(); }
-	if(_enemy ) { _enemy->Render();  }
+	for(auto& enemy : _enemies)
+	{
+		if(enemy) { enemy->Render(); }
+	}
+	for(auto& spawner : _spawners)
+	{
+		if(spawner) { spawner->Render(); }
+	}
 
 	BulletManager::GetInstance()->Render();
 
