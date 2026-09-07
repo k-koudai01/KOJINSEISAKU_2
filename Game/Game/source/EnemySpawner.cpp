@@ -1,6 +1,11 @@
 #include "EnemySpawner.h"
 #include "ObjectFactry.h"
 
+namespace
+{
+	constexpr float GROUND_Y = -50.0f;
+}
+
 EnemySpawner::EnemySpawner(const VECTOR& pos, const std::string& enemyType, Player* target, float spawnDelay)
 	: _vPos(pos)
 	, _enemyType(enemyType)
@@ -23,7 +28,10 @@ bool EnemySpawner::Update(float deltaTime, OnSpawnCallback onSpawn)
 
 		if(newEnemy)
 		{
-			newEnemy->SetPos(_vPos);
+			VECTOR spawnPos = _vPos;
+			spawnPos.y = GROUND_Y;
+
+			newEnemy->SetPos(spawnPos);
 			newEnemy->SetPlayer(_player);
 
 			if(onSpawn)

@@ -3,7 +3,7 @@
 
 namespace
 {
-	static constexpr float SPAWN_OFFSET_DISTANCE = -10.0f; // ボスの後方にスポーンする距離
+	static constexpr float SPAWN_OFFSET_DISTANCE = 100.0f; // ボスの後方にスポーンする距離
 	static constexpr float MINION_SPAWN_DELAY	 = 0.5f;   // Minion召喚の遅延時間
 }
 
@@ -25,7 +25,7 @@ bool EnemyBoss::Initialize()
 		{ STATUS::RUN,    { 8, 17.0f, true  } },
 		{ STATUS::DAMAGE, { 6,  8.0f, false } },
 		{ STATUS::DIE,    { 8, 10.0f, false } },
-		});
+	});
 
 	_hp    = 5.0f; // ボス用のHP
 	_vPos  = VGet(100.0f, 0.0f, -25.0f);

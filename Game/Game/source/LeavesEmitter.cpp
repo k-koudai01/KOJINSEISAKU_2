@@ -87,7 +87,7 @@ void LeavesEmitter::UpdateParticle(Particle& p, float deltaTime)
 {
 	base::UpdateParticle(p, deltaTime);
 
-	if(!p.active) return;
+	if(!p.active	) return;
 
 	// 風の移動(最終座標 = 風の向き * 風の強さ * 時間)
 	p.position.x += WIND_DIRECTION.x * WIND_STRENGTH * deltaTime;
