@@ -2,6 +2,7 @@
 #include "ApplicationMain.h"
 #include "ModeGame.h"
 #include "ModeTitle.h"
+#include "SoundRegistry.h"
 
 // ŽÀ‘Ì
 ApplicationMain				g_oApplicationMain;
@@ -9,6 +10,10 @@ ApplicationMain				g_oApplicationMain;
 bool ApplicationMain::Initialize(HINSTANCE hInstance)
 {
 	if(!base::Initialize(hInstance)) { return false; }
+
+	_audioManager.Initialize();
+
+	SoundRegistry::LoadAll(_audioManager);
 
 	// ƒ‚[ƒh‚Ì“o˜^
 	//ModeServer::GetInstance()->Add(new ModeGame(), 1, "modeGame");

@@ -157,6 +157,7 @@
     <ClCompile Include="source\AnimationManager.cpp" />
     <ClCompile Include="source\Application\ApplicationBase.cpp" />
     <ClCompile Include="source\Application\WinMain.cpp" />
+    <ClCompile Include="source\AudioManager.cpp" />
     <ClCompile Include="source\CFile\CFile.cpp" />
     <ClCompile Include="source\CollisionMath.cpp" />
     <ClCompile Include="source\FrameRateController.cpp" />
@@ -172,10 +173,12 @@
     <ClInclude Include="source\appframe.h" />
     <ClInclude Include="source\Application\ApplicationBase.h" />
     <ClInclude Include="source\Application\UtilMacro.h" />
+    <ClInclude Include="source\AudioManager.h" />
     <ClInclude Include="source\CFile\CFile.h" />
     <ClInclude Include="source\CollisionMath.h" />
     <ClInclude Include="source\container.h" />
     <ClInclude Include="source\FrameRateController.h" />
+    <ClInclude Include="source\IAudioService.h" />
     <ClInclude Include="source\Mode\ModeBase.h" />
     <ClInclude Include="source\Mode\ModeServer.h" />
     <ClInclude Include="source\MyMath.h" />

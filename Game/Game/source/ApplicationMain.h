@@ -1,5 +1,6 @@
-#include "appframe.h"
 #pragma once
+#include "appframe.h"
+#include "AudioManager.h"
 
 class ApplicationMain : public ApplicationBase
 {
@@ -15,6 +16,10 @@ public:
 	virtual int DispSizeW() { return 1920; }
 	virtual int DispSizeH() { return 1080; }
 
-protected:
+	IAudioService& GetAudioService() { return _audioManager; }
 
+protected:
+	AudioManager _audioManager;
 };
+
+extern ApplicationMain g_oApplicationMain;

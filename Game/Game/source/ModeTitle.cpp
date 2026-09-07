@@ -3,10 +3,21 @@
 #include "ApplicationMain.h"
 #include "ModeGame.h"
 
+namespace
+{
+	constexpr int BGM_VOLUME = 200;
+}
 
 bool ModeTitle::Initialize()
 {
 	if (!base::Initialize()) return false;
+
+	_audio = &g_oApplicationMain.GetAudioService();
+	if(_audio)
+	{
+		_audio->PlayBGM(static_cast<int>(SoundID::BGM_TITLE));
+		_audio->SetBGMVolume(BGM_VOLUME);
+	}
 
 	_bgHandle = LoadGraph("res/Title/origbig.png");
 	// ¶¬
@@ -29,6 +40,10 @@ bool ModeTitle::Initialize()
 
 bool ModeTitle::Terminate()
 {
+	if(_audio)
+	{
+		_audio->StopBGM(); 
+	}
 	base::Terminate();
 	return true;
 }

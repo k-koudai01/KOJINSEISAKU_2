@@ -6,6 +6,7 @@
 #include "UITitleMenu.h"
 #include "SakuraEmitter.h"
 #include "LeavesEmitter.h"
+#include "SoundDefine.h"
 
 namespace UI
 {
@@ -42,5 +43,6 @@ protected:
 private:
 	SakuraEmitter _sakuraEmitter;
 	LeavesEmitter _leavesEmitter;
+	IAudioService* _audio = nullptr;
 };
 

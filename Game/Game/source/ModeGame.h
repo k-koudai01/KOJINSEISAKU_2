@@ -17,6 +17,7 @@
 #include "MinionBase.h"
 #include "StageLoader.h"
 #include "Background2D.h"
+#include "SoundDefine.h"
 
 constexpr float GAMECLEAR_TIMESEC = 30.0f;  // クリアまでの秒数
 
@@ -34,6 +35,9 @@ public:
 		GameClearAnim,// ゲームクリア演出
 		GameClearUI,  // ゲームクリアUI表示中
 	};
+
+	ModeGame() = default; 
+	virtual ~ModeGame() = default;
 
 	virtual bool Initialize();
 	virtual bool Terminate();
@@ -78,8 +82,8 @@ private:
 
 private:
 	MenuController _menuCtrl;
-
-	GamePhase _phase     = GamePhase::Playing;
+	IAudioService* _audio = nullptr; 
+	GamePhase _phase      = GamePhase::Playing;
 
 	float _gameOverTimer  = 0.0f; 
 	float _gameClearTimer = 0.0f;

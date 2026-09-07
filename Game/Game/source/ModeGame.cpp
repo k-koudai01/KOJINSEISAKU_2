@@ -5,10 +5,21 @@
 #include "EnemyBoss.h"
 #include "MinionBase.h"
 
+namespace
+{
+	constexpr int BGM_VOLUME = 200;
+}
 
 bool ModeGame::Initialize()
 {
 	if(!base::Initialize()) { return false; }
+
+	_audio = &g_oApplicationMain.GetAudioService();
+	if(_audio)
+	{
+		_audio->PlayBGM(static_cast<int>(SoundID::BGM_TITLE));
+		_audio->SetBGMVolume(BGM_VOLUME);
+	}
 
 	// オブジェクト生成
 	_cam      = _objFtr.CreateCamera();

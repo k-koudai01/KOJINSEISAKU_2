@@ -468,5 +468,7 @@
     <ClInclude Include="source\MinionRunner.h">
       <Filter>ソース ファイル\Object\Character\Enemy\Enemy_Minion\MinionRunner</Filter>
     </ClInclude>
+    <ClInclude Include="source\SoundRegistry.h" />
+    <ClInclude Include="source\SoundDefine.h" />
   </ItemGroup>
 </Project>

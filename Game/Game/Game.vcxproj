@@ -245,6 +245,8 @@
     <ClInclude Include="source\PlayerChargeBullet.h" />
     <ClInclude Include="source\PlayerNormalBullet.h" />
     <ClInclude Include="source\SakuraEmitter.h" />
+    <ClInclude Include="source\SoundDefine.h" />
+    <ClInclude Include="source\SoundRegistry.h" />
     <ClInclude Include="source\SpriteCharaBase.h" />
     <ClInclude Include="source\StageLoader.h" />
     <ClInclude Include="source\UIBase.h" />

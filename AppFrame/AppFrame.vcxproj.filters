@@ -87,6 +87,7 @@
     <ClCompile Include="source\MyMath.cpp">
       <Filter>ソースファイル\Math\MyMath</Filter>
     </ClCompile>
+    <ClCompile Include="source\AudioManager.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="source\Application\UtilMacro.h">
@@ -134,5 +135,9 @@
     <ClInclude Include="source\MyMath.h">
       <Filter>ソースファイル\Math\MyMath</Filter>
     </ClInclude>
+    <ClInclude Include="source\IAudioService.h">
+      <Filter>ソースファイル</Filter>
+    </ClInclude>
+    <ClInclude Include="source\AudioManager.h" />
   </ItemGroup>
 </Project>
