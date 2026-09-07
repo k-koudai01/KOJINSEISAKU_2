@@ -60,6 +60,9 @@ void EnemyBoss::SpawnMinion()
 	// ボスの真後ろの座標を計算
 	VECTOR spawnPos    = VSub(_vPos, VScale(dirToPlayer, SPAWN_OFFSET_DISTANCE));
 	
+	spawnPos.z = _vPos.z;
+
+	// EnemySpawnerを作成し、コールバックで通知
 	auto spawner = std::make_unique<EnemySpawner>(spawnPos, "Runner", _player, MINION_SPAWN_DELAY);
 
 	_onSpawnSpawnerCallback(std::move(spawner));

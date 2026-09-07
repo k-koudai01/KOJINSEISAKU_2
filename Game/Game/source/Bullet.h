@@ -10,6 +10,13 @@ public:
 	Bullet();
 	~Bullet() = default;
 
+	/// 
+	/// @brief ’e‚Ì‰Šú‰»ŠÖ”
+	/// @param pos ’e‚Ì‰ŠúˆÊ’u
+	/// @param dir ’e‚Ì‰Šú•ûŒü
+	/// @param speed ’e‚Ì‘¬“x
+	/// @param maxLifeTime ’e‚ÌÅ‘åõ–½
+	/// 
 	virtual bool Initialize(const VECTOR& pos, const VECTOR& dir, float speed, float maxLifeTime);
 	virtual bool Process() override;
     virtual bool Render() override;

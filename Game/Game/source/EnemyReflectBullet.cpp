@@ -4,11 +4,14 @@ namespace
 {
 	constexpr float MAX_HP = 2.0f; 
 	constexpr float DAMAGE = 1.0f;
+
+	constexpr float BULLET_SPEED    = 10.0f;
+	constexpr float BULLET_LIFETIME =  8.0f;
 }
 
 bool EnemyReflectBullet::Initialize(const VECTOR& pos, const VECTOR& dir)
 {
-	if(!base::Initialize(pos, dir, 10.0f, 8.0f))
+	if(!base::Initialize(pos, dir, BULLET_SPEED, BULLET_LIFETIME))
 	{
 		return false;
 	}

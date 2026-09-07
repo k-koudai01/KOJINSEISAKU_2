@@ -16,6 +16,6 @@ bool PlayerNormalBullet::Initialize(const VECTOR& pos, const VECTOR& dir)
 	_radius      = 10.0f;
 	_fCollisionR = 10.0f;
 	_spriteScale = 80.0f;
-	_damage		 = 1.0f;
+	_damage		 = 0.5f;
 	return true;
 }

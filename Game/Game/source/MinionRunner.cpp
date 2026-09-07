@@ -36,6 +36,10 @@ bool MinionRunner::Process()
 bool MinionRunner::Render()
 {
 	base::Render();
+
+	//DrawFormatString(10, 10, GetColor(255, 255, 255),
+	//				 "Minion Pos: X=%.2f, Y=%.2f, Z=%.2f", _vPos.x, _vPos.y, _vPos.z);
+
 	return true;
 }
 
@@ -50,8 +54,10 @@ void MinionRunner::UpdateMove()
 		_hasTargetDir = true;
 	}
 
-	VECTOR vMove = VScale(_vDir, _mvSpeed);
-	_vPos		 = VAdd(_vPos, vMove);
+	// x方向のみ移動
+	VECTOR vMove = VGet(_vDir.x * _mvSpeed, 0.0f, 0.0f);
+
+	_vPos = VAdd(_vPos, vMove);
 
 	_status = STATUS::WALK;
 

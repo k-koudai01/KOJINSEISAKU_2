@@ -33,7 +33,7 @@ void EnemyStateReflectShoot::Update(EnemyBase* enemy, float deltaTime)
 	}
 
 	// 待機へ戻る
-	if(_timer >= 1.2f)
+	if(_timer >= 1.0f)
 	{
 		enemy->ChangeState(new EnemyStateIdle());
 	}

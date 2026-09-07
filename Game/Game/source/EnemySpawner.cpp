@@ -3,7 +3,7 @@
 
 namespace
 {
-	constexpr float GROUND_Y = -50.0f;
+	constexpr float GROUND_Y = -28.0f;
 }
 
 EnemySpawner::EnemySpawner(const VECTOR& pos, const std::string& enemyType, Player* target, float spawnDelay)
