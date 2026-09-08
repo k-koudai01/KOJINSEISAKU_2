@@ -30,7 +30,7 @@ bool SpriteCharaBase::Render()
 
 	// 現在の状態のシートを取得
 	auto sheetIt = _spriteSheets.find(_status);
-	if(sheetIt == _spriteSheets.end()) return true;
+	if(sheetIt  == _spriteSheets.end()) return true;
 
 	const SpriteSheet& sheet = sheetIt->second;
 	if(sheet.handles.empty()) return true;
@@ -46,9 +46,7 @@ bool SpriteCharaBase::Render()
 	float cx = 0.5f;
 	float cy = 0.5f;
 
-	float halfH = sheet.frameH * 0.5f;
-
-	DrawBillboard3D(_vPos, cx, 0.5f, _spriteScale, 0.0f, handle, TRUE);
+	DrawBillboard3D(_vPos, cx, cy, _spriteScale, 0.0f, handle, TRUE);
 
 	return true;
 }

@@ -25,7 +25,7 @@ void EnemyStateRushAttack::Update(EnemyBase* enemy, float deltaTime)
 	enemy->UpdateFacing(dir);
 
 	// 経過したら突進終了
-	if(_timer >= 0.5f)
+	if(_timer >= 1.0f)
 	{
 		// 着地高度を確実に維持
 		pos.y = enemy->GetBaseY();

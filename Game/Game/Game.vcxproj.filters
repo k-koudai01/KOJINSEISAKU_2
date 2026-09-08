@@ -322,6 +322,9 @@
     <ClCompile Include="source\MinionRunner.cpp">
       <Filter>ソース ファイル\Object\Character\Enemy\Enemy_Minion\MinionRunner</Filter>
     </ClCompile>
+    <ClCompile Include="source\HitStopManager.cpp">
+      <Filter>ソース ファイル</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="source\ModeGame.h">
@@ -470,5 +473,6 @@
     </ClInclude>
     <ClInclude Include="source\SoundRegistry.h" />
     <ClInclude Include="source\SoundDefine.h" />
+    <ClInclude Include="source\HitStopManager.h" />
   </ItemGroup>
 </Project>

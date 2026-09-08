@@ -18,7 +18,7 @@ public:
 	virtual bool Process() override;
 	virtual bool Render() override;
 
-	void MoveBy(const VECTOR& delta);            // カメラ位置とターゲットを同量だけ移動（パン）
+	void MoveBy(const VECTOR& delta); // カメラ位置とターゲットを同量だけ移動（パン）
 
 	// プレイヤー追従
 	void SetFollowTarget(Player* player) { _player = player; }
@@ -27,11 +27,11 @@ public:
 	// プレイヤー追従更新
     void FollowUpdate();
 
-	/**
-	 *@brief カメラ振動
-	 *@param strength:振動の強さ 
-	 *@param duration:振動の持続時間
-	 */
+	///
+	/// @brief カメラ振動
+	/// @param strength:振動の強さ 
+	/// @param duration:振動の持続時間
+	/// 
 	void Shake(float strength, float duration); 
 
 	// ボス戦用の固定カメラモード

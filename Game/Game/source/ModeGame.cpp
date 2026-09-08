@@ -4,10 +4,12 @@
 #include "BulletManager.h"
 #include "EnemyBoss.h"
 #include "MinionBase.h"
+#include "HitStopManager.h"
 
 namespace
 {
-	constexpr int BGM_VOLUME = 200;
+	constexpr int	BGM_VOLUME = 200;
+	constexpr float CLEAR_HITSTOP_DURATION = 0.5f; // ヒットストップの持続時間
 }
 
 bool ModeGame::Initialize()
@@ -97,6 +99,13 @@ bool ModeGame::Process()
 	base::Process();
 
 	_menuCtrl.Process();
+
+	// ヒットストップの更新
+	HitStopManager::GetInstance().Update(1.0f / 60.0f);
+	if(HitStopManager::GetInstance().IsHitStopping())
+	{
+		return true; 
+	}
 
 	// アニメーション更新
 	SpriteAnimationManager::GetInstance()->Update(1.0f / 60.0f);
@@ -214,6 +223,9 @@ void ModeGame::UpdatePlaying()
 	{
 		if(enemy && dynamic_cast<EnemyBoss*>(enemy.get()) && enemy->IsDead())
 		{
+
+			HitStopManager::GetInstance().RequestHitStop(CLEAR_HITSTOP_DURATION);
+			_cam->Shake(30.0f, 3.0f);
 			_phase = GamePhase::GameClearAnim;
 			_gameClearTimer = 0.0f;
 			enemy->SetStatus(CharaBase::STATUS::DIE);
@@ -243,7 +255,12 @@ void ModeGame::UpdateGameClearAnim()
 {
 	// カメラの更新だけ行う
 	if(_player) { _player->Process(); }
+	for(auto& enemy : _enemies)
+	{
+		if(enemy) { enemy->Process(); }
+	}
 	if(_cam) { _cam->Process(); }
+	BulletManager::GetInstance()->Process();
 
 	// 演出タイマー
 	_gameClearTimer += 1.0f / 60.0f;

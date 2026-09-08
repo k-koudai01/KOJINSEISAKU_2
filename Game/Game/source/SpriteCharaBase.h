@@ -10,8 +10,11 @@ public:
 	virtual bool Terminate() override;
 	virtual bool Render() override;
 
-	// 2Dビルボード用
+	
+	/// @brief 向きの更新
 	void UpdateFacing(const VECTOR& dir);
+
+	/// @brief スプライトアニメーションの更新
 	virtual void UpdateSpriteAnimation(STATUS oldStatus);
 
 protected:
@@ -37,8 +40,19 @@ protected:
 	enum class Facing { Down = 0, Left = 1, Right = 2, Up = 3 };
 	Facing _facing = Facing::Down;
 
-	// スプライト
+	///
+	/// @brief スプライトシートを設定する
+	/// @param status ステータス
+	/// @param path 画像パス
+	/// @param cols 列数
+	/// @param rows 行数
+	/// 
 	void SetSpriteSheet(STATUS status, const char* path, int cols, int rows);
+
+	///
+	/// @brief スプライトアニメーションテーブルを設定する
+	/// @param animTable アニメーションテーブル
+	///
 	void SetSpriteAnimTable(const std::unordered_map<STATUS, SpriteAnimDef>& animTable);
 
 	// アニメーションが終了したか
