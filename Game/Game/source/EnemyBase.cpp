@@ -5,6 +5,7 @@
 #include "EnemyStateIdle.h"
 #include "EnemyStateStun.h"
 #include "EnemyStateRushAttack.h"
+#include "EnemyStateDie.h"
 
 namespace
 {
@@ -112,6 +113,12 @@ bool EnemyBase::Damage(float damage)
 	if(!base::Damage(damage))
 	{
 		return false;
+	}
+
+	if(_hp <= 0.0f)
+	{
+		ChangeState(new EnemyStateDie());
+		return true;
 	}
 
 	_status = STATUS::DAMAGE;

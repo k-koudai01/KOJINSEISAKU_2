@@ -223,9 +223,9 @@ void ModeGame::UpdatePlaying()
 	{
 		if(enemy && dynamic_cast<EnemyBoss*>(enemy.get()) && enemy->IsDead())
 		{
-
 			HitStopManager::GetInstance().RequestHitStop(CLEAR_HITSTOP_DURATION);
 			_cam->Shake(30.0f, 3.0f);
+
 			_phase = GamePhase::GameClearAnim;
 			_gameClearTimer = 0.0f;
 			enemy->SetStatus(CharaBase::STATUS::DIE);

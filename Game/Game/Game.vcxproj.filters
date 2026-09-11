@@ -185,6 +185,9 @@
     <Filter Include="ソース ファイル\Object\Character\Enemy\Enemy_Minion\MinionRunner">
       <UniqueIdentifier>{19828d26-76a5-4ea3-a236-31d672a5a82d}</UniqueIdentifier>
     </Filter>
+    <Filter Include="ソース ファイル\Object\Character\Enemy\EnemyState\EnemyStateDie">
+      <UniqueIdentifier>{83abcdb8-9163-43f3-aa76-1b61394e141c}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="source\Player.cpp">
@@ -323,6 +326,9 @@
       <Filter>ソース ファイル\Object\Character\Enemy\Enemy_Minion\MinionRunner</Filter>
     </ClCompile>
     <ClCompile Include="source\HitStopManager.cpp">
+      <Filter>ソース ファイル</Filter>
+    </ClCompile>
+    <ClCompile Include="source\EnemyStateDie.cpp">
       <Filter>ソース ファイル</Filter>
     </ClCompile>
   </ItemGroup>
@@ -474,5 +480,10 @@
     <ClInclude Include="source\SoundRegistry.h" />
     <ClInclude Include="source\SoundDefine.h" />
     <ClInclude Include="source\HitStopManager.h" />
+    <ClInclude Include="resource.h" />
+    <ClInclude Include="source\EnemyStateDie.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="Game.rc" />
   </ItemGroup>
 </Project>

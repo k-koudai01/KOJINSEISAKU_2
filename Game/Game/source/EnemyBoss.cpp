@@ -5,7 +5,7 @@ namespace
 {
 	static constexpr float SPAWN_OFFSET_DISTANCE = 100.0f; // ボスの後方にスポーンする距離
 	static constexpr float MINION_SPAWN_DELAY	 = 0.5f;   // Minion召喚の遅延時間
-	constexpr float HP_MAX						 = 5.0f; // ボスの最大HP
+	constexpr float HP_MAX						 = 30.0f; // ボスの最大HP
 }
 
 bool EnemyBoss::Initialize()
@@ -13,11 +13,11 @@ bool EnemyBoss::Initialize()
 	if(!base::Initialize()) { return false; }
 
 	// ボス専用スプライトシートの設定
-	SetSpriteSheet(STATUS::IDLE, "res/Enemy/Enemy_Idle.png", 4, 4);
-	SetSpriteSheet(STATUS::WALK, "res/Enemy/Enemy_Run.png", 8, 4);
-	SetSpriteSheet(STATUS::RUN, "res/Enemy/Enemy_Run.png", 8, 4);
+	SetSpriteSheet(STATUS::IDLE,   "res/Enemy/Enemy_Idle.png", 4, 4);
+	SetSpriteSheet(STATUS::WALK,   "res/Enemy/Enemy_Run.png", 8, 4);
+	SetSpriteSheet(STATUS::RUN,    "res/Enemy/Enemy_Run.png", 8, 4);
 	SetSpriteSheet(STATUS::DAMAGE, "res/Enemy/Enemy_Damage.png", 6, 4);
-	SetSpriteSheet(STATUS::DIE, "res/Enemy/Enemy_Die.png", 8, 4);
+	SetSpriteSheet(STATUS::DIE,    "res/Enemy/Enemy_Die.png", 8, 4);
 
 	SetSpriteAnimTable
 	({

@@ -163,6 +163,7 @@
     <ClCompile Include="source\EnemyBoss.cpp" />
     <ClCompile Include="source\EnemyReflectBullet.cpp" />
     <ClCompile Include="source\EnemySpawner.cpp" />
+    <ClCompile Include="source\EnemyStateDie.cpp" />
     <ClCompile Include="source\EnemyStateIdle.cpp" />
     <ClCompile Include="source\EnemyStateJumpPrep.cpp" />
     <ClCompile Include="source\EnemyStateReflectShoot.cpp" />
@@ -200,6 +201,7 @@
     <ClCompile Include="source\UITitleMenu.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="resource.h" />
     <ClInclude Include="source\ApplicationGlobal.h" />
     <ClInclude Include="source\ApplicationMain.h" />
     <ClInclude Include="source\Background2D.h" />
@@ -217,6 +219,7 @@
     <ClInclude Include="source\EnemyReflectBullet.h" />
     <ClInclude Include="source\EnemySpawner.h" />
     <ClInclude Include="source\EnemyState.h" />
+    <ClInclude Include="source\EnemyStateDie.h" />
     <ClInclude Include="source\EnemyStateIdle.h" />
     <ClInclude Include="source\EnemyStateJumpPrep.h" />
     <ClInclude Include="source\EnemyStateReflectShoot.h" />
@@ -254,6 +257,9 @@
     <ClInclude Include="source\UIBase.h" />
     <ClInclude Include="source\UIRender.h" />
     <ClInclude Include="source\UITitleMenu.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="Game.rc" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
