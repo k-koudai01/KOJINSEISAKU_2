@@ -1,0 +1,71 @@
+Begin Map
+   Begin Level
+      Begin Actor Class=/Script/Engine.StaticMeshActor Name=StaticMeshActor_1 Archetype="/Script/Engine.StaticMeshActor'/Script/Engine.Default__StaticMeshActor'" ExportPath="/Script/Engine.StaticMeshActor'/Game/Untitled.Untitled:PersistentLevel.StaticMeshActor_1'"
+         Begin Object Class=/Script/Engine.StaticMeshComponent Name="StaticMeshComponent0" Archetype="/Script/Engine.StaticMeshComponent'/Script/Engine.Default__StaticMeshActor:StaticMeshComponent0'" ExportPath="/Script/Engine.StaticMeshComponent'/Game/Untitled.Untitled:PersistentLevel.StaticMeshActor_1.StaticMeshComponent0'"
+         End Object
+         Begin Object Name="StaticMeshComponent0" ExportPath="/Script/Engine.StaticMeshComponent'/Game/Untitled.Untitled:PersistentLevel.StaticMeshActor_1.StaticMeshComponent0'"
+            StaticMesh="/Script/Engine.StaticMesh'/Engine/EngineSky/SM_SkySphere.SM_SkySphere'"
+            bUseDefaultCollision=False
+            StaticMeshDerivedDataKey="STATICMESH_A8F10585DE67499EA913B652DC4A955E_228332BAE0224DD294E232B87D83948FQuadricMeshReduction_V2$2e0_37DD3B6C$2dD4A4$2d41C0$2dBCF6$2d32AE2029E647_CONSTRAINED_0000000000000080000000000000803F000000000000803F0000803FE24CA9997B8D383A984429295275520A00000000010000000100000000000000010000000100000000000000000000000100000000000000400000000000000001000000000000000000F03F000000000000F03F000000000000F03F0000803F00000000050000004E6F6E65000C00000030000000803F0000803F000000000000004100000000000034420303030000000000000000_LS0MNSzzzzzzzz0_SWLZ"
+            OverrideMaterials(0)="/Script/Engine.Material'/Engine/EngineSky/M_SimpleSkyDome.M_SimpleSkyDome'"
+            bEnableAutoLODGeneration=False
+            BodyInstance=(CollisionEnabled=NoCollision,bInterpolateWhenSubStepping=False,CollisionProfileName="NoCollision",CollisionResponses=(ResponseArray=((Channel="Visibility",Response=ECR_Ignore),(Channel="Camera",Response=ECR_Ignore))))
+            RelativeLocation=(X=-740.000000,Y=0.000000,Z=0.000000)
+            RelativeScale3D=(X=50.000000,Y=400.000000,Z=400.000000)
+            Mobility=Movable
+         End Object
+         StaticMeshComponent="StaticMeshComponent0"
+         bEnableAutoLODGeneration=False
+         RootComponent="StaticMeshComponent0"
+         ActorLabel="SM_SkySphere"
+         FolderPath="Lighting"
+      End Actor
+      Begin Actor Class=/Script/Engine.StaticMeshActor Name=StaticMeshActor_4 Archetype="/Script/Engine.StaticMeshActor'/Script/Engine.Default__StaticMeshActor'" ExportPath="/Script/Engine.StaticMeshActor'/Game/Untitled.Untitled:PersistentLevel.StaticMeshActor_4'"
+         Begin Object Class=/Script/Engine.StaticMeshComponent Name="StaticMeshComponent0" Archetype="/Script/Engine.StaticMeshComponent'/Script/Engine.Default__StaticMeshActor:StaticMeshComponent0'" ExportPath="/Script/Engine.StaticMeshComponent'/Game/Untitled.Untitled:PersistentLevel.StaticMeshActor_4.StaticMeshComponent0'"
+         End Object
+         Begin Object Name="StaticMeshComponent0" ExportPath="/Script/Engine.StaticMeshComponent'/Game/Untitled.Untitled:PersistentLevel.StaticMeshActor_4.StaticMeshComponent0'"
+            StaticMesh="/Script/Engine.StaticMesh'/Engine/BasicShapes/Cube.Cube'"
+            StaticMeshDerivedDataKey="STATICMESH_ACBAF517152E06BF2114C8E7171C5EC2_228332BAE0224DD294E232B87D83948FQuadricMeshReduction_V2$2e1_8CE10229$2dBD11$2d4DF0$2d8390$2dF973D3D6F9C8_CONSTRAINED0_200000000000000000000000000000080FFFFFFFFFFFFFFFF000000000000803F00000000000000803F0000803F000000007AAC91BB1E943C01A4AADDA111E4A4DF00000000010000000100000000000000010000000100000000000000000000000100000000000000400000000000000002000000000000000000F03F000000000000F03F000000000000F03F0000004000000000050000004E6F6E65000C00000030000000803FFFFFFFFF0000803FFFFFFFFF000000000000004100000000000034420303030000000000000000_LS0MNSzzzzzzzz0_SWLZ_0"
+            OverrideMaterials(0)="/Script/Engine.Material'/Engine/BasicShapes/BasicShapeMaterial.BasicShapeMaterial'"
+            RelativeLocation=(X=569.999985,Y=-629.999999,Z=0.000000)
+            RelativeRotation=(Pitch=0.000000,Yaw=89.999999,Roll=0.000000)
+            RelativeScale3D=(X=39.619999,Y=10.000000,Z=0.200000)
+         End Object
+         StaticMeshComponent="StaticMeshComponent0"
+         RootComponent="StaticMeshComponent0"
+         ActorLabel="Cube"
+      End Actor
+      Begin Actor Class=/Script/Engine.StaticMeshActor Name=StaticMeshActor_8 Archetype="/Script/Engine.StaticMeshActor'/Script/Engine.Default__StaticMeshActor'" ExportPath="/Script/Engine.StaticMeshActor'/Game/Untitled.Untitled:PersistentLevel.StaticMeshActor_8'"
+         Begin Object Class=/Script/Engine.StaticMeshComponent Name="StaticMeshComponent0" Archetype="/Script/Engine.StaticMeshComponent'/Script/Engine.Default__StaticMeshActor:StaticMeshComponent0'" ExportPath="/Script/Engine.StaticMeshComponent'/Game/Untitled.Untitled:PersistentLevel.StaticMeshActor_8.StaticMeshComponent0'"
+         End Object
+         Begin Object Name="StaticMeshComponent0" ExportPath="/Script/Engine.StaticMeshComponent'/Game/Untitled.Untitled:PersistentLevel.StaticMeshActor_8.StaticMeshComponent0'"
+            StaticMesh="/Script/Engine.StaticMesh'/Engine/BasicShapes/Cube.Cube'"
+            StaticMeshDerivedDataKey="STATICMESH_ACBAF517152E06BF2114C8E7171C5EC2_228332BAE0224DD294E232B87D83948FQuadricMeshReduction_V2$2e1_8CE10229$2dBD11$2d4DF0$2d8390$2dF973D3D6F9C8_CONSTRAINED0_200000000000000000000000000000080FFFFFFFFFFFFFFFF000000000000803F00000000000000803F0000803F000000007AAC91BB1E943C01A4AADDA111E4A4DF00000000010000000100000000000000010000000100000000000000000000000100000000000000400000000000000002000000000000000000F03F000000000000F03F000000000000F03F0000004000000000050000004E6F6E65000C00000030000000803FFFFFFFFF0000803FFFFFFFFF000000000000004100000000000034420303030000000000000000_LS0MNSzzzzzzzz0_SWLZ_0"
+            OverrideMaterials(0)="/Script/Engine.Material'/Engine/BasicShapes/BasicShapeMaterial.BasicShapeMaterial'"
+            RelativeLocation=(X=569.999971,Y=-1229.999999,Z=500.000000)
+            RelativeRotation=(Pitch=0.000000,Yaw=179.999999,Roll=0.000000)
+            RelativeScale3D=(X=11.622500,Y=1.000000,Z=10.000000)
+         End Object
+         StaticMeshComponent="StaticMeshComponent0"
+         RootComponent="StaticMeshComponent0"
+         ActorLabel="Cube4"
+      End Actor
+      Begin Actor Class=/Script/Engine.StaticMeshActor Name=StaticMeshActor_10 Archetype="/Script/Engine.StaticMeshActor'/Script/Engine.Default__StaticMeshActor'" ExportPath="/Script/Engine.StaticMeshActor'/Game/Untitled.Untitled:PersistentLevel.StaticMeshActor_10'"
+         Begin Object Class=/Script/Engine.StaticMeshComponent Name="StaticMeshComponent0" Archetype="/Script/Engine.StaticMeshComponent'/Script/Engine.Default__StaticMeshActor:StaticMeshComponent0'" ExportPath="/Script/Engine.StaticMeshComponent'/Game/Untitled.Untitled:PersistentLevel.StaticMeshActor_10.StaticMeshComponent0'"
+         End Object
+         Begin Object Name="StaticMeshComponent0" ExportPath="/Script/Engine.StaticMeshComponent'/Game/Untitled.Untitled:PersistentLevel.StaticMeshActor_10.StaticMeshComponent0'"
+            StaticMesh="/Script/Engine.StaticMesh'/Engine/BasicShapes/Cube.Cube'"
+            StaticMeshDerivedDataKey="STATICMESH_ACBAF517152E06BF2114C8E7171C5EC2_228332BAE0224DD294E232B87D83948FQuadricMeshReduction_V2$2e1_8CE10229$2dBD11$2d4DF0$2d8390$2dF973D3D6F9C8_CONSTRAINED0_200000000000000000000000000000080FFFFFFFFFFFFFFFF000000000000803F00000000000000803F0000803F000000007AAC91BB1E943C01A4AADDA111E4A4DF00000000010000000100000000000000010000000100000000000000000000000100000000000000400000000000000002000000000000000000F03F000000000000F03F000000000000F03F0000004000000000050000004E6F6E65000C00000030000000803FFFFFFFFF0000803FFFFFFFFF000000000000004100000000000034420303030000000000000000_LS0MNSzzzzzzzz0_SWLZ_0"
+            OverrideMaterials(0)="/Script/Engine.Material'/Engine/BasicShapes/BasicShapeMaterial.BasicShapeMaterial'"
+            RelativeLocation=(X=600.000000,Y=-30.000000,Z=500.000000)
+            RelativeRotation=(Pitch=0.000000,Yaw=179.999999,Roll=0.000000)
+            RelativeScale3D=(X=11.622500,Y=1.000000,Z=10.000000)
+         End Object
+         StaticMeshComponent="StaticMeshComponent0"
+         RootComponent="StaticMeshComponent0"
+         ActorLabel="Cube6"
+      End Actor
+   End Level
+Begin Surface
+End Surface
+End Map
