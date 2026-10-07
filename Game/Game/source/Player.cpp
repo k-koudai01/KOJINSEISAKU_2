@@ -283,7 +283,7 @@ void Player::UpdateJump()
 	int trg = ApplicationBase::GetInstance()->GetTrg();
 
 	// ジャンプ開始
-	if(_isGrounded && (trg & PAD_INPUT_4))
+	if(_isGrounded && (trg & PAD_INPUT_1))
 	{
 		_vY = _jumpSpeed;
 		_isGrounded = false;
@@ -334,7 +334,7 @@ void Player::UpdateAttack()
 
 	if(!_canAttack) return;
 
-	if(key & PAD_INPUT_1)
+	if(key & PAD_INPUT_3)
 	{
 		_isCharging = true;
 		_chargeTime += 1.0f / 60.0f;
@@ -344,7 +344,7 @@ void Player::UpdateAttack()
 			_isCharge = true;
 		}
 	}
-	else if(rel & PAD_INPUT_1)
+	else if(rel & PAD_INPUT_3)
 	{
 		if(VSize(_v) > 0.0f)
 		{
