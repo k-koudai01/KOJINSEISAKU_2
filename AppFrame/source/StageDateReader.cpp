@@ -1,5 +1,5 @@
 #include "StageDateReader.h"
-#include "../nlohmann/json.hpp"
+#include <nlohmann/json.hpp>	
 
 using json = nlohmann::json;
 
@@ -8,7 +8,11 @@ std::vector <RawStageObj_Data> StageDateReader::ReadJson(const std::string& file
 	std::vector<RawStageObj_Data> resultList;
 
 	std::ifstream file(filename);
-	if(!file.is_open()) { return resultList; } // ファイルが開けなかったら空で返す
+	if(!file.is_open())
+	{
+		MessageBoxA(nullptr, filename.c_str(), "JSON OPEN ERROR", MB_OK);
+		return resultList;
+	}
 
 	json jsonDate;
 	try 
