@@ -29,7 +29,7 @@ namespace
 	constexpr float FLOAT_UP_AMP   = 15.0f;
 
 	// 初期散らばり・粒子パラメータ
-	const VECTOR RANDOM_VEL_RANGE = VGet(15.0f, 10.0f, 3.0f);
+	const VECTOR RANDOM_SPAWN_RANGE = VGet(15.0f, 10.0f, 3.0f);
 	constexpr float LIFE_MIN      = 8.0f;
 	constexpr float LIFE_MAX      = 12.0f;
 	constexpr float SCALE_MIN     = 12.0f; 
@@ -67,9 +67,9 @@ void LeavesEmitter::SpawnWarmupParticles()
 bool LeavesEmitter::EmitLeaves(const VECTOR& pos)
 {
 	VECTOR vel = VGet(
-		MyMath::GetRandomFloat(-RANDOM_VEL_RANGE.x, RANDOM_VEL_RANGE.x),
-		MyMath::GetRandomFloat(-RANDOM_VEL_RANGE.y, RANDOM_VEL_RANGE.y),
-		MyMath::GetRandomFloat(-RANDOM_VEL_RANGE.z, RANDOM_VEL_RANGE.z)
+		MyMath::GetRandomFloat(-RANDOM_SPAWN_RANGE.x, RANDOM_SPAWN_RANGE.x),
+		MyMath::GetRandomFloat(-RANDOM_SPAWN_RANGE.y, RANDOM_SPAWN_RANGE.y),
+		MyMath::GetRandomFloat(-RANDOM_SPAWN_RANGE.z, RANDOM_SPAWN_RANGE.z)
 	);
 
 	float life  = MyMath::GetRandomFloat(LIFE_MIN, LIFE_MAX);

@@ -4,7 +4,7 @@ namespace
 {
 	constexpr const char* SAKURA_TEXTURE_PATH   = "res/Effect/sakura.png";
 	constexpr int		  MAX_SAKURA_PARTICLES  = 1000;
-	constexpr int         WARMUP_PARTICLE_COUNT = 50;
+	constexpr int         WARMUP_PARTICLE_COUNT = 50; // 初期発生させる桜の数
 
 	// 初期配置用パラメーター
 	const VECTOR WARMUP_SPAWN_CENTER = VGet(0.0f, 200.0f, 0.0f);
@@ -27,7 +27,7 @@ namespace
 	constexpr float SCALE_MAX = 10.4f;
 
 	// ランダムの範囲
-	const VECTOR RANDOM_VEL_RANGE = VGet(0.0f, 50.0f, 20.0f);
+	const VECTOR RANDOM_SPAWN_RANGE = VGet(0.0f, 50.0f, 20.0f);
 }
 
 bool SakuraEmitter::Initialize()
@@ -55,9 +55,9 @@ bool SakuraEmitter::EmitSakura(const VECTOR& pos)
 {
 	VECTOR vel = VGet
 	(
-		MyMath::GetRandomFloat(-RANDOM_VEL_RANGE.x, RANDOM_VEL_RANGE.x),
-		MyMath::GetRandomFloat(-RANDOM_VEL_RANGE.y, RANDOM_VEL_RANGE.y),
-		MyMath::GetRandomFloat(-RANDOM_VEL_RANGE.z, RANDOM_VEL_RANGE.z)
+		MyMath::GetRandomFloat(-RANDOM_SPAWN_RANGE.x, RANDOM_SPAWN_RANGE.x),
+		MyMath::GetRandomFloat(-RANDOM_SPAWN_RANGE.y, RANDOM_SPAWN_RANGE.y),
+		MyMath::GetRandomFloat(-RANDOM_SPAWN_RANGE.z, RANDOM_SPAWN_RANGE.z)
 	);
 
 	float life  = MyMath::GetRandomFloat(LIFE_MIN, LIFE_MAX);
