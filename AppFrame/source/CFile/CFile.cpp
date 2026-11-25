@@ -4,7 +4,8 @@
 #include "../Application/UtilMacro.h"
 
 // “Ç‚İ‚İ
-CFile::CFile(const std::string filename) {
+CFile::CFile(const std::string filename)
+{
 	// ƒƒ“ƒo‚Ì‰Šú‰»
 	Init();
 	_filename = filename;
