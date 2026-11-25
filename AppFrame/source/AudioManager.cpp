@@ -40,6 +40,7 @@ bool AudioManager::LoadSound(int soundId, const std::string& filePath)
 
 void AudioManager::PlayBGM(int soundId, bool isLoop)
 {
+	// すでに再生中のBGMと同じ場合は何もしない
 	if(_currentBGMId == soundId && CheckSoundMem(_soundHandles[soundId]))
 	{
 		return;
@@ -48,11 +49,13 @@ void AudioManager::PlayBGM(int soundId, bool isLoop)
 	StopBGM();
 
 	auto it = _soundHandles.find(soundId);
+
+	// 音声がロードされている場合のみ再生
 	if(it != _soundHandles.end())
 	{
 		int playType = isLoop ? DX_PLAYTYPE_LOOP : DX_PLAYTYPE_BACK;
 		ChangeVolumeSoundMem(_bgmVolume, it->second);
-		PlaySoundMem(it->second, playType);	
+		PlaySoundMem(it->second, playType); 
 		_currentBGMId = soundId;
 	}
 

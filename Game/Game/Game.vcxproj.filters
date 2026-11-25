@@ -101,9 +101,6 @@
     <Filter Include="ソース ファイル\Effekt">
       <UniqueIdentifier>{b8d2bb2d-e363-4b0f-90e6-3877f372070a}</UniqueIdentifier>
     </Filter>
-    <Filter Include="ソース ファイル\Effekt\ModeEffekseer">
-      <UniqueIdentifier>{383f87d8-7b27-49b6-92c0-05d6432b76a1}</UniqueIdentifier>
-    </Filter>
     <Filter Include="ソース ファイル\Mode\ModeTitle">
       <UniqueIdentifier>{a122c136-bb08-4e58-9676-f2f7b330d1dd}</UniqueIdentifier>
     </Filter>
