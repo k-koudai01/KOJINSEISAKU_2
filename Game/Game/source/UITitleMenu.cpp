@@ -121,7 +121,7 @@ void UITitleMenu::DrawTitleLogo()
 	// タイトル文字列の描画
 	SetFontSize(static_cast<int>(TITLE_FONT_SIZE * scale));
 
-	const char* title = "MY ACTION GAME";
+	const char* title = "GOBLIN NAITO";
 	int titleW = GetDrawStringWidth(title, static_cast<int>(strlen(title)));
 	int titleX = static_cast<int>(sw / 2.0f - titleW / 2.0f);
 	int titleY = static_cast<int>(sh / 4.0f);
